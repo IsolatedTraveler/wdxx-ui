@@ -7,6 +7,12 @@
     "module": "esnext",
     "esModuleInterop": true,
     "strict": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "lib": ["esnext", "dom"],
+    "types": ["node", "unplugin-vue-define-options"],
+    "moduleResolution": "node",
+    "paths": {
+      "@valgle/*": ["packages/*"]
+    }
   }
 }
