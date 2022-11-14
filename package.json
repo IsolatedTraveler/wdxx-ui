@@ -3,17 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
+    "@types/less": "^3.0.3",
     "@vitejs/plugin-vue": "^3.2.0",
+    "@wdxx-ui/components": "workspace:^1.0.0",
+    "@wdxx-ui/utils": "workspace:^1.0.0",
+    "cpy": "^9.0.1",
+    "fast-glob": "^3.2.12",
     "less": "^4.1.3",
     "typescript": "^4.8.4",
+    "unplugin-vue-define-options": "^0.12.7",
     "vite": "^3.2.3",
-    "vue": "^3.2.36"
+    "vite-plugin-dts": "^1.4.1",
+    "vue": "^3.2.36",
+    "wdxx-ui": "workspace:^1.0.0"
   }
 }

@@ -4,5 +4,6 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { JtButton } from 'wdxx-ui'
+import { JtButton } from 'packages'
+console.log(JtButton)
 </script>

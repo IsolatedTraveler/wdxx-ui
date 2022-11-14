@@ -8,6 +8,10 @@
     "skipLibCheck": true,
     "target": "es2016",
     "module": "ESNext",
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "include": [
+      "packages/*.ts", "packages/*.tsx", "packages/*.vue"
+      ,"examples/*.ts", "examples/*.tsx", "examples/*.vue"
+    ]
   }
 }

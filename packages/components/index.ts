@@ -1,5 +1,1 @@
-import JtButton from './button'
-
-export {
-  JtButton
-}
+export {default as JtButton} from './button/index'

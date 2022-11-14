@@ -1,0 +1,20 @@
+{
+  "name": "wdxx-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.ts",
+  "module": "es/index.ts",
+  "scripts": {
+    "build": "vite build",
+    "build:less": "esno build/less"
+  },
+  "files": [
+    "es",
+    "lib"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+  }
+}
