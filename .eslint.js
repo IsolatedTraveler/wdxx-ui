@@ -10,7 +10,6 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['eslint:recommended'],
   plugins: ['@typescript-eslint', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -28,6 +27,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-empty-interface': 'off'
+    '@typescript-eslint/no-empty-interface': 'off',
+    'linebreak-style': [0, 'error', 'windows']
   }
 }
