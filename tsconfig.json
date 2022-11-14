@@ -1,18 +1,13 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
     "baseUrl": ".",
-    "target": "es2016",
-    "sourceMap": false,
-    "module": "esnext",
     "esModuleInterop": true,
-    "strict": true,
     "jsx": "preserve",
-    "lib": ["esnext", "dom"],
-    "types": ["node", "unplugin-vue-define-options"],
-    "moduleResolution": "node",
-    "paths": {
-      "@valgle/*": ["packages/*"]
-    }
+    "lib": ["ESNext", "DOM"],
+    "strict": true,
+    "skipLibCheck": true,
+    "target": "es2016",
+    "module": "ESNext",
+    "moduleResolution": "Node"
   }
 }
