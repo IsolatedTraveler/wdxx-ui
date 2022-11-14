@@ -1,15 +1,14 @@
 {
-  "name": "examples",
+  "name": "@wdxx-ui/components",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vite --host"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "wdxx-ui": "workspace:^1.0.0"
   }
 }

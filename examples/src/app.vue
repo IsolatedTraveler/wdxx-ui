@@ -1,5 +1,8 @@
 <template>
   <div>
-      启动测试
+      <jt-button/>
   </div>
 </template>
+<script lang="ts" setup>
+import { JtButton } from 'wdxx-ui'
+</script>
