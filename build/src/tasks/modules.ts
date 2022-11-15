@@ -6,20 +6,21 @@ import commonjs from '@rollup/plugin-commonjs'
 import esbuild from 'rollup-plugin-esbuild'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import VueMacros from 'unplugin-vue-macros/rollup'
-import {excludeFiles, pkgRoot, target} from '../../utils'
+import type { OutputOptions } from 'rollup'
+import {excludeFiles, pkgRoot, epRoot, target, generateExternal, writeBundles, buildConfigEntries} from '../../utils'
 import {ElementPlusAlias} from '../plugins'
 
 export const buildModules = async () => {
   // 获取包中有效文件
   const input = excludeFiles(
-    await glob('**/*.{js,ts,vue}', {
+    await glob('**/*.{js,ts,vue,tsx,jsx}', {
       cwd: pkgRoot,
       absolute: true,
       onlyFiles: true
     })
   )
-  // rollup打包
-  const bondle = await rollup({
+  // rollup打包所有内容
+  const bundle = await rollup({
     input,
     plugins: [
       ElementPlusAlias(),
@@ -44,7 +45,23 @@ export const buildModules = async () => {
           '.vue': 'ts',
         }
       })
-    ]
+    ],
+    external: await generateExternal({ full: false }),
+    treeshake: false
   })
-  console.log(input)
+  // rollup打包内容输出
+  await writeBundles(
+    bundle,
+    buildConfigEntries.map(([module, config]): OutputOptions => {
+      return {
+        format: config.format,
+        dir: config.output.path,
+        exports: module === 'cjs' ? 'named' : undefined,
+        preserveModules: true,
+        preserveModulesRoot: epRoot,
+        sourcemap: true,
+        entryFileNames: `[name].${config.ext}`,
+      }
+    })
+  )
 }

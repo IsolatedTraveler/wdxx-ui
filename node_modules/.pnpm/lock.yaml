@@ -5,37 +5,45 @@ importers:
   .:
     specifiers:
       '@esbuild-kit/cjs-loader': ^2.4.0
+      '@pnpm/types': ^8.9.0
       '@rollup/plugin-commonjs': ^23.0.2
       '@rollup/plugin-node-resolve': ^15.0.1
       '@types/gulp': ^4.0.9
       '@vitejs/plugin-vue': ^3.2.0
       '@vitejs/plugin-vue-jsx': ^2.1.1
+      '@vue/runtime-core': ^3.2.45
       chalk: ^5.1.2
       consola: ^2.15.3
       esbuild: ^0.15.13
       fast-glob: ^3.2.12
       gulp: ^4.0.2
+      lodash: ^4.17.21
       rimraf: ^3.0.2
       rollup: ^3.3.0
       rollup-plugin-esbuild: ^5.0.0
+      ts-morph: ^16.0.0
       unplugin-vue-macros: ^0.16.3
       vite: ^3.2.3
       vue: ^3.2.45
     devDependencies:
       '@esbuild-kit/cjs-loader': 2.4.0
+      '@pnpm/types': 8.9.0
       '@rollup/plugin-commonjs': 23.0.2_rollup@3.3.0
       '@rollup/plugin-node-resolve': 15.0.1_rollup@3.3.0
       '@types/gulp': 4.0.9
       '@vitejs/plugin-vue': 3.2.0_vite@3.2.3+vue@3.2.45
       '@vitejs/plugin-vue-jsx': 2.1.1_vite@3.2.3+vue@3.2.45
+      '@vue/runtime-core': 3.2.45
       chalk: 5.1.2
       consola: 2.15.3
       esbuild: 0.15.13
       fast-glob: 3.2.12
       gulp: 4.0.2
+      lodash: 4.17.21
       rimraf: 3.0.2
       rollup: 3.3.0
       rollup-plugin-esbuild: 5.0.0_ybshfkrfijkvxo7pcbvh2aqrbq
+      ts-morph: 16.0.0
       unplugin-vue-macros: 0.16.3_hzkq6oepsqamt2pm5agg3ky3nu
       vite: 3.2.3
       vue: 3.2.45
@@ -429,6 +437,11 @@ packages:
       fastq: 1.13.0
     dev: true
 
+  /@pnpm/types/8.9.0:
+    resolution: {integrity: sha512-3MYHYm8epnciApn6w5Fzx6sepawmsNU7l6lvIq+ER22/DPSrr83YMhU/EQWnf4lORn2YyiXFj0FJSyJzEtIGmw==}
+    engines: {node: '>=14.6'}
+    dev: true
+
   /@rollup/plugin-commonjs/23.0.2_rollup@3.3.0:
     resolution: {integrity: sha512-e9ThuiRf93YlVxc4qNIurvv+Hp9dnD+4PjOqQs5vAYfcZ3+AXSrcdzXnVjWxcGQOa6KGJFcRZyUI3ktWLavFjg==}
     engines: {node: '>=14.0.0'}
@@ -486,6 +499,15 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 3.3.0
+    dev: true
+
+  /@ts-morph/common/0.17.0:
+    resolution: {integrity: sha512-RMSSvSfs9kb0VzkvQ2NWobwnj7TxCA9vI/IjR9bDHqgAyVbu2T0DN4wiKVqomyDWqO7dPr/tErSfq7urQ1Q37g==}
+    dependencies:
+      fast-glob: 3.2.12
+      minimatch: 5.1.0
+      mkdirp: 1.0.4
+      path-browserify: 1.0.1
     dev: true
 
   /@types/estree/1.0.0:
@@ -1242,6 +1264,10 @@ packages:
       inherits: 2.0.4
       process-nextick-args: 2.0.1
       readable-stream: 2.3.7
+    dev: true
+
+  /code-block-writer/11.0.3:
+    resolution: {integrity: sha512-NiujjUFB4SwScJq2bwbYUtXbZhBSlY6vYzm++3Q6oC+U+injTqfPYFK8wS9COOmb2lueqp0ZRB4nK1VYeHgNyw==}
     dev: true
 
   /code-point-at/1.1.0:
@@ -2552,6 +2578,10 @@ packages:
     engines: {node: '>=14'}
     dev: true
 
+  /lodash/4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: true
+
   /magic-string/0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
     dependencies:
@@ -2649,6 +2679,12 @@ packages:
     dependencies:
       for-in: 1.0.2
       is-extendable: 1.0.1
+    dev: true
+
+  /mkdirp/1.0.4:
+    resolution: {integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==}
+    engines: {node: '>=10'}
+    hasBin: true
     dev: true
 
   /ms/2.0.0:
@@ -2848,6 +2884,10 @@ packages:
   /pascalcase/0.1.1:
     resolution: {integrity: sha512-XHXfu/yOQRy9vYOtUDVMN60OEJjW013GoObG1o+xwQTpB9eYJX/BjXMsdW13ZDPruFhYYn0AG22w0xgQMwl3Nw==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /path-browserify/1.0.1:
+    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
     dev: true
 
   /path-dirname/1.0.2:
@@ -3455,6 +3495,13 @@ packages:
     engines: {node: '>= 0.10'}
     dependencies:
       through2: 2.0.5
+    dev: true
+
+  /ts-morph/16.0.0:
+    resolution: {integrity: sha512-jGNF0GVpFj0orFw55LTsQxVYEUOCWBAbR5Ls7fTYE5pQsbW18ssTb/6UXx/GYAEjS+DQTp8VoTw0vqYMiaaQuw==}
+    dependencies:
+      '@ts-morph/common': 0.17.0
+      code-block-writer: 11.0.3
     dev: true
 
   /type/1.2.0:
