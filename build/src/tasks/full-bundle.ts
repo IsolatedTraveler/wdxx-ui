@@ -145,7 +145,6 @@ async function buildFullLocale(minify: boolean) {
 export const buildFull = (minify: boolean) => async () => {
   return Promise.all([buildFullEntry(minify), buildFullLocale(minify)])
 }
-// 打包packages/ui
 export const buildFullBundle = parallel(
   // 压缩
   withTaskName('buildFullMinified', buildFull(true)),

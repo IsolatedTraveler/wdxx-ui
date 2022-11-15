@@ -1,3 +1,1 @@
-export default function test(a, b) {
-  return a * b
-}
+export * from '@ui/components'
