@@ -9,12 +9,12 @@ import commonjs from '@rollup/plugin-commonjs'
 import esbuild, { minify as minifyPlugin } from 'rollup-plugin-esbuild'
 import { rollup } from 'rollup'
 import glob from 'fast-glob'
-import { version } from '../../../packages/ui/package.json'
+const {camelCase, upperFirst} = require('loadsh')
 
 import {epRoot, target, generateExternal, localeRoot, writeBundles, epOutput, PKG_CAMELCASE_NAME, PKG_CAMELCASE_LOCAL_NAME , PKG_BRAND_NAME, formatBundleFilename} from '../../utils'
 import {withTaskName} from '../../utils'
 import {UiPlusAlias} from '../plugins'
-import { camelCase, upperFirst } from 'lodash'
+const {version} = require('../../../packages/ui/package.json')
 
 
 const banner = `/*! ${PKG_BRAND_NAME} v${version} */\n`
@@ -110,8 +110,8 @@ async function buildFullLocale(minify: boolean) {
           esbuild({
             minify,
             sourceMap: minify,
-            target,
-          }),
+            target
+          })
         ],
       })
       await writeBundles(bundle, [
@@ -125,7 +125,7 @@ async function buildFullLocale(minify: boolean) {
           exports: 'default',
           name: `${PKG_CAMELCASE_LOCAL_NAME}${name}`,
           sourcemap: minify,
-          banner,
+          banner
         },
         {
           format: 'esm',
@@ -135,8 +135,8 @@ async function buildFullLocale(minify: boolean) {
             formatBundleFilename(filename, minify, 'mjs')
           ),
           sourcemap: minify,
-          banner,
-        },
+          banner
+        }
       ])
     })
   )
