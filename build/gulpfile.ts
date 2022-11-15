@@ -23,6 +23,6 @@ export default series(
     //   copyFullStyle
     // )
   ),
-  parallel(copyTypesDefinitions, copyFiles)
+  // parallel(copyTypesDefinitions, copyFiles)
 )
 export * from './src'
