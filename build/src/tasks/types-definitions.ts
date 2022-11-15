@@ -17,7 +17,7 @@ async function addSourceFiles(project: Project) {
 
   const globSourceFile = '**/*.{js?(x),ts?(x),vue}'
   const filePaths = excludeFiles(
-    await glob([globSourceFile, '!ui/**/*'], {
+    await glob([globSourceFile, '!ui/**/*', '!*.d.ts'], {
       cwd: pkgRoot,
       absolute: true,
       onlyFiles: true,
@@ -84,23 +84,23 @@ function typeCheck(project: Project) {
 
 export const generateTypesDefinitions = async () => {
   const compilerOptions: CompilerOptions = {
+    declaration: true,
     emitDeclarationOnly: true,
+    noEmitOnError: true,
     outDir,
     baseUrl: projRoot,
     preserveSymlinks: true,
     skipLibCheck: true,
     noImplicitAny: false
   }
+
   const project = new Project({
-    compilerOptions,
     tsConfigFilePath: TSCONFIG_PATH,
+    compilerOptions,
     skipAddingFilesFromTsConfig: true
   })
   const sourceFiles = await addSourceFiles(project)
   typeCheck(project)
-
-  consola.success('Type check passed!')
-
   await project.emit({
     emitOnlyDtsFiles: true
   })

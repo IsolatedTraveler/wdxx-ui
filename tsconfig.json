@@ -1,15 +1,4 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "lib": ["ESNext", "DOM"],
-    "strict": true,
-    "skipLibCheck": true,
-    "target": "es2016",
-    "module": "ESNext",
-    "moduleResolution": "Node"
-  },
   "include": [
     "packages/**.*", "packages/**.tsx", "packages/**.vue", "packages/**.json"
     ,"examples/**.ts", "examples/**.tsx", "examples/**.vue", "examples/**.json"
