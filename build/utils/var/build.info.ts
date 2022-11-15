@@ -3,11 +3,11 @@ import type { ModuleFormat } from 'rollup'
 import {epOutput} from './path'
 
 export const target = 'es2018'
-export const PKG_PREFIX = '@element-plus'
-export const PKG_NAME = 'element-plus'
-export const PKG_CAMELCASE_NAME = 'ElementPlus'
-export const PKG_CAMELCASE_LOCAL_NAME = 'ElementPlusLocale'
-export const PKG_BRAND_NAME = 'Element Plus'
+export const PKG_PREFIX = '@wdxx-ui'
+export const PKG_NAME = 'wdxx-ui'
+export const PKG_CAMELCASE_NAME = 'WdxxUi'
+export const PKG_CAMELCASE_LOCAL_NAME = 'WdxxUiLocale'
+export const PKG_BRAND_NAME = 'Wdxx Ui'
 
 
 export const modules = ['esm', 'cjs'] as const
@@ -16,14 +16,11 @@ export interface BuildInfo {
   format: ModuleFormat
   ext: 'mjs' | 'cjs' | 'js'
   output: {
-    /** e.g: `es` */
     name: string
-    /** e.g: `dist/element-plus/es` */
     path: string
   }
 
   bundle: {
-    /** e.g: `element-plus/es` */
     path: string
   }
 }

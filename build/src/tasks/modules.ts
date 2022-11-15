@@ -8,7 +8,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import VueMacros from 'unplugin-vue-macros/rollup'
 import type { OutputOptions } from 'rollup'
 import {excludeFiles, pkgRoot, epRoot, target, generateExternal, writeBundles, buildConfigEntries} from '../../utils'
-import {ElementPlusAlias} from '../plugins'
+import {UiPlusAlias} from '../plugins'
 
 export const buildModules = async () => {
   // 获取包中有效文件
@@ -23,7 +23,7 @@ export const buildModules = async () => {
   const bundle = await rollup({
     input,
     plugins: [
-      ElementPlusAlias(),
+      UiPlusAlias(),
       VueMacros({
         setupComponent: false,
         setupSFC: false,

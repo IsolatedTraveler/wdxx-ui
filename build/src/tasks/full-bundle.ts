@@ -13,14 +13,14 @@ import { version } from '../../../packages/ui/package.json'
 
 import {epRoot, target, generateExternal, localeRoot, writeBundles, epOutput, PKG_CAMELCASE_NAME, PKG_CAMELCASE_LOCAL_NAME , PKG_BRAND_NAME, formatBundleFilename} from '../../utils'
 import {withTaskName} from '../../utils'
-import {ElementPlusAlias} from '../plugins'
+import {UiPlusAlias} from '../plugins'
 import { camelCase, upperFirst } from 'lodash'
 
 
 const banner = `/*! ${PKG_BRAND_NAME} v${version} */\n`
 async function buildFullEntry(minify: boolean) {
   const plugins: Plugin[] = [
-    ElementPlusAlias(),
+    UiPlusAlias(),
     VueMacros({
       setupComponent: false,
       setupSFC: false,
