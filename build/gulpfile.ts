@@ -1,4 +1,4 @@
-import { series, parallel } from "gulp";
+import { series, parallel } from "gulp"
 import { mkdir } from 'fs/promises'
 import {withTaskName, run, epOutput, runTask, copyFullStyle, copyTypesDefinitions, copyFiles} from './utils'
 // 单进程执行任务
