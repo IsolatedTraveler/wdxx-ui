@@ -1,0 +1,1 @@
+{"version":3,"file":"index.mjs","sources":["../../../packages/ui/index.ts"],"sourcesContent":["export default function test(a, b) {\r\n  return a * b\r\n}"],"names":[],"mappings":"AAAwB,SAAA,IAAA,CAAK,GAAG,CAAG,EAAA;AACjC,EAAA,OAAO,CAAI,GAAA,CAAA,CAAA;AACb;;;;"}
