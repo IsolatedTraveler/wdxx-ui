@@ -9,7 +9,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import esbuild, { minify as minifyPlugin } from 'rollup-plugin-esbuild'
 import { rollup } from 'rollup'
 import glob from 'fast-glob'
-const {camelCase, upperFirst} = require('loadsh')
+import {camelCase, upperFirst} from 'lodash'
 
 import {epRoot, target, generateExternal, localeRoot, writeBundles, epOutput, PKG_CAMELCASE_NAME, PKG_CAMELCASE_LOCAL_NAME , PKG_BRAND_NAME, formatBundleFilename} from '../../utils'
 import {withTaskName} from '../../utils'

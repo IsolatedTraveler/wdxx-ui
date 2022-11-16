@@ -1,7 +1,7 @@
 {
   "name": "@ui/hooks",
   "version": "1.0.0",
-  "description": "all composables are settled here",
+  "description": "all hooks are settled here",
   "main": "index.ts",
   "module": "index.ts",
   "unpkg": "index.js",

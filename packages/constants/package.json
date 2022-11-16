@@ -1,6 +1,16 @@
 {
   "name": "@ui/constants",
-  "private": true,
-  "license": "MIT",
-  "main": "index.ts"
+  "version": "1.0.0",
+  "description": "all constants are settled here",
+  "main": "index.ts",
+  "module": "index.ts",
+  "unpkg": "index.js",
+  "jsdelivr": "index.js",
+  "types": "index.d.ts",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "vue": "^3.2.45"
+  }
 }

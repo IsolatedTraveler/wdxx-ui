@@ -3,13 +3,12 @@ import consola from 'consola'
 import { Project } from 'ts-morph'
 import chalk from 'chalk'
 import { mkdir, readFile, writeFile } from 'fs/promises'
-const path = require('path'), glob = require('fast-glob')
-import * as vueCompiler from 'vue/compiler-sfc'
+import path from 'path'
+import glob from 'fast-glob'
+import {compileScript, parse} from 'vue/compiler-sfc'
 
-import { projRoot, pkgRoot, buildOutput, epRoot, pathRewriter, excludeFiles,  } from '../../utils'
+import { projRoot, pkgRoot, epRoot, pathRewriter, excludeFiles, compilerOptions } from '../../utils'
 
-const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.web.json')
-const outDir = path.resolve(buildOutput, 'types')
 
 async function addSourceFiles(project: Project) {
   project.addSourceFileAtPath(path.resolve(projRoot, 'typings/env.d.ts'))
@@ -35,14 +34,14 @@ async function addSourceFiles(project: Project) {
         const content = await readFile(file, 'utf-8')
         const hasTsNoCheck = content.includes('@ts-nocheck')
 
-        const sfc = vueCompiler.parse(content)
+        const sfc = parse(content)
         const { script, scriptSetup } = sfc.descriptor
         if (script || scriptSetup) {
           let content =
             (hasTsNoCheck ? '// @ts-nocheck\n' : '') + (script?.content ?? '')
 
           if (scriptSetup) {
-            const compiled = vueCompiler.compileScript(sfc.descriptor, {
+            const compiled = compileScript(sfc.descriptor, {
               id: 'xxx',
             })
             content += compiled.content
@@ -73,30 +72,16 @@ async function addSourceFiles(project: Project) {
 
 function typeCheck(project: Project) {
   const diagnostics = project.getPreEmitDiagnostics()
-  consola.log(diagnostics)
   if (diagnostics.length > 0) {
     consola.error(project.formatDiagnosticsWithColorAndContext(diagnostics))
-    const err = new Error('Failed to generate dts.')
-    // consola.error(err)
-    // throw err
+    throw new Error('Failed to generate dts.')
   }
 }
 
 export const generateTypesDefinitions = async () => {
-  const compilerOptions: CompilerOptions = {
-    declaration: true,
-    emitDeclarationOnly: true,
-    noEmitOnError: true,
-    outDir,
-    baseUrl: projRoot,
-    preserveSymlinks: true,
-    skipLibCheck: true,
-    noImplicitAny: false
-  }
-
   const project = new Project({
-    tsConfigFilePath: TSCONFIG_PATH,
     compilerOptions,
+    tsConfigFilePath: path.resolve(projRoot, 'tsconfig.web.json'),
     skipAddingFilesFromTsConfig: true,
     skipFileDependencyResolution: true
   })
