@@ -1,0 +1,1 @@
+export const size = ['', 'sm', 'md', 'lg']

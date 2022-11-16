@@ -1,1 +1,1 @@
-export * from './commpon'
+export * from './common'

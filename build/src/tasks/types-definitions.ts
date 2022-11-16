@@ -73,11 +73,12 @@ async function addSourceFiles(project: Project) {
 
 function typeCheck(project: Project) {
   const diagnostics = project.getPreEmitDiagnostics()
+  consola.log(diagnostics)
   if (diagnostics.length > 0) {
     consola.error(project.formatDiagnosticsWithColorAndContext(diagnostics))
     const err = new Error('Failed to generate dts.')
     // consola.error(err)
-    throw err
+    // throw err
   }
 }
 
