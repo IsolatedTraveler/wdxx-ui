@@ -7,6 +7,9 @@
     "start": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts"
   },
   "keywords": [],
+  "peerDependencies": {
+    "vue": "^3.2.45"
+  },
   "author": "",
   "license": "ISC"
 }

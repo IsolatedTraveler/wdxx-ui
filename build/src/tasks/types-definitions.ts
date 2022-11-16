@@ -2,9 +2,8 @@ import type { CompilerOptions, SourceFile } from 'ts-morph'
 import consola from 'consola'
 import { Project } from 'ts-morph'
 import chalk from 'chalk'
-import path from 'path'
 import { mkdir, readFile, writeFile } from 'fs/promises'
-import glob from 'fast-glob'
+const path = require('path'), glob = require('fast-glob')
 import * as vueCompiler from 'vue/compiler-sfc'
 
 import { projRoot, pkgRoot, buildOutput, epRoot, pathRewriter, excludeFiles,  } from '../../utils'
@@ -97,7 +96,8 @@ export const generateTypesDefinitions = async () => {
   const project = new Project({
     tsConfigFilePath: TSCONFIG_PATH,
     compilerOptions,
-    skipAddingFilesFromTsConfig: true
+    skipAddingFilesFromTsConfig: true,
+    skipFileDependencyResolution: true
   })
   const sourceFiles = await addSourceFiles(project)
   typeCheck(project)
