@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts",
-    "publish": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts publish"
+    "pub": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts publish"
   },
   "keywords": [],
   "author": "",
