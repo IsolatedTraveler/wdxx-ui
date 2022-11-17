@@ -14,6 +14,8 @@ import HelloWorld from "./components/HelloWorld.vue";
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <jt-button></jt-button>
+  <jt-check-box>12312</jt-check-box>
 </template>
 
 <style scoped>

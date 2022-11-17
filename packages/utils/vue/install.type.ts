@@ -1,3 +1,4 @@
 export interface installComponent {
-  install(app: any): void;
+  version?: string
+  install(app: any): void
 }

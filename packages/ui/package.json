@@ -1,6 +1,6 @@
 {
   "name": "wdxx-ui",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A Component Library for Vue 3",
   "main": "lib/index.js",
   "module": "es/index.mjs",
@@ -32,7 +32,9 @@
   "peerDependencies": {
     "vue": "^3.2.45"
   },
-  "keywords": [],
+  "keywords": [
+    "wdxx-ui"
+  ],
   "author": "",
   "browserslist": [
     "> 1%",
