@@ -6,6 +6,8 @@ import {
   runTask,
   copyTypesDefinitions,
   copyFiles,
+  run,
+  copyFullStyle,
 } from "./utils";
 // 单进程执行任务
 export default series(
@@ -20,12 +22,12 @@ export default series(
     // 打包生成types(支持typescript,需要在项目根目录下新建tsconfig.web.json)
     runTask("generateTypesDefinitions")
     // 样式打包
-    // ,series(
-    //   withTaskName('buildThemeChalk', () => {
-    //     return run('pnpm run -C packages/theme-chalk build')
-    //   }),
-    //   copyFullStyle
-    // )
+    ,series(
+      withTaskName('buildThemeChalk', () => {
+        return run('pnpm run -C packages/theme build')
+      }),
+      copyFullStyle
+    )
   ),
   parallel(copyTypesDefinitions, copyFiles)
 );

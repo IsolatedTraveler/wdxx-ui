@@ -28,7 +28,7 @@ export const pathRewriter = (module: Module) => {
   const config = buildConfig[module];
 
   return (id: string) => {
-    id = id.split(`${PKG_PREFIX}/theme-chalk`).join(`${PKG_NAME}/theme-chalk`);
+    id = id.split(`${PKG_PREFIX}/theme`).join(`${PKG_NAME}/theme`);
     id = id.split(`${PKG_PREFIX}/`).join(`${config.bundle.path}/`);
     return id;
   };

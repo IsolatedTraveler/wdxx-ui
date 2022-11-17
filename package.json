@@ -15,6 +15,7 @@
     "@ui/components": "workspace:*",
     "@ui/constants": "workspace:*",
     "@ui/hooks": "workspace:*",
+    "@ui/theme": "workspace:^0.1.0",
     "@ui/utils": "workspace:*",
     "vue": "^3.2.45",
     "wdxx-ui": "workspace:*"
@@ -27,6 +28,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/gulp": "^4.0.10",
     "@types/lodash": "^4.14.189",
+    "@types/sass": "^1.43.1",
     "@ui/build": "workspace:^1.0.0",
     "@vitejs/plugin-vue": "^3.2.0",
     "@vitejs/plugin-vue-jsx": "^2.1.1",
@@ -44,6 +46,7 @@
     "rimraf": "^3.0.2",
     "rollup": "^3.3.0",
     "rollup-plugin-esbuild": "^5.0.0",
+    "sass": "^1.56.1",
     "shelljs": "^0.8.5",
     "ts-morph": "^16.0.0",
     "typescript": "^4.7.4",

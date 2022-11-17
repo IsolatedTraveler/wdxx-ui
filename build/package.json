@@ -2,7 +2,7 @@
   "name": "@ui/build",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts",
     "pub": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts publish",

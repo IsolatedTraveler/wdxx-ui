@@ -17,7 +17,7 @@ import { withTaskName } from "./gulp";
 export const copyFullStyle = async () => {
   await mkdir(path.resolve(epOutput, "dist"), { recursive: true });
   await copyFile(
-    path.resolve(epOutput, "theme-chalk/index.css"),
+    path.resolve(epOutput, "theme/index.css"),
     path.resolve(epOutput, "dist/index.css")
   );
 };

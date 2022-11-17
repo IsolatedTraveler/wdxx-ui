@@ -26,8 +26,8 @@
     "dist/*",
     "es/components/*/style/*",
     "lib/components/*/style/*",
-    "theme-chalk/**/*.css",
-    "theme-chalk/src/**/*.scss"
+    "theme/**/*.css",
+    "theme/src/**/*.scss"
   ],
   "peerDependencies": {
     "vue": "^3.2.45"
