@@ -1,22 +1,20 @@
 import { epPackage, epRoot, projRoot } from "../../utils"
 const shell = require('shelljs')
 const {version} = require(epPackage)
-function setVersion(arr: Array<number>, i:number) {
+const setVersion = (arr: Array<number>, i:number): Array<number> => {
   if (i > 0) {
     if (arr[i] > 98) {
       arr[i] = 0
-      setVersion(arr, i - 1)
-    } else {
-      arr[i] += 1
+      return setVersion(arr, i - 1)
     }
   }
   arr[i] += 1
+  return arr
 }
 export const alertVersion =async () => {
-  const arr = version.split('.')
-  setVersion(arr, 2)
+  const arr = setVersion(version.split('.').map((it:string) => parseInt(it)), 2)
   shell.cd(epRoot)
-  shell.exec("npm version" + arr.join('.'))
+  shell.exec("npm version " + arr.join('.'))
   shell.cd(projRoot)
   return
 }
