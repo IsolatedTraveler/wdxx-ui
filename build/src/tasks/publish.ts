@@ -7,12 +7,11 @@ export const publish = series(
   parallel(
     // 修改版本信息
     runTask("alertVersion"),
-    // 生成global.d.ts
+    // 生成global.d.ts, component.ts, components.d.ts
     runTask('creatComponent')
-    // 生成typings/components.d.ts
   ),
   // 打包
-  // withTaskName('build', () => run('pnpm run build')),
+  withTaskName('build', () => run('pnpm run build')),
   // 发布
-  // withTaskName('npmPublish', () => run('npm publish', epOutput))
+  withTaskName('npmPublish', () => run('npm publish', epOutput))
 );

@@ -1,9 +1,11 @@
-import "@vue/runtime-core";
+import "@vue/runtime-core"
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {
-    JtCheckBox: typeof import("../packages/ui")["JtCheckBox"];
     JtButton: typeof import("../packages/ui")["JtButton"];
+    JtCheckBox: typeof import("../packages/ui")["JtCheckBox"];
   }
-  interface ComponentCustomProperties {}
+  interface ComponentCustomProperties {
+    
+  }
 }
-export {};
+export {}

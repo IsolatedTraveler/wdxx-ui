@@ -4,6 +4,7 @@ export const projRoot = resolve(__dirname, "..", "..", "..");
 
 // 开发源位置
 export const pkgRoot = resolve(projRoot, "packages");
+export const compRoot = resolve(pkgRoot, 'components')
 export const localeRoot = resolve(pkgRoot, "locale");
 export const epRoot = resolve(pkgRoot, "ui");
 export const epPackage = resolve(epRoot, "package.json");
