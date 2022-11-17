@@ -1,6 +1,14 @@
-import {JtButton} from '@ui/components/button'
-import {JtCheckBox} from '@ui/components/check-box'
+import {
+  JtButton,
+  JtButtonGroup
+} from '@ui/components/button'
+import {
+  JtCheckBox,
+  JtCheckBoxGroup
+} from '@ui/components/check-box'
 export default [
   JtButton,
-  JtCheckBox
+  JtButtonGroup,
+  JtCheckBox,
+  JtCheckBoxGroup
 ]

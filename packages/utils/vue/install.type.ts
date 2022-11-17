@@ -1,4 +1,3 @@
-export interface installComponent {
-  version?: string
-  install(app: any): void
-}
+import type { Plugin } from "@vue/runtime-core";
+
+export type SFCWithInstall<T> = T & Plugin

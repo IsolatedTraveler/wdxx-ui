@@ -1,8 +1,7 @@
-import { installComponent } from "@ui/utils";
-import checkBox from "./src/checkbox.vue";
-export const JtCheckBox = {
-  install(app) {
-    app.component(checkBox.name, checkBox);
-  },
-} as installComponent;
-export default JtCheckBox;
+import { withInstall, withNoopInstall } from "@ui/utils";
+import checkBox from "./src/check-box.vue";
+import checkBoxGroup from "./src/check-box-group.vue";
+export const JtCheckBox = withInstall(checkBox, {
+  checkBoxGroup
+})
+export const JtCheckBoxGroup = withNoopInstall(checkBoxGroup)

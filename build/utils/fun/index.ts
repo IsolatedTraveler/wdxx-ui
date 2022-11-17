@@ -1,4 +1,5 @@
 export * from "./build.info";
+export * from "./components";
 export * from "./copy";
 export * from "./fs";
 export * from "./gulp";

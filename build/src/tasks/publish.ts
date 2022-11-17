@@ -9,6 +9,7 @@ export const publish = series(
     runTask("alertVersion"),
     // 生成global.d.ts, component.ts, components.d.ts
     runTask('creatComponent')
+    // 生成typings/components.d.ts
   ),
   // 打包
   withTaskName('build', () => run('pnpm run build')),
