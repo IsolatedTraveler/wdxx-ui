@@ -7,7 +7,8 @@
     "dev": "vite --host",
     "build": "pnpm run clean && pnpm run -C build/ start",
     "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
-    "clean:dist": "rimraf dist"
+    "clean:dist": "rimraf dist",
+    "format": "prettier --write --cache ."
   },
   "dependencies": {
     "@ui/components": "workspace:^1.0.0",
@@ -37,6 +38,7 @@
     "fs-extra": "^10.1.0",
     "gulp": "^4.0.2",
     "lodash": "^4.17.21",
+    "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "rollup": "^3.3.0",
     "rollup-plugin-esbuild": "^5.0.0",

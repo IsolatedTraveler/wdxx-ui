@@ -1,9 +1,9 @@
-import type { CompilerOptions } from 'ts-morph'
-import path from 'path'
+import type { CompilerOptions } from "ts-morph";
+import path from "path";
 
-import { buildOutput, projRoot } from './path'
+import { buildOutput, projRoot } from "./path";
 
-const outDir = path.resolve(buildOutput, 'types')
+const outDir = path.resolve(buildOutput, "types");
 export const compilerOptions: CompilerOptions = {
   declaration: true,
   emitDeclarationOnly: true,
@@ -13,5 +13,5 @@ export const compilerOptions: CompilerOptions = {
   baseUrl: projRoot,
   preserveSymlinks: true,
   skipLibCheck: true,
-  noImplicitAny: false
-}
+  noImplicitAny: false,
+};

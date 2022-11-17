@@ -1,14 +1,12 @@
 <template>
-  <div class="jt-buttom">
-  </div>
+  <div class="jt-buttom"></div>
 </template>
 <script lang="ts">
 export default {
-  name: 'jt-buttom',
+  name: "jt-buttom",
   data() {
-    return {}
+    return {};
   },
-  methods: {
-  }
-}
+  methods: {},
+};
 </script>

@@ -1,10 +1,11 @@
 // GlobalComponents for Volar
-declare module '@vue/runtime-core' {
+declare module "@vue/runtime-core" {
   export interface GlobalComponents {
-    // ElAffix: typeof import('wdxx-ui')['ElAffix']
+    JtCheckBox: typeof import("wdxx-ui")["JtCheckBox"];
+    JtButton: typeof import("wdxx-ui")["JtButton"];
   }
   interface ComponentCustomProperties {
     // $message: typeof import('wdxx-ui')['ElMessage']
   }
 }
-export {}
+export {};

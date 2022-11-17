@@ -1,3 +1,3 @@
-export * from './path'
-export * from './build.info'
-export * from './type-definitions'
+export * from "./path";
+export * from "./build.info";
+export * from "./type-definitions";

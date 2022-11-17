@@ -1,14 +1,12 @@
 <template>
-  <div class="Name">
-  </div>
+  <div class="Name"></div>
 </template>
 <script lang="ts">
 export default {
-  name: 'Name',
+  name: "Name",
   data() {
-    return {}
+    return {};
   },
-  methods: {
-  }
-}
+  methods: {},
+};
 </script>

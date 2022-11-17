@@ -1,1 +1,1 @@
-export * from './install.type'
+export * from "./install.type";

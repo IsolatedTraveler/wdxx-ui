@@ -3,13 +3,13 @@ import { border, size } from "../var-props";
 import { ruleValidate } from "./base.check";
 export const useSizeProp = buildProp({
   type: String,
-  values: size
-})
+  values: size,
+});
 export const useBorderProp = buildProp({
   type: String,
-  values: border
-})
+  values: border,
+});
 export const useRuleProp = buildProp({
   type: [String, Object, Array],
-  validator: ruleValidate
-})
+  validator: ruleValidate,
+});

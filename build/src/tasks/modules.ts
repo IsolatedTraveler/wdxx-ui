@@ -1,24 +1,32 @@
-import glob from 'fast-glob'
-import { rollup } from 'rollup'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import commonjs from '@rollup/plugin-commonjs'
-import esbuild from 'rollup-plugin-esbuild'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
-import VueMacros from 'unplugin-vue-macros/rollup'
-import type { OutputOptions } from 'rollup'
-import {excludeFiles, pkgRoot, epRoot, target, generateExternal, writeBundles, buildConfigEntries} from '../../utils'
-import {UiPlusAlias} from '../plugins'
+import glob from "fast-glob";
+import { rollup } from "rollup";
+import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import commonjs from "@rollup/plugin-commonjs";
+import esbuild from "rollup-plugin-esbuild";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
+import VueMacros from "unplugin-vue-macros/rollup";
+import type { OutputOptions } from "rollup";
+import {
+  excludeFiles,
+  pkgRoot,
+  epRoot,
+  target,
+  generateExternal,
+  writeBundles,
+  buildConfigEntries,
+} from "../../utils";
+import { UiPlusAlias } from "../plugins";
 
 export const buildModules = async () => {
   // 获取包中有效文件
   const input = excludeFiles(
-    await glob('**/*.{js,ts,vue,tsx,jsx}', {
+    await glob("**/*.{js,ts,vue,tsx,jsx}", {
       cwd: pkgRoot,
       absolute: true,
-      onlyFiles: true
+      onlyFiles: true,
     })
-  )
+  );
   // rollup打包所有内容
   const bundle = await rollup({
     input,
@@ -29,26 +37,26 @@ export const buildModules = async () => {
         setupSFC: false,
         plugins: {
           vue: vue({
-            isProduction: false
+            isProduction: false,
           }),
-          vueJsx: vueJsx()
-        }
+          vueJsx: vueJsx(),
+        },
       }),
       nodeResolve({
-        extensions: ['.mjs', '.js', '.json', '.ts']
+        extensions: [".mjs", ".js", ".json", ".ts"],
       }) as any,
       commonjs(),
       esbuild({
         sourceMap: true,
         target,
         loaders: {
-          '.vue': 'ts',
-        }
-      })
+          ".vue": "ts",
+        },
+      }),
     ],
     external: await generateExternal({ full: false }),
-    treeshake: false
-  })
+    treeshake: false,
+  });
   // rollup打包内容输出
   await writeBundles(
     bundle,
@@ -56,12 +64,12 @@ export const buildModules = async () => {
       return {
         format: config.format,
         dir: config.output.path,
-        exports: module === 'cjs' ? 'named' : undefined,
+        exports: module === "cjs" ? "named" : undefined,
         preserveModules: true,
         preserveModulesRoot: epRoot,
         sourcemap: true,
         entryFileNames: `[name].${config.ext}`,
-      }
+      };
     })
-  )
-}
+  );
+};

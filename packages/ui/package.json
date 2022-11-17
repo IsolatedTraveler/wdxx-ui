@@ -23,11 +23,11 @@
     "./*": "./*"
   },
   "sideEffects": [
-    "dist/*"
-    ,"es/components/*/style/*"
-    ,"lib/components/*/style/*"
-    ,"theme-chalk/**/*.css"
-    ,"theme-chalk/src/**/*.scss"
+    "dist/*",
+    "es/components/*/style/*",
+    "lib/components/*/style/*",
+    "theme-chalk/**/*.css",
+    "theme-chalk/src/**/*.scss"
   ],
   "peerDependencies": {
     "vue": "^3.2.45"

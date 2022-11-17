@@ -1,2 +1,2 @@
-export * from './fun'
-export * from './var'
+export * from "./fun";
+export * from "./var";

@@ -1,8 +1,8 @@
-import { useBorderProp, useRuleProp, useSizeProp } from "@ui/hooks"
+import { useBorderProp, useRuleProp, useSizeProp } from "@ui/hooks";
 
 export const checkboxProps = {
   modelValue: {
-    type: [Number, String, Boolean]
+    type: [Number, String, Boolean],
   },
   name: {
     type: String,
@@ -18,6 +18,6 @@ export const checkboxProps = {
     default: undefined,
   },
   border: useBorderProp,
-  size: useSizeProp
-}
-export default checkboxProps
+  size: useSizeProp,
+};
+export default checkboxProps;
