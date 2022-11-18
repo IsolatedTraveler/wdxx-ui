@@ -1,4 +1,4 @@
-import type { CompilerOptions, SourceFile } from "ts-morph";
+import type { SourceFile } from "ts-morph";
 import consola from "consola";
 import { Project } from "ts-morph";
 import chalk from "chalk";
