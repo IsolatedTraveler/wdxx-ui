@@ -12,4 +12,4 @@ import { rollup } from "rollup";
 
 import { epRoot, target, generateExternal, writeBundles } from "../../utils";
 import { withTaskName } from "../../utils";
-import { UiPlusAlias } from "../plugins";
+import { UiPlusAlias } from "../plugins/element-plus-alias-plugin";

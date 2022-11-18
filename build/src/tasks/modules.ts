@@ -16,12 +16,12 @@ import {
   writeBundles,
   buildConfigEntries,
 } from "../../utils";
-import { UiPlusAlias } from "../plugins";
+import { UiPlusAlias } from "../plugins/element-plus-alias-plugin";
 
 export const buildModules = async () => {
   // 获取包中有效文件
   const input = excludeFiles(
-    await glob("**/*.{js,ts,vue,tsx,jsx}", {
+    await glob("**/*.{js,ts,vue}", {
       cwd: pkgRoot,
       absolute: true,
       onlyFiles: true,
@@ -37,10 +37,10 @@ export const buildModules = async () => {
         setupSFC: false,
         plugins: {
           vue: vue({
-            isProduction: false,
+            isProduction: false
           }),
-          vueJsx: vueJsx(),
-        },
+          vueJsx: vueJsx()
+        }
       }),
       nodeResolve({
         extensions: [".mjs", ".js", ".json", ".ts"],

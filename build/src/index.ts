@@ -1,2 +1,2 @@
 export * from "./tasks";
-export * from "./plugins";
+export * from "./plugins/element-plus-alias-plugin";

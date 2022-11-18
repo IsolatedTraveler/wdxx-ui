@@ -24,7 +24,7 @@ import {
   formatBundleFilename,
 } from "../../utils";
 import { withTaskName } from "../../utils";
-import { UiPlusAlias } from "../plugins";
+import { UiPlusAlias } from "../plugins/element-plus-alias-plugin";
 const { version } = require("../../../packages/ui/package.json");
 
 const banner = `/*! ${PKG_BRAND_NAME} v${version} */\n`;

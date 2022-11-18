@@ -2,7 +2,7 @@ import type { ProjectManifest } from "@pnpm/types";
 import { PKG_NAME, PKG_PREFIX, buildConfig, Module } from "../var";
 
 export const excludeFiles = (files: string[]) => {
-  const excludes = ["node_modules", "test", "mock", "gulpfile", "dist"];
+  const excludes = ["node_modules", "test", "mock", "gulpfile", "dist", 'sfc.d.ts'];
   return files.filter(
     (path) => !excludes.some((exclude) => path.includes(exclude))
   );
