@@ -1,7 +1,7 @@
-import jiti from "file:///E:/gitHub/wdxx-cs/node_modules/.pnpm/jiti@1.16.0/node_modules/jiti/lib/index.js";
+import jiti from "file:///E:/git/wdxx-ui/node_modules/.pnpm/jiti@1.16.0/node_modules/jiti/lib/index.js";
 
-/** @type {import("E:/gitHub/wdxx-cs/build/utils/index")} */
-const _module = jiti(null, { interopDefault: true, esmResolve: true })("E:/gitHub/wdxx-cs/build/utils/index.ts");
+/** @type {import("E:/git/wdxx-ui/build/utils/index")} */
+const _module = jiti(null, { interopDefault: true, esmResolve: true })("E:/git/wdxx-ui/build/utils/index.ts");
 
 export const projRoot = _module.projRoot;
 export const pkgRoot = _module.pkgRoot;

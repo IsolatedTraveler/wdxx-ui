@@ -1,2 +1,2 @@
-export * from "E:/gitHub/wdxx-cs/build/def/index";
-export { default } from "E:/gitHub/wdxx-cs/build/def/index";
+export * from "E:/git/wdxx-ui/build/def/index";
+export { default } from "E:/git/wdxx-ui/build/def/index";

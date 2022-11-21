@@ -1,1 +1,1 @@
-export * from "E:/gitHub/wdxx-cs/build/utils/index";
+export * from "E:/git/wdxx-ui/build/utils/index";
