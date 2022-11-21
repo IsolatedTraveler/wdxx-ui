@@ -21,6 +21,7 @@ importers:
       path: ^0.12.7
       rollup: ^2.50.0
       rollup-plugin-esbuild: ^5.0.0
+      ts-morph: ^17.0.0
       typescript: ^4.9.3
       unbuild: ^1.0.1
       unplugin-vue-define-options: ^0.12.8
@@ -49,6 +50,7 @@ importers:
       path: 0.12.7
       rollup: 2.79.1
       rollup-plugin-esbuild: 5.0.0_jr75dtsnsc3mmsp2ij7zahetz4
+      ts-morph: 17.0.0
       typescript: 4.9.3
       unbuild: 1.0.1
       unplugin-vue-define-options: 0.12.8
@@ -732,6 +734,15 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 3.3.0
+    dev: true
+
+  /@ts-morph/common/0.18.0:
+    resolution: {integrity: sha512-UvWF+oQdMa4qMWhXTOd2JWtAbAJGgkPMNzGHgEcfOwQRIcViKdwsSqXXjSaQCZ4fo+bZMhdfuwQCjlW5bNcqEQ==}
+    dependencies:
+      fast-glob: 3.2.12
+      minimatch: 5.1.0
+      mkdirp: 1.0.4
+      path-browserify: 1.0.1
     dev: true
 
   /@types/estree/1.0.0:
@@ -1435,6 +1446,10 @@ packages:
       inherits: 2.0.3
       process-nextick-args: 2.0.1
       readable-stream: 2.3.7
+    dev: true
+
+  /code-block-writer/11.0.3:
+    resolution: {integrity: sha512-NiujjUFB4SwScJq2bwbYUtXbZhBSlY6vYzm++3Q6oC+U+injTqfPYFK8wS9COOmb2lueqp0ZRB4nK1VYeHgNyw==}
     dev: true
 
   /code-point-at/1.1.0:
@@ -3171,6 +3186,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /path-browserify/1.0.1:
+    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
+    dev: true
+
   /path-dirname/1.0.2:
     resolution: {integrity: sha512-ALzNPpyNq9AqXMBjeymIjFDAkAFH06mHJH/cSBHAgU0s4vfpBn6b2nf8tiRLvagKD8RbTpq2FKTBg7cl9l3c7Q==}
     dev: true
@@ -3845,6 +3864,13 @@ packages:
 
   /tr46/0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+    dev: true
+
+  /ts-morph/17.0.0:
+    resolution: {integrity: sha512-EJxyHTpBXsYnOgV6UpYs4vjhMS/8IZXg5kkGcM9+b8SygMmmOoeWOpaSG8E4puhewjkIbUObodGhfJkBoFX3og==}
+    dependencies:
+      '@ts-morph/common': 0.18.0
+      code-block-writer: 11.0.3
     dev: true
 
   /type/1.2.0:
