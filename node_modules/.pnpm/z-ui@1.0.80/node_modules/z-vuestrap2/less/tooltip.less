@@ -1,0 +1,49 @@
+@import "~vuestrapStyle.less";
+.v-tooltip-variant(@bg, @border, @color) {
+	background: @bg;
+	z-index: 50;
+	border: solid @border 2px;
+	color: @color;
+	&:after {
+		border-color: fadeOut(@border, 100);
+		border-top-color: @bg;
+	}
+	&:before {
+		border-color: fadeOut(@bg, 100);
+		border-top-color: @border;
+	}
+}
+
+.ztooltip {
+	position: absolute !important;
+	padding: 2px 5px;
+	font-size: 0.75em;
+	border-radius: 8px;
+	width: 200px;
+}
+
+.ztooltip:after,
+.ztooltip:before {
+	top: 100%;
+	left: calc(~"50% + 4px");
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.ztooltip:after {
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+.ztooltip:before {
+	border-width: 13px;
+	margin-left: -13px;
+}
+
+.ztooltip-default {
+	.v-tooltip-variant(@tooltip-default-bg, @tooltip-default-border, @tooltip-default-text);
+}

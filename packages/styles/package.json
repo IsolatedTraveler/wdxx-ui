@@ -1,0 +1,7 @@
+{
+  "name": "@ui/styles",
+  "version": "1.0.0",
+  "description": "All style sheet are included here",
+  "main": "index.ts", 
+  "sideEffects": false
+}

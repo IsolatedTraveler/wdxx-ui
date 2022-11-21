@@ -1,0 +1,42 @@
+.v-popover-variant(@bg, @border, @text) {
+	z-index: 111;
+	.alert-variant(@bg, @border, @text);
+	.popover-title {
+		font-weight: bold;
+		background: @bg;
+		border-bottom: 1px solid @border;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: row;
+		.close {
+			color: @text;
+			opacity: 0.8;
+			line-height: 20px;
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+	&:after, &:before {
+		top: 100%;
+		left: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
+	&:after {
+		border-color: rgba(255, 255, 255, 0);
+		border-top-color: @bg;
+		border-width: 15px;
+		margin-left: -15px;
+	}
+	&:before {
+		border-color: rgba(187, 187, 187, 0);
+		border-top-color: @border;
+		border-width: 16px;
+		margin-left: -16px;
+	}
+}

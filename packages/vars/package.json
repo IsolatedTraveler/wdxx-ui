@@ -1,0 +1,7 @@
+{
+  "name": "@ui/vars",
+  "version": "1.0.0",
+  "description": "All common variable are included here",
+  "main": "index.ts", 
+  "sideEffects": false
+}

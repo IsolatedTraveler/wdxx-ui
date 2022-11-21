@@ -1,0 +1,1 @@
+module.exports = require("E:/gitHub/wdxx-cs/node_modules/.pnpm/jiti@1.16.0/node_modules/jiti/lib/index.js")(null, { interopDefault: true, esmResolve: true })("E:/gitHub/wdxx-cs/build/def/index.ts")
