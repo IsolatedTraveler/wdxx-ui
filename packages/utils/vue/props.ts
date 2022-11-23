@@ -3,7 +3,7 @@ import { warn } from "vue";
 
 export const buildProp = (prop: Prop, key?:string) => {
   const {values, required, default: defaultValue, type, validator} = prop,
-  _validator = values || validator ? (val: any) => {
+  _validator = values || validator ? (val: any): boolean => {
     let err:string = ''
     if (validator) {
       err = validator(val)
@@ -20,6 +20,7 @@ export const buildProp = (prop: Prop, key?:string) => {
       }
       warn(`Invalid prop: validation failed for prop "${key || prop.key}". Expected ,got value ${JSON.stringify(val)}`)
     }
+    return false
   } : undefined
   return {
     type,

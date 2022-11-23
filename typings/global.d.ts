@@ -1,5 +1,4 @@
-declare module '*.vue' {
-  import type {DefineComponent} from 'vue'
-  const Component: DefineComponent<{}, any>
-  export default Component
+import type { defineComponent } from 'vue'
+declare global {
+  const defineOptions:  typeof defineComponent
 }
