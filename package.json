@@ -16,6 +16,8 @@
   "devDependencies": {
     "@esbuild-kit/cjs-loader": "^2.4.0",
     "@pnpm/types": "^8.9.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/gulp": "^4.0.10",
     "@types/node": "^18.11.9",
     "@ui/build": "workspace:^1.0.0",
     "@ui/build-utils": "workspace:^1.0.0",
@@ -23,6 +25,7 @@
     "@vue/shared": "^3.2.45",
     "esbuild": "^0.15.15",
     "fast-glob": "^3.2.12",
+    "fs-extra": "^10.1.0",
     "gulp": "^4.0.2",
     "path": "^0.12.7",
     "rollup": "^2.50.0",
