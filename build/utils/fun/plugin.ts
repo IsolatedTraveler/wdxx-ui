@@ -1,6 +1,6 @@
-import { PKG_NAME, PKG_PREFIX, themeChalk } from "../var";
+import { PKG_NAME, PKG_GROUP, themeChalk } from "../var";
 import type { Plugin } from "rollup";
-const sourceThemeChalk = `${PKG_PREFIX}/${themeChalk}` as const;
+const sourceThemeChalk = `${PKG_GROUP}/${themeChalk}` as const;
 const bundleThemeChalk = `${PKG_NAME}/${themeChalk}` as const;
 export function UiPlusAlias(): Plugin {
   return {

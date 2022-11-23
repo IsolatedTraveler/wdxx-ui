@@ -5,8 +5,12 @@ import { copy } from 'fs-extra'
 import { withTaskName } from './gulp'
 import { parallel } from 'gulp'
 
-export const copyFullStyle = () => {
-
+export const copyFullStyle = async () => {
+  await mkdir(path.resolve(epOutput, 'dist'), { recursive: true })
+  await copyFile(
+    path.resolve(epOutput, 'styles/index.css'),
+    path.resolve(epOutput, 'dist/index.css')
+  )
 }
 export const copyFiles = () => Promise.all([
   copyFile(epPackage, path.join(epOutput, 'package.json')),

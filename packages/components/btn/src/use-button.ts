@@ -1,7 +1,7 @@
-import { computed, ref } from "vue"
-import { BtnProps } from "./btn"
+import { computed, ref, SetupContext } from "vue"
+import { BtnProps, BtnEmits } from "./btn"
 
-export const useBtn = (props: BtnProps, emit: any) => {
+export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) => {
   const _ref = ref<HTMLButtonElement>()
   const handleClick = (evt: MouseEvent) => {
     emit('click', evt)

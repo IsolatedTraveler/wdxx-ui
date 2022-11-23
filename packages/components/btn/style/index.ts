@@ -1,1 +1,1 @@
-import '@ui/styles/src/button.scss'
+import '@ui/styles/src/btn.scss'
