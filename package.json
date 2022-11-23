@@ -17,6 +17,7 @@
     "@esbuild-kit/cjs-loader": "^2.4.0",
     "@pnpm/types": "^8.9.0",
     "@types/node": "^18.11.9",
+    "@ui/build": "workspace:^1.0.0",
     "@ui/build-utils": "workspace:^1.0.0",
     "@vitejs/plugin-vue-jsx": "^2.1.1",
     "@vue/shared": "^3.2.45",

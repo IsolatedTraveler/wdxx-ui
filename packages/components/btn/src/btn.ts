@@ -1,9 +1,12 @@
 import { useSizeProp } from "@ui/hooks";
-import { ExtractPropTypes } from "vue";
+import { ExtractPropTypes, PropType } from "vue";
 
 export const btnProps = {
   size: useSizeProp,
-  disabled: Boolean
+  /**
+   * @description disable the button
+   */
+  disabled: Boolean as PropType<boolean>
 }
 export const btnEmits = {
   click: (evt: MouseEvent) => evt instanceof MouseEvent

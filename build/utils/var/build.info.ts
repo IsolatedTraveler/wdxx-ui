@@ -1,13 +1,14 @@
 import path from "path";
 import type { ModuleFormat } from "rollup";
 import { epOutput } from "./path";
-
-export const target = "es2018";
-export const PKG_PREFIX = "@wdxx-ui";
-export const PKG_NAME = "wdxx-ui";
-export const PKG_CAMELCASE_NAME = "WdxxUi";
-export const PKG_CAMELCASE_LOCAL_NAME = "WdxxUiLocale";
-export const PKG_BRAND_NAME = "Wdxx Ui";
+import {compilerOptions} from '../../../tsconfig.base.json'
+export const target = compilerOptions.target;
+export const PKG_PREFIX = "@ui";
+export const PKG_NAME = "z-uis";
+export const PKG_CAMELCASE_NAME = "ZUis";
+export const PKG_CAMELCASE_LOCAL_NAME = "ZUisLocale";
+export const PKG_BRAND_NAME = "Z Uis";
+export const themeChalk = "styles"
 
 export const modules = ["esm", "cjs"] as const;
 export interface BuildInfo {

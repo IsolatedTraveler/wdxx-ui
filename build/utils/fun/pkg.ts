@@ -1,5 +1,5 @@
 import type { ProjectManifest } from "@pnpm/types";
-import { PKG_NAME, PKG_PREFIX, buildConfig, Module } from "../var";
+import { PKG_NAME, PKG_PREFIX, buildConfig, Module, themeChalk } from "../var";
 
 export const excludeFiles = (files: string[]) => {
   const excludes = ["node_modules", "test", "mock", "gulpfile", "dist"];
@@ -25,11 +25,10 @@ export const getPackageDependencies = (
   };
 };
 export const pathRewriter = (module: Module) => {
-  const config = buildConfig[module];
-
+  const config = buildConfig[module]
   return (id: string) => {
-    id = id.split(`${PKG_PREFIX}/theme`).join(`${PKG_NAME}/theme`);
-    id = id.split(`${PKG_PREFIX}/`).join(`${config.bundle.path}/`);
-    return id;
-  };
-};
+    id = id.split(`${PKG_PREFIX}/${themeChalk}`).join(`${PKG_NAME}/${themeChalk}`)
+    id = id.split(`${PKG_PREFIX}/`).join(`${config.bundle.path}/`)
+    return id
+  }
+}

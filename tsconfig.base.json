@@ -1,11 +1,22 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "module": "esnext",
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true
-  },
-  "paths": {
-    "@ui/*": ["packages/*"],
-    "@ex/*": ["example/*"]
+    "noUnusedLocals": true,
+    "outDir": "dist",
+    "removeComments": false,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "sourceMap": false,
+    "strict": true,
+    "target": "ES2018",
+    "types": [],
+    "paths": {
+      "@ui/*": ["packages/*"]
+    }
   }
 }
