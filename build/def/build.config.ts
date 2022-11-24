@@ -8,3 +8,4 @@ export default defineBuildConfig({
     emitCJS: true
   }
 })
+export * from './tasks'

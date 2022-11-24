@@ -40,6 +40,7 @@
   },
   "scripts": {
     "dev": "pnpm run -C example dev",
+    "page": "pnpm run -C build/def creatComponent",
     "build": "pnpm run -C build/def start",
     "clean": "npx rimraf dist && pnpm run -r --parallel clean",
     "stub": "pnpm run -r --parallel stub"

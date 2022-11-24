@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
 import { btnEmits, btnProps } from './btn';
-import { useBtn } from './use-button';
+import { useBtn } from './use-btn';
 defineOptions({
   name: 'z-btn'
 })

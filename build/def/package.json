@@ -8,6 +8,7 @@
   "sideEffects": false,
   "scripts": {
     "start": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts",
-    "stub": "unbuild --stub"
+    "stub": "unbuild --stub",
+    "creatComponent": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts creatComponent"
   }
 }
