@@ -44,8 +44,10 @@ function createCom(arr: Array<filesObj>) {
   })
 }
 async function UiComponent() {
+  let component = ''
   const keys = Object.keys(comArrObj), arrE: Array<string> = [],
   arri = keys.map(key => {
+    component += `export * from './${key}'\n`
     const name = dealName(key.split('-')), group = comArrObj[key] === true ? false : comArrObj[key].map((it: string) => dealName(it.split('-'))),
     groupStr = group ? (', ' + group.join(', ')) : ''
     arrE.push(name)
@@ -53,7 +55,10 @@ async function UiComponent() {
     return `import {${name}${groupStr}} from '@ui/components/${key}'`
   })
   const str = arri.join('\n') + '\n' + `export default [\n  ${arrE.join(',\n  ')}\n]`
-  return write(resolve(epRoot, 'component.ts'), str)
+  return Promise.all([
+    write(resolve(epRoot, 'component.ts'), str),
+    write(resolve(compRoot, 'index.ts'), component)
+  ])
 }
 async function componentD() {
   const com = Object.keys(comObj)

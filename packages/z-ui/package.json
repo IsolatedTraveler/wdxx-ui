@@ -8,8 +8,20 @@
   "unpkg": "dist/index.full.js",
   "jsdelivr": "dist/index.full.js",
   "style": "dist/index.css",
+  "keywords": ["z-uis", "ui", "ui framework", "vue", "component library"],
   "peerDependencies": {
     "vue": "^3.2.45"
   },
-  "sideEffects": false
+  "sideEffects": [
+    "dist/*",
+    "styles/**/*.css",
+    "styles/src/**/*.scss",
+    "es/components/*/style/*",
+    "lib/components/*/style/*"
+  ],
+  "browserslist": [
+    "> 1%",
+    "not ie 11",
+    "not op_mini all"
+  ]
 }
