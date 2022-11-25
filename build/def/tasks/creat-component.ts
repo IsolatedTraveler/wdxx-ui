@@ -62,15 +62,17 @@ async function UiComponent() {
 }
 async function componentD() {
   const com = Object.keys(comObj)
-  let str = 'import "@vue/runtime-core"\ndeclare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    '
+  let str = 'import "@vue/runtime-core"\ndeclare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    ', st = `@use './base.scss';`
   // com
   str += com.map((name) => {
+    st += `\n@use './${name}.scss';`
     name = dealName(name.split('-'))
     return `${name}: typeof import("../packages/${uiFileName}")["${name}"];`
   }).join('\n    ')
   str += '\n  }\n  interface ComponentCustomProperties {\n    '
   // plugin
   str += '\n  }\n}\nexport {}'
+  write(resolve(stylesRoot, 'src/index.scss'), st)
   return write(resolve(projRoot, 'typings/components.d.ts'), str)
 }
 async function componentG() {

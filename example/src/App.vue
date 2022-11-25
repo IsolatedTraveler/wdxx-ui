@@ -5,7 +5,13 @@ const handleClick = function() {
 </script>
 
 <template>
-  <z-btn @click="handleClick"></z-btn>
+  <z-btn @click="handleClick" loading>
+    <template #loading>
+      1
+    </template>
+  测试
+  </z-btn>
+  <z-btn-group>123</z-btn-group>
 </template>
 
 <style scoped>

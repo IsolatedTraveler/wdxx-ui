@@ -11,7 +11,7 @@
     "@ui/utils": "workspace:^1.0.0",
     "@ui/vars": "workspace:^1.0.0",
     "vue": "^3.2.45",
-    "z-uis": "workspace:^0.0.1"
+    "z-uis": "workspace:*"
   },
   "devDependencies": {
     "@esbuild-kit/cjs-loader": "^2.4.0",
@@ -23,6 +23,7 @@
     "@ui/build-utils": "workspace:^1.0.0",
     "@vitejs/plugin-vue-jsx": "^2.1.1",
     "@vue/shared": "^3.2.45",
+    "@vueuse/core": "^9.6.0",
     "esbuild": "^0.15.15",
     "fast-glob": "^3.2.12",
     "fs-extra": "^10.1.0",
