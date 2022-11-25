@@ -33,9 +33,9 @@ export const getComponentName = (com: Array<filesObj>) => {
   })
   return {comName, files}
 }
-function getImport(arr: Array<string>): Array<string> {
+function getImport(arr: Array<string>, pre = ''): Array<string> {
   return arr.map(it => {
-    return `import ${getName(it.split('-'))} from './${it}.vue'`
+    return `import ${getName(it.split('-'))} from '.${pre}/${it}.vue'`
   })
 }
 function getExport(arr: Array<string>): Array<string> {
@@ -63,7 +63,7 @@ export const componentVue = (key: string) : string => {
   ].join('\n')
 }
 export const componentIndex = (key: string, group: Array<string> = []) => {
-  const arrI: Array<string> = getImport([key, ...group])
+  const arrI: Array<string> = getImport([key, ...group], '/src')
   return [
     group.length ?  `import { withInstall, withNoopInstall } from '@ui/utils'` : `import { withInstall } from '@ui/utils'`,
     ...arrI,
