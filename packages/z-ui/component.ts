@@ -1,8 +1,4 @@
-import {ZBtn, ZBtnGroup} from '@ui/components/btn'
-import {ZTable, ZTh} from '@ui/components/table'
+import {ZBtn} from '@ui/components/btn'
 export default [
-  ZBtn,
-  ZBtnGroup,
-  ZTable,
-  ZTh
+  ZBtn
 ]

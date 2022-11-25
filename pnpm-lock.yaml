@@ -68,7 +68,10 @@ importers:
       vite: 3.2.4_ajklay5k626t46b6fyghkbup3i
 
   build/def:
-    specifiers: {}
+    specifiers:
+      shelljs: ^0.8.5
+    devDependencies:
+      shelljs: 0.8.5
 
   build/utils:
     specifiers: {}
@@ -3851,6 +3854,16 @@ packages:
       is-extendable: 0.1.1
       is-plain-object: 2.0.4
       split-string: 3.1.0
+    dev: true
+
+  /shelljs/0.8.5:
+    resolution: {integrity: sha512-TiwcRcrkhHvbrZbnRcFYMLl30Dfov3HKqzp5tO5b4pt6G/SezKcYhmDg15zXVBswHmctSAQKznqNW2LO5tTDow==}
+    engines: {node: '>=4'}
+    hasBin: true
+    dependencies:
+      glob: 7.2.3
+      interpret: 1.4.0
+      rechoir: 0.6.2
     dev: true
 
   /sirv/2.0.2:
