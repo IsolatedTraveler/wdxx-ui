@@ -16,5 +16,5 @@
     "**/*.md"
   ],
   "extends": "./tsconfig.base.json",
-  "include": ["packages", "typings/componsents.d.ts", "typings/env.d.t"]
+  "include": ["packages", "typings/components.d.ts", "typings/env.d.t"]
 }
