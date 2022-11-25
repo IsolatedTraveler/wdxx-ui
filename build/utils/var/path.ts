@@ -1,11 +1,13 @@
 import { resolve } from "path";
+// 公共参数
+export const uiFileName = 'z-ui'
 // 项目位置
 export const projRoot = resolve(__dirname, "..", "..", "..");
-
 // 开发源位置
 export const pkgRoot = resolve(projRoot, "packages");
 export const compRoot = resolve(pkgRoot, 'components')
-export const epRoot = resolve(pkgRoot, "z-ui");
+export const epRoot = resolve(pkgRoot, uiFileName);
+export const stylesRoot = resolve(pkgRoot, "styles");
 export const epPackage = resolve(epRoot, "package.json");
 
 // 构建工具位置

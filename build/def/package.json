@@ -8,6 +8,11 @@
   "sideEffects": false,
   "scripts": {
     "start": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts",
-    "stub": "unbuild --stub"
+    "stub": "unbuild --stub",
+    "creatComponent": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts creatComponent",
+    "pub": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts publish"
+  },
+  "devDependencies": {
+    "shelljs": "^0.8.5"
   }
 }
