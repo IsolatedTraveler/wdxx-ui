@@ -1,6 +1,6 @@
 {
   "name": "z-uis",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Component Library for Vue 3",
   "main": "lib/index.js",
   "module": "es/index.mjs",
@@ -8,7 +8,13 @@
   "unpkg": "dist/index.full.js",
   "jsdelivr": "dist/index.full.js",
   "style": "dist/index.css",
-  "keywords": ["z-uis", "ui", "ui framework", "vue", "component library"],
+  "keywords": [
+    "z-uis",
+    "ui",
+    "ui framework",
+    "vue",
+    "component library"
+  ],
   "peerDependencies": {
     "vue": "^3.2.45"
   },

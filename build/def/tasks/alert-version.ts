@@ -17,5 +17,5 @@ export const alertVersion =async () => {
   shell.cd(epRoot)
   shell.exec("npm version " + arr.join('.'))
   shell.cd(projRoot)
-  return write(resolve(epRoot, 'version.ts'), `export const version = '${version}'`)
+  return write(resolve(epRoot, 'version.ts'), `export const version = '${arr.join('.')}'`)
 }
