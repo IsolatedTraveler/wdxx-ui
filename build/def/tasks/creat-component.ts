@@ -2,7 +2,7 @@ import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot,
 import { mkdir } from 'fs/promises'
 import { resolve } from "path";
 function excludeCom(arr: Array<filesObj>) {
-  arr.forEach(({fileName}) => {
+  arr && arr.forEach(({fileName}) => {
     delete comObj[fileName]
   })
 }
@@ -48,7 +48,9 @@ async function UiComponent() {
   const keys = Object.keys(comArrObj), arrE: Array<string> = [],
   arri = keys.map(key => {
     component += `export * from './${key}'\n`
-    const name = dealName(key.split('-')), group = comArrObj[key] === true ? false : comArrObj[key].map((it: string) => dealName(it.split('-'))),
+    const name = dealName(key.split('-')),
+    group = comArrObj[key] === true ? false :
+      comArrObj[key] ? comArrObj[key].map((it: string) => dealName(it.split('-'))) : false,
     groupStr = group ? (', ' + group.join(', ')) : ''
     arrE.push(name)
     group && arrE.push(...group)

@@ -13,7 +13,7 @@ const comObj:any = {}, comArrObj:any = {}
 comJson.forEach(({0:name, 1: arr}: ComObj) => {
   comArrObj[name as string] = arr;
   comObj[name as string] = true;
-  (arr as Array<string>).forEach(key => {
+  arr && (arr as Array<string>).forEach(key => {
     comObj[key as string] = name;
   })
 })

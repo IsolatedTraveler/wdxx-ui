@@ -1,5 +1,6 @@
 [
   ["btn", ["btn-group"]],
-  ["select", ["select-table"]],
+  ["select"],
+  ["select-table"],
   ["table", ["th"]]
 ]
