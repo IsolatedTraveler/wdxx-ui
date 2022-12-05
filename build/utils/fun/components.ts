@@ -1,8 +1,8 @@
 import { compRoot, PKG_PREFIX } from "../var"
 import { comObj, filesObj } from "../var/component"
 import { readdir } from "./fs"
-export function firstMax(it: string) : string {
-  return it.slice(0, 1).toUpperCase() + it.slice(1)
+export function firstMax(it: string, judge = false) : string {
+  return (judge ? it.slice(0, 1).toLowerCase() : it.slice(0, 1).toUpperCase()) + it.slice(1)
 }
 export function getName(arr: Array<string>): string {
   return arr.map((it: string) => {
@@ -52,12 +52,22 @@ export const componentInstance = (key: string, group: Array<string> = []) => {
   ].join('\n')
 }
 export const componentVue = (key: string) : string => {
+  const name = getName(key.split('-')), name1 = firstMax(name, true)
   return [
     '<template>',
+    '  <div ref="_ref"></div>',
     '</template>',
     '<script lang="ts" setup>',
+    `import { ${name1}Emits, ${name1}Props } from './${key}'`,
+    `import { use${name} } from './use-${key}'`,
     'defineOptions({',
     `  name: '${PKG_PREFIX}-${key}'`,
+    '})',
+    `const props = defineProps(${name1}Props)`,
+    `const emit = defineEmits(${name1}Emits)`,
+    `const {_ref} = use${name}(props, emit)`,
+    'defineExpose({',
+    '  ref: _ref',
     '})',
     '</script>'
   ].join('\n')
@@ -76,4 +86,26 @@ export const componentIndex = (key: string, group: Array<string> = []) => {
     `export * from './src/instance'`,
     `export default ${firstMax(PKG_PREFIX)}${getName(key.split('-'))}`
   ].join('\n')
+}
+export const componentUse = (key: string) => {
+  const name = getName(key.split('-'))
+  return `import { ref, SetupContext } from "vue"
+import { ${name}Emits, ${name}Props } from "./${key}"
+export const use${name} = (props: ${name}Props, emit: SetupContext<${name}Emits>['emit']) => {
+  const _ref = ref<HTMLButtonElement>()
+  return {
+    _ref
+  }
+}`
+}
+export const componentProp = (key: string) => {
+  const name = getName(key.split('-')), name1 = firstMax(name, true)
+  return `import { ExtractPropTypes, PropType } from "vue";
+export const ${name1}Props = {
+  disabled: Boolean as PropType<boolean>
+}
+export const ${name1}Emits = {
+}
+export type ${name}Props = ExtractPropTypes<typeof ${name1}Props>
+export type ${name}Emits = typeof ${name1}Emits`
 }

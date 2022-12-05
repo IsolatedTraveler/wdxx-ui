@@ -1,4 +1,4 @@
-import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName } from "@ui/build-utils"
+import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName, componentUse, componentProp } from "@ui/build-utils"
 import { mkdir } from 'fs/promises'
 import { resolve } from "path";
 function excludeCom(arr: Array<filesObj>) {
@@ -16,10 +16,10 @@ function createCom(arr: Array<filesObj>) {
     if (comObj[key] === true) {
       const comUrl = resolve(keyComUrl, 'src')
       await mkdir(comUrl,  { recursive: true })
-      arr.push(write(resolve(comUrl, key + '.ts'), ''))
+      arr.push(write(resolve(comUrl, key + '.ts'), componentProp(key)))
       arr.push(write(resolve(comUrl, key + '.vue'), componentVue(key)))
       arr.push(write(resolve(comUrl, 'instance.ts'), componentInstance(key, comArrObj[key])))
-      arr.push(write(resolve(comUrl, 'use-' + key + '.ts'), ''))
+      arr.push(write(resolve(comUrl, 'use-' + key + '.ts'), componentUse(key)))
       arr.push(write(resolve(keyComUrl, 'index.ts'), componentIndex(key, comArrObj[key])))
       delete comObj[key]
     }
@@ -32,9 +32,9 @@ function createCom(arr: Array<filesObj>) {
     return Promise.all(
       keys.map(async (key) => {
         const name = comObj[key], comUrl = resolve(resolve(compRoot, name), 'src'), arr = []
-        arr.push(write(resolve(comUrl, key + '.ts'), ''))
+        arr.push(write(resolve(comUrl, key + '.ts'), componentProp(key)))
         arr.push(write(resolve(comUrl, key + '.vue'), componentVue(key)))
-        arr.push(write(resolve(comUrl, 'use-' + key + '.ts'), ''))
+        arr.push(write(resolve(comUrl, 'use-' + key + '.ts'), componentUse(key)))
         const keyUrl = resolve(compRoot, name + '/src/instance.ts')
         arr.push(write(keyUrl, componentInstance(name, comArrObj[name])))
         arr.push(write(resolve(compRoot, name + '/index.ts'), componentIndex(name, comArrObj[name])))
