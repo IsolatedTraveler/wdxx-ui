@@ -12,7 +12,7 @@ export const useStateProp = buildProp({
 })
 export const useFlexProp = buildProp({
   key: 'flex',
-  type: [String, Boolean],
+  type: String,
   values: ComponentFlex
 })
 export const useAlginProp = buildProp({

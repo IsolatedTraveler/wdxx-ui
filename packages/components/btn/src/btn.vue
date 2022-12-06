@@ -1,8 +1,5 @@
 <template>
   <button ref="_ref" class="z-btn" :class="_class" @click="handleClick" :disabled="_disabled">
-    <slot name="loading" v-if="props.loading">
-      <z-icon></z-icon>
-    </slot>
     <slot name="icon">
       <z-icon v-if="props.icon"></z-icon>
     </slot>
@@ -12,6 +9,7 @@
 <script lang="ts" setup>
 import { btnEmits, btnProps } from './btn';
 import { useBtn } from './use-btn';
+import ZIcon from '@ui/components/icon/src/icon.vue'
 defineOptions({
   name: 'z-btn'
 })
