@@ -1,5 +1,4 @@
 @use './base.scss' as *;
-@forward '../base/state.scss';
 @mixin state($state) {
   @extend %#{$block + '--re'}
 }

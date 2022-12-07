@@ -74,6 +74,7 @@ async function componentD() {
   str += '\n  }\n  interface ComponentCustomProperties {\n    '
   // plugin
   str += '\n  }\n}\nexport {}'
+  st += "\n@use './end.scss';"
   write(resolve(stylesRoot, 'src/index.scss'), st)
   return write(resolve(projRoot, 'typings/components.d.ts'), str)
 }
