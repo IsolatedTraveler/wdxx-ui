@@ -1,8 +1,22 @@
 @use 'sass:map';
 @use './mixins/index.scss' as *;
-.z-btn{
-  background: red;
-}
 @include create(btn) {
-  display: block;
+  white-space: nowrap;
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: .1s;
+  font-weight: var(--font-weight-small);
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background-color: var(--color-white);
+  border: var(--border-solid);
+  line-height: 1;
+  font-size: var(--font-size-def);
+  border-radius: var(--width-radius-def);
+  padding: var(--width-pd-def);
+  & + &{
+    margin-left: var(--width-margin-def);
+  }
 }

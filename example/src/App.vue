@@ -8,6 +8,9 @@ const handleClick = function() {
   <z-btn @click="handleClick" loading flex="row">
   测试78
   </z-btn>
+  <z-btn @click="handleClick" loading flex="row">
+  测试89
+  </z-btn>
   <z-btn-group>123</z-btn-group>
 </template>
 
