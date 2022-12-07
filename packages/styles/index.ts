@@ -4,7 +4,10 @@ const g = {
   success: true,
   warning: true,
   danger: true,
-  info: true
+  info: true,
+  sm: true,
+  md: true,
+  lg: true
 }
 const t = {
   ghost: true,

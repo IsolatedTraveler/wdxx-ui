@@ -24,6 +24,30 @@
       <z-btn shape="text" state="danger">danger</z-btn>
       <z-btn shape="text" state="info">info</z-btn>
     </div>
+    <div>
+      <z-btn size="sm" state="">def</z-btn>
+      <z-btn size="sm" state="primary">primary</z-btn>
+      <z-btn size="sm" state="success">success</z-btn>
+      <z-btn size="sm" state="warning">warning</z-btn>
+      <z-btn size="sm" state="danger">danger</z-btn>
+      <z-btn size="sm" state="info">info</z-btn>
+    </div>
+    <div>
+      <z-btn size="md" state="">def</z-btn>
+      <z-btn size="md" state="primary">primary</z-btn>
+      <z-btn size="md" state="success">success</z-btn>
+      <z-btn size="md" state="warning">warning</z-btn>
+      <z-btn size="md" state="danger">danger</z-btn>
+      <z-btn size="md" state="info">info</z-btn>
+    </div>
+    <div>
+      <z-btn size="lg" state="">def</z-btn>
+      <z-btn size="lg" state="primary">primary</z-btn>
+      <z-btn size="lg" state="success">success</z-btn>
+      <z-btn size="lg" state="warning">warning</z-btn>
+      <z-btn size="lg" state="danger">danger</z-btn>
+      <z-btn size="lg" state="info">info</z-btn>
+    </div>
   </div>
 </template>
 <script lang="ts">
