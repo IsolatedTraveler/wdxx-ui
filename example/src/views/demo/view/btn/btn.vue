@@ -41,12 +41,12 @@
       <z-btn size="md" state="info">info</z-btn>
     </div>
     <div>
-      <z-btn size="lg" state="">def</z-btn>
-      <z-btn size="lg" state="primary">primary</z-btn>
-      <z-btn size="lg" state="success">success</z-btn>
-      <z-btn size="lg" state="warning">warning</z-btn>
-      <z-btn size="lg" state="danger">danger</z-btn>
-      <z-btn size="lg" state="info">info</z-btn>
+      <z-btn shape="ghost" size="lg" state="">def</z-btn>
+      <z-btn shape="ghost" size="lg" state="primary">primary</z-btn>
+      <z-btn shape="ghost" size="lg" state="success">success</z-btn>
+      <z-btn shape="ghost" size="lg" state="warning">warning</z-btn>
+      <z-btn shape="ghost" size="lg" state="danger">danger</z-btn>
+      <z-btn shape="ghost" size="lg" state="info">info</z-btn>
     </div>
   </div>
 </template>
