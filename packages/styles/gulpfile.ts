@@ -8,9 +8,16 @@ import consola from 'consola'
 import chalk from 'chalk'
 import rename from 'gulp-rename'
 import path from 'path'
+
+import judge from './index'
 const distBundle = path.resolve(epOutput, 'styles')
 const distFolder = path.resolve(__dirname, 'dist')
 function buildStylesChalk() {
+  const judgeV = judge()
+  if (judgeV) {
+    consola.error(judgeV)
+    return Promise.reject(new Error(judgeV))
+  } 
   const sass = gulpSass(dartSass)
   const noElPrefixFile = /(index|base|display)/
   return src(path.resolve(__dirname, 'src/*.scss'))
