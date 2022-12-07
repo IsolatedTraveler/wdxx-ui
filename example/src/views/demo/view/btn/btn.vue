@@ -48,6 +48,14 @@
       <z-btn shape="ghost" size="lg" state="danger">danger</z-btn>
       <z-btn shape="ghost" size="lg" state="info">info</z-btn>
     </div>
+    <div>
+      <z-btn shape="ghost" state="" radius="round">def</z-btn>
+      <z-btn shape="ghost" state="" radius="circle">def</z-btn>
+      <z-btn shape="ghost" state="" radius="ellipse">def</z-btn>
+      <z-btn shape="ghost" state="" radius="none">def</z-btn>
+      <z-btn shape="ghost" state="" radius="5px">def</z-btn>
+      <z-btn shape="ghost" state="" radius="8">def</z-btn>
+    </div>
   </div>
 </template>
 <script lang="ts">

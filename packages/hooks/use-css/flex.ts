@@ -10,7 +10,6 @@ export const setCss = (name: string) => {
   return name ? (PKG_PREFIX + '-' + name) : ''
 }
 export const useSingle = (props:any, obj: ObjStr, classVal: ObjTrue, key:string) => {
-  console.log(key, props[key])
   watch(() => props[key], (v, o) => {
     if (o) {
       classVal[obj[key]] = false

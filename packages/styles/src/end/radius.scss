@@ -1,0 +1,10 @@
+@use '../mixins/base.scss' as *;
+@include create(circle) {
+  border-radius: 50%;
+}
+@include create(round) {
+  border-radius: 100vw;
+}
+@include create(ellipse) {
+  border-radius: 50%;
+}

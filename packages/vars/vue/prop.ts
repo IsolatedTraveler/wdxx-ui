@@ -1,5 +1,5 @@
 
-export const ComponentRadius = ['', 'circle', 'round', 'ellipse']
+export const ComponentRadius = ['', 'circle', 'round', 'ellipse', 'none']
 export const ComponentRule = ['', 'required']
 export const ComponentSize = ['', 'sm', 'md', 'lg']
 export const ComponentState = ['', 'primary', 'success', 'warning', 'danger', 'info']
