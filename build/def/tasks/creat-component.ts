@@ -23,8 +23,8 @@ function createCom(arr: Array<filesObj>) {
       arr.push(write(resolve(keyComUrl, 'index.ts'), componentIndex(key, comArrObj[key])))
       delete comObj[key]
     }
-    arr.push(write(resolve(styleUrl, 'index.ts'), `import '@ui/components/base/style'\nimport '@ui/styles/src/${key}.scss'`))
-    arr.push(write(resolve(styleUrl, 'css.ts'), `import '@ui/components/base/style/css'\nimport '@ui/styles/${key}.css'`))
+    arr.push(write(resolve(styleUrl, 'index.ts'), `import '@ui/styles/src/base.scss'\nimport '@ui/styles/src/${key}.scss'\nimport '@ui/styles/src/end.scss'`))
+    arr.push(write(resolve(styleUrl, 'css.ts'), `import '@ui/styles/base.css'\nimport '@ui/styles/${key}.css'\nimport '@ui/styles/end.css'`))
     arr.push(write(resolve(stylesRoot, 'src/' + key + '.scss'), ''))
     return Promise.all(arr)
   })).then(() => {

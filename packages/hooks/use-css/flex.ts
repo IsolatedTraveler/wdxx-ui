@@ -9,7 +9,8 @@ export interface flexProp {
 export const setCss = (name: string) => {
   return name ? (PKG_PREFIX + '-' + name) : ''
 }
-export const useSingle = (key:string, props:any, obj: ObjStr, classVal: ObjTrue) => {
+export const useSingle = (props:any, obj: ObjStr, classVal: ObjTrue, key:string) => {
+  console.log(key, props[key])
   watch(() => props[key], (v, o) => {
     if (o) {
       classVal[obj[key]] = false
@@ -23,6 +24,6 @@ export const useSingle = (key:string, props:any, obj: ObjStr, classVal: ObjTrue)
 
 export const useFlexCss = (props:any, obj: ObjStr, classVal: ObjTrue) => {
   ['flex', 'rowAlign', 'colAlign', 'self'].forEach(key => {
-    useSingle(key, props, obj, classVal)
+    useSingle(props, obj, classVal, key)
   })
 }

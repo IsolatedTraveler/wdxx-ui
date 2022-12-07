@@ -5,7 +5,6 @@ declare module "@vue/runtime-core" {
     ZBtnGroup: typeof import("../packages/z-ui")["ZBtnGroup"];
     ZIcon: typeof import("../packages/z-ui")["ZIcon"];
     ZSelect: typeof import("../packages/z-ui")["ZSelect"];
-    ZSelectTable: typeof import("../packages/z-ui")["ZSelectTable"];
     ZTable: typeof import("../packages/z-ui")["ZTable"];
     ZTh: typeof import("../packages/z-ui")["ZTh"];
   }

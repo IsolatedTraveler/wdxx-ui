@@ -1,4 +1,3 @@
-@use 'sass:map';
 @use './mixins/index.scss' as *;
 @include create(btn) {
   white-space: nowrap;
@@ -12,7 +11,7 @@
   background-color: var(--color-white);
   border: var(--border-solid);
   line-height: 1;
-  font-size: var(--font-size-def);
+  font-size: var(--width-font-def);
   border-radius: var(--width-radius-def);
   padding: var(--width-pd-def);
   & + &{

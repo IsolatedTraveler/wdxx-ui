@@ -23,8 +23,7 @@ export default defineConfig(async () => {
   return {
     server: {
       host: true,
-      https: false,
-      hmr: true
+      https: false
     },
     optimizeDeps: {
       include: ['vue', '@vue/shared']

@@ -5,11 +5,23 @@ const handleClick = function() {
 </script>
 
 <template>
-  <z-btn @click="handleClick" loading flex="row">
-  测试78
+  <z-btn @click="handleClick" state="" flex="row">
+  def
   </z-btn>
-  <z-btn @click="handleClick" loading flex="row">
-  测试89
+  <z-btn @click="handleClick" state="primary" flex="row">
+    primary
+  </z-btn>
+  <z-btn @click="handleClick" state="success" flex="row">
+    success
+  </z-btn>
+  <z-btn @click="handleClick" state="warning" flex="row">
+    warning
+  </z-btn>
+  <z-btn @click="handleClick" state="danger" flex="row">
+    danger
+  </z-btn>
+  <z-btn @click="handleClick" state="info" flex="row">
+    info
   </z-btn>
   <z-btn-group>123</z-btn-group>
 </template>

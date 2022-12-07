@@ -1,0 +1,8 @@
+$state: ('primary', 'success', 'warning', 'danger', 'info');
+$state_val: (
+  'primary': ('bg': var(--color-primary1), 'color': var(--color-white)),
+  'success': ('bg': var(--color-success1), 'color': var(--color-white)),
+  'warning': ('bg': var(--color-warning1), 'color': var(--color-white)),
+  'danger': ('bg': var(--color-danger1), 'color': var(--color-white)),
+  'info': ('bg': var(--color-info1), 'color': var(--color-white)),
+)

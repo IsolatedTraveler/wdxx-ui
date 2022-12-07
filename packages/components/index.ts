@@ -1,5 +1,4 @@
 export * from './btn'
 export * from './icon'
 export * from './select'
-export * from './select-table'
 export * from './table'
