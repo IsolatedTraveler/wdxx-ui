@@ -17,4 +17,15 @@
   & + &{
     margin-left: var(--width-margin-def);
   }
+  // shade
+  @include create(ghost) {
+    @include states('re');
+  }
+  @include create(text){
+    border-color: var(--color-transparent);
+    background-color: var(--color-transparent);
+    @include states('text');
+  }
+  // round
+  // circle
 }

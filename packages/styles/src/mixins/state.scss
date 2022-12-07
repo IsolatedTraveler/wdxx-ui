@@ -1,4 +1,13 @@
 @use './base.scss' as *;
-@mixin state($state) {
-  @extend %#{$block + '--re'}
-}
+@use '../config/state.scss' as *;
+@mixin state($state, $site) {
+  $val: $state + '--' + $site;
+  @include create($state) {
+    @extend %#{$val};
+  }
+};
+@mixin states($site) {
+  @each $var in $state {
+    @include state($var, $site)
+  }
+};

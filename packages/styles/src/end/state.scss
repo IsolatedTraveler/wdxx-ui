@@ -1,17 +1,7 @@
 @use '../mixins/base.scss' as *;
 @use '../config/state.scss' as *;
 @each $var in $state {
-  $info: map-get($state_val, $var);
-  $bg: map-get($info, 'bg');
-  $color: map-get($info, 'color');
   @include create($var) {
-    background-color: $bg;
-    border-color: $bg;
-    color: $color;
-  }
-  %#{$var + '--re'} {
-    background-color: $color;
-    border-color: $bg;
-    color: $bg;
+    @extend %#{$var};
   }
 }

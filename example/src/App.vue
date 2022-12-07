@@ -1,29 +1,9 @@
 <script setup lang="ts">
-const handleClick = function() {
-  console.log(1)
-}
+import jBtn from './views/demo/view/btn/btn.vue'
 </script>
 
 <template>
-  <z-btn @click="handleClick" state="" flex="row">
-  def
-  </z-btn>
-  <z-btn @click="handleClick" state="primary" flex="row">
-    primary
-  </z-btn>
-  <z-btn @click="handleClick" state="success" flex="row">
-    success
-  </z-btn>
-  <z-btn @click="handleClick" state="warning" flex="row">
-    warning
-  </z-btn>
-  <z-btn @click="handleClick" state="danger" flex="row">
-    danger
-  </z-btn>
-  <z-btn @click="handleClick" state="info" flex="row">
-    info
-  </z-btn>
-  <z-btn-group>123</z-btn-group>
+  <j-btn></j-btn>
 </template>
 
 <style scoped>

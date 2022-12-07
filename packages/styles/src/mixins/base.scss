@@ -1,7 +1,13 @@
 @use '../config/index.scss' as *;
 @mixin create($block) {
   $B: $namespace + '-' + $block !global;
-  .#{$B} {
-    @content;
+  @if & {
+    &.#{$B} {
+      @content;
+    }
+  } @else {
+    .#{$B} {
+      @content;
+    }
   }
 }
