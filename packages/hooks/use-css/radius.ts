@@ -1,6 +1,6 @@
 import { isNumber } from "@ui/utils"
 import { ComponentRadius, ObjStr, ObjTrue } from "@ui/vars"
-import { watch, nextTick } from "vue"
+import { watch, nextTick, Ref } from "vue"
 import { setCss } from "./flex"
 export const getStylePx = (v:string | number) => {
   if (v === 'none') {
@@ -10,7 +10,7 @@ export const getStylePx = (v:string | number) => {
   }
   return v
 }
-export default (props:any, obj: ObjStr, classVal: ObjTrue, styleVal: any) => {
+export default (props:any, obj: ObjStr, classVal: ObjTrue, styleVal: any, el: Ref<any>) => {
   watch(() => props.radius, (v, o) => {
     if (o) {
       classVal[obj.radius] = false
@@ -25,7 +25,9 @@ export default (props:any, obj: ObjStr, classVal: ObjTrue, styleVal: any) => {
         classVal[obj.radius] = true
         if (v === 'circle') {
           nextTick(() => {
+            const elem = el.value, max = getMax(elem?.clientWidth, elem?.clientHeight)
             // 设置宽高
+            
           })
         }
       } else {

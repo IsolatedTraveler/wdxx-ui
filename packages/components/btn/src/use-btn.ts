@@ -5,7 +5,7 @@ import type { BtnProps, BtnEmits } from "./btn"
 // radius: useRadiusProp,
 export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) => {
   const _ref = ref<HTMLButtonElement>(), {_disabled, _handleClick} = useClickDisabled(props, emit)
-  , {_class, _style} = useCss(props, ['flex', 'state', 'size', 'shape', 'radius'], 'z-btn')
+  , {_class, _style} = useCss(props, ['flex', 'state', 'size', 'shape', 'radius'], 'z-btn', _ref)
   return {
     _ref,
     _handleClick,
