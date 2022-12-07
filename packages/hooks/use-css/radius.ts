@@ -10,6 +10,9 @@ export const getStylePx = (v:string | number) => {
   }
   return v
 }
+function getMax(a: number, b: number) {
+  return a > b ? a : b
+}
 export default (props:any, obj: ObjStr, classVal: ObjTrue, styleVal: any, el: Ref<any>) => {
   watch(() => props.radius, (v, o) => {
     if (o) {
@@ -25,9 +28,8 @@ export default (props:any, obj: ObjStr, classVal: ObjTrue, styleVal: any, el: Re
         classVal[obj.radius] = true
         if (v === 'circle') {
           nextTick(() => {
-            const elem = el.value, max = getMax(elem?.clientWidth, elem?.clientHeight)
-            // 设置宽高
-            
+            const elem = el.value, max = getMax(elem?.offsetWidth, elem?.offsetHeight)
+            styleVal.width = styleVal.height = getStylePx(max)
           })
         }
       } else {
