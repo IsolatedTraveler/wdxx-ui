@@ -1,5 +1,5 @@
-@forward './border.scss';
-@forward './color.scss';
-@forward './font.scss';
+@import './border.scss';
+@import './color.scss';
+@import './font.scss';
 @forward './var.scss';
-@forward './width.scss';
+@import './width.scss';
