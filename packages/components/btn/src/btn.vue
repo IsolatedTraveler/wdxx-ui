@@ -1,5 +1,11 @@
 <template>
-  <button ref="_ref" class="z-btn" :class="_class" @click="handleClick" :disabled="_disabled">
+  <button
+    ref="_ref"
+    :type="props.type"
+    :class="_class"
+    :style="_style"
+    @click="_handleClick"
+  :disabled="_disabled">
     <slot name="icon">
       <z-icon v-if="props.icon"></z-icon>
     </slot>
@@ -15,7 +21,7 @@ defineOptions({
 })
 const props = defineProps(btnProps)
 const emit = defineEmits(btnEmits)
-const {_ref, handleClick, _disabled, _class} = useBtn(props, emit)
+const {_ref, _handleClick, _disabled, _class, _style} = useBtn(props, emit)
 defineExpose({
   ref: _ref
 })

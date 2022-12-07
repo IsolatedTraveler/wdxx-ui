@@ -1,4 +1,4 @@
-import {ComponentFlex, ComponentSize, ComponentState, ComponentAlign, ComponentRadius, Rule} from '@ui/vars'
+import {ComponentFlex, ComponentSize, ComponentState, ComponentRowAlign, ComponentRadius, Rule, ComponentColAlign, ComponentSelfAlign} from '@ui/vars'
 import {buildProp, isArray, isCssLength, isPositiveInteger, isRule} from '@ui/utils'
 export const useSizeProp = buildProp({
   key: 'size',
@@ -15,10 +15,15 @@ export const useFlexProp = buildProp({
   type: String,
   values: ComponentFlex
 })
-export const useAlginProp = buildProp({
-  key: 'align',
+export const useRowAlginProp = buildProp({
+  key: 'row-align',
   type: [String],
-  values: ComponentAlign
+  values: ComponentRowAlign
+})
+export const useColAlginProp = buildProp({
+  key: 'col-align',
+  type: [String],
+  values: ComponentColAlign
 })
 export const useRadiusProp = buildProp({
   key: 'radius',
@@ -33,6 +38,11 @@ export const useRadiusProp = buildProp({
 })
 export const useSelfProp = buildProp({
   key: 'self',
+  type: String,
+  values: ComponentSelfAlign
+})
+export const useOrderProp = buildProp({
+  key: 'order',
   type: [String, Number],
   validator: (v: string | number) => isPositiveInteger(v) ? '' : 'positive integer'
 })

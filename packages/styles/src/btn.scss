@@ -1,3 +1,8 @@
-.jt-btn{
+@use 'sass:map';
+@use './mixins/index.scss' as *;
+.z-btn{
   background: red;
+}
+@include create(btn) {
+  display: block;
 }

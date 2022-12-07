@@ -1,4 +1,4 @@
-import {ComponentAlign, ComponentBtnShape, ComponentBtnType, ComponentFlex, ComponentRadius, ComponentSize, ComponentState} from './prop'
+import {ComponentRowAlign, ComponentBtnShape, ComponentBtnType, ComponentFlex, ComponentRadius, ComponentSize, ComponentState} from './prop'
 export interface propAll {
   // 基础
   radius?: typeof ComponentRadius
@@ -8,7 +8,7 @@ export interface propAll {
   data?: Array<any>
   // flex
   flex?: typeof ComponentFlex
-  rowAlign?: typeof ComponentAlign
+  rowAlign?: typeof ComponentRowAlign
   // form
   disabled?: Boolean
   modelValue?: any

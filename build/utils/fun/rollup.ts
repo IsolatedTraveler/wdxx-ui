@@ -38,7 +38,7 @@ export function formatBundleFilename(
 ) {
   return `${name}${minify ? ".min" : ""}.${ext}`;
 }
-export const creatRollup = async (input, plugin, buildConfig) => {
+export const creatRollup = async (input:any, plugin:any, buildConfig:any) => {
   const plugins = [
     UiPlusAlias(),
     VueMacros({

@@ -1,4 +1,4 @@
-import { useBtnTypeProp, useSizeProp, useFlexProp, useStateProp, useAlginProp, useRadiusProp, useSelfProp, useBtnShapeProp } from "@ui/hooks";
+import { useBtnTypeProp, useSizeProp, useFlexProp, useStateProp, useRowAlginProp, useRadiusProp, useSelfProp, useBtnShapeProp, useColAlginProp, useOrderProp } from "@ui/hooks";
 import { EventClick } from "@ui/vars";
 import { ExtractPropTypes, PropType } from "vue";
 
@@ -6,7 +6,9 @@ export const btnProps = {
   disabled: Boolean as PropType<boolean>,
   flex: useFlexProp,
   icon: String as PropType<string>,
-  rowAlign: useAlginProp,
+  rowAlign: useRowAlginProp,
+  colAlign: useColAlginProp,
+  order: useOrderProp,
   radius: useRadiusProp,
   self: useSelfProp,
   shape: useBtnShapeProp,
