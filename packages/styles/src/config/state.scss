@@ -1,29 +1,52 @@
+@use '../mixins/base.scss' as *;
 $state: ('primary', 'success', 'warning', 'danger', 'info');
 $state_val: (
-  'primary': ('bg': var(--color-primary1), 'color': var(--color-white)),
-  'success': ('bg': var(--color-success1), 'color': var(--color-white)),
-  'warning': ('bg': var(--color-warning1), 'color': var(--color-white)),
-  'danger': ('bg': var(--color-danger1), 'color': var(--color-white)),
-  'info': ('bg': var(--color-info1), 'color': var(--color-white)),
+  'primary': (
+    'bg': var(--color-primary), 'color': var(--color-white),
+    'disabled': var(--color-primary--disabled)
+  ),
+  'success': (
+    'bg': var(--color-success), 'color': var(--color-white),
+    'disabled': var(--color-success-disabled)
+  ),
+  'warning': ('bg': var(--color-warning), 'color': var(--color-white),
+  'disabled': var(--color-warning-disabled)
+),
+  'danger': ('bg': var(--color-danger), 'color': var(--color-white),
+  'disabled': var(--color-danger-disabled)
+),
+  'info': ('bg': var(--color-info), 'color': var(--color-white),
+  'disabled': var(--color-info-disabled)
+),
 );
 @each $var in $state {
   $info: map-get($state_val, $var);
   $bg: map-get($info, 'bg');
   $color: map-get($info, 'color');
+  $disabledColor: map-get($info, 'disabled');
   %#{$var + '--text'} {
     color: $bg;
+    @include elemDisabled('') {
+      color: $disabledColor;
+    }
   }
   %#{$var + '--bg'} {
     border-color: $bg;
+    @include elemDisabled('') {
+      border-color: $disabledColor;
+    }
   }
   %#{$var} {
+    @extend %#{$var + '--bg'};
     background-color: $bg;
-    border-color: $bg;
     color: $color;
+    @include elemDisabled('') {
+      background-color: $disabledColor;
+    }
   }
   %#{$var + '--re'} {
+    @extend %#{$var + '--bg'};
     background-color: $color;
-    border-color: $bg;
     @extend %#{$var + '--text'};
   }
 }

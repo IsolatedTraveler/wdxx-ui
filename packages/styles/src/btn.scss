@@ -1,31 +1,21 @@
 @use './mixins/index.scss' as *;
 @include create(btn) {
   white-space: nowrap;
-  cursor: pointer;
   text-align: center;
   box-sizing: border-box;
   outline: none;
   transition: .1s;
-  font-weight: var(--font-weight-small);
   vertical-align: middle;
+  line-height: 1;
+  cursor: pointer;
+  font-weight: var(--font-weight-small);
   background-color: var(--color-white);
   border: var(--border-solid);
-  line-height: 1;
+  color: var(--color-text1);
   font-size: var(--width-font-def);
   border-radius: var(--width-radius-def);
   padding: var(--width-pd-def);
   & + &{
     margin-left: var(--width-margin-def);
   }
-  // shade
-  @include create(ghost) {
-    @include states('re');
-  }
-  @include create(text){
-    border-color: var(--color-transparent);
-    background-color: var(--color-transparent);
-    @include states('text');
-  }
-  // round
-  // circle
 }

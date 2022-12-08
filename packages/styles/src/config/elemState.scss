@@ -1,0 +1,6 @@
+$elemStates: ('disabled');
+%disabled{
+  cursor: not-allowed;
+  user-select: none;
+  color: var(--color-text5);
+}

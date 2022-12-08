@@ -1,4 +1,4 @@
-@use '../config/index.scss' as *;
+@use '../config/var.scss' as *;
 @mixin create($block) {
   $B: $namespace + '-' + $block !global;
   @if & {
@@ -9,5 +9,51 @@
     .#{$B} {
       @content;
     }
+  }
+}
+@mixin elemState($state, $judge) {
+  @if & {
+    &:#{$state}{
+      @if $judge {
+        @extend #{'%' + $state} !optional;
+      }
+      @content;
+    }
+  } @else {
+    :#{$state}{
+      @if $judge {
+        @extend #{'%' + $state} !optional;
+      }
+      @content;
+    }
+  }
+}
+@mixin elemAttr($attr, $judge) {
+  @if & {
+    &[#{$attr}]{
+      @if $judge {
+        @extend #{'%' + $attr} !optional;
+      }
+      @content;
+    }
+  } @else {
+    [#{$attr}]{
+      @if $judge {
+        @extend #{'%' + $attr} !optional;
+      }
+      @content;
+    }
+  }
+}
+@mixin elemHover($judge) {
+  @media (any-hover: hover){
+    @include elemState(hover, $judge){
+      @content;
+    }
+  }
+}
+@mixin elemDisabled($judge) {
+  @include elemAttr(disabled, $judge){
+    @content;
   }
 }
