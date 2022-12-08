@@ -1,9 +1,0 @@
-@use '../mixins/base.scss' as *;
-@use '../config/state.scss' as *;
-@use '../config/elemState.scss' as *;
-@each $var in $state {
-  @include create($var) {
-    @extend %disabled;
-    @extend %#{$var};
-  }
-}

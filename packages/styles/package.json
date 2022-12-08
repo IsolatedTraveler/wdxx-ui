@@ -8,7 +8,8 @@
   "style": "index.css",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "gulp --require @esbuild-kit/cjs-loader"
+    "build": "gulp --require @esbuild-kit/cjs-loader",
+    "watch": "sass --watch ./src/index.scss:index.css"
   },
   "sideEffects": false,
   "devDependencies": {

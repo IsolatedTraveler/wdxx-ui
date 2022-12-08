@@ -1,1 +1,11 @@
 $namespace: 'z' !default;
+$def: (
+  'border': var(--border-solid),
+  'border-color': var(--color-border),
+  'background-color': var(--color-white),
+  'color': var(--color-text),
+  'font-size': var(--width-font),
+  'font-weight': var(--font-weight),
+  'radius': var(--width-radius),
+  'padding': var(--width-pd)
+);
