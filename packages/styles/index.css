@@ -1,0 +1,230 @@
+:root {
+  --border-solid: 1px solid var(--color-border3);
+}
+
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-primary: #409EFF;
+  --color-primary2: #337ecc;
+  --color-primary3: #79bbff;
+  --color-primary--disabled: #a0cfff;
+  --color-primary5: #c6e2ff;
+  --color-primary6: #d9ecff;
+  --color-primary7: #ecf5ff;
+  --color-success: #67C23A;
+  --color-success2: #529b2e;
+  --color-success3: #95d475;
+  --color-success-disabled: #b3e19d;
+  --color-success5: #d1edc4;
+  --color-success6: #e1f3d8;
+  --color-success7: #f0f9eb;
+  --color-warning: #E6A23C;
+  --color-warning2: #b88230;
+  --color-warning3: #eebe77;
+  --color-warning-disabled: #f3d19e;
+  --color-warning5: #f8e3c5;
+  --color-warning6: #faecd8;
+  --color-warning7: #fdf6ec;
+  --color-danger: #F56C6C;
+  --color-danger2: #c45656;
+  --color-danger3: #f89898;
+  --color-danger-disabled: #fab6b6;
+  --color-danger5: #fcd3d3;
+  --color-danger6: #fde2e2;
+  --color-danger7: #fef0f0;
+  --color-info: #909399;
+  --color-info2: #73767a;
+  --color-info3: #f89898;
+  --color-info-disabled: #fab6b6;
+  --color-info5: #fcd3d3;
+  --color-info6: #fde2e2;
+  --color-info7: #fef0f0;
+  --color-text1: #303133;
+  --color-text2: #606266;
+  --color-text3: #909399;
+  --color-text4: #A8Abb2;
+  --color-text5: #C0C4CC;
+  --color-border1: #CDD0D6;
+  --color-border2: #D4D7DE;
+  --color-border3: #dcdfe6;
+  --color-border-disabled: #E4E7ed;
+  --color-border5: #EBEEF5;
+  --color-border6: #F2F6FC;
+  --color-transparent: transparent;
+  --color-transparent1: rgba(0, 0, 0, .1);
+  --color-transparent2: rgba(0, 0, 0, .7);
+  --color-bg1: #ffffff;
+  --color-bg2: #F2F3F5;
+}
+
+:root {
+  --font-weight-small: 500;
+}
+
+:root {
+  --width-radius-def: .04rem;
+  --width-margin-def: .12rem;
+  --width-font-def: .14rem;
+  --width-font-sm: .12rem;
+  --width-font-md: .14rem;
+  --width-font-lg: .14rem;
+  --width-pd-def: .08rem .15rem;
+  --width-pd-sm: .05rem .11rem;
+  --width-pd-md: .08rem .15rem;
+  --width-pd-lg: .12rem .19rem;
+}
+
+html {
+  font-size: 100px;
+}
+
+body {
+  font-size: var(--width-font-def);
+}
+
+button {
+  margin: 0;
+  user-select: none;
+}
+
+.z-btn {
+  white-space: nowrap;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.1s;
+  vertical-align: middle;
+  line-height: 1;
+  cursor: pointer;
+  font-weight: var(--font-weight-small);
+  background-color: var(--color-white);
+  border: var(--border-solid);
+  color: var(--color-text1);
+  font-size: var(--width-font-def);
+  border-radius: var(--width-radius-def);
+  padding: var(--width-pd-def);
+}
+.z-btn + .z-btn {
+  margin-left: var(--width-margin-def);
+}
+
+.z-circle {
+  border-radius: 50%;
+}
+
+.z-round {
+  border-radius: 100vw;
+}
+
+.z-ellipse {
+  border-radius: 50%;
+}
+
+.z-sm {
+  font-size: var(--width-font-sm);
+  padding: var(--width-pd-sm);
+}
+
+.z-md {
+  font-size: var(--width-font-md);
+  padding: var(--width-pd-md);
+}
+
+.z-lg {
+  font-size: var(--width-font-lg);
+  padding: var(--width-pd-lg);
+}
+
+.z-primary {
+  border-color: var(--color-primary);
+}
+
+[disabled].z-primary {
+  border-color: var(--color-primary--disabled);
+}
+
+.z-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+[disabled].z-primary {
+  background-color: var(--color-primary--disabled);
+}
+
+.z-success {
+  border-color: var(--color-success);
+}
+
+[disabled].z-success {
+  border-color: var(--color-success-disabled);
+}
+
+.z-success {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+[disabled].z-success {
+  background-color: var(--color-success-disabled);
+}
+
+.z-warning {
+  border-color: var(--color-warning);
+}
+
+[disabled].z-warning {
+  border-color: var(--color-warning-disabled);
+}
+
+.z-warning {
+  background-color: var(--color-warning);
+  color: var(--color-white);
+}
+
+[disabled].z-warning {
+  background-color: var(--color-warning-disabled);
+}
+
+.z-danger {
+  border-color: var(--color-danger);
+}
+
+[disabled].z-danger {
+  border-color: var(--color-danger-disabled);
+}
+
+.z-danger {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+}
+
+[disabled].z-danger {
+  background-color: var(--color-danger-disabled);
+}
+
+.z-info {
+  border-color: var(--color-info);
+}
+
+[disabled].z-info {
+  border-color: var(--color-info-disabled);
+}
+
+.z-info {
+  background-color: var(--color-info);
+  color: var(--color-white);
+}
+
+[disabled].z-info {
+  background-color: var(--color-info-disabled);
+}
+
+.z-primary, .z-success, .z-warning, .z-danger, .z-info {
+  cursor: not-allowed;
+  user-select: none;
+  color: var(--color-text5);
+}
+
+/*# sourceMappingURL=index.css.map */
