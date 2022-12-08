@@ -9,7 +9,7 @@
       <z-btn state="info">info</z-btn>
     </div>
     <div>
-      <z-btn shape="ghost" state="">def</z-btn>
+      <z-btn shape="ghost" state="">ghost</z-btn>
       <z-btn shape="ghost" state="primary">primary</z-btn>
       <z-btn shape="ghost" state="success">success</z-btn>
       <z-btn shape="ghost" state="warning">warning</z-btn>
@@ -17,7 +17,7 @@
       <z-btn shape="ghost" state="info">info</z-btn>
     </div>
     <div>
-      <z-btn shape="text" state="">def</z-btn>
+      <z-btn shape="text" state="">text</z-btn>
       <z-btn shape="text" state="primary">primary</z-btn>
       <z-btn shape="text" state="success">success</z-btn>
       <z-btn shape="text" state="warning">warning</z-btn>
@@ -49,12 +49,13 @@
       <z-btn shape="ghost" size="lg" state="info">info</z-btn>
     </div>
     <div>
-      <z-btn shape="ghost" state="" radius="round">def</z-btn>
-      <z-btn shape="ghost" state="" radius="circle">def</z-btn>
-      <z-btn shape="ghost" state="" radius="ellipse">def</z-btn>
-      <z-btn shape="ghost" state="" radius="none">def</z-btn>
-      <z-btn shape="ghost" state="" radius="5px">def</z-btn>
-      <z-btn shape="ghost" state="" radius="8">def</z-btn>
+      <z-btn state="primary" radius="round">round</z-btn>
+      <z-btn state="primary" radius="circle">circle</z-btn>
+      <z-btn state="primary" radius="ellipse">ellipse</z-btn>
+      <z-btn state="primary" radius="none">none</z-btn>
+      <z-btn state="primary" radius="5px">5px</z-btn>
+      <z-btn state="primary" radius="8">8</z-btn>
+      <z-btn state="primary" radius="1em">1em</z-btn>
     </div>
   </div>
 </template>
