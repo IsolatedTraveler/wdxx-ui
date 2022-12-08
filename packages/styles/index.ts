@@ -7,7 +7,10 @@ const g = {
   info: true,
   sm: true,
   md: true,
-  lg: true
+  lg: true,
+  round: true,
+  circle: true,
+  ellipse: true
 }
 const t = {
   ghost: true,

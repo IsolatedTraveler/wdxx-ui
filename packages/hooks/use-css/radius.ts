@@ -18,8 +18,8 @@ export default (props:any, obj: ObjStr, classVal: ObjTrue, styleVal: any, el: Re
     if (o) {
       classVal[obj.radius] = false
       if (o === 'circle') {
-        styleVal.width = false
-        styleVal.height = false
+        styleVal.width = undefined
+        styleVal.height = undefined
       }
     }
     if (v) {

@@ -1,7 +1,7 @@
 <template>
   <div class="demo-btn">
     <div>
-      <z-btn state="">def</z-btn>
+      <z-btn state="">btn</z-btn>
       <z-btn state="primary">primary</z-btn>
       <z-btn state="success">success</z-btn>
       <z-btn state="warning">warning</z-btn>
@@ -25,7 +25,7 @@
       <z-btn shape="text" state="info">info</z-btn>
     </div>
     <div>
-      <z-btn size="sm" state="">def</z-btn>
+      <z-btn size="sm" state="">sm</z-btn>
       <z-btn size="sm" state="primary">primary</z-btn>
       <z-btn size="sm" state="success">success</z-btn>
       <z-btn size="sm" state="warning">warning</z-btn>
@@ -33,7 +33,7 @@
       <z-btn size="sm" state="info">info</z-btn>
     </div>
     <div>
-      <z-btn size="md" state="">def</z-btn>
+      <z-btn size="md" state="">md</z-btn>
       <z-btn size="md" state="primary">primary</z-btn>
       <z-btn size="md" state="success">success</z-btn>
       <z-btn size="md" state="warning">warning</z-btn>
@@ -41,7 +41,7 @@
       <z-btn size="md" state="info">info</z-btn>
     </div>
     <div>
-      <z-btn shape="ghost" size="lg" state="">def</z-btn>
+      <z-btn shape="ghost" size="lg" state="">lg</z-btn>
       <z-btn shape="ghost" size="lg" state="primary">primary</z-btn>
       <z-btn shape="ghost" size="lg" state="success">success</z-btn>
       <z-btn shape="ghost" size="lg" state="warning">warning</z-btn>
@@ -56,6 +56,7 @@
       <z-btn state="primary" radius="5px">5px</z-btn>
       <z-btn state="primary" radius="8">8</z-btn>
       <z-btn state="primary" radius="1em">1em</z-btn>
+      <z-btn state="primary" :radius="radius" style="width:6em">测试</z-btn>
     </div>
   </div>
 </template>
@@ -63,9 +64,14 @@
 export default {
   name: 'demo-btn',
   data() {
-    return {}
+    return {
+      radius: 'circle'
+    }
   },
-  methods: {
+  mounted() {
+    setTimeout(() => {
+      this.radius = 'round'
+    }, 3000);
   }
 }
 </script>
