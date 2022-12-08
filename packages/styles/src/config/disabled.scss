@@ -1,0 +1,59 @@
+@use 'sass:map';
+$_-disabled: (
+  cursor: not-allowed,
+  user-select: none
+);
+$disabled: (
+  def: (
+    def: map.merge($_-disabled, (
+      'background-color': var(--color-white),
+      'border-color': var(--color-border-disabled),
+      'color': var(--color-text-disabled)
+    ))
+  ),
+  primary: (
+    def:(
+      'background-color': var(--color-primary-disabled),
+      'border-color': var(--color-primary-disabled),
+      'color': var(--color-white-disabled)
+    ),
+    re:(),
+    text:()
+  ),
+  success: (
+    def:(
+      'background-color': var(--color-success-disabled),
+      'border-color': var(--color-success-disabled),
+      'color': var(--color-white-disabled)
+    ),
+    re:(),
+    text:()
+  ),
+  warning: (
+    def:(
+      'background-color': var(--color-warning-disabled),
+      'border-color': var(--color-warning-disabled),
+      'color': var(--color-white-disabled)
+    ),
+    re:(),
+    text:()
+  ),
+  danger: (
+    def:(
+      'background-color': var(--color-danger-disabled),
+      'border-color': var(--color-danger-disabled),
+      'color': var(--color-white-disabled)
+    ),
+    re:(),
+    text:()
+  ),
+  info: (
+    def:(
+      'background-color': var(--color-info-disabled),
+      'border-color': var(--color-info-disabled),
+      'color': var(--color-white-disabled)
+    ),
+    re:(),
+    text:()
+  )
+)

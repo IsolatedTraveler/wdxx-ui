@@ -1,13 +1,6 @@
 @use 'sass:map';
 @use '../config/var.scss' as *;
 @use './base.scss' as *;
-@mixin setStyle($vals, $block) {
-  @if $vals {
-    @each $key,$val in $vals {
-      --#{$block}-#{$key}: #{$val};
-    }
-  }
-}
 @mixin styles($block, $val, $attrs: false, $states: false, $media: false) {
   @if $val {
     @include create($block){
@@ -37,7 +30,7 @@
 @mixin setStyleAttrs($vals, $block, $attrs: false, $states: false, $media: false) {
   @if $vals {
     @if $attrs {
-      @include setStyleAttr($attrs, $vals, $block, $state, $media);
+      @include setStyleAttr($attrs, $vals, $block, $states, $media);
     } @else {
       @include setStyleAttr(map.keys($vals), $vals, $block, $states, $media);
     }
@@ -47,7 +40,9 @@
   @each $key in $keys {
     $val: map.get($vals, $key);
     @if $val {
-      @include setStyle(map.get($val, 'def'), $block);
+      &[#{$key}]{
+        @include setStyle(map.get($val, 'def'), $block);
+      }
       @include setStyleStates(map.get($val, 'state'), $block, $states);
       @include setStyleMedias(map.get($val, 'media'), $block, $media);
     }
@@ -90,6 +85,13 @@
       @include setStyleMedia($vals, $block, $state)
     } @else {
       @include setStyleMedia($vals, $block, map.keys($vals))
+    }
+  }
+}
+@mixin setStyle($vals, $block) {
+  @if $vals {
+    @each $key,$val in $vals {
+      --#{$block}-#{$key}: #{$val};
     }
   }
 }

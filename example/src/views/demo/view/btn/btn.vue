@@ -73,6 +73,14 @@
       <z-btn disabled shape="ghost" state="danger">danger</z-btn>
       <z-btn disabled shape="ghost" state="info">info</z-btn>
     </div>
+    <div>
+      <z-btn disabled shape="text" state="">text</z-btn>
+      <z-btn disabled shape="text" state="primary">primary</z-btn>
+      <z-btn disabled shape="text" state="success">success</z-btn>
+      <z-btn disabled shape="text" state="warning">warning</z-btn>
+      <z-btn disabled shape="text" state="danger">danger</z-btn>
+      <z-btn disabled shape="text" state="info">info</z-btn>
+    </div>
   </div>
 </template>
 <script lang="ts">

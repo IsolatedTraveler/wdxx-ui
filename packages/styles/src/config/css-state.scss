@@ -1,79 +1,74 @@
 @use 'sass:map';
-$_-bg--text:(
-  'background-color': var(--color-transpanent)
+@use './attr.scss' as *;
+$_-state-text:(
+  'background-color': var(--color-transparent),
+  'border-color': var(--color-transparent)
 );
-$_-bd--text:(
-  'border-color': var(--color-transpanent)
-);
-$_-bg--re:(
+$_-state-re: (
   'background-color': var(--color-white)
 );
-$_-color:(
+$_-state: (
   'color': var(--color-white)
 );
-$_-primary--text: (
+$_-primary: (
+  'background-color': var(--color-primary),
+  'border-color': var(--color-primary),
   'color': var(--color-primary)
 );
-$_-success--text: (
+$_-success: (
+  'background-color': var(--color-success),
+  'border-color': var(--color-success),
   'color': var(--color-success)
 );
-$_-warning--text: (
+$_-warning: (
+  'background-color': var(--color-warning),
+  'border-color': var(--color-warning),
   'color': var(--color-warning)
 );
-$_-danger--text: (
+$_-danger: (
+  'background-color': var(--color-danger),
+  'border-color': var(--color-danger),
   'color': var(--color-danger)
 );
-$_-info--text: (
+$_-info: (
+  'background-color': var(--color-info),
+  'border-color': var(--color-info),
   'color': var(--color-info)
 );
-$_-primary--bd: (
-  'border-color': var(--color-primary)
-);
-$_-success--bd: (
-  'border-color': var(--color-success)
-);
-$_-warning--bd: (
-  'border-color': var(--color-warning)
-);
-$_-danger--bd: (
-  'border-color': var(--color-danger)
-);
-$_-info--bd: (
-  'border-color': var(--color-info)
-);
-$_-primary--bg: (
-  'background-color': var(--color-primary)
-);
-$_-success--bg: (
-  'background-color': var(--color-success)
-);
-$_-warning--bg: (
-  'background-color': var(--color-warning)
-);
-$_-danger--bg: (
-  'background-color': var(--color-danger)
-);
-$_-info--bg: (
-  'background-color': var(--color-info)
-);
+$_attr: ('disabled');
 $css-state: (
-  primary: ('def': map.merge(map.merge($_-primary--bg, $_-primary--bd), $_-color)),
-  success: ('def': map.merge(map.merge($_-success--bg, $_-success--bd), $_-color)),
-  warning: ('def': map.merge(map.merge($_-warning--bg, $_-warning--bd), $_-color)),
-  danger: ('def': map.merge(map.merge($_-danger--bg, $_-danger--bd), $_-color)),
-  info: ('def': map.merge(map.merge($_-info--bg, $_-info--bd), $_-color))
+  primary: (
+    'def': map.merge($_-primary, $_-state),
+    attr: setAttr($_attr, 'primary')
+  ),
+  success: (
+    'def': map.merge($_-success, $_-state),
+    attr: setAttr($_attr, 'success')
+  ),
+  warning: (
+    'def': map.merge($_-warning, $_-state),
+    attr: setAttr($_attr, 'warning')
+  ),
+  danger: (
+    'def': map.merge($_-danger, $_-state),
+    attr: setAttr($_attr, 'danger')
+  ),
+  info: (
+    'def': map.merge($_-info, $_-state),
+    attr: setAttr($_attr, 'info')
+  )
 );
 $css-state--re: (
-  primary: ('def': $_-primary--text),
-  success: ('def': $_-success--text),
-  warning: ('def': $_-warning--text),
-  danger: ('def': $_-danger--text),
-  info: ('def': $_-info--text)
+  primary: ('def': map.merge($_-primary, $_-state-re)),
+  success: ('def': map.merge($_-success, $_-state-re)),
+  warning: ('def': map.merge($_-warning, $_-state-re)),
+  danger: ('def': map.merge($_-danger, $_-state-re)),
+  info: ('def': map.merge($_-info, $_-state-re))
 );
 $css-state--text: (
-  primary: ('def': $_-primary--text),
-  success: ('def': $_-success--text),
-  warning: ('def': $_-warning--text),
-  danger: ('def': $_-danger--text),
-  info: ('def': $_-info--text)
+  primary: ('def': map.merge($_-primary, $_-state-text)),
+  success: ('def': map.merge($_-success, $_-state-text)),
+  warning: ('def': map.merge($_-warning, $_-state-text)),
+  danger: ('def': map.merge($_-danger, $_-state-text)),
+  info: ('def': map.merge($_-info, $_-state-text))
 );
