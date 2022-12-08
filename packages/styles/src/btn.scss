@@ -1,4 +1,33 @@
+@use 'sass:map';
 @use './mixins/index.scss' as *;
+@use './config/index.scss' as *;
+$btnMod: map.merge((
+  mod: $css-state--text,
+  'ghost': (
+    def: (
+      'background-color': var(--color-white)
+    ),
+    mod: $css-state--re
+  ),
+  'text': (
+    'def': (
+      'background-color': var(--color-transparent),
+      'border-color': var(--color-transparent)
+    ),
+    mod: $css-state--text
+  )
+),$radius);
+$btn: (
+  'def': map.merge($def, (
+    'margin-left': var(--width-margin),
+    'border-radius': var(--width-radius)
+  )),
+  'mod': map.merge($css-state, $btnMod),
+  'attr': (),
+  'state': (),
+  'media': ()
+) !default;
+@include styles(btn, $btn);
 @include create(btn) {
   white-space: nowrap;
   text-align: center;
@@ -8,14 +37,15 @@
   vertical-align: middle;
   line-height: 1;
   cursor: pointer;
-  font-weight: var(--font-weight-small);
-  background-color: var(--color-white);
-  border: var(--border-solid);
-  color: var(--color-text1);
-  font-size: var(--width-font-def);
-  border-radius: var(--width-radius-def);
-  padding: var(--width-pd-def);
+  border: var(--btn-border);
+  font-weight: var(--btn-font-weight);
+  background-color: var(--btn-background-color);
+  border-color: var(--btn-border-color);
+  color: var(--btn-color);
+  font-size: var(--btn-font-size);
+  border-radius: var(--btn-border-radius);
+  padding: var(--btn-padding);
   & + &{
-    margin-left: var(--width-margin-def);
+    margin-left: var(--btn-margin-left);
   }
 }

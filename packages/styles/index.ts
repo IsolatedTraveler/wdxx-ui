@@ -1,20 +1,20 @@
 const g = {
   btn: true,
-  primary: true,
-  success: true,
-  warning: true,
-  danger: true,
-  info: true,
-  sm: true,
-  md: true,
-  lg: true,
-  round: true,
-  circle: true,
-  ellipse: true
+  primary: false,
+  success: false,
+  warning: false,
+  danger: false,
+  info: false,
+  round: false,
+  circle: false,
+  ellipse: false,
+  sm: false,
+  md: false,
+  lg: false
 }
 const t = {
-  ghost: true,
-  text: true
+  ghost: false,
+  text: false
 }
 export default () => {
   const keys = Object.keys(g).filter(key => (t as any)[key])
