@@ -12,4 +12,4 @@ $media-keys: map.keys($_-media);
     $re: map.set($re, $key, map.get($_-media, $key, $state, $attr, $lx));
   }
   @return $re
-}
+};

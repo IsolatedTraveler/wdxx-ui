@@ -1,25 +1,36 @@
 @use '../var.scss' as *;
 @use 'sass:map';
 $hover-val: (
+  def: (
+    color: var(--color-primary),
+    bg: var(--color-white),
+    bd: var(--color-primary),
+    def: var(--color-text)
+  ),
   primary: (
     def: var(--color-primary),
-    hover: var(--color-primary-hover)
+    bg: var(--color-primary-hover),
+    bd: var(--color-primary-hover)
   ),
   success: (
     def: var(--color-success),
-    hover: var(--color-success-hover)
+    bg: var(--color-success-hover),
+    bd: var(--color-success-hover)
   ),
   warning: (
     def: var(--color-warning),
-    hover: var(--color-warning-hover)
+    bg: var(--color-warning-hover),
+    bd: var(--color-warning-hover)
   ),
   danger: (
     def: var(--color-danger),
-    hover: var(--color-danger-hover)
+    bg: var(--color-danger-hover),
+    bd: var(--color-danger-hover)
   ),
   info: (
     def: var(--color-info),
-    hover: var(--color-info-hover)
+    bg: var(--color-info-hover),
+    bd: var(--color-info-hover)
   ),
   'white': var(--color-white),
   'transparent': var(--color-transparent)
@@ -44,20 +55,24 @@ $hover-val: (
 };
 @function setHover($state, $attr:false) {
   $val: map.get($hover-val, $state);
+  $color: map.get($hover-val, 'white');
+  @if $state == 'def' {
+    $color: map.get($val, 'color');
+  }
   @if $attr {
     $val: map.get($val, #{'_' + $attr});
   }
   @if $val {
     @return (
       def:(
-        color: map.get($hover-val, 'white'),
-        background-color: map.get($val, 'hover'),
-        border-color:  map.get($val, 'hover')
+        color: $color,
+        background-color: map.get($val, 'bg'),
+        border-color:  map.get($val, 'bd')
       ),
       re:(
-        color: map.get($hover-val, 'white'),
-        background-color: map.get($val, 'def'),
-        border-color:  map.get($val, 'def')
+        color: $color,
+        background-color: map.get($val, 'bg'),
+        border-color:  map.get($val, 'bd')
       ),
       text: (
         color: map.get($val, 'def'),

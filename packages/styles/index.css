@@ -184,8 +184,8 @@ button {
 @media (any-hover: hover) {
   .z-btn.z-ghost.z-primary:hover {
     color: var(--color-white);
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
   }
 }
 .z-btn.z-ghost.z-primary[disabled] {
@@ -200,8 +200,8 @@ button {
 @media (any-hover: hover) {
   .z-btn.z-ghost.z-warning:hover {
     color: var(--color-white);
-    background-color: var(--color-warning);
-    border-color: var(--color-warning);
+    background-color: var(--color-warning-hover);
+    border-color: var(--color-warning-hover);
   }
 }
 .z-btn.z-ghost.z-warning[disabled] {
@@ -216,8 +216,8 @@ button {
 @media (any-hover: hover) {
   .z-btn.z-ghost.z-danger:hover {
     color: var(--color-white);
-    background-color: var(--color-danger);
-    border-color: var(--color-danger);
+    background-color: var(--color-danger-hover);
+    border-color: var(--color-danger-hover);
   }
 }
 .z-btn.z-ghost.z-danger[disabled] {
@@ -232,8 +232,8 @@ button {
 @media (any-hover: hover) {
   .z-btn.z-ghost.z-info:hover {
     color: var(--color-white);
-    background-color: var(--color-info);
-    border-color: var(--color-info);
+    background-color: var(--color-info-hover);
+    border-color: var(--color-info-hover);
   }
 }
 .z-btn.z-ghost.z-info[disabled] {
@@ -248,8 +248,8 @@ button {
 @media (any-hover: hover) {
   .z-btn.z-ghost.z-success:hover {
     color: var(--color-white);
-    background-color: var(--color-success);
-    border-color: var(--color-success);
+    background-color: var(--color-success-hover);
+    border-color: var(--color-success-hover);
   }
 }
 .z-btn.z-ghost.z-success[disabled] {
@@ -346,6 +346,18 @@ button {
   border-color: var(--color-transparent);
   color: var(--color-success-disabled);
 }
+@media (any-hover: hover) {
+  .z-btn.z-text:hover {
+    color: var(--color-text);
+    background-color: var(--color-transparent);
+    border-color: var(--color-transparent);
+  }
+}
+.z-btn.z-text[disabled] {
+  background-color: var(--color-transparent);
+  border-color: var(--color-transparent);
+  color: var(--color-text-disabled);
+}
 .z-btn.z-circle {
   border-radius: 50%;
 }
@@ -354,6 +366,13 @@ button {
 }
 .z-btn.z-round {
   border-radius: 100wh;
+}
+@media (any-hover: hover) {
+  .z-btn:hover {
+    color: var(--color-primary);
+    background-color: var(--color-white);
+    border-color: var(--color-primary);
+  }
 }
 .z-btn[disabled] {
   cursor: not-allowed;
