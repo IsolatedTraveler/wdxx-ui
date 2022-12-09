@@ -17,8 +17,13 @@ $disabled: (
       'border-color': var(--color-primary-disabled),
       'color': var(--color-white-disabled)
     ),
-    re:(),
-    text:()
+    re:(
+      'border-color': var(--color-primary-disabled),
+      'color': var(--color-primary-disabled)
+    ),
+    text:(
+      'color': var(--color-primary-disabled)
+    )
   ),
   success: (
     def:(
@@ -26,8 +31,13 @@ $disabled: (
       'border-color': var(--color-success-disabled),
       'color': var(--color-white-disabled)
     ),
-    re:(),
-    text:()
+    re:(
+      'border-color': var(--color-success-disabled),
+      'color': var(--color-success-disabled)
+    ),
+    text:(
+      'color': var(--color-success-disabled)
+    )
   ),
   warning: (
     def:(
@@ -35,8 +45,13 @@ $disabled: (
       'border-color': var(--color-warning-disabled),
       'color': var(--color-white-disabled)
     ),
-    re:(),
-    text:()
+    re:(
+      'border-color': var(--color-warning-disabled),
+      'color': var(--color-warning-disabled)
+    ),
+    text:(
+      'color': var(--color-warning-disabled)
+    )
   ),
   danger: (
     def:(
@@ -44,8 +59,13 @@ $disabled: (
       'border-color': var(--color-danger-disabled),
       'color': var(--color-white-disabled)
     ),
-    re:(),
-    text:()
+    re:(
+      'border-color': var(--color-danger-disabled),
+      'color': var(--color-danger-disabled)
+    ),
+    text:(
+      'color': var(--color-danger-disabled)
+    )
   ),
   info: (
     def:(
@@ -53,7 +73,12 @@ $disabled: (
       'border-color': var(--color-info-disabled),
       'color': var(--color-white-disabled)
     ),
-    re:(),
-    text:()
+    re:(
+      'border-color': var(--color-info-disabled),
+      'color': var(--color-info-disabled)
+    ),
+    text:(
+      'color': var(--color-info-disabled)
+    )
   )
 )

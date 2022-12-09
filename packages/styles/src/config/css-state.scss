@@ -59,16 +59,46 @@ $css-state: (
   )
 );
 $css-state--re: (
-  primary: ('def': map.merge($_-primary, $_-state-re)),
-  success: ('def': map.merge($_-success, $_-state-re)),
-  warning: ('def': map.merge($_-warning, $_-state-re)),
-  danger: ('def': map.merge($_-danger, $_-state-re)),
-  info: ('def': map.merge($_-info, $_-state-re))
+  primary: (
+    'def': map.merge($_-primary, $_-state-re),
+    attr: setAttr($_attr, 'primary', 're')
+  ),
+  success: (
+    'def': map.merge($_-success, $_-state-re),
+    attr: setAttr($_attr, 'success', 're')
+  ),
+  warning: (
+    'def': map.merge($_-warning, $_-state-re),
+    attr: setAttr($_attr, 'warning', 're')
+  ),
+  danger: (
+    'def': map.merge($_-danger, $_-state-re),
+    attr: setAttr($_attr, 'danger', 're')
+  ),
+  info: (
+    'def': map.merge($_-info, $_-state-re),
+    attr: setAttr($_attr, 'info', 're')
+  )
 );
 $css-state--text: (
-  primary: ('def': map.merge($_-primary, $_-state-text)),
-  success: ('def': map.merge($_-success, $_-state-text)),
-  warning: ('def': map.merge($_-warning, $_-state-text)),
-  danger: ('def': map.merge($_-danger, $_-state-text)),
-  info: ('def': map.merge($_-info, $_-state-text))
+  primary: (
+    'def': map.merge($_-primary, $_-state-text),
+    attr: setAttr($_attr, 'primary', 'text')
+  ),
+  success: (
+    'def': map.merge($_-success, $_-state-text),
+    attr: setAttr($_attr, 'success', 'text')
+  ),
+  warning: (
+    'def': map.merge($_-warning, $_-state-text),
+    attr: setAttr($_attr, 'warning', 'text')
+  ),
+  danger: (
+    'def': map.merge($_-danger, $_-state-text),
+    attr: setAttr($_attr, 'danger', 'text')
+  ),
+  info: (
+    'def': map.merge($_-info, $_-state-text),
+    attr: setAttr($_attr, 'info', 'text')
+  )
 );
