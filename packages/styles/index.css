@@ -405,4 +405,19 @@ button {
   margin-left: var(--width-margin);
 }
 
+.z-sm {
+  padding: var(--width-pd-sm);
+  font-size: var(--width-font-sm);
+}
+
+.z-md {
+  padding: var(--width-pd-md);
+  font-size: var(--width-font-md);
+}
+
+.z-lg {
+  padding: var(--width-pd-lg);
+  font-size: var(--width-font-lg);
+}
+
 /*# sourceMappingURL=index.css.map */

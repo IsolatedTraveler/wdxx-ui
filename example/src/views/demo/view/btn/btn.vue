@@ -81,6 +81,18 @@
       <z-btn disabled shape="text" state="danger">danger</z-btn>
       <z-btn disabled shape="text" state="info">info</z-btn>
     </div>
+    <z-btn-group>
+      <z-btn size="lg" state="success">success</z-btn>
+      <z-btn shape="ghost" size="lg" state="warning">warning</z-btn>
+    </z-btn-group>
+    <z-btn-group shape="tight">
+      <z-btn size="lg" state="success">success</z-btn>
+      <z-btn shape="ghost" size="lg" state="warning">warning</z-btn>
+    </z-btn-group>
+    <z-btn-group shape="auto">
+      <z-btn size="lg" state="success">success</z-btn>
+      <z-btn shape="ghost" size="lg" state="warning">warning</z-btn>
+    </z-btn-group>
   </div>
 </template>
 <script lang="ts">

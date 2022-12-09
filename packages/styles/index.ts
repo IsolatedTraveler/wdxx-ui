@@ -1,5 +1,9 @@
 const g = {
   btn: true,
+  'bth-group': true,
+  sm: true,
+  md: true,
+  lg: true,
   primary: false,
   success: false,
   warning: false,
@@ -7,14 +11,11 @@ const g = {
   info: false,
   round: false,
   circle: false,
-  ellipse: false,
-  sm: false,
-  md: false,
-  lg: false
+  ellipse: false
 }
 const t = {
-  ghost: false,
-  text: false
+  ghost: true,
+  text: true
 }
 export default () => {
   const keys = Object.keys(g).filter(key => (t as any)[key])

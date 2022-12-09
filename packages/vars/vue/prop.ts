@@ -11,3 +11,4 @@ export const ComponentFlex = ['', 'row', 'col']
 // btn
 export const ComponentBtnType = ['submit', 'button', 'reset']
 export const ComponentBtnShape = ['', 'ghost', 'text']
+export const ComponentBtnGroupShape = ['', 'tight', 'auto']

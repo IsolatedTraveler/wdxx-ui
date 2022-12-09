@@ -1,5 +1,5 @@
 import { useClickDisabled, useCss } from "@ui/hooks"
-import { ref, SetupContext } from "vue"
+import { computed, ref, SetupContext } from "vue"
 import type { BtnProps, BtnEmits } from "./btn"
 // order: useOrderProp,
 // radius: useRadiusProp,
@@ -13,8 +13,16 @@ export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) =>
       emit?.('click', evt)
     }
   }
-  const _ref = ref<HTMLButtonElement>(), {_disabled, _handleClick} = useClickDisabled(props, handleClick)
-  , {_class, _style} = useCss(props, ['flex', 'state', 'size', 'shape', 'radius'], 'z-btn', _ref)
+  const _ref = ref<HTMLButtonElement>(), {_disabled, _handleClick} = useClickDisabled(props, handleClick), classProp = computed(() => {
+    return {
+      name: 'btn',
+      flex: props.flex,
+      state: props.state,
+      size: props.size,
+      shape: props.shape,
+      radius: props.radius
+    }
+  }), {_class, _style} = useCss(classProp.value, _ref)
   return {
     _ref,
     _handleClick,
