@@ -9,5 +9,5 @@ export const ComponentColAlign = ['', 'start', 'end', 'center', 'around', 'betwe
 export const ComponentSelfAlign = ['', 'start', 'end', 'center', 'stretch']
 export const ComponentFlex = ['', 'row', 'col']
 // btn
-export const ComponentBtnType = ['', 'submit', 'button', 'reset']
+export const ComponentBtnType = ['submit', 'button', 'reset']
 export const ComponentBtnShape = ['', 'ghost', 'text']

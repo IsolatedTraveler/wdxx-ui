@@ -79,7 +79,7 @@
       <z-btn disabled shape="text" state="success">success</z-btn>
       <z-btn disabled shape="text" state="warning">warning</z-btn>
       <z-btn disabled shape="text" state="danger">danger</z-btn>
-      <z-btn disabled shape="text" state="info">info</z-btn>
+      <z-btn disabled shape="text" type state="info">info</z-btn>
     </div>
   </div>
 </template>

@@ -16,7 +16,7 @@ export const buildProp = (prop: Prop, key?:string) => {
         return true
       } else {
         const text = [...new Set(values)].map((value) => JSON.stringify(value)).join(', ')
-        err = `one of ${text}${err ? '' : ` or ${err}`}`
+        err = `one of [${text}]${err ? '' : ` or ${err}`}`
       }
       warn(`Invalid prop: validation failed for prop "${key || prop.key}". Expected ${err},got value ${JSON.stringify(val)}`)
     }
