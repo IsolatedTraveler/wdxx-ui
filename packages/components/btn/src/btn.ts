@@ -14,7 +14,7 @@ export const btnProps = {
   shape: useBtnShapeProp,
   size: useSizeProp,
   state: useStateProp,
-  type: useBtnTypeProp
+  type: {...useBtnTypeProp, default: 'button'}
 }
 export const btnEmits = {
   [EventClick]: (evt: MouseEvent) => evt instanceof MouseEvent

@@ -1,0 +1,15 @@
+@use 'sass:map';
+@use './hover.scss' as *;
+@use '../var.scss' as *;
+$_-media: (
+  hover: $hover
+);
+$media-keys: map.keys($_-media);
+@function setMedia($keys, $state: 'def', $lx: 'def', $attr: 'def') {
+  $re: (
+  );
+  @each $key in $keys {
+    $re: map.set($re, $key, map.get($_-media, $key, $state, $attr, $lx));
+  }
+  @return $re
+}

@@ -1,9 +1,2 @@
-@forward './var.scss';
-@forward './radius.scss';
-@forward './css-state.scss';
-@forward './state.scss';
-@forward './attr.scss';
-@import './border.scss';
-@import './color.scss';
-@import './font.scss';
-@import './width.scss';
+@forward './use/index.scss';
+@import './var/index.scss';

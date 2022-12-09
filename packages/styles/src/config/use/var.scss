@@ -1,4 +1,9 @@
 $namespace: 'z' !default;
+$css-state-keys: ('primary', 'warning', 'danger', 'info', 'success');
+$css-lx: ('re', 'text', 'def');
+$media-keys: ();
+$attr-keys: ();
+$state-keys: ();
 $def: (
   'border': var(--border-solid),
   'border-color': var(--color-border),

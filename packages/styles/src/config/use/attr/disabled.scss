@@ -1,0 +1,78 @@
+@use 'sass:map';
+@use '../var.scss' as *;
+@use '../media/index.scss' as *;
+@use '../state/index.scss' as *;
+$_-disabled: (
+  cursor: not-allowed,
+  user-select: none
+);
+$disabled-val: (
+  'primary': var(--color-primary-disabled),
+  'warning': var(--color-warning-disabled),
+  'danger': var(--color-danger-disabled),
+  'info': var(--color-info-disabled),
+  'success': var(--color-success-disabled),
+  'white': var(--color-white-disabled),
+  'border': var(--color-border-disabled),
+  'transparent': var(--color-transparent),
+  'text': var(--color-text-disabled)
+);
+$disabled: (
+  def: (
+    def: (
+      def: map.merge($_-disabled, (
+        'background-color': map.get($disabled-val, 'white'),
+        'border-color':  map.get($disabled-val, 'border'),
+        'color': map.get($disabled-val, 'text')
+      )),
+      media: setMedia($media-keys, 'def', 'def', $attr: 'disabled'),
+      state: setState($media-keys, 'def', 'def', $attr: 'disabled')
+    ),
+    re: (
+      def: (
+        'background-color': map.get($disabled-val, 'white'),
+        'border-color':  map.get($disabled-val, 'border'),
+        'color': map.get($disabled-val, 'text')
+      ),
+      media: setMedia($media-keys, 'def', 're', $attr: 'disabled'),
+      state: setState($media-keys, 'def', 're', $attr: 'disabled')
+    ),
+    text: (
+      def: (
+        'background-color': map.get($disabled-val, 'transparent'),
+        'border-color': map.get($disabled-val, 'transparent'),
+        'color': map.get($disabled-val, 'text')
+      ),
+      media: setMedia($media-keys, 'def', 'text', $attr: 'disabled'),
+      state: setState($media-keys, 'def', 'text', $attr: 'disabled')
+    )
+  )
+);
+@each $key in $css-state-keys {
+  $disabled: map.set($disabled, $key, (
+    def: (
+      def: (
+        'background-color': map.get($disabled-val, $key),
+        'border-color': map.get($disabled-val, $key),
+        'color': map.get($disabled-val, 'white')
+      ),
+      media: setMedia($media-keys, $key, 'def', $attr: 'disabled')
+    ),
+    re: (
+      def: (
+        'background-color': map.get($disabled-val, 'white'),
+        'border-color':  map.get($disabled-val, $key),
+        'color':  map.get($disabled-val, $key)
+      ),
+      media: setMedia($media-keys, $key, 're', $attr: 'disabled')
+    ),
+    text: (
+      def: (
+        'background-color': map.get($disabled-val, 'transparent'),
+        'border-color': map.get($disabled-val, 'transparent'),
+        'color':  map.get($disabled-val, $key)
+      ),
+      media: setMedia($media-keys, $key, 'text', $attr: 'disabled')
+    )
+  ));
+}

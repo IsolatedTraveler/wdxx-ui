@@ -1,14 +1,14 @@
 @use 'sass:map';
-@use '../config/var.scss' as *;
+@use '../config/use/var.scss' as *;
 @use './base.scss' as *;
 @mixin styles($block, $val, $attrs: false, $states: false, $media: false) {
   @if $val {
     @include create($block){
       @include setStyle(map.get($val, 'def'), $block);
       @include setStyleMod(map.get($val, 'mod'), $block, $attrs, $states, $media);
-      @include setStyleAttrs(map.get($val, 'attr'), $block, $attrs, $states, $media);
       @include setStyleStates(map.get($val, 'state'), $block, $states);
       @include setStyleMedias(map.get($val, 'media'), $block, $media);
+      @include setStyleAttrs(map.get($val, 'attr'), $block, $attrs, $states, $media);
     }
   }
 }
@@ -19,9 +19,9 @@
         @include create($key) {
           @include setStyle(map.get($val, 'def'), $block);
           @include setStyleMod(map.get($val, 'mod'), $block);
-          @include setStyleAttrs(map.get($val, 'attr'), $block, $attrs, $states, $media);
           @include setStyleStates(map.get($val, 'state'), $block, $states);
           @include setStyleMedias(map.get($val, 'media'), $block, $media);
+          @include setStyleAttrs(map.get($val, 'attr'), $block, $attrs, $states, $media);
         }
       }
     }
@@ -40,11 +40,11 @@
   @each $key in $keys {
     $val: map.get($vals, $key);
     @if $val {
+      @include setStyleStates(map.get($val, 'state'), $block, $states);
+      @include setStyleMedias(map.get($val, 'media'), $block, $media);
       &[#{$key}]{
         @include setStyle(map.get($val, 'def'), $block);
       }
-      @include setStyleStates(map.get($val, 'state'), $block, $states);
-      @include setStyleMedias(map.get($val, 'media'), $block, $media);
     }
   }
 }

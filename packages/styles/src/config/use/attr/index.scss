@@ -1,13 +1,15 @@
 @use 'sass:map';
 @use './disabled.scss' as *;
+@use '../var.scss' as *;
 $_attr:(
   disabled: $disabled
 );
+$attr-keys: map.keys($_attr);
 @function setAttr($keys, $state: 'def', $lx: 'def') {
   $re: (
   );
   @each $key in $keys {
-    $re: map.set($re, $key, 'def', map.get($_attr, $key, $state, $lx));
+    $re: map.set($re, $key, map.get($_attr, $key, $state, $lx));
   }
   @return $re
 }

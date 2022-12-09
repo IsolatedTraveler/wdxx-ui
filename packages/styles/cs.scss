@@ -1,0 +1,402 @@
+$cs: (
+  "mod": (
+    "primary": (
+      def: (
+        "background-color": var(--color-primary),
+        "border-color": var(--color-primary),
+        "color": var(--color-white),
+      ),
+      attr: (
+        disabled: (
+          def: (
+            "background-color": var(--color-primary-disabled),
+            "border-color": var(--color-primary-disabled),
+            "color": var(--color-white-disabled),
+          ),
+        ),
+      ),
+      media: (
+        hover: null,
+      ),
+    ),
+    "warning": (
+      def: (
+        "background-color": var(--color-warning),
+        "border-color": var(--color-warning),
+        "color": var(--color-white),
+      ),
+      attr: (
+        disabled: (
+          def: (
+            "background-color": var(--color-warning-disabled),
+            "border-color": var(--color-warning-disabled),
+            "color": var(--color-white-disabled),
+          ),
+        ),
+      ),
+      media: (
+        hover: null,
+      ),
+    ),
+    "danger": (
+      def: (
+        "background-color": var(--color-danger),
+        "border-color": var(--color-danger),
+        "color": var(--color-white),
+      ),
+      attr: (
+        disabled: (
+          def: (
+            "background-color": var(--color-danger-disabled),
+            "border-color": var(--color-danger-disabled),
+            "color": var(--color-white-disabled),
+          ),
+        ),
+      ),
+      media: (
+        hover: null,
+      ),
+    ),
+    "info": (
+      def: (
+        "background-color": var(--color-info),
+        "border-color": var(--color-info),
+        "color": var(--color-white),
+      ),
+      attr: (
+        disabled: (
+          def: (
+            "background-color": var(--color-info-disabled),
+            "border-color": var(--color-info-disabled),
+            "color": var(--color-white-disabled),
+          ),
+        ),
+      ),
+      media: (
+        hover: null,
+      ),
+    ),
+    "success": (
+      def: (
+        "background-color": var(--color-success),
+        "border-color": var(--color-success),
+        "color": var(--color-white),
+      ),
+      attr: (
+        disabled: (
+          def: (
+            "background-color": var(--color-success-disabled),
+            "border-color": var(--color-success-disabled),
+            "color": var(--color-white-disabled),
+          ),
+        ),
+      ),
+      media: (
+        hover: null,
+      ),
+    ),
+    mod: (
+      "primary": (
+        def: (
+          "background-color": var(--color-transparent),
+          "border-color": var(--color-transparent),
+          "color": var(--color-primary),
+        ),
+        attr: (
+          disabled: (
+            def: (
+              "color": var(--color-primary-disabled),
+            ),
+          ),
+        ),
+        media: (
+          hover: null,
+        ),
+      ),
+      "warning": (
+        def: (
+          "background-color": var(--color-transparent),
+          "border-color": var(--color-transparent),
+          "color": var(--color-warning),
+        ),
+        attr: (
+          disabled: (
+            def: (
+              "color": var(--color-warning-disabled),
+            ),
+          ),
+        ),
+        media: (
+          hover: null,
+        ),
+      ),
+      "danger": (
+        def: (
+          "background-color": var(--color-transparent),
+          "border-color": var(--color-transparent),
+          "color": var(--color-danger),
+        ),
+        attr: (
+          disabled: (
+            def: (
+              "color": var(--color-danger-disabled),
+            ),
+          ),
+        ),
+        media: (
+          hover: null,
+        ),
+      ),
+      "info": (
+        def: (
+          "background-color": var(--color-transparent),
+          "border-color": var(--color-transparent),
+          "color": var(--color-info),
+        ),
+        attr: (
+          disabled: (
+            def: (
+              "color": var(--color-info-disabled),
+            ),
+          ),
+        ),
+        media: (
+          hover: null,
+        ),
+      ),
+      "success": (
+        def: (
+          "background-color": var(--color-transparent),
+          "border-color": var(--color-transparent),
+          "color": var(--color-success),
+        ),
+        attr: (
+          disabled: (
+            def: (
+              "color": var(--color-success-disabled),
+            ),
+          ),
+        ),
+        media: (
+          hover: null,
+        ),
+      ),
+    ),
+    "ghost": (
+      def: (
+        "background-color": var(--color-white),
+      ),
+      mod: (
+        "primary": (
+          def: (
+            "background-color": var(--color-white),
+            "color": var(--color-primary),
+          ),
+          attr: (
+            disabled: (
+              def: (
+                "border-color": var(--color-primary-disabled),
+                "color": var(--color-primary-disabled),
+              ),
+            ),
+          ),
+          media: (
+            hover: null,
+          ),
+        ),
+        "warning": (
+          def: (
+            "background-color": var(--color-white),
+            "color": var(--color-warning),
+          ),
+          attr: (
+            disabled: (
+              def: (
+                "border-color": var(--color-warning-disabled),
+                "color": var(--color-warning-disabled),
+              ),
+            ),
+          ),
+          media: (
+            hover: null,
+          ),
+        ),
+        "danger": (
+          def: (
+            "background-color": var(--color-white),
+            "color": var(--color-danger),
+          ),
+          attr: (
+            disabled: (
+              def: (
+                "border-color": var(--color-danger-disabled),
+                "color": var(--color-danger-disabled),
+              ),
+            ),
+          ),
+          media: (
+            hover: null,
+          ),
+        ),
+        "info": (
+          def: (
+            "background-color": var(--color-white),
+            "color": var(--color-info),
+          ),
+          attr: (
+            disabled: (
+              def: (
+                "border-color": var(--color-info-disabled),
+                "color": var(--color-info-disabled),
+              ),
+            ),
+          ),
+          media: (
+            hover: null,
+          ),
+        ),
+        "success": (
+          def: (
+            "background-color": var(--color-white),
+            "color": var(--color-success),
+          ),
+          attr: (
+            disabled: (
+              def: (
+                "border-color": var(--color-success-disabled),
+                "color": var(--color-success-disabled),
+              ),
+            ),
+          ),
+          media: (
+            hover: null,
+          ),
+        ),
+      ),
+    ),
+    "text": (
+      "def": (
+        "background-color": var(--color-transparent),
+        "border-color": var(--color-transparent),
+      ),
+      mod: (
+        "primary": (
+          def: (
+            "background-color": var(--color-transparent),
+            "border-color": var(--color-transparent),
+            "color": var(--color-primary),
+          ),
+          attr: (
+            disabled: (
+              def: (
+                "color": var(--color-primary-disabled),
+              ),
+            ),
+          ),
+          media: (
+            hover: null,
+          ),
+        ),
+        "warning": (
+          def: (
+            "background-color": var(--color-transparent),
+            "border-color": var(--color-transparent),
+            "color": var(--color-warning),
+          ),
+          attr: (
+            disabled: (
+              def: (
+                "color": var(--color-warning-disabled),
+              ),
+            ),
+          ),
+          media: (
+            hover: null,
+          ),
+        ),
+        "danger": (
+          def: (
+            "background-color": var(--color-transparent),
+            "border-color": var(--color-transparent),
+            "color": var(--color-danger),
+          ),
+          attr: (
+            disabled: (
+              def: (
+                "color": var(--color-danger-disabled),
+              ),
+            ),
+          ),
+          media: (
+            hover: null,
+          ),
+        ),
+        "info": (
+          def: (
+            "background-color": var(--color-transparent),
+            "border-color": var(--color-transparent),
+            "color": var(--color-info),
+          ),
+          attr: (
+            disabled: (
+              def: (
+                "color": var(--color-info-disabled),
+              ),
+            ),
+          ),
+          media: (
+            hover: null,
+          ),
+        ),
+        "success": (
+          def: (
+            "background-color": var(--color-transparent),
+            "border-color": var(--color-transparent),
+            "color": var(--color-success),
+          ),
+          attr: (
+            disabled: (
+              def: (
+                "color": var(--color-success-disabled),
+              ),
+            ),
+          ),
+          media: (
+            hover: null,
+          ),
+        ),
+      ),
+    ),
+    "circle": (
+      "def": (
+        "border-radius": 50%,
+      ),
+    ),
+    "ellipse": (
+      "def": (
+        "border-radius": 50%,
+      ),
+    ),
+    "round": (
+      "def": (
+        "border-radius": 100wh,
+      ),
+    ),
+  ),
+  "attr": (
+    "disabled": (
+      def: (
+        cursor: not-allowed,
+        user-select: none,
+        "background-color": var(--color-white),
+        "border-color": var(--color-border-disabled),
+        "color": var(--color-text-disabled),
+      ),
+      media: (),
+    ),
+  ),
+  "state": (),
+  "media": (
+    "hover": null,
+  ),
+);
