@@ -6,7 +6,7 @@ export const useClickDisabled = (props?: any, emit?: any) => {
   const _handleClick = (evt: MouseEvent) => {
     if (!_disabled.value) {
       disabled.value = true
-      emit?.('click', evt)
+      emit(evt)
       nextTick(() => {
         disabled.value = false
       })

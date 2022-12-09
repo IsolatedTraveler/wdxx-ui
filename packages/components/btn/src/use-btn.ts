@@ -4,7 +4,16 @@ import type { BtnProps, BtnEmits } from "./btn"
 // order: useOrderProp,
 // radius: useRadiusProp,
 export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) => {
-  const _ref = ref<HTMLButtonElement>(), {_disabled, _handleClick} = useClickDisabled(props, emit)
+  const handleClick = (evt: MouseEvent) => {
+    if (props.type === 'submit') {
+
+    } else if (props.type === 'reset') {
+
+    } else {
+      emit?.('click', evt)
+    }
+  }
+  const _ref = ref<HTMLButtonElement>(), {_disabled, _handleClick} = useClickDisabled(props, handleClick)
   , {_class, _style} = useCss(props, ['flex', 'state', 'size', 'shape', 'radius'], 'z-btn', _ref)
   return {
     _ref,

@@ -1,7 +1,7 @@
 <template>
   <button
     ref="_ref"
-    :type="props.type"
+    type="button"
     :class="_class"
     :style="_style"
     @click="_handleClick"

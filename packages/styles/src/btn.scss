@@ -3,7 +3,7 @@
 @use './config/index.scss' as *;
 $attr:('disabled');
 $media: ('hover');
-$state: ('active');
+$state: ();
 $btnMod: map.merge((
   mod: $css-state--text,
   'ghost': (

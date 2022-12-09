@@ -94,11 +94,6 @@ button {
   border-color: var(--color-primary);
   color: var(--color-white);
 }
-.z-btn.z-primary:active {
-  color: var(--color-white);
-  background-color: var(--color-primary-hover);
-  border-color: var(--color-primary-hover);
-}
 @media (any-hover: hover) {
   .z-btn.z-primary:hover {
     color: var(--color-white);
@@ -115,11 +110,6 @@ button {
   background-color: var(--color-warning);
   border-color: var(--color-warning);
   color: var(--color-white);
-}
-.z-btn.z-warning:active {
-  color: var(--color-white);
-  background-color: var(--color-warning-hover);
-  border-color: var(--color-warning-hover);
 }
 @media (any-hover: hover) {
   .z-btn.z-warning:hover {
@@ -138,11 +128,6 @@ button {
   border-color: var(--color-danger);
   color: var(--color-white);
 }
-.z-btn.z-danger:active {
-  color: var(--color-white);
-  background-color: var(--color-danger-hover);
-  border-color: var(--color-danger-hover);
-}
 @media (any-hover: hover) {
   .z-btn.z-danger:hover {
     color: var(--color-white);
@@ -160,11 +145,6 @@ button {
   border-color: var(--color-info);
   color: var(--color-white);
 }
-.z-btn.z-info:active {
-  color: var(--color-white);
-  background-color: var(--color-info-hover);
-  border-color: var(--color-info-hover);
-}
 @media (any-hover: hover) {
   .z-btn.z-info:hover {
     color: var(--color-white);
@@ -181,11 +161,6 @@ button {
   background-color: var(--color-success);
   border-color: var(--color-success);
   color: var(--color-white);
-}
-.z-btn.z-success:active {
-  color: var(--color-white);
-  background-color: var(--color-success-hover);
-  border-color: var(--color-success-hover);
 }
 @media (any-hover: hover) {
   .z-btn.z-success:hover {
@@ -206,11 +181,6 @@ button {
   background-color: var(--color-white);
   color: var(--color-primary);
 }
-.z-btn.z-ghost.z-primary:active {
-  color: var(--color-white);
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-}
 @media (any-hover: hover) {
   .z-btn.z-ghost.z-primary:hover {
     color: var(--color-white);
@@ -226,11 +196,6 @@ button {
 .z-btn.z-ghost.z-warning {
   background-color: var(--color-white);
   color: var(--color-warning);
-}
-.z-btn.z-ghost.z-warning:active {
-  color: var(--color-white);
-  background-color: var(--color-warning);
-  border-color: var(--color-warning);
 }
 @media (any-hover: hover) {
   .z-btn.z-ghost.z-warning:hover {
@@ -248,11 +213,6 @@ button {
   background-color: var(--color-white);
   color: var(--color-danger);
 }
-.z-btn.z-ghost.z-danger:active {
-  color: var(--color-white);
-  background-color: var(--color-danger);
-  border-color: var(--color-danger);
-}
 @media (any-hover: hover) {
   .z-btn.z-ghost.z-danger:hover {
     color: var(--color-white);
@@ -269,11 +229,6 @@ button {
   background-color: var(--color-white);
   color: var(--color-info);
 }
-.z-btn.z-ghost.z-info:active {
-  color: var(--color-white);
-  background-color: var(--color-info);
-  border-color: var(--color-info);
-}
 @media (any-hover: hover) {
   .z-btn.z-ghost.z-info:hover {
     color: var(--color-white);
@@ -289,11 +244,6 @@ button {
 .z-btn.z-ghost.z-success {
   background-color: var(--color-white);
   color: var(--color-success);
-}
-.z-btn.z-ghost.z-success:active {
-  color: var(--color-white);
-  background-color: var(--color-success);
-  border-color: var(--color-success);
 }
 @media (any-hover: hover) {
   .z-btn.z-ghost.z-success:hover {
@@ -316,11 +266,6 @@ button {
   border-color: var(--color-transparent);
   color: var(--color-primary);
 }
-.z-btn.z-text.z-primary:active {
-  color: var(--color-primary);
-  background-color: var(--color-transparent);
-  border-color: var(--color-transparent);
-}
 @media (any-hover: hover) {
   .z-btn.z-text.z-primary:hover {
     color: var(--color-primary);
@@ -337,11 +282,6 @@ button {
   background-color: var(--color-transparent);
   border-color: var(--color-transparent);
   color: var(--color-warning);
-}
-.z-btn.z-text.z-warning:active {
-  color: var(--color-warning);
-  background-color: var(--color-transparent);
-  border-color: var(--color-transparent);
 }
 @media (any-hover: hover) {
   .z-btn.z-text.z-warning:hover {
@@ -360,11 +300,6 @@ button {
   border-color: var(--color-transparent);
   color: var(--color-danger);
 }
-.z-btn.z-text.z-danger:active {
-  color: var(--color-danger);
-  background-color: var(--color-transparent);
-  border-color: var(--color-transparent);
-}
 @media (any-hover: hover) {
   .z-btn.z-text.z-danger:hover {
     color: var(--color-danger);
@@ -382,11 +317,6 @@ button {
   border-color: var(--color-transparent);
   color: var(--color-info);
 }
-.z-btn.z-text.z-info:active {
-  color: var(--color-info);
-  background-color: var(--color-transparent);
-  border-color: var(--color-transparent);
-}
 @media (any-hover: hover) {
   .z-btn.z-text.z-info:hover {
     color: var(--color-info);
@@ -403,11 +333,6 @@ button {
   background-color: var(--color-transparent);
   border-color: var(--color-transparent);
   color: var(--color-success);
-}
-.z-btn.z-text.z-success:active {
-  color: var(--color-success);
-  background-color: var(--color-transparent);
-  border-color: var(--color-transparent);
 }
 @media (any-hover: hover) {
   .z-btn.z-text.z-success:hover {
@@ -437,6 +362,7 @@ button {
   border-color: var(--color-border-disabled);
   color: var(--color-text-disabled);
 }
+
 .z-btn {
   white-space: nowrap;
   text-align: center;
