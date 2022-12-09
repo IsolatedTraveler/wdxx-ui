@@ -1,2 +1,2 @@
-@import './config/index.scss';
-@import './base/index.scss';
+@use './config/index.scss' as config;
+@use './base/index.scss' as base;

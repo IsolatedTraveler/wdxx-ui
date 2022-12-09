@@ -18,7 +18,7 @@
       @if $val {
         @include create($key) {
           @include setStyle(map.get($val, 'def'), $block);
-          @include setStyleMod(map.get($val, 'mod'), $block);
+          @include setStyleMod(map.get($val, 'mod'), $block, $attrs, $states, $media);
           @include setStyleStates(map.get($val, 'state'), $block, $states);
           @include setStyleMedias(map.get($val, 'media'), $block, $media);
           @include setStyleAttrs(map.get($val, 'attr'), $block, $attrs, $states, $media);
@@ -91,7 +91,7 @@
 @mixin setStyle($vals, $block) {
   @if $vals {
     @each $key,$val in $vals {
-      --#{$block}-#{$key}: #{$val};
+      #{$key}: #{$val};
     }
   }
 }

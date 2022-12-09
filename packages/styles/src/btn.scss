@@ -3,7 +3,7 @@
 @use './config/index.scss' as *;
 $attr:('disabled');
 $media: ('hover');
-$state: ('focus', 'active');
+$state: ('active');
 $btnMod: map.merge((
   mod: $css-state--text,
   'ghost': (
@@ -21,19 +21,12 @@ $btnMod: map.merge((
   )
 ),$radius);
 $btn: (
-  'def': map.merge($def, (
-    'margin-left': var(--width-margin),
-    'border-radius': var(--width-radius),
-    cursor: pointer,
-    user-select: none,
-    outline: none
-  )),
   'mod': map.merge($css-state, $btnMod),
   'attr': setAttr($attr),
   'state': setState($state),
   'media': setMedia($media)
 ) !default;
-@include styles(btn, $btn, $attr);
+@include styles(btn, $btn, $attr, $state, $media);
 @include create(btn) {
   white-space: nowrap;
   text-align: center;
@@ -41,18 +34,18 @@ $btn: (
   transition: .1s;
   vertical-align: middle;
   line-height: 1;
-  outline: var(--btn-outline);
-  cursor: var(--btn-cursor);
-  user-select: var(--btn-user-select);
-  border: var(--btn-border);
-  font-weight: var(--btn-font-weight);
-  background-color: var(--btn-background-color);
-  border-color: var(--btn-border-color);
-  color: var(--btn-color);
-  font-size: var(--btn-font-size);
-  border-radius: var(--btn-border-radius);
-  padding: var(--btn-padding);
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+  border-radius: var(--width-radius);
+  border: map.get($def, 'border');
+  font-weight: map.get($def, 'font-weight');
+  background-color: map.get($def, 'background-color');
+  border-color: map.get($def, 'border-color');
+  color: map.get($def, 'color');
+  font-size: map.get($def, 'font-size');
+  padding: map.get($def, 'padding');
   & + &{
-    margin-left: var(--btn-margin-left);
+    margin-left: var(--width-margin);
   }
 }
