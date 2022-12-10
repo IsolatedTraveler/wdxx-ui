@@ -1,6 +1,5 @@
 [
   ["btn", ["btn-group"]],
   ["icon"],
-  ["select"],
-  ["table", ["th"]]
+  ["form"]
 ]

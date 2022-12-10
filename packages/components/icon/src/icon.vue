@@ -1,5 +1,5 @@
 <template>
-  <div ref="_ref"></div>
+  <div ref="_ref" :class="_class"></div>
 </template>
 <script lang="ts" setup>
 import { iconEmits, iconProps } from './icon'
@@ -9,7 +9,7 @@ defineOptions({
 })
 const props = defineProps(iconProps)
 const emit = defineEmits(iconEmits)
-const {_ref} = useIcon(props, emit)
+const {_ref, _class} = useIcon(props, emit)
 defineExpose({
   ref: _ref
 })

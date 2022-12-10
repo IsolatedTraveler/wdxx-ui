@@ -1,9 +1,9 @@
 import { useCss } from "@ui/hooks"
 import { ref, SetupContext } from "vue"
-import { IconEmits, IconProps } from "./icon"
-export const useIcon = (props: IconProps, emit: SetupContext<IconEmits>['emit']) => {
+import { FormEmits, FormProps } from "./form"
+export const useForm = (props: FormProps, emit: SetupContext<FormEmits>['emit']) => {
   const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
-    name: 'icon'
+    name: 'form'
   })), {_class} = useCss(classVal, _ref)
   return {
     _ref,

@@ -55,7 +55,7 @@ export const componentVue = (key: string) : string => {
   const name = getName(key.split('-')), name1 = firstMax(name, true)
   return [
     '<template>',
-    '  <div ref="_ref"></div>',
+    '  <div ref="_ref" :class="_class"></div>',
     '</template>',
     '<script lang="ts" setup>',
     `import { ${name1}Emits, ${name1}Props } from './${key}'`,
@@ -65,7 +65,7 @@ export const componentVue = (key: string) : string => {
     '})',
     `const props = defineProps(${name1}Props)`,
     `const emit = defineEmits(${name1}Emits)`,
-    `const {_ref} = use${name}(props, emit)`,
+    `const {_ref, _class} = use${name}(props, emit)`,
     'defineExpose({',
     '  ref: _ref',
     '})',
@@ -89,12 +89,16 @@ export const componentIndex = (key: string, group: Array<string> = []) => {
 }
 export const componentUse = (key: string) => {
   const name = getName(key.split('-'))
-  return `import { ref, SetupContext } from "vue"
+  return `import { useCss } from "@ui/hooks"
+import { ref, SetupContext } from "vue"
 import { ${name}Emits, ${name}Props } from "./${key}"
 export const use${name} = (props: ${name}Props, emit: SetupContext<${name}Emits>['emit']) => {
-  const _ref = ref<HTMLButtonElement>()
+  const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
+    name: '${key}'
+  })), {_class} = useCss(classVal, _ref)
   return {
-    _ref
+    _ref,
+    _class
   }
 }`
 }
