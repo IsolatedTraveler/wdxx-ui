@@ -1,6 +1,7 @@
 import { ExtractPropTypes, PropType } from "vue";
 export const formProps = {
-  disabled: Boolean as PropType<boolean>
+  disabled: Boolean as PropType<boolean>,
+  modelValue: Object as Record<string, any>
 }
 export const formEmits = {
 }

@@ -5,8 +5,16 @@ export const useForm = (props: FormProps, emit: SetupContext<FormEmits>['emit'])
   const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
     name: 'form'
   })), {_class} = useCss(classVal, _ref)
+  function submit() {
+
+  }
+  function reset() {
+
+  }
   return {
     _ref,
-    _class
+    _class,
+    submit,
+    reset
   }
 }
