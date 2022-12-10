@@ -435,6 +435,36 @@ button {
   margin-left: var(--width-margin);
 }
 
+@media (any-hover: hover) {
+  .z-icon:hover {
+    color: var(--color-primary);
+    background-color: var(--color-white);
+    border-color: var(--color-primary);
+  }
+}
+.z-icon[disabled] {
+  cursor: not-allowed;
+  user-select: none;
+  background-color: var(--color-white-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-text-disabled);
+}
+
+@media (any-hover: hover) {
+  .z-form:hover {
+    color: var(--color-primary);
+    background-color: var(--color-white);
+    border-color: var(--color-primary);
+  }
+}
+.z-form[disabled] {
+  cursor: not-allowed;
+  user-select: none;
+  background-color: var(--color-white-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-text-disabled);
+}
+
 .z-circle {
   border-radius: 50%;
 }
