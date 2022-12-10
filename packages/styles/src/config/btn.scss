@@ -3,7 +3,7 @@
 $attr:('disabled');
 $media: ('hover');
 $state: ();
-$btnMod: map.merge((
+$btnMod: (
   mod: $css-state--text,
   'ghost': (
     def: (
@@ -24,7 +24,7 @@ $btnMod: map.merge((
     'state': setState($state, 'def', 'text'),
     'media': setMedia($media, 'def', 'text')
   )
-),$radius);
+);
 $btn: (
   'mod': map.merge($css-state, $btnMod),
   'attr': setAttr($attr),

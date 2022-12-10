@@ -14,7 +14,7 @@ function getMax(a: number, b: number) {
   return a > b ? a : b
 }
 export default (props:any, obj: ObjStr, classVal: ObjTrue, styleVal: any, el: Ref<any>) => {
-  watch(() => props.radius, (v, o) => {
+  watch(() => props.value?.radius, (v, o) => {
     if (o) {
       classVal[obj.radius] = false
       if (o === 'circle') {

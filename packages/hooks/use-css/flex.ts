@@ -1,5 +1,5 @@
 import { ComponentColAlignT, ComponentSelfAlignT, ObjStr, ComponentRowAlignT, ObjTrue, PKG_PREFIX } from "@ui/vars"
-import { watch } from "vue"
+import { ComputedRef, watch } from "vue"
 export interface flexProp {
   row?: ComponentRowAlignT
   col?: ComponentColAlignT
@@ -9,8 +9,8 @@ export interface flexProp {
 export const setCss = (name: string) => {
   return name ? (PKG_PREFIX + '-' + name) : ''
 }
-export const useSingle = (props:any, obj: ObjStr, classVal: ObjTrue, key:string) => {
-  watch(() => props[key], (v, o) => {
+export const useSingle = (props:ComputedRef<any>, obj: ObjStr, classVal: ObjTrue, key:string) => {
+  watch(() => props.value?.[key], (v, o) => {
     if (o) {
       classVal[obj[key]] = false
     }
@@ -21,7 +21,7 @@ export const useSingle = (props:any, obj: ObjStr, classVal: ObjTrue, key:string)
   }, {immediate: true})
 }
 
-export const useFlexCss = (props:any, obj: ObjStr, classVal: ObjTrue) => {
+export const useFlexCss = (props:ComputedRef<any>, obj: ObjStr, classVal: ObjTrue) => {
   ['flex', 'rowAlign', 'colAlign', 'self'].forEach(key => {
     useSingle(props, obj, classVal, key)
   })

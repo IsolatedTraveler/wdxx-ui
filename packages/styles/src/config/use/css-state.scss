@@ -15,7 +15,14 @@ $color-state: (
   'white': var(--color-white),
   'transparent': var(--color-transparent),
   'color': var(--color-text),
-  'border': var(--color-border)
+  'border': var(--color-border),
+  ghost: (
+    'primary': var(--color-primary-ghost),
+    'warning': var(--color-warning-ghost),
+    'danger': var(--color-danger-ghost),
+    'info': var(--color-info-ghost),
+    'success': var(--color-success-ghost)
+  )
 );
 @each $key in $css-state-keys {
   @if $key != 'def' {
@@ -31,7 +38,7 @@ $color-state: (
     ));
     $css-state--re: map.set($css-state--re, $key, (
       def: (
-        'background-color': map.get($color-state, 'white'),
+        'background-color': map.get($color-state, 'ghost', $key),
         'color': map.get($color-state, $key)
       ),
       attr: setAttr($attr-keys, $key, 're'),

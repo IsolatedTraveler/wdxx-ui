@@ -1,6 +1,6 @@
 import { computed, nextTick, ref } from "vue"
 
-export const useClickDisabled = (props?: any, emit?: any) => {
+export const useHtmlDisabled = (props?: any, emit?: any) => {
   const disabled = ref(false)
   const _disabled = computed(() => props?.disabled || disabled.value)
   const _handleClick = (evt: MouseEvent) => {

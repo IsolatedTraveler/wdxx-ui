@@ -12,35 +12,35 @@
   --color-primary-disabled: #a0cfff;
   --color-primary5: #c6e2ff;
   --color-primary6: #d9ecff;
-  --color-primary7: #ecf5ff;
+  --color-primary-ghost: #ecf5ff;
   --color-success: #67C23A;
   --color-success2: #529b2e;
   --color-success-hover: #95d475;
   --color-success-disabled: #b3e19d;
   --color-success5: #d1edc4;
   --color-success6: #e1f3d8;
-  --color-success7: #f0f9eb;
+  --color-success-ghost: #f0f9eb;
   --color-warning: #E6A23C;
   --color-warning2: #b88230;
   --color-warning-hover: #eebe77;
   --color-warning-disabled: #f3d19e;
   --color-warning5: #f8e3c5;
   --color-warning6: #faecd8;
-  --color-warning7: #fdf6ec;
+  --color-warning-ghost: #fdf6ec;
   --color-danger: #F56C6C;
   --color-danger2: #c45656;
   --color-danger-hover: #f89898;
   --color-danger-disabled: #fab6b6;
   --color-danger5: #fcd3d3;
   --color-danger6: #fde2e2;
-  --color-danger7: #fef0f0;
+  --color-danger-ghost: #fef0f0;
   --color-info: #909399;
   --color-info2: #73767a;
   --color-info-hover: #b1b3b8;
   --color-info-disabled: #c8c9cc;
   --color-info5: #dedfe0;
   --color-info6: #e9e9eb;
-  --color-info7: #f4f4f5;
+  --color-info-ghost: #f4f4f5;
   --color-text: #303133;
   --color-text2: #606266;
   --color-text-hover: #909399;
@@ -76,6 +76,25 @@
   --width-pd-lg: .12rem .19rem;
 }
 
+.z-btn-group.z-group-tight .z-btn, .z-btn-group.z-group-auto .z-btn {
+  margin: 0;
+}
+.z-btn-group.z-group-tight .z-btn:first-child, .z-btn-group.z-group-auto .z-btn:first-child {
+  border-bottom-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+.z-btn-group.z-group-tight .z-btn:last-child, .z-btn-group.z-group-auto .z-btn:last-child {
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+.z-btn-group.z-group-tight .z-btn:not(:first-child):not(:last-child), .z-btn-group.z-group-auto .z-btn:not(:first-child):not(:last-child) {
+  border-radius: 0 !important;
+}
+
+.z-btn-group.z-group-auto .z-btn {
+  flex: 1 1 auto;
+}
+
 html {
   font-size: 100px;
 }
@@ -87,6 +106,26 @@ body {
 button {
   margin: 0;
   user-select: none;
+}
+
+.z-col, .z-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  box-sizing: border-box;
+  position: relative;
+}
+.z-wrap.z-col, .z-wrap.z-row {
+  flex-wrap: wrap;
+}
+
+.z-row {
+  flex-flow: row nowrap;
+}
+
+.z-col {
+  flex-flow: column nowrap;
 }
 
 .z-btn.z-primary {
@@ -178,7 +217,7 @@ button {
   background-color: var(--color-white);
 }
 .z-btn.z-ghost.z-primary {
-  background-color: var(--color-white);
+  background-color: var(--color-primary-ghost);
   color: var(--color-primary);
 }
 @media (any-hover: hover) {
@@ -194,7 +233,7 @@ button {
   color: var(--color-primary-disabled);
 }
 .z-btn.z-ghost.z-warning {
-  background-color: var(--color-white);
+  background-color: var(--color-warning-ghost);
   color: var(--color-warning);
 }
 @media (any-hover: hover) {
@@ -210,7 +249,7 @@ button {
   color: var(--color-warning-disabled);
 }
 .z-btn.z-ghost.z-danger {
-  background-color: var(--color-white);
+  background-color: var(--color-danger-ghost);
   color: var(--color-danger);
 }
 @media (any-hover: hover) {
@@ -226,7 +265,7 @@ button {
   color: var(--color-danger-disabled);
 }
 .z-btn.z-ghost.z-info {
-  background-color: var(--color-white);
+  background-color: var(--color-info-ghost);
   color: var(--color-info);
 }
 @media (any-hover: hover) {
@@ -242,7 +281,7 @@ button {
   color: var(--color-info-disabled);
 }
 .z-btn.z-ghost.z-success {
-  background-color: var(--color-white);
+  background-color: var(--color-success-ghost);
   color: var(--color-success);
 }
 @media (any-hover: hover) {
@@ -358,15 +397,6 @@ button {
   border-color: var(--color-transparent);
   color: var(--color-text-disabled);
 }
-.z-btn.z-circle {
-  border-radius: 50%;
-}
-.z-btn.z-ellipse {
-  border-radius: 50%;
-}
-.z-btn.z-round {
-  border-radius: 100wh;
-}
 @media (any-hover: hover) {
   .z-btn:hover {
     color: var(--color-primary);
@@ -403,6 +433,18 @@ button {
 }
 .z-btn + .z-btn {
   margin-left: var(--width-margin);
+}
+
+.z-circle {
+  border-radius: 50%;
+}
+
+.z-ellipse {
+  border-radius: 50%;
+}
+
+.z-round {
+  border-radius: 100vw;
 }
 
 .z-sm {

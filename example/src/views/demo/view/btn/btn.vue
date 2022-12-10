@@ -87,17 +87,28 @@
     </z-btn-group>
     <z-btn-group shape="tight">
       <z-btn size="lg" state="success">success</z-btn>
-      <z-btn shape="ghost" size="lg" state="warning">warning</z-btn>
+      <z-btn size="lg" state="warning">warning</z-btn>
+      <z-btn shape="ghost" size="lg" state="danger">danger</z-btn>
     </z-btn-group>
     <z-btn-group shape="auto">
       <z-btn size="lg" state="success">success</z-btn>
-      <z-btn shape="ghost" size="lg" state="warning">warning</z-btn>
+      <z-btn :shape="shape" size="md" state="warning">warning</z-btn>
     </z-btn-group>
   </div>
 </template>
 <script lang="ts">
 export default {
-  name: 'demo-btn'
+  name: 'demo-btn',
+  data() {
+    return {
+      shape: ''
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.shape='ghost'
+    }, 3000);
+  }
 }
 </script>
 <style lang="scss">

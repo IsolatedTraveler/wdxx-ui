@@ -1,0 +1,19 @@
+$group: ('tight','auto');
+%group-tight{
+  margin: 0;
+  &:first-child{
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+  }
+  &:last-child{
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+  }
+  &:not(:first-child):not(:last-child){
+    border-radius: 0 !important;
+  }
+}
+%group-auto{
+  @extend %group-tight;
+  flex: 1 1 auto;
+}

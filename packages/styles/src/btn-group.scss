@@ -1,0 +1,12 @@
+@use 'sass:map';
+@use './mixins/index.scss' as *;
+@use './config/index.scss' as *;
+@include create(btn-group) {
+  @each $key in $group {
+    @include create('group-' + $key) {
+      @include create1('btn') {
+        @extend %group-#{$key}
+      }
+    }
+  }
+}

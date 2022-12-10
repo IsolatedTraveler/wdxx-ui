@@ -1,17 +1,18 @@
 const g = {
   btn: true,
   'bth-group': true,
+  round: true,
+  circle: true,
+  ellipse: true,
   sm: true,
   md: true,
   lg: true,
+  row: true,
   primary: false,
   success: false,
   warning: false,
   danger: false,
-  info: false,
-  round: false,
-  circle: false,
-  ellipse: false
+  info: false
 }
 const t = {
   ghost: true,
