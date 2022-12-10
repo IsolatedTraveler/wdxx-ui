@@ -90,7 +90,7 @@ export const componentIndex = (key: string, group: Array<string> = []) => {
 export const componentUse = (key: string) => {
   const name = getName(key.split('-'))
   return `import { useCss } from "@ui/hooks"
-import { ref, SetupContext } from "vue"
+import { ref, SetupContext, computed } from "vue"
 import { ${name}Emits, ${name}Props } from "./${key}"
 export const use${name} = (props: ${name}Props, emit: SetupContext<${name}Emits>['emit']) => {
   const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({

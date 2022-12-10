@@ -1,6 +1,7 @@
 @use 'sass:map';
 @use './mixins/index.scss' as *;
 @use './config/index.scss' as *;
+@use './mod/btn.scss' as *;
 @include styles(btn, $btn, $attr, $state, $media);
 @include create(btn) {
   white-space: nowrap;

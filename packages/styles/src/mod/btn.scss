@@ -1,0 +1,33 @@
+@use 'sass:map';
+@use '../config/index.scss' as *;
+$attr:('disabled');
+$media: ('hover');
+$state: ();
+$btnMod: (
+  mod: $css-state--text,
+  'ghost': (
+    def: (
+      'background-color': var(--color-white)
+    ),
+    mod: $css-state--re,
+    'attr': setAttr($attr, false, 're'),
+    'state': setState($state, false, 're'),
+    'media': setMedia($media, false, 're')
+  ),
+  'text': (
+    'def': (
+      'background-color': var(--color-transparent),
+      'border-color': var(--color-transparent)
+    ),
+    mod: $css-state--text,
+    'attr': setAttr($attr, 'def', 'text'),
+    'state': setState($state, 'def', 'text'),
+    'media': setMedia($media, 'def', 'text')
+  )
+);
+$btn: (
+  'mod': map.merge($css-state, $btnMod),
+  'attr': setAttr($attr),
+  'state': setState($state),
+  'media': setMedia($media)
+) !default;

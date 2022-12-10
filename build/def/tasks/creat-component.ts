@@ -25,7 +25,8 @@ function createCom(arr: Array<filesObj>) {
     }
     arr.push(write(resolve(styleUrl, 'index.ts'), `import '@ui/styles/src/base.scss'\nimport '@ui/styles/src/${key}.scss'\nimport '@ui/styles/src/end.scss'`))
     arr.push(write(resolve(styleUrl, 'css.ts'), `import '@ui/styles/base.css'\nimport '@ui/styles/${key}.css'\nimport '@ui/styles/end.css'`))
-    arr.push(write(resolve(stylesRoot, 'src/' + key + '.scss'), ''))
+    arr.push(write(resolve(stylesRoot, 'src/' + key + '.scss'), `@use 'sass:map';\n@use './mixins/index.scss' as *;\n@use './config/index.scss' as *;\n@use './mod/${key}.scss' as *;\n@include styles(${key}, $${key}, $attr, $state, $media);\n@include create(${key}) {\n\n}`))
+    arr.push(write(resolve(stylesRoot, 'src/mod/' + key + '.scss'), `@use 'sass:map';\n@use '../config/index.scss' as *;\n$attr:('disabled');\n$media: ('hover');\n$state: ();\n$${key}: (\n  'mod': (),\n  'attr': setAttr($attr),\n  'state': setState($state),\n  'media': setMedia($media)\n) !default;`))
     return Promise.all(arr)
   })).then(() => {
     const keys = Object.keys(comObj)
