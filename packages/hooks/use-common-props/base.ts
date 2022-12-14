@@ -1,5 +1,5 @@
 import {ComponentFlex, ComponentSize, ComponentState, ComponentRowAlign, ComponentRadius, Rule, ComponentColAlign, ComponentSelfAlign} from '@ui/vars'
-import {buildProp, isArray, isCssLength, isPositiveInteger, isRule} from '@ui/utils'
+import {buildProp, isArray, isCssLength, isNumber, isPositiveInteger, isRule} from '@ui/utils'
 export const useSizeProp = buildProp({
   key: 'size',
   type: String,
@@ -57,3 +57,8 @@ export const useRuleProp = buildProp({
     }
   }
 })
+export const useNumberBuildProp = (key: string, def?: number) => buildProp({key, type: [String, Number], default: def, validator(v: string | number) {
+  if (!isNumber(v)) {
+    return 'number'
+  }
+}})
