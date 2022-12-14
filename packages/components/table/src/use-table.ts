@@ -1,9 +1,9 @@
 import { useCss } from "@ui/hooks"
 import { ref, SetupContext, computed } from "vue"
-import { FormEmits, FormProps } from "./form"
-export const useForm = (props: FormProps, emit: SetupContext<FormEmits>['emit']) => {
+import { TableEmits, TableProps } from "./table"
+export const useTable = (_props: TableProps, _emit: SetupContext<TableEmits>['emit']) => {
   const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
-    name: 'form'
+    name: 'table'
   })), {_class} = useCss(classVal, _ref)
   return {
     _ref,

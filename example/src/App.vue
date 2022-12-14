@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import jBtn from './views/demo/view/btn/btn.vue'
+import jBtn from './views/demo/view/table.vue'
 </script>
 
 <template>

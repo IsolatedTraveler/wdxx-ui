@@ -1,14 +1,6 @@
-import { useColAlginProp, useFlexProp, useNumberBuildProp, useRowAlginProp, useSizeProp } from "@ui/hooks";
 import { ExtractPropTypes, PropType } from "vue";
 export const formProps = {
-  disabled: Boolean as PropType<boolean>,
-  modelValue: Object as Record<string, any>,
-  flex: {...useFlexProp, default: 'row'},
-  rowAlign: {...useRowAlginProp, default: 'start'},
-  colAlign: {...useColAlginProp, default: 'center'},
-  labelWorld: useNumberBuildProp('label-world', 4),
-  rules: '',
-  size: useSizeProp
+  disabled: Boolean as PropType<boolean>
 }
 export const formEmits = {
 }

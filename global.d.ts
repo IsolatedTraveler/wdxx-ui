@@ -4,6 +4,9 @@ declare module "@vue/runtime-core" {
     ZBtnGroup: typeof import("z-uis")["ZBtnGroup"];
     ZIcon: typeof import("z-uis")["ZIcon"];
     ZForm: typeof import("z-uis")["ZForm"];
+    ZTable: typeof import("z-uis")["ZTable"];
+    ZTh: typeof import("z-uis")["ZTh"];
+    ZPage: typeof import("z-uis")["ZPage"];
   }
   interface ComponentCustomProperties {
     

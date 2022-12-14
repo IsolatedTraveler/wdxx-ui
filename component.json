@@ -1,5 +1,7 @@
 [
   ["btn", ["btn-group"]],
   ["icon"],
-  ["form"]
+  ["form"],
+  ["table", ["th"]],
+  ["page"]
 ]
