@@ -1,16 +1,15 @@
 <template>
-  <div ref="_ref" :class="_class"></div>
+  <slot>
+    <col :style="style"/>
+  </slot>
 </template>
-<script lang="ts" setup>
-import { thEmits, thProps } from './th'
-import { useTh } from './use-th'
-defineOptions({
-  name: 'z-th'
-})
-const props = defineProps(thProps)
-const emit = defineEmits(thEmits)
-const {_ref, _class} = useTh(props, emit)
-defineExpose({
-  ref: _ref
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { thProps } from './th'
+import { useTh as setup } from './use-th'
+export default defineComponent({
+  name: 'z-th',
+  props: thProps,
+  setup
 })
 </script>

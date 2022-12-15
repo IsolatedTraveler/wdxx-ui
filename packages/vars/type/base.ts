@@ -4,3 +4,6 @@ export interface ObjStr {
 export interface ObjTrue {
   [index: number | string]: boolean
 }
+export interface ObjAny {
+  [index: number | string]: any
+}

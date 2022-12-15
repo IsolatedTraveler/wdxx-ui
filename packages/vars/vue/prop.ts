@@ -3,6 +3,7 @@ export const ComponentRadius = ['', 'circle', 'round', 'ellipse', 'none']
 export const ComponentRule = ['', 'required']
 export const ComponentSize = ['', 'sm', 'md', 'lg']
 export const ComponentState = ['', 'primary', 'success', 'warning', 'danger', 'info']
+export const ComponentAlign = ['', 'left', 'center', 'right']
 // flex
 export const ComponentRowAlign = ['', 'evenly', 'start', 'end', 'center', 'around', 'between', 'stretch']
 export const ComponentColAlign = ['', 'start', 'end', 'center', 'around', 'between', 'stretch']
