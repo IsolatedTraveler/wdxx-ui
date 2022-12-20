@@ -5,6 +5,9 @@ export interface ThCol {
   show: Boolean
   style: ObjAny
   posStyle: ObjAny
+  selfStyle: ObjAny
+  class: any
+  type: string | undefined
 }
 export interface TdObj extends ThCol {
   body: any

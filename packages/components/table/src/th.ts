@@ -12,6 +12,7 @@ export const thProps = {
   align: useAlginBuildProp(),
   tdAlign: useAlginBuildProp('td-align'),
   thAlign: useAlginBuildProp('th-align'),
-  fixed: useFixedProp
+  fixed: useFixedProp,
+  type: String as PropType<string>
 }
 export type ThProps = ExtractPropTypes<typeof thProps>

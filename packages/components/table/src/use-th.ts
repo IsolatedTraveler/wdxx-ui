@@ -3,18 +3,26 @@ import { ref, SetupContext, computed, Ref, watch, onMounted, onUnmounted, Slots,
 import { ObjAny, TdObj, ThCol, ThObj } from "@ui/vars"
 import { uuid } from "@ui/utils"
 import { getStylePx, useInjectTh, useProvideTh } from "@ui/hooks"
-declare type ThTd = 'thAlign' | 'tdAlign'
-function intThTd(props: ThProps, id: string, posStyle: Ref<ObjAny>, name:ThTd = 'thAlign'): ThCol {
+declare type ThTd = 'th' | 'td'
+declare type ThTdAlign = 'thAlign' | 'tdAlign'
+declare type ThTdClass = 'thClass' | 'tdClass'
+function intThTd(props: ThProps, id: string, posStyle: Ref<ObjAny>, name:ThTd = 'th'): ThCol {
+  const textAlign = props[name + 'Align' as ThTdAlign] || props.align
   return {
     id,
     style: {
       minWidth: props.minWidth,
       maxWidth: props.maxWidth,
       width: props.width,
-      textAlign: props[name] || props.align
+      textAlign
     },
     show: true,
-    posStyle: posStyle.value
+    posStyle: posStyle.value,
+    selfStyle: {
+      textAlign
+    },
+    class: props[name + 'Class' as ThTdClass] || props.class,
+    type: props.type
   }
 }
 function initTh(props: ThProps, id: string, colspan: Ref<number>, rowspan: ComputedRef<number>, cPosStyle: Ref<ObjAny>, style: Ref<ObjAny>, reload: Ref<boolean> | undefined, fixed: Ref<string>): ComputedRef<ThObj> {
@@ -33,7 +41,7 @@ function initTh(props: ThProps, id: string, colspan: Ref<number>, rowspan: Compu
 function initTd(props: ThProps, id: string, slots: Slots, cPosStyle: Ref<ObjAny>): ComputedRef<TdObj> {
   return computed(() => {
     return {
-      ...intThTd(props, id, cPosStyle, 'tdAlign'),
+      ...intThTd(props, id, cPosStyle, 'td'),
       name: props.name,
       body: slots.body
     }
@@ -52,16 +60,19 @@ function initStyle(props: ThProps, id: string, style: Ref<ObjAny>, cPosStyle: Re
 function setStyle(posStyleV: ObjAny, style: ObjAny, props: ThProps, el: HTMLElement, thead: HTMLElement, reload: Ref<boolean>, fixed: Ref<string>) {
   nextTick(() => {
     if (props.width || props.maxWidth || fixed.value) {
-      style.width = getStylePx(el.offsetWidth)
+      posStyleV.width = style.width = getStylePx(el.offsetWidth + 1)
       if (fixed.value) {
         posStyleV.position = 'sticky'
         posStyleV.zIndex = '1'
         const table = thead.parentElement
-        if (fixed.value == 'left') {
-          posStyleV.left = getStylePx(el.offsetLeft - (table as HTMLElement).offsetLeft)
-        } else {
-          posStyleV.right = getStylePx((table as HTMLElement).offsetWidth - el.offsetLeft - el.offsetWidth)
-        }
+        nextTick(() => {
+          if (fixed.value == 'left') {
+            posStyleV.left = getStylePx(el.offsetLeft - (table as HTMLElement).offsetLeft)
+          } else {
+            posStyleV.right = getStylePx((table as HTMLElement).offsetWidth - el.offsetLeft - el.offsetWidth)
+          }
+          reload.value = !reload.value
+        })
       }
     }
     reload.value = !reload.value

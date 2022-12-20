@@ -16,6 +16,9 @@
     "vite-plugin-mkcert": "^1.10.1"
   },
   "dependencies": {
+    "element-plus": "^2.2.27",
+    "vite": "^4.0.2",
+    "vue": "^3.2.13",
     "vue-router": "^4.1.6"
   }
 }
