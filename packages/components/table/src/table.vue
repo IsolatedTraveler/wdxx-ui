@@ -4,7 +4,7 @@
     <div :class="_main_class">
       <!-- 获取table当前高度 -->
       <div :class="_body_class">
-        <table>
+        <table cellpadding="0" cellspacing="0">
           <colgroup>
             <slot></slot>
           </colgroup>
@@ -22,10 +22,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr v-for="(tr, i) in (props.data || [])" :key="props.rowKey ? tr[props.rowKey] : i">
               <td v-for="col in cols" :key="col.value.id" v-show="col.value.show"
                 :style="(col.value.posStyle)">
-                {{ col.value.name }}
+                {{ tr[col.value.name as string] }}
               </td>
             </tr>
           </tbody>

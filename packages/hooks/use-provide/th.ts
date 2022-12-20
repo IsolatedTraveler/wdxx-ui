@@ -1,16 +1,18 @@
-import { provide, InjectionKey, inject, ref, WatchCallback, Slots, warn, ComputedRef, computed } from "vue"
+import { provide, InjectionKey, inject, ref, WatchCallback, Slots, warn, ComputedRef, computed, Ref } from "vue"
 import { ObjAny } from "@ui/vars"
 import { ProvideTableId, provideTableId } from "./table"
 import { ThProps } from "@ui/components/table/src/th"
+declare type Fixed = 'left' | 'right' | ''
 export interface ProvideThId {
   current_row: number
   addTh: Function
   removeTh: Function
   changeColspan: WatchCallback
   changeChildRow: WatchCallback
+  fixed: Ref<Fixed>
 }
 export const provideThId:InjectionKey<ProvideThId> = Symbol('th')
-export const useProvideTh = (current_row: number, slots: Slots, rows: ComputedRef<number>, props: ObjAny) => {
+export const useProvideTh = (current_row: number, slots: Slots, rows: ComputedRef<number>, props: ObjAny, fixed: Ref<Fixed>) => {
   const colspan = ref(0), child_row = ref(0), rowspan = computed(() => rows.value - current_row - child_row.value)
   provide(provideThId, {
     current_row,
@@ -30,7 +32,8 @@ export const useProvideTh = (current_row: number, slots: Slots, rows: ComputedRe
     },
     changeChildRow(a:number, b:number) {
       child_row.value += a - b
-    }
+    },
+    fixed
   })
   return {
     colspan,
@@ -39,7 +42,7 @@ export const useProvideTh = (current_row: number, slots: Slots, rows: ComputedRe
   }
 }
 export const useInjectTh = (props: ThProps) => {
-  const {current_row, addTh, removeTh, changeColspan, changeChildRow} = inject(provideThId, {current_row: -1} as ProvideThId)
+  const {current_row, addTh, removeTh, changeColspan, changeChildRow, fixed} = inject(provideThId, {current_row: -1} as ProvideThId)
   try {
     const {addThs, removeThs, addTds, removeTds , rows, reload} = inject(provideTableId, {} as ProvideTableId)
     return {
@@ -53,12 +56,14 @@ export const useInjectTh = (props: ThProps) => {
       addTds,
       removeTds,
       rows,
-      reload
+      reload,
+      fixed: computed(() => fixed ? fixed.value : props.fixed)
     }
   } catch (e) {
     warn(`Module Th<${props.label || props.name}> can only be used as a sub module of module Table`)
   }
   return {
-    rows: computed(() => 0)
+    rows: computed(() => 0),
+    fixed: computed(() => fixed ? fixed.value : props.fixed)
   }
 }

@@ -9,10 +9,10 @@ export interface ThCol {
 export interface TdObj extends ThCol {
   body: any
   name: string | undefined
-  initStyle: (tr: HTMLElement) => void
 }
 export interface ThObj extends ThCol {
   colspan: number
   rowspan: number
   label: string | number | undefined
+  initStyle: (tr: HTMLElement) => void
 }

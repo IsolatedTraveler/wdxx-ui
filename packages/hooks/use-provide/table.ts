@@ -52,12 +52,11 @@ function setThTd(tr: Array<any>, v: Ref<ThObj | TdObj>, cid: string, trs?: any, 
     tr.unshift(v)
   }
 }
-export function initTableStyle(colsV: Array<Ref<TdObj>>, tbody: HTMLElement | undefined) {
+export function initTableStyle(ths: Array<Array<Ref<ThObj>>>, tbody: HTMLElement | undefined) {
   if (tbody) {
-    colsV.forEach(({value: {initStyle}}, i) => {
-      initStyle?.(tbody)
-      nextTick(() => {
-        console.log(colsV[i].value.posStyle)
+    ths.forEach(tr => {
+      tr.forEach(({value: {initStyle}}, i) => {
+        initStyle?.(tbody)
       })
     })
   }
@@ -69,7 +68,7 @@ export const useProvideTable = (tbody: Ref<HTMLElement | undefined>) => {
   onMounted(() => {
     judge = true
     nextTick(() => {
-      initTableStyle(cols.value, tbody.value)
+      initTableStyle(thsV, tbody.value)
     })
   })
   provide(provideTableId, {
@@ -86,7 +85,7 @@ export const useProvideTable = (tbody: Ref<HTMLElement | undefined>) => {
       const colsV = cols.value
       if (judge) {
         setThTd(colsV, td, cid)
-        initTableStyle(cols.value, tbody.value)
+        initTableStyle(thsV, tbody.value)
       } else {
         colsV.push(td)
       }
