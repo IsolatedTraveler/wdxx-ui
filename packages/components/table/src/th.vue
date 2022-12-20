@@ -1,6 +1,6 @@
 <template>
   <slot>
-    <col :style="style"/>
+    <col ref="el" :style="style" :name="name" :data-id="id"/>
   </slot>
 </template>
 <script lang="ts">

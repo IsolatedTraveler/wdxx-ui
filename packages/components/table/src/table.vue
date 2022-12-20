@@ -51,8 +51,3 @@ defineExpose({
   ref: _ref
 })
 </script>
-<style lang="scss">
-  th,td{
-    border: 1px solid #dcdcdc;
-  }
-</style>
