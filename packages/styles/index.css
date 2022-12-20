@@ -466,21 +466,6 @@ button {
 }
 
 @media (any-hover: hover) {
-  .z-table:hover {
-    color: var(--color-primary);
-    background-color: var(--color-white);
-    border-color: var(--color-primary);
-  }
-}
-.z-table[disabled] {
-  cursor: not-allowed;
-  user-select: none;
-  background-color: var(--color-white-disabled);
-  border-color: var(--color-border-disabled);
-  color: var(--color-text-disabled);
-}
-
-@media (any-hover: hover) {
   .z-th:hover {
     color: var(--color-primary);
     background-color: var(--color-white);
