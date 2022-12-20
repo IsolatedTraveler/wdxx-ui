@@ -8,6 +8,7 @@ export interface ThCol {
   selfStyle: ObjAny
   class: any
   type: string | undefined
+  selfClass?: ObjAny
 }
 export interface TdObj extends ThCol {
   body: any
@@ -17,5 +18,6 @@ export interface ThObj extends ThCol {
   colspan: number
   rowspan: number
   label: string | number | undefined
-  initStyle: (tr: HTMLElement) => void
+  initStyle: (tr: HTMLElement) => void,
+  thStyle: ObjAny
 }

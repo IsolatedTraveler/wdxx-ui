@@ -2,46 +2,48 @@ import { ThProps } from "./th"
 import { ref, SetupContext, computed, Ref, watch, onMounted, onUnmounted, Slots, ComputedRef, nextTick } from "vue"
 import { ObjAny, TdObj, ThCol, ThObj } from "@ui/vars"
 import { uuid } from "@ui/utils"
-import { getStylePx, useInjectTh, useProvideTh } from "@ui/hooks"
+import { getStylePx, useInjectTh, useProvideTh, setCss } from "@ui/hooks"
 declare type ThTd = 'th' | 'td'
 declare type ThTdAlign = 'thAlign' | 'tdAlign'
 declare type ThTdClass = 'thClass' | 'tdClass'
-function intThTd(props: ThProps, id: string, posStyle: Ref<ObjAny>, name:ThTd = 'th'): ThCol {
+function intThTd(props: ThProps, id: string, posStyle: Ref<ObjAny>, selfClass: Ref<ObjAny>, name:ThTd = 'th'): ThCol {
   const textAlign = props[name + 'Align' as ThTdAlign] || props.align
   return {
     id,
+    show: true,
+    type: props.type,
     style: {
       minWidth: props.minWidth,
       maxWidth: props.maxWidth,
       width: props.width,
       textAlign
     },
-    show: true,
     posStyle: posStyle.value,
     selfStyle: {
       textAlign
     },
     class: props[name + 'Class' as ThTdClass] || props.class,
-    type: props.type
+    selfClass: selfClass.value
   }
 }
-function initTh(props: ThProps, id: string, colspan: Ref<number>, rowspan: ComputedRef<number>, cPosStyle: Ref<ObjAny>, style: Ref<ObjAny>, reload: Ref<boolean> | undefined, fixed: Ref<string>): ComputedRef<ThObj> {
+function initTh(props: ThProps, id: string, colspan: Ref<number>, rowspan: ComputedRef<number>, cPosStyle: Ref<ObjAny>, style: Ref<ObjAny>, reload: Ref<boolean> | undefined, fixed: Ref<string>, selfClass: Ref<ObjAny>): ComputedRef<ThObj> {
   return computed(() => {
     return {
-      ...intThTd(props, id, cPosStyle),
+      ...intThTd(props, id, cPosStyle, selfClass),
       label: props.label,
       colspan: colspan.value,
       rowspan: rowspan.value,
       initStyle(thead) {
         initStyle(props, id, style, cPosStyle, thead, reload, fixed)
-      }
+      },
+      thStyle: {}
     }
   })
 }
-function initTd(props: ThProps, id: string, slots: Slots, cPosStyle: Ref<ObjAny>): ComputedRef<TdObj> {
+function initTd(props: ThProps, id: string, slots: Slots, cPosStyle: Ref<ObjAny>, selfClass: Ref<ObjAny>): ComputedRef<TdObj> {
   return computed(() => {
     return {
-      ...intThTd(props, id, cPosStyle, 'td'),
+      ...intThTd(props, id, cPosStyle, selfClass, 'td'),
       name: props.name,
       body: slots.body
     }
@@ -62,8 +64,6 @@ function setStyle(posStyleV: ObjAny, style: ObjAny, props: ThProps, el: HTMLElem
     if (props.width || props.maxWidth || fixed.value) {
       posStyleV.width = style.width = getStylePx(el.offsetWidth + 1)
       if (fixed.value) {
-        posStyleV.position = 'sticky'
-        posStyleV.zIndex = '1'
         const table = thead.parentElement
         nextTick(() => {
           if (fixed.value == 'left') {
@@ -82,16 +82,28 @@ function getPreId(el: Ref<HTMLButtonElement | undefined>) {
   return (el?.value?.previousElementSibling as HTMLElement)?.dataset?.id || ''
 }
 export const useTh = (props: ThProps, {slots}: SetupContext) => {
+  let td: Ref<TdObj> | undefined
   const id = uuid(), el = ref<HTMLButtonElement>(), style = ref({}), posStyle = ref({}),
   {current_row, addTh, removeTh, changeColspan, changeChildRow, addTds, addThs, rows, reload, fixed} = useInjectTh(props),
   {colspan, child_row, rowspan} = useProvideTh(current_row || 0, slots, rows, props, fixed),
-  th = initTh(props, id, colspan, rowspan, posStyle, style, reload, fixed)
-  let td: Ref<TdObj> | undefined
+  selfClass = computed(() => {
+    let def = setCss('pos-def')
+    if (fixed.value) {
+      def = setCss('pos-sticky')
+      def += ' ' + def + '-' + fixed.value
+    }
+    return {
+      [def]: true,
+      [setCss('child')]: !!addTh,
+      [setCss('last')]: !!td?.value
+    }
+  }),
+  th = initTh(props, id, colspan, rowspan, posStyle, style, reload, fixed, selfClass)
   function addTd(judge: boolean | null) {
     if (child_row.value < 1) {
       if (judge !== false) {
         if (!td) {
-          td = initTd(props, id, slots, posStyle)
+          td = initTd(props, id, slots, posStyle, selfClass)
           addTds?.(td, getPreId(el))
         }
         if (judge === null) {

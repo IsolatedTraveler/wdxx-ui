@@ -3,47 +3,62 @@
     <!-- 获取最大固定高度 -->
     <div :class="_main_class">
       <!-- 获取table当前高度 -->
-      <div :class="_body_class">
-        <table cellpadding="0" cellspacing="0">
-          <colgroup>
-            <slot></slot>
-          </colgroup>
-          <thead ref="_el_thead">
-            <tr v-for="(tr, i) in ths" :key="i">
-              <th v-for="th in tr" :key="th.value.id" v-show="th.value.show" :id="th.value.id"
-                :class="(th.value.class)"
-                :style="{...th.value.posStyle, ...th.value.selfStyle}"
-                :colspan="(th.value.colspan) || 1"
-                :rowspan="(th.value.rowspan) || 1"
-                 >
-                 <td-slot v-if="th.value.type" :type="th.value.type" :checked="checkedAll" @update:checked="checkAll"></td-slot>
-                 <span v-else :style="th.value.style">
-                  {{th.value.label}}
-                 </span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(tr, i) in (props.data || [])" :key="props.rowKey ? tr[props.rowKey] : i"
-              :class="props.rowCallback?.(tr)">
-              <td v-for="col in cols" :key="col.value.id" v-show="col.value.show" 
-                :class="col.value.class"
-                :style="{...col.value.posStyle, ...col.value.selfStyle}">
-                <td-slot v-if="col.value.body || col.value.type"
-                  :style="col.value.style"
-                  :data="tr"
-                  v-model:checked="checkData[tr[props.rowKey as string]]"
-                  :type="col.value.type"
-                  :body="col.value.body"/>
-                <span v-else :style="col.value.style">
-                  {{ tr[col.value.name as string] }}
+      <table cellpadding="0" cellspacing="0">
+        <colgroup>
+          <col style="width: 0;"/>
+          <slot></slot>
+        </colgroup>
+        <thead ref="_el_thead">
+          <tr v-for="(tr, i) in ths" :key="i">
+            <th class="z-pos-sticky z-pos-sticky-left" style="left: 0"></th>
+            <th v-for="th in tr" :key="th.value.id" v-show="th.value.show" :id="th.value.id"
+              :class="[th.value.class, th.value.selfClass]"
+              :style="{...th.value.posStyle, ...th.value.selfStyle}"
+              :colspan="(th.value.colspan) || 1"
+              :rowspan="(th.value.rowspan) || 1"
+                >
+                <td-slot v-if="th.value.type" :type="th.value.type" :checked="checkedAll" @update:checked="checkAll"></td-slot>
+                <span v-else :style="th.value.style">
+                {{th.value.label}}
                 </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div></div>
-      </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-if="props.data && props.data.length" v-for="(tr, i) in (props.data || [])" :key="props.rowKey ? tr[props.rowKey] : i"
+            :class="props.rowCallback?.(tr)">
+            <td class="z-pos-sticky z-pos-sticky-left" style="left: 0"></td>
+            <td v-for="col in cols" :key="col.value.id" v-show="col.value.show" 
+              :class="[col.value.class, col.value.selfClass]"
+              :style="{...col.value.posStyle, ...col.value.selfStyle}">
+              <td-slot v-if="col.value.body || col.value.type"
+                :style="col.value.style"
+                :data="tr"
+                v-model:checked="checkData[tr[props.rowKey as string]]"
+                :type="col.value.type"
+                :body="col.value.body"/>
+              <span v-else :style="col.value.style">
+                {{ tr[col.value.name as string] }}
+              </span>
+            </td>
+          </tr>
+          <tr v-else>
+            <td :colspan="cols.length + 1"
+              :style="{textAlign: 'center', fontSize: '1.2em', lineHeight: '3em', color: 'var(--color-text3)'}">
+              <div :style="{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                borderRight: '1px solid #dcdcdc',
+                borderLeft: '1px solid #dcdcdc'
+              }">未获取到数据</div><span></span>
+            </td>
+          </tr>
+          <tr>
+            <td :colspan="cols.length + 1"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <slot name="page" :="page">
       <z-page v-if="page" :="page"/>
@@ -62,7 +77,7 @@ defineOptions({
 })
 const props = defineProps(tableProps)
 const emit = defineEmits(tableEmits)
-const {_ref, _class, _main_class, _body_class, _el_thead, ths, cols, reload} = useTable(props, emit)
+const {_ref, _class, _main_class, _el_thead, ths, cols, reload} = useTable(props, emit)
 const page = computed(() => {
   if (props.page) {
     return {
