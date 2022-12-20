@@ -8,6 +8,7 @@ export const tableProps = {
   fit: Boolean as PropType<boolean>,
   rowCallback: Function as PropType<Function>,
   rowKey: String as PropType<string>,
+  data: Array as PropType<Array<any>>,
   page: [Boolean, Object] as PropType<boolean | object>
 }
 export const tableEmits = {
