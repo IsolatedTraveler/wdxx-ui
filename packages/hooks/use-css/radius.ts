@@ -2,13 +2,13 @@ import { isNumber } from "@ui/utils"
 import { ComponentRadius, ObjStr, ObjTrue } from "@ui/vars"
 import { watch, nextTick, Ref } from "vue"
 import { setCss } from "./flex"
-export const getStylePx = (v:string | number) => {
+export const getStylePx = (v:string | number): string => {
   if (v === 'none') {
     v = '0px'
   } else if (isNumber(v)) {
     v = (Number(v) / 100) + 'rem'
   }
-  return v
+  return v as string
 }
 function getMax(a: number, b: number) {
   return a > b ? a : b

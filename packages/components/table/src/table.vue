@@ -50,7 +50,8 @@
                 left: 0,
                 right: 0,
                 borderRight: '1px solid #dcdcdc',
-                borderLeft: '1px solid #dcdcdc'
+                borderLeft: '1px solid #dcdcdc',
+                maxWidth: width
               }">未获取到数据</div><span></span>
             </td>
           </tr>
@@ -77,7 +78,7 @@ defineOptions({
 })
 const props = defineProps(tableProps)
 const emit = defineEmits(tableEmits)
-const {_ref, _class, _main_class, _el_thead, ths, cols, reload} = useTable(props, emit)
+const {_ref, _class, _main_class, _el_thead, ths, cols, reload, width} = useTable(props, emit)
 const page = computed(() => {
   if (props.page) {
     return {
