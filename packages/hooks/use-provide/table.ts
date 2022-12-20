@@ -1,4 +1,4 @@
-import { TdObj, ThObj } from "@ui/components/table/src/use-th"
+import { TdObj, ThObj } from "@ui/vars"
 import { provide, InjectionKey, ref, Ref, computed, ComputedRef, onMounted, warn, nextTick } from "vue"
 export interface ProvideTableId {
   addThs: (row: number, th: Ref<ThObj>, id: string) => null
