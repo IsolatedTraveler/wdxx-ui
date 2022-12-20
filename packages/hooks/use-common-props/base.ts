@@ -1,4 +1,4 @@
-import {ComponentFlex, ComponentSize, ComponentState, ComponentRowAlign, ComponentRadius, Rule, ComponentColAlign, ComponentSelfAlign, ComponentAlign} from '@ui/vars'
+import {ComponentFlex, ComponentSize, ComponentState, ComponentRowAlign, ComponentRadius, Rule, ComponentColAlign, ComponentSelfAlign, ComponentAlign, ComponentFixed} from '@ui/vars'
 import {buildProp, isArray, isCssLength, isNumber, isPositiveInteger, isRule} from '@ui/utils'
 export const useSizeProp = buildProp({
   key: 'size',
@@ -56,6 +56,11 @@ export const useRuleProp = buildProp({
       isRule(v)
     }
   }
+})
+export const useFixedProp = buildProp({
+  key: 'fixed',
+  type: String,
+  values: ComponentFixed
 })
 export const useNumberBuildProp = (key: string, def?: number) => buildProp({key, type: [String, Number], default: def, validator(v: string | number) {
   if (!isNumber(v)) {

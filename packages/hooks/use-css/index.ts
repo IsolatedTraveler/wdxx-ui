@@ -3,6 +3,7 @@ import { useFlexCss, useSingle } from "./flex"
 import radius from "./radius"
 import useGroup from "./group"
 export {setCss} from './flex'
+export {getStylePx} from './radius'
 const cssV:any = {
   flex: useFlexCss,
   def: useSingle,

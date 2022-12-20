@@ -1,6 +1,11 @@
-export const uuid = (a = 'xxxx-xxxx-xxxx-4xxx-yxxx-xxxx-xxxx-xxxx') => {
+export const uuid = (a = 'yxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx') => {
   return a.replace(/[xy]/g, function (c) {
-    const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8)
-    return v.toString(16)
+    const r = Math.random() * 36 | 0
+    if (r > 9) {
+      return String.fromCharCode(55 + r)
+    } else if (c != 'x') {
+      return String.fromCharCode(65 + r)
+    }
+    return r.toString()
   })
 }
