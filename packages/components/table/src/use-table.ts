@@ -1,5 +1,5 @@
 import { useCss, useProvideTable, initTableStyle, setCss, getStylePx } from "@ui/hooks"
-import { ref, SetupContext, computed, watch, nextTick, onMounted } from "vue"
+import { ref, SetupContext, computed, watch, onMounted, nextTick } from "vue"
 import { TableEmits, TableProps } from "./table"
 export const useTable = (props: TableProps, _emit: SetupContext<TableEmits>['emit']) => {
   const _ref = ref<HTMLElement>(), _el_thead = ref<HTMLElement>(), classVal = computed(() => ({

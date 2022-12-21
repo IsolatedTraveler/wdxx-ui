@@ -6,7 +6,7 @@ export const getStylePx = (v:string | number): string => {
   if (v === 'none') {
     v = '0px'
   } else if (isNumber(v)) {
-    v = (Number(v) / 100) + 'rem'
+    v += 'px'
   }
   return v as string
 }

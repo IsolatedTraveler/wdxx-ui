@@ -51,7 +51,8 @@
                 right: 0,
                 borderRight: '1px solid #dcdcdc',
                 borderLeft: '1px solid #dcdcdc',
-                maxWidth: width
+                maxWidth: width,
+                boxSizing: 'border-box'
               }">未获取到数据</div><span></span>
             </td>
           </tr>
