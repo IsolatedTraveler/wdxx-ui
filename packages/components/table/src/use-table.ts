@@ -1,8 +1,9 @@
-import { useCss, useProvideTable, initTableStyle, setCss, getStylePx } from "@ui/hooks"
-import { ref, SetupContext, computed, watch, onMounted, nextTick } from "vue"
+import { useCss, useProvideTable, initTableStyle, setCss } from "@ui/hooks"
+import { ObjStr } from "@ui/vars"
+import { ref, SetupContext, computed, watch, Ref } from "vue"
 import { TableEmits, TableProps } from "./table"
 export const useTable = (props: TableProps, _emit: SetupContext<TableEmits>['emit']) => {
-  const _ref = ref<HTMLElement>(), _el_thead = ref<HTMLElement>(), classVal = computed(() => ({
+  const _ref = ref<HTMLElement>(), _el_thead = ref(), classVal = computed(() => ({
     name: 'table',
     flex: 'col'
   })), {_class} = useCss(classVal, _ref), _main_class = computed(() => {
@@ -10,20 +11,27 @@ export const useTable = (props: TableProps, _emit: SetupContext<TableEmits>['emi
       [setCss('grow')]: true,
       [setCss('wrap')]: !!props.data?.length
     }
-  }), {cols, ths, reload} = useProvideTable(_el_thead), width = ref('100%')
-  function setWidth() {
-    nextTick(() => {
-      const w = _el_thead.value?.offsetWidth
-      width.value = w ? getStylePx(w) : '100%'
+  }), {cols, ths, reload} = useProvideTable(_el_thead), checkData: Ref<ObjStr> = ref({}),
+  checkedAll = computed(() => {
+    if (props.data && props.data.length) {
+      const data = checkData.value, key = props.rowKey || ''
+      return !props.data.filter(it => !data[it[key]]).length
+    } else {
+      return false
+    }
+  })
+  watch(() => props.data, (v) => {
+    v && v.length && initTableStyle(ths.value, _el_thead.value?.$el)
+  })
+  function checkAll(judge: boolean) {
+    const data = checkData.value, key = props.rowKey || ''
+    props.data?.forEach(it => {
+      data[it[key]] = judge ? it : null
     })
   }
-  watch(() => props.data, (v) => {
-    v && v.length && initTableStyle(ths.value, _el_thead.value)
-    setWidth()
-  })
-  onMounted(() => {
-    setWidth()
-  })
+  function checkedSignle(judge: any, id: string) {
+    checkData.value[id] = judge
+  }
   return {
     _ref,
     _el_thead,
@@ -32,6 +40,9 @@ export const useTable = (props: TableProps, _emit: SetupContext<TableEmits>['emi
     cols,
     ths,
     reload,
-    width
+    checkedAll,
+    checkData,
+    checkAll,
+    checkedSignle
   }
 }

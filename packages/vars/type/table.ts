@@ -1,5 +1,5 @@
 import { ObjAny } from "./base"
-
+export declare type ThType = 'check' | 'radio' | ''
 export interface ThCol {
   id: string
   show: Boolean
@@ -7,7 +7,7 @@ export interface ThCol {
   posStyle: ObjAny
   selfStyle: ObjAny
   class: any
-  type: string | undefined
+  type: ThType
   selfClass?: ObjAny
 }
 export interface TdObj extends ThCol {

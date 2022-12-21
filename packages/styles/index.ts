@@ -7,16 +7,17 @@ const g = {
   sm: true,
   md: true,
   lg: true,
-  row: true,
-  primary: false,
-  success: false,
-  warning: false,
-  danger: false,
-  info: false
+  row: true
 }
 const t = {
-  ghost: true,
-  text: true
+  ghost: ['btn'],
+  text: ['btn'],
+  primary: ['btn'],
+  success: ['btn'],
+  warning: ['btn'],
+  danger: ['btn'],
+  info: ['btn'],
+  stripe: ['table']
 }
 export default () => {
   const keys = Object.keys(g).filter(key => (t as any)[key])

@@ -1,4 +1,5 @@
 import { useAlginBuildProp, useFixedProp, useStyleBuildProp } from "@ui/hooks";
+import { ThType } from "@ui/vars";
 import { ExtractPropTypes, PropType } from "vue";
 export const thProps = {
   minWidth: useStyleBuildProp('min-width'),
@@ -13,6 +14,6 @@ export const thProps = {
   tdAlign: useAlginBuildProp('td-align'),
   thAlign: useAlginBuildProp('th-align'),
   fixed: useFixedProp,
-  type: String as PropType<string>
+  type: String as PropType<ThType>
 }
 export type ThProps = ExtractPropTypes<typeof thProps>

@@ -11,7 +11,7 @@ function intThTd(props: ThProps, id: string, posStyle: Ref<ObjAny>, selfClass: R
   return {
     id,
     show: true,
-    type: props.type,
+    type: props.type || '',
     style: {
       minWidth: props.minWidth,
       maxWidth: props.maxWidth,
@@ -54,7 +54,6 @@ function initStyle(props: ThProps, id: string, style: Ref<ObjAny>, cPosStyle: Re
   if (el && reload) {
     const posStyleV = cPosStyle.value = {}
     style.value = {}
-    reload.value = !reload.value
     setStyle(posStyleV, style.value, props, el as HTMLElement, thead, reload, fixed)
   }
 }
@@ -63,6 +62,7 @@ function setStyle(posStyleV: ObjAny, style: ObjAny, props: ThProps, el: HTMLElem
   nextTick(() => {
     if (props.width || props.maxWidth || fixed.value) {
       posStyleV.width = style.width = getStylePx(el.offsetWidth + 1)
+      reload.value = !reload.value
       if (fixed.value) {
         const table = thead.parentElement
         nextTick(() => {
@@ -75,7 +75,6 @@ function setStyle(posStyleV: ObjAny, style: ObjAny, props: ThProps, el: HTMLElem
         })
       }
     }
-    reload.value = !reload.value
   })
 }
 function getPreId(el: Ref<HTMLButtonElement | undefined>) {
@@ -113,6 +112,12 @@ export const useTh = (props: ThProps, {slots}: SetupContext) => {
     }
     td && (td.value.show = (judge as boolean))
   }
+  function setStyle() {
+    if (td) {
+      const thead = el.value?.parentElement?.nextElementSibling
+      thead && initStyle(props, id, style, posStyle, thead as HTMLElement, reload, fixed)
+    }
+  }
   onMounted(() => {
     if (current_row) {
       // 处理th参数变化
@@ -127,12 +132,8 @@ export const useTh = (props: ThProps, {slots}: SetupContext) => {
       width: props.width,
       maxWidth: props.maxWidth,
       minWidth: props.minWidth
-    }), () => {
-      if (td) {
-        const thead = el.value?.parentElement?.nextElementSibling
-        thead && initStyle(props, id, style, posStyle, thead as HTMLElement, reload, fixed)
-      }
-    })
+    }), setStyle)
+    window.onresize = setStyle
     addTd(true)
   })
   onUnmounted(() => {

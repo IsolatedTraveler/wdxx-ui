@@ -48,7 +48,7 @@ export default {
     }
     setTimeout(() => {
       this.data = data as Array<never>
-    }, 6000)
+    }, 1000)
   },
   methods: {
   }

@@ -61,14 +61,14 @@ export function initTableStyle(ths: Array<Array<Ref<ThObj>>>, tbody: HTMLElement
     })
   }
 }
-export const useProvideTable = (tbody: Ref<HTMLElement | undefined>) => {
+export const useProvideTable = (tbody: Ref<any>) => {
   const cols: Ref<Array<Ref<TdObj>>> = ref([]), ths: Ref<Array<Array<Ref<ThObj>>>> = ref([]), thsV = ths.value
   , reload = ref(false)
   let judge = false
   onMounted(() => {
     judge = true
     nextTick(() => {
-      initTableStyle(thsV, tbody.value)
+      initTableStyle(thsV, tbody.value?.$el)
     })
   })
   provide(provideTableId, {
@@ -85,7 +85,7 @@ export const useProvideTable = (tbody: Ref<HTMLElement | undefined>) => {
       const colsV = cols.value
       if (judge) {
         setThTd(colsV, td, cid)
-        initTableStyle(thsV, tbody.value)
+        initTableStyle(thsV, tbody.value?.$el)
       } else {
         colsV.push(td)
       }
