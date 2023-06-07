@@ -1,5 +1,4 @@
 export * from './base'
-export * from './btn'
 export * from './table'
 import { ComponentObjectPropsOptions, warn } from "vue";
 import { Prop, PropV } from "./type";

@@ -17,7 +17,7 @@ function buildStylesChalk() {
   if (judgeV) {
     consola.error(judgeV)
     return Promise.reject(new Error(judgeV))
-  } 
+  }
   const sass = gulpSass(dartSass)
   const noElPrefixFile = /(index|base|display)/
   return src(path.resolve(__dirname, 'src/*.scss'))
@@ -53,7 +53,6 @@ export const build = parallel(
   copyStylesSource,
   series(
     buildStylesChalk,
-    // buildDarkCssVars,
     copyStylesBundle
   )
 )

@@ -1,4 +1,4 @@
-import { propsBtnShape, propsBtnType } from './var'
+import { propsBtnGroupShape, propsBtnShape, propsBtnType } from './var'
 export const PropsBtnType = {
   type: String,
   default: 'button',
@@ -7,4 +7,8 @@ export const PropsBtnType = {
 export const PropsBtnShape = {
   type: String,
   values: propsBtnShape
+}
+export const PropsBtnGroupShape = {
+  type: String,
+  values: propsBtnGroupShape
 }
