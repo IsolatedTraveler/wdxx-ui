@@ -15,6 +15,10 @@ export let loadXt: any = {}
 const router: any = createRouter({
   history: createWebHistory(getJsUrl()),
   routes: [
+    {
+      path: '/',
+      redirect: '/base'
+    }, 
     {path: '/:pathMatch(.*)*', redirect: '/404'},
     {path: '/404', name: '404', meta: {notAuth: true}, component:() => import('../views/404.vue')},
     ...def
