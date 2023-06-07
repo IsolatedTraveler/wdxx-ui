@@ -1,29 +1,8 @@
 <template>
   <div class="element-btn">
-    <div>
-      <z-btn state="" full>btn</z-btn>
-      <z-btn state="primary">primary</z-btn>
-      <z-btn state="success">success</z-btn>
-      <z-btn state="warning">warning</z-btn>
-      <z-btn state="danger">danger</z-btn>
-      <z-btn state="info">info</z-btn>
-    </div>
-    <div>
-      <z-btn shape="ghost" state="">ghost</z-btn>
-      <z-btn shape="ghost" state="primary">primary</z-btn>
-      <z-btn shape="ghost" state="success">success</z-btn>
-      <z-btn shape="ghost" state="warning">warning</z-btn>
-      <z-btn shape="ghost" state="danger">danger</z-btn>
-      <z-btn shape="ghost" state="info">info</z-btn>
-    </div>
-    <div>
-      <z-btn shape="text" state="">text</z-btn>
-      <z-btn shape="text" state="primary">primary</z-btn>
-      <z-btn shape="text" state="success">success</z-btn>
-      <z-btn shape="text" state="warning">warning</z-btn>
-      <z-btn shape="text" state="danger">danger</z-btn>
-      <z-btn shape="text" state="info">info</z-btn>
-    </div>
+    <element-btn-mod text="默认按钮"/>
+    <element-btn-mod text="简洁按钮" shape="ghost"/>
+    <element-btn-mod text="文字按钮" shape="text"/>
     <div>
       <z-btn size="sm" state="">sm</z-btn>
       <z-btn size="sm" state="primary">primary</z-btn>
@@ -76,8 +55,12 @@
   </div>
 </template>
 <script lang="ts">
+import elementBtnMod from './btnMod.vue'
 export default {
-  name: 'element-btn'
+  name: 'element-btn',
+  components: {
+    elementBtnMod
+  }
 }
 </script>
 <style lang="scss">
