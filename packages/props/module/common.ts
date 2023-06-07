@@ -1,7 +1,13 @@
-import { propsBuild } from '../fun/build'
-import { propsTypeCommonFlex } from '../type/common'
-export const PropsCommonFlex = propsBuild({
-  key: 'flex',
+import { propsTypeCommonFlex, propsTypeCommonFlexCol, propsTypeCommonFlexRow } from '../type/common'
+export const PropsCommonFlex = {
   type: String,
   values: propsTypeCommonFlex
-})
+}
+export const PropsCommonFlexRow = {
+  type: String,
+  values: propsTypeCommonFlexRow
+}
+export const PropsCommonFlexCol = {
+  type: String,
+  values: propsTypeCommonFlexCol
+}
