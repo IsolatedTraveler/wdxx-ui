@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import wdxx from '../../packages/z-ui/index'
+import wdxx from '../../dist/ui/es'
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import '../../packages/styles/index.css';

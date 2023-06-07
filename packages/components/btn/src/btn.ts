@@ -1,5 +1,4 @@
-import { useSizeProp, useStateProp, useRadiusProp, useSelfProp, useBtnShapeProp } from "@ui/hooks";
-import { PropsBtnType, PropsBaseDisabled, PropsBaseString, PropsCommonFlex, PropsCommonFlexRow, PropsCommonFlexCol, PropsBasePositiveInteger, propsBuildS } from "@ui/props";
+import { PropsBtnType, PropsBaseDisabled, PropsBaseString, PropsFlex, PropsFlexRow, PropsFlexCol, PropsBasePositiveInteger, propsBuildS, PropsBaseRadius, PropsFlexSelf, PropsBtnShape, PropsBaseSize, PropsBaseState } from "@ui/props";
 import { EventClick } from "@ui/vars";
 import { ExtractPropTypes } from "vue";
 
@@ -7,16 +6,15 @@ export const btnProps = propsBuildS({
   disabled: PropsBaseDisabled,
   type: PropsBtnType,
   icon: PropsBaseString,
-  flex: PropsCommonFlex,
-  row: PropsCommonFlexRow,
-  col: PropsCommonFlexCol,
+  flex: PropsFlex,
+  row: PropsFlexRow,
+  col: PropsFlexCol,
   order: PropsBasePositiveInteger,
-
-  radius: useRadiusProp,
-  self: useSelfProp,
-  shape: useBtnShapeProp,
-  size: useSizeProp,
-  state: useStateProp
+  radius: PropsBaseRadius,
+  self: PropsFlexSelf,
+  shape: PropsBtnShape,
+  size: PropsBaseSize,
+  state: PropsBaseState
 })
 export const btnEmits = {
   [EventClick]: (evt: MouseEvent) => evt instanceof MouseEvent

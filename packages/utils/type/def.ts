@@ -5,10 +5,13 @@ export function isRegExp(obj: unknown): boolean {
   return obj instanceof RegExp
 }
 export const isNumber = (v: any): boolean => !isNaN(v)
-export const isCssLength = (v: any): boolean => isNumber((v).replace(regExpCssLen, ''))
-export const isPositiveInteger = (v: any): string => {
-  if (regPositiveInteger.test(v)) {
-    return ''
+export const isCssLength = (v: any): string | undefined => {
+  if (!isNumber(v.replace(regExpCssLen, ''))) {
+    return 'number or cssLength'
   }
-  return 'number'
+}
+export const isPositiveInteger = (v: any): string | undefined => {
+  if (!regPositiveInteger.test(v)) {
+    return 'number'
+  }
 }
