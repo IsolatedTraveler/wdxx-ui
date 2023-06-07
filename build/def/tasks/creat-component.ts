@@ -1,4 +1,4 @@
-import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName, componentUse, componentProp, CSS_PATH } from "@ui/build-utils"
+import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName, componentUse, componentProp, CSS_PATH, stylesModuleRoot } from "@ui/build-utils"
 import { mkdir } from 'fs/promises'
 import { resolve } from "path";
 function excludeCom(arr: Array<filesObj>) {
@@ -25,8 +25,8 @@ function createCom(arr: Array<filesObj>) {
     }
     arr.push(write(resolve(styleUrl, 'index.ts'), `import '@ui/styles/src/base.scss'\nimport '@ui/styles/src/${key}.scss'\nimport '@ui/styles/src/end.scss'`))
     arr.push(write(resolve(styleUrl, 'css.ts'), `import '@ui/styles/base.css'\nimport '@ui/styles/${key}.css'\nimport '@ui/styles/end.css'`))
-    arr.push(write(resolve(stylesRoot, 'src/' + key + '.scss'), `@use 'sass:map';\n@use './mixins/index.scss' as *;\n@use './config/index.scss' as *;\n@use './mod/${key}.scss' as *;\n@include styles(${key}, $${key}, $attr, $state, $media);\n@include create(${key}) {\n\n}`))
-    arr.push(write(resolve(stylesRoot, 'src/mod/' + key + '.scss'), `@use 'sass:map';\n@use '../config/index.scss' as *;\n$attr:('disabled');\n$media: ('hover');\n$state: ();\n$${key}: (\n  'mod': (),\n  'attr': setAttr($attr),\n  'state': setState($state),\n  'media': setMedia($media)\n) !default;`))
+    arr.push(write(resolve(stylesModuleRoot, key + '.scss'), `@use 'sass:map';\n@use '../mixins/index.scss' as *;\n@use '../config/index.scss' as *;\n@use '../mod/${key}.scss' as *;\n@include styles(${key}, $${key}, $attr, $state, $media);\n@include create(${key}) {\n\n}`))
+    arr.push(write(resolve(stylesRoot, 'mod/' + key + '.scss'), `@use 'sass:map';\n@use '../config/index.scss' as *;\n$attr:('disabled');\n$media: ('hover');\n$state: ();\n$${key}: (\n  'mod': (),\n  'attr': setAttr($attr),\n  'state': setState($state),\n  'media': setMedia($media)\n) !default;`))
     return Promise.all(arr)
   })).then(() => {
     const keys = Object.keys(comObj)
@@ -76,7 +76,7 @@ async function componentD() {
   // plugin
   str += '\n  }\n}\nexport {}'
   st += `\n@use '${CSS_PATH}end.scss';`
-  write(resolve(stylesRoot, 'src/index.scss'), st)
+  write(resolve(stylesRoot, 'index.scss'), st)
   return write(resolve(projRoot, 'typings/components.d.ts'), str)
 }
 async function componentG() {
