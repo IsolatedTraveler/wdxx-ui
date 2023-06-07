@@ -1,7 +1,7 @@
 <template>
   <div class="element-btn">
     <div>
-      <z-btn state="">btn</z-btn>
+      <z-btn state="" full>btn</z-btn>
       <z-btn state="primary">primary</z-btn>
       <z-btn state="success">success</z-btn>
       <z-btn state="warning">warning</z-btn>

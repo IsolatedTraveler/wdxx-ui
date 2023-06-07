@@ -14,7 +14,7 @@ export const useCss = (props:ComputedRef<any>, el: Ref<any>, keys: Array<string>
   const _class = ref({}), _style = ref({}), obj = {}, classVal = _class.value, styleVal = _style.value
   keys.forEach(key => {
     if (cssV[key]) {
-      cssV[key](props, obj, classVal, styleVal, el)
+      cssV[key](props, obj, classVal, styleVal, el, key)
     } else {
       cssV.def(props, obj, classVal, key)
     }

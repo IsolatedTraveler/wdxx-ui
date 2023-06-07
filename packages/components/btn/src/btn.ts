@@ -1,17 +1,18 @@
 import { propsBuildS } from "@ui/hooks";
-import { PropsBtnType, PropsBaseDisabled, PropsBaseString, PropsFlex, PropsFlexRow, PropsFlexCol, PropsBasePositiveInteger, PropsBaseRadius, PropsFlexSelf, PropsBtnShape, PropsBaseSize, PropsBaseState } from "@ui/props";
+import { PropsBtnType, PropsBaseBoolean, PropsBaseString, PropsFlex, PropsFlexRow, PropsFlexCol, PropsBasePositiveInteger, PropsBaseRadius, PropsFlexSelf, PropsBtnShape, PropsBaseSize, PropsBaseState } from "@ui/props";
 import { EventClick } from "@ui/vars";
 import { ExtractPropTypes } from "vue";
 
 export const btnProps = propsBuildS({
-  disabled: PropsBaseDisabled,
-  type: PropsBtnType,
+  disabled: PropsBaseBoolean,
   icon: PropsBaseString,
+  order: PropsBasePositiveInteger,
+  radius: PropsBaseRadius,
+  full: PropsBaseBoolean,
+  type: PropsBtnType,
   flex: PropsFlex,
   row: PropsFlexRow,
   col: PropsFlexCol,
-  order: PropsBasePositiveInteger,
-  radius: PropsBaseRadius,
   self: PropsFlexSelf,
   shape: PropsBtnShape,
   size: PropsBaseSize,
