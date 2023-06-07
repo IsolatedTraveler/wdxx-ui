@@ -1,4 +1,4 @@
-import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName, componentUse, componentProp } from "@ui/build-utils"
+import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName, componentUse, componentProp, CSS_PATH } from "@ui/build-utils"
 import { mkdir } from 'fs/promises'
 import { resolve } from "path";
 function excludeCom(arr: Array<filesObj>) {
@@ -65,17 +65,17 @@ async function UiComponent() {
 }
 async function componentD() {
   const com = Object.keys(comObj)
-  let str = 'import "@vue/runtime-core"\ndeclare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    ', st = `@use './base.scss';`
+  let str = 'import "@vue/runtime-core"\ndeclare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    ', st = `@use '${CSS_PATH}base.scss';`
   // com
   str += com.map((name) => {
-    st += `\n@use './${name}.scss';`
+    st += `\n@use '${CSS_PATH}${name}.scss';`
     name = dealName(name.split('-'))
     return `${name}: typeof import("../packages/${uiFileName}")["${name}"];`
   }).join('\n    ')
   str += '\n  }\n  interface ComponentCustomProperties {\n    '
   // plugin
   str += '\n  }\n}\nexport {}'
-  st += "\n@use './end.scss';"
+  st += `\n@use '${CSS_PATH}.scss';`
   write(resolve(stylesRoot, 'src/index.scss'), st)
   return write(resolve(projRoot, 'typings/components.d.ts'), str)
 }
