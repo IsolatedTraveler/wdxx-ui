@@ -1,5 +1,5 @@
-import {ComponentFlex, ComponentSize, ComponentState, ComponentRowAlign, ComponentRadius, Rule, ComponentColAlign, ComponentSelfAlign, ComponentAlign, ComponentFixed} from '@ui/vars'
-import {buildProp, isArray, isCssLength, isNumber, isPositiveInteger, isRule} from '@ui/utils'
+import { ComponentFlex, ComponentSize, ComponentState, ComponentRowAlign, ComponentRadius, Rule, ComponentColAlign, ComponentSelfAlign, ComponentAlign, ComponentFixed } from '@ui/vars'
+import { buildProp, isArray, isCssLength, isNumber, isPositiveInteger, isRule } from '@ui/utils'
 export const useSizeProp = buildProp({
   key: 'size',
   type: String,
@@ -62,16 +62,20 @@ export const useFixedProp = buildProp({
   type: String,
   values: ComponentFixed
 })
-export const useNumberBuildProp = (key: string, def?: number) => buildProp({key, type: [String, Number], default: def, validator(v: string | number) {
-  if (!isNumber(v)) {
-    return 'number'
+export const useNumberBuildProp = (key: string, def?: number) => buildProp({
+  key, type: [String, Number], default: def, validator(v: string | number) {
+    if (!isNumber(v)) {
+      return 'number'
+    }
   }
-}})
-export const useStyleBuildProp = (key: string, def?: number) => buildProp({key, type: [String, Number], default: def, validator(v: string | number) {
-  if (!isCssLength(v)) {
-    return 'css length'
+})
+export const useStyleBuildProp = (key: string, def?: number) => buildProp({
+  key, type: [String, Number], default: def, validator(v: string | number) {
+    if (!isCssLength(v)) {
+      return 'css length'
+    }
   }
-}})
+})
 export const useAlginBuildProp = (key: string = 'align', def?: string) => buildProp({
   key,
   type: [String],

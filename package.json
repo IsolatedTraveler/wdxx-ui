@@ -7,6 +7,7 @@
   "dependencies": {
     "@ui/components": "workspace:^1.0.0",
     "@ui/hooks": "workspace:^1.0.0",
+    "@ui/props": "workspace:^1.0.0",
     "@ui/styles": "workspace:^1.0.0",
     "@ui/utils": "workspace:^1.0.0",
     "@ui/vars": "workspace:^1.0.0",
@@ -24,6 +25,7 @@
     "@vitejs/plugin-vue-jsx": "^2.1.1",
     "@vue/shared": "^3.2.45",
     "@vueuse/core": "^9.6.0",
+    "consola": "^3.1.0",
     "esbuild": "^0.15.15",
     "fast-glob": "^3.2.12",
     "fs-extra": "^10.1.0",

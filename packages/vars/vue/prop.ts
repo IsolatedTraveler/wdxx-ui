@@ -10,9 +10,5 @@ export const ComponentRowAlign = ['', 'evenly', 'start', 'end', 'center', 'aroun
 export const ComponentColAlign = ['', 'start', 'end', 'center', 'around', 'between', 'stretch']
 export const ComponentSelfAlign = ['', 'start', 'end', 'center', 'stretch']
 export const ComponentFlex = ['', 'row', 'col']
-// btn
-export const ComponentBtnType = ['submit', 'button', 'reset']
-export const ComponentBtnShape = ['', 'ghost', 'text']
-export const ComponentBtnGroupShape = ['', 'tight', 'auto']
 // table
 export const ComponentTableShape = ['', 'stripe']

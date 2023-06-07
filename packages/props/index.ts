@@ -1,3 +1,3 @@
 export * from './base'
 export * from './btn'
-export * from './table'
+export * from './flex'

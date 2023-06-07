@@ -5,7 +5,7 @@ export interface Prop {
   type?: any
   values?: Array<any>
   required?: boolean
-  validator?: any
+  validator?: Function
   default?: any
 }
 export interface Rule {

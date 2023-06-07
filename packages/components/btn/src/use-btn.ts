@@ -2,10 +2,8 @@ import { useHtmlDisabled, useCss } from "@ui/hooks"
 import { useInjectBtn } from "@ui/hooks/use-provide/btn"
 import { computed, ref, SetupContext } from "vue"
 import type { BtnProps, BtnEmits } from "./btn"
-// order: useOrderProp,
-// radius: useRadiusProp,
 export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) => {
-  const {size, submit, reset} = useInjectBtn(props)
+  const { size, submit, reset } = useInjectBtn(props)
   const handleClick = (evt: MouseEvent) => {
     if (props.type === 'submit') {
       submit()
@@ -15,7 +13,7 @@ export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) =>
       emit?.('click', evt)
     }
   }
-  const _ref = ref<HTMLButtonElement>(), {_disabled, _handleClick} = useHtmlDisabled(props, handleClick), classProp = computed(() => {
+  const _ref = ref<HTMLButtonElement>(), { _disabled, _handleClick } = useHtmlDisabled(props, handleClick), classProp = computed(() => {
     return {
       name: 'btn',
       flex: props.flex,
@@ -24,7 +22,7 @@ export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) =>
       shape: props.shape,
       radius: props.radius
     }
-  }), {_class, _style} = useCss(classProp, _ref)
+  }), { _class, _style } = useCss(classProp, _ref)
   return {
     _ref,
     _handleClick,
