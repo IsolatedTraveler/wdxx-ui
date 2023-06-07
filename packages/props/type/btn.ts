@@ -1,0 +1,1 @@
+export const propsTypeBtnType = ['submit', 'button', 'reset']

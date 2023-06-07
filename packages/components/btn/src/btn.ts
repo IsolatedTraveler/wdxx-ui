@@ -1,11 +1,14 @@
-import { useBtnTypeProp, useSizeProp, useFlexProp, useStateProp, useRowAlginProp, useRadiusProp, useSelfProp, useBtnShapeProp, useColAlginProp, useOrderProp } from "@ui/hooks";
+import { useSizeProp, useStateProp, useRowAlginProp, useRadiusProp, useSelfProp, useBtnShapeProp, useColAlginProp, useOrderProp } from "@ui/hooks";
+import { PropsBtnType, PropsBaseDisabled, PropsBaseString, PropsCommonFlex } from "@ui/props";
 import { EventClick } from "@ui/vars";
-import { ExtractPropTypes, PropType } from "vue";
+import { ExtractPropTypes } from "vue";
 
 export const btnProps = {
-  disabled: Boolean as PropType<boolean>,
-  flex: useFlexProp,
-  icon: String as PropType<string>,
+  disabled: PropsBaseDisabled,
+  type: PropsBtnType,
+  icon: PropsBaseString,
+  flex: PropsCommonFlex,
+
   rowAlign: useRowAlginProp,
   colAlign: useColAlginProp,
   order: useOrderProp,
@@ -13,8 +16,7 @@ export const btnProps = {
   self: useSelfProp,
   shape: useBtnShapeProp,
   size: useSizeProp,
-  state: useStateProp,
-  type: useBtnTypeProp
+  state: useStateProp
 }
 export const btnEmits = {
   [EventClick]: (evt: MouseEvent) => evt instanceof MouseEvent
