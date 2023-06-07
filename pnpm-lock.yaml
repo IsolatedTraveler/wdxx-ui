@@ -20,6 +20,7 @@ importers:
       '@vitejs/plugin-vue-jsx': ^2.1.1
       '@vue/shared': ^3.2.45
       '@vueuse/core': ^9.6.0
+      consola: ^3.1.0
       esbuild: ^0.15.15
       fast-glob: ^3.2.12
       fs-extra: ^10.1.0
@@ -56,6 +57,7 @@ importers:
       '@vitejs/plugin-vue-jsx': 2.1.1_vite@3.2.4+vue@3.2.45
       '@vue/shared': 3.2.45
       '@vueuse/core': 9.6.0_vue@3.2.45
+      consola: 3.1.0
       esbuild: 0.15.15
       fast-glob: 3.2.12
       fs-extra: 10.1.0
@@ -3539,6 +3541,10 @@ packages:
 
   /consola/2.15.3:
     resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==}
+    dev: true
+
+  /consola/3.1.0:
+    resolution: {integrity: sha512-rrrJE6rP0qzl/Srg+C9x/AE5Kxfux7reVm1Wh0wCjuXvih6DqZgqDZe8auTD28fzJ9TF0mHlSDrPpWlujQRo1Q==}
     dev: true
 
   /consolidate/0.15.1:
