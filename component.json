@@ -1,7 +1,23 @@
 [
-  ["btn", ["btn-group"]],
-  ["icon"],
-  ["form"],
-  ["table", ["th"]],
-  ["page"]
+  [
+    "btn",
+    [
+      "btn-group"
+    ]
+  ],
+  [
+    "icon"
+  ],
+  [
+    "form"
+  ],
+  [
+    "table",
+    [
+      "th"
+    ]
+  ],
+  [
+    "page"
+  ]
 ]
