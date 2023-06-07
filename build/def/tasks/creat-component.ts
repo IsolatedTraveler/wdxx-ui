@@ -2,7 +2,7 @@ import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot,
 import { mkdir } from 'fs/promises'
 import { resolve } from "path";
 function excludeCom(arr: Array<filesObj>) {
-  arr && arr.forEach(({fileName}) => {
+  arr && arr.forEach(({ fileName }) => {
     delete comObj[fileName]
   })
 }
@@ -10,12 +10,12 @@ function createCom(arr: Array<filesObj>) {
   excludeCom(arr)
   const keys = Object.keys(comObj)
   return Promise.all(keys.map(async (key) => {
-    const keyComUrl = resolve(compRoot, key), styleUrl = resolve(keyComUrl, 'style'), arr:Array<Promise<any>> = []
+    const keyComUrl = resolve(compRoot, key), styleUrl = resolve(keyComUrl, 'style'), arr: Array<Promise<any>> = []
     await mkdir(keyComUrl, { recursive: true })
-    await mkdir(styleUrl,  { recursive: true })
+    await mkdir(styleUrl, { recursive: true })
     if (comObj[key] === true) {
       const comUrl = resolve(keyComUrl, 'src')
-      await mkdir(comUrl,  { recursive: true })
+      await mkdir(comUrl, { recursive: true })
       arr.push(write(resolve(comUrl, key + '.ts'), componentProp(key)))
       arr.push(write(resolve(comUrl, key + '.vue'), componentVue(key)))
       arr.push(write(resolve(comUrl, 'instance.ts'), componentInstance(key, comArrObj[key])))
@@ -47,16 +47,16 @@ function createCom(arr: Array<filesObj>) {
 async function UiComponent() {
   let component = ''
   const keys = Object.keys(comArrObj), arrE: Array<string> = [],
-  arri = keys.map(key => {
-    component += `export * from './${key}'\n`
-    const name = dealName(key.split('-')),
-    group = comArrObj[key] === true ? false :
-      comArrObj[key] ? comArrObj[key].map((it: string) => dealName(it.split('-'))) : false,
-    groupStr = group ? (', ' + group.join(', ')) : ''
-    arrE.push(name)
-    group && arrE.push(...group)
-    return `import {${name}${groupStr}} from '@ui/components/${key}'`
-  })
+    arri = keys.map(key => {
+      component += `export * from './${key}'\n`
+      const name = dealName(key.split('-')),
+        group = comArrObj[key] === true ? false :
+          comArrObj[key] ? comArrObj[key].map((it: string) => dealName(it.split('-'))) : false,
+        groupStr = group ? (', ' + group.join(', ')) : ''
+      arrE.push(name)
+      group && arrE.push(...group)
+      return `import {${name}${groupStr}} from '@ui/components/${key}'`
+    })
   const str = arri.join('\n') + '\n' + `export default [\n  ${arrE.join(',\n  ')}\n]`
   return Promise.all([
     write(resolve(epRoot, 'component.ts'), str),
