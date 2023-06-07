@@ -1,5 +1,8 @@
+export * from './base'
+export * from './btn'
+export * from './table'
 import { ComponentObjectPropsOptions, warn } from "vue";
-import { Prop, PropV } from "../type/prop";
+import { Prop, PropV } from "./type";
 import { fromPairs } from 'lodash-unified'
 const propsBuild = (prop: PropV, key: string, defaultValue?: any): Prop => {
   const { type, values, required, validator } = prop

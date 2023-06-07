@@ -1,4 +1,5 @@
-import { PropsBtnType, PropsBaseDisabled, PropsBaseString, PropsFlex, PropsFlexRow, PropsFlexCol, PropsBasePositiveInteger, propsBuildS, PropsBaseRadius, PropsFlexSelf, PropsBtnShape, PropsBaseSize, PropsBaseState } from "@ui/props";
+import { propsBuildS } from "@ui/hooks";
+import { PropsBtnType, PropsBaseDisabled, PropsBaseString, PropsFlex, PropsFlexRow, PropsFlexCol, PropsBasePositiveInteger, PropsBaseRadius, PropsFlexSelf, PropsBtnShape, PropsBaseSize, PropsBaseState } from "@ui/props";
 import { EventClick } from "@ui/vars";
 import { ExtractPropTypes } from "vue";
 
