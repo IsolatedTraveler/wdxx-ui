@@ -10,7 +10,7 @@ declare module "@vue/runtime-core" {
     ZPage: typeof import("../packages/z-ui")["ZPage"];
   }
   interface ComponentCustomProperties {
-    
+
   }
 }
-export {}
+export { }
