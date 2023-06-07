@@ -9,6 +9,8 @@ const propsBuild = (prop: PropV, key: string, defaultValue?: any): Prop => {
       let err: string = ''
       if (validator) {
         err = validator(val)
+        if (!err)
+          return true
       }
       if (values) {
         if (values.includes(val)) {

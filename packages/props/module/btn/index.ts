@@ -6,6 +6,5 @@ export const PropsBtnType = {
 }
 export const PropsBtnShape = {
   type: String,
-  default: 'shape',
   values: propsBtnShape
 }

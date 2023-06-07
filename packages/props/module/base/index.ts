@@ -20,11 +20,9 @@ export const PropsBaseRadius = {
 }
 export const PropsBaseSize = {
   type: [String, Number],
-  values: propsBaseSize,
-  validator: isCssLength
+  values: propsBaseSize
 }
 export const PropsBaseState = {
   type: [String, Number],
-  values: propsBaseState,
-  validator: isCssLength
+  values: propsBaseState
 }
