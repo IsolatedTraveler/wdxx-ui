@@ -22,16 +22,19 @@ import menu from './router/def/index'
 export default {
   name: 'App',
   data() {
-    var showId:any = {}
+    var showId: any = {}
     return {
       menu,
       showId
     }
   },
+  mounted() {
+    console.timeEnd()
+  },
   methods: {
-    clickEvent({name, path}:any) {
+    clickEvent({ name, path }: any) {
       if (name) {
-        this.$router.push({name})
+        this.$router.push({ name })
       } else {
         this.showId[path] = !this.showId[path]
       }
@@ -40,18 +43,22 @@ export default {
 }
 </script>
 <style lang="scss">
-#app,html,body{
+#app,
+html,
+body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 .App {
   display: flex;
   width: 100%;
   height: 100%;
-  .left{
+
+  .left {
     width: 30%;
     min-width: 12em;
     max-width: 18em;
@@ -60,17 +67,18 @@ export default {
     border-right: 1px solid #dcdcdc;
     padding: .5em;
   }
-  .right{
+
+  .right {
     flex: 1;
     height: 100%;
     overflow-y: auto;
     padding-left: .5em;
     padding-right: .5em;
-    >.router{
+
+    >.router {
       width: 100%;
       display: block;
       padding-top: .5em;
     }
   }
-}
-</style>
+}</style>

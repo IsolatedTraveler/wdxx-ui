@@ -1,6 +1,7 @@
 import base from './base'
 import element from './element'
-export default [{
+export default [
+  {
     path: '/base',
     redirect: '/base/rmzn',
     title: '基础说明',
