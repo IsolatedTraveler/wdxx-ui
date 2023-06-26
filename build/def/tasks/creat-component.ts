@@ -55,7 +55,7 @@ export const useInject${name} = (props: ${name}Props) => {
 }`
 }
 function getExportStr(arr: string[]) {
-  return arr.map(it => `export * from './${it}'`).join(`;\n`)
+  return arr.map(it => `export * from './${it}';\n`).join('')
 }
 async function UiComponent() {
   let component = getExportStr(comKey), str = '', cssI = `@forward './base/index.scss';\n`, provide = '', inject = ''
