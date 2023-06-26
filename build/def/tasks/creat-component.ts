@@ -54,6 +54,9 @@ export const useInject${name} = (props: ${name}Props) => {
   }
 }`
 }
+function getExportStr(arr: string[]) {
+  return arr.map(it => `export * from './${it}';\n`)
+}
 async function UiComponent() {
   let component = '', str = '', cssI = `@forward './base/index.scss';\n`, provide = '', inject = ''
   comKey.map(key => {
@@ -69,16 +72,8 @@ async function UiComponent() {
       if (obj.next) {
         obj.keys.push(...obj.next)
       }
-      if (obj.provide) {
-        (obj.provide === true ? [key] : obj.provide).forEach(it => {
-          provide += `export * from './${it}'\n`
-        })
-      }
-      if (obj.inject) {
-        Object.keys(obj.inject).forEach(it => {
-          inject += `export * from './${it}'\n`
-        })
-      }
+      provide += getExportStr(obj.provide ? obj.provide === true ? [key] : obj.provide : [])
+      inject += getExportStr(obj.inject ? Object.keys(obj.inject) : [])
     }
     obj.keys.forEach(it => {
       cssI += `@forward ./mod/${it}/index.scss;\n`
