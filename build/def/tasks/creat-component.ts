@@ -58,7 +58,7 @@ function getExportStr(arr: string[]) {
   return arr.map(it => `export * from './${it}';\n`)
 }
 async function UiComponent() {
-  let component = '', str = '', cssI = `@forward './base/index.scss';\n`, provide = '', inject = ''
+  let component = getExportStr(comKey), str = '', cssI = `@forward './base/index.scss';\n`, provide = '', inject = ''
   comKey.map(key => {
     let obj = comObj[key] as ComObj | true
     if (obj === true) {
@@ -79,7 +79,6 @@ async function UiComponent() {
       cssI += `@forward ./mod/${it}/index.scss;\n`
     })
     comObj.keys.push(...obj.keys)
-    component += `export * from './${key}'\n`
     str += `import {${obj.keys.map(dealNameStr).join(',')}} from '@ui/components/${key}'\n`
   })
   cssI += `@forward './end/index.scss';`
