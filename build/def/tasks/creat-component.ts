@@ -96,7 +96,6 @@ function getHooks(key: any) {
   let name = getName([key])
   return `import { ${name}Props } from "@ui/components/${key}/src/${key}";
 import { computed, inject } from "vue";
-
 export const useInject${name} = (props: ${name}Props) => {
   return {
   }
