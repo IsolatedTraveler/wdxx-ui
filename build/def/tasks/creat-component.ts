@@ -75,9 +75,7 @@ async function UiComponent() {
       provide += getExportStr(obj.provide ? obj.provide === true ? [key] : obj.provide : [])
       inject += getExportStr(obj.inject ? Object.keys(obj.inject) : [])
     }
-    obj.keys.forEach(it => {
-      cssI += `@forward ./mod/${it}/index.scss;\n`
-    })
+    cssI += getExportStr(obj.keys, '@forward ./mod/', '/index.scss;\n')
     comObj.keys.push(...obj.keys)
     str += `import {${obj.keys.map(dealNameStr).join(',')}} from '@ui/components/${key}'\n`
   })
