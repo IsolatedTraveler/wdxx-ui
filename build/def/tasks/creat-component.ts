@@ -1,4 +1,4 @@
-import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName, componentUse, componentProp, CSS_PATH, stylesModuleRoot, getName, comKey, ComObj, dealNameStr, InjectRoot, provideRoot } from "@ui/build-utils"
+import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, epRoot, projRoot, PKG_NAME, componentUse, componentProp, CSS_PATH, stylesModuleRoot, getName, comKey, ComObj, dealNameStr, InjectRoot, provideRoot } from "@ui/build-utils"
 import { mkdir } from 'fs/promises'
 import { resolve } from "path";
 function excludeCom(arr: Array<filesObj>) {
@@ -76,7 +76,7 @@ async function UiComponent() {
       provide += getExportStr(obj.provide ? obj.provide === true ? [key] : obj.provide : [])
       inject += getExportStr(obj.inject ? Object.keys(obj.inject) : [])
     }
-    cssI += getExportStr(obj.keys, '@forward ./mod/', '/index.scss;\n')
+    cssI += getExportStr(obj.keys, '@forward ' + CSS_PATH, '/index.scss;\n')
     comObj.keys.push(...obj.keys)
     str += `import {${obj.keys.map(dealNameStr).join(',')}} from '@ui/components/${key}'\n`
   })
@@ -103,29 +103,14 @@ async function UiComponent() {
     write(resolve(projRoot, 'global.d.ts'), typeing)
   ])
 }
-async function componentG() {
-  const com = Object.keys(comObj)
-  let str = 'declare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    '
-  // com
-  str += com.map((name) => {
-    name = dealName(name.split('-'))
-    return `${name}: typeof import("${PKG_NAME}")["${name}"];`
-  }).join('\n    ')
-  str += '\n  }\n  interface ComponentCustomProperties {\n    '
-  // plugin
-  str += '\n  }\n}\nexport {}'
-  return write(resolve(projRoot, 'global.d.ts'), str)
-}
 export const creatComponent = async () => {
   return getComponent().then((arr: Array<filesObj>) => {
     // 排除已经建立文件的页面
     return Promise.all([
       // 创建componts.ts
       UiComponent(),
-      // // 创建global.d.ts
-      // componentG(),
       // // 创建components
-      // createCom(arr)
+      createCom(arr)
     ])
   })
 }
