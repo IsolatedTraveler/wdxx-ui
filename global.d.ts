@@ -1,10 +1,12 @@
-import "@vue/runtime-core"
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {
-    ZIcon: typeof import("../packages/z-ui")["ZIcon"];
-    ZBtn: typeof import("../packages/z-ui")["ZBtn"];
-    ZBtnGroup: typeof import("../packages/z-ui")["ZBtnGroup"];
-    ZForm: typeof import("../packages/z-ui")["ZForm"];
+    ZIcon: typeof import("z-uis")["ZIcon"];
+    ZBtn: typeof import("z-uis")["ZBtn"];
+    ZBtnGroup: typeof import("z-uis")["ZBtnGroup"];
+    ZForm: typeof import("z-uis")["ZForm"];
   }
   interface ComponentCustomProperties {
     
+  }
+}
+export {}
