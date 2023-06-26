@@ -15,18 +15,28 @@ function createCom(arr: Array<filesObj>) {
     await mkdir(styleUrl, { recursive: true })
     if (comObj[key] === true) {
       const comUrl = resolve(keyComUrl, 'src')
+      // 创建components
       await mkdir(comUrl, { recursive: true })
+      // 创建components/${key}/src/${key}.ts
       arr.push(write(resolve(comUrl, key + '.ts'), componentProp(key)))
+      // 创建components/${key}/src/${key}.vue
       arr.push(write(resolve(comUrl, key + '.vue'), componentVue(key)))
+      // 创建components/${key}/src/insstance.ts
       arr.push(write(resolve(comUrl, 'instance.ts'), componentInstance(key, comArrObj[key])))
+      // 创建components/${key}/src/use-${key}.ts
       arr.push(write(resolve(comUrl, 'use-' + key + '.ts'), componentUse(key)))
+      // // 创建components/${key}/index.ts
       arr.push(write(resolve(keyComUrl, 'index.ts'), componentIndex(key, comArrObj[key])))
       delete comObj[key]
     }
+    // 创建components/${key}/style/index.ts
     arr.push(write(resolve(styleUrl, 'index.ts'), `import '@ui/styles/src/base.scss'\nimport '@ui/styles/src/${key}.scss'\nimport '@ui/styles/src/end.scss'`))
+    // 创建components/${key}/style/css.ts
     arr.push(write(resolve(styleUrl, 'css.ts'), `import '@ui/styles/base.css'\nimport '@ui/styles/${key}.css'\nimport '@ui/styles/end.css'`))
-    arr.push(write(resolve(stylesModuleRoot, key + '.scss'), `@use 'sass:map';\n@use '../mixins/index.scss' as *;\n@use '../config/index.scss' as *;\n@use '../mod/${key}.scss' as *;\n@include styles(${key}, $${key}, $attr, $state, $media);\n@include create(${key}) {\n\n}`))
-    arr.push(write(resolve(stylesRoot, 'mod/' + key + '.scss'), `@use 'sass:map';\n@use '../config/index.scss' as *;\n$attr:('disabled');\n$media: ('hover');\n$state: ();\n$${key}: (\n  'mod': (),\n  'attr': setAttr($attr),\n  'state': setState($state),\n  'media': setMedia($media)\n) !default;`))
+    // 创建styles/src/mod/${key}/index.scss
+    arr.push(write(resolve(stylesModuleRoot, key + '/index.scss'), `@use 'sass:map';\n@use '../mixins/index.scss' as *;\n@use '../config/index.scss' as *;\n@use '../mod/${key}.scss' as *;\n@include styles(${key}, $${key}, $attr, $state, $media);\n@include create(${key}) {\n\n}`))
+    // 创建styles/src/mod/${key}/${key}.scss
+    arr.push(write(resolve(stylesModuleRoot, + key + '/' + key + '.scss'), `@use 'sass:map';\n@use '../config/index.scss' as *;\n$attr:('disabled');\n$media: ('hover');\n$state: ();\n$${key}: (\n  'mod': (),\n  'attr': setAttr($attr),\n  'state': setState($state),\n  'media': setMedia($media)\n) !default;`))
     return Promise.all(arr)
   })).then(() => {
     const keys = Object.keys(comObj)
