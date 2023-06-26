@@ -1,4 +1,4 @@
-import { propsBtnGroupShape, propsBtnShape, propsBtnType } from './var'
+import { propsBtnGroupShape, propsBtnShape, propsBtnType } from '@ui/vars/props'
 export const PropsBtnType = {
   type: String,
   default: 'button',

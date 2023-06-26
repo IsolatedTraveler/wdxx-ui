@@ -1,4 +1,4 @@
-import { propsFlex, propsFlexCol, propsFlexRow, propsFlexSelf } from './var'
+import { propsFlex, propsFlexCol, propsFlexRow, propsFlexSelf } from '@ui/vars/props'
 export const PropsFlex = {
   type: String,
   values: propsFlex

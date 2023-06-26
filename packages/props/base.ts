@@ -1,5 +1,5 @@
 import { isCssLength, isPositiveInteger } from "@ui/utils"
-import { propsBaseRadius, propsBaseSize, propsBaseState } from "./var"
+import { propsBaseRadius, propsBaseSize, propsBaseState } from "@ui/vars/props"
 
 export const PropsBaseBoolean = {
   type: Boolean,
