@@ -1,5 +1,4 @@
-import { hooksRoot, comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName, componentUse, componentProp, CSS_PATH, stylesModuleRoot, getName, comKey, ComObj, dealNameStr } from "@ui/build-utils"
-import { group } from "console";
+import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName, componentUse, componentProp, CSS_PATH, stylesModuleRoot, getName, comKey, ComObj, dealNameStr, InjectRoot, provideRoot } from "@ui/build-utils"
 import { mkdir } from 'fs/promises'
 import { resolve } from "path";
 function excludeCom(arr: Array<filesObj>) {
@@ -32,8 +31,8 @@ function createCom(arr: Array<filesObj>) {
       delete comObj[key]
     }
     // 创建hooks/use-provide/${key}.ts
-    console.log(resolve(hooksRoot, `${key}.ts`))
-    arr.push(write(resolve(hooksRoot, `${key}.ts`), getHooks(key)))
+    // console.log(resolve(hooksRoot, `${key}.ts`))
+    // arr.push(write(resolve(hooksRoot, `${key}.ts`), getHooks(key)))
     // 创建components/${key}/style/index.ts
     arr.push(write(resolve(styleUrl, 'index.ts'), `import '@ui/styles/src/base.scss'\nimport '@ui/styles/src/${key}.scss'\nimport '@ui/styles/src/end.scss'`))
     // 创建components/${key}/style/css.ts
@@ -56,28 +55,51 @@ export const useInject${name} = (props: ${name}Props) => {
 }`
 }
 async function UiComponent() {
-  let component = '', str = ''
+  let component = '', str = '', cssI = `@forward './base/index.scss';\n`, provide = '', inject = ''
   comKey.map(key => {
     let obj = comObj[key] as ComObj | true
     if (obj === true) {
       obj = { keys: [key] } as ComObj
     } else {
-      obj.keys = [key]
+      obj.keys = []
       if (obj.prev) {
         obj.keys.push(...obj.prev)
       }
+      obj.keys.push(key)
       if (obj.next) {
         obj.keys.push(...obj.next)
       }
+      if (obj.provide) {
+        (obj.provide === true ? [key] : obj.provide).forEach(it => {
+          provide += `export * from './${it}'\n`
+        })
+      }
+      if (obj.inject) {
+        Object.keys(obj.inject).forEach(it => {
+          inject += `export * from './${it}'\n`
+        })
+      }
     }
+    obj.keys.forEach(it => {
+      cssI += `@forward ./mod/${it}/index.scss;\n`
+    })
     comObj.keys.push(...obj.keys)
     component += `export * from './${key}'\n`
     str += `import {${obj.keys.map(dealNameStr).join(',')}} from '@ui/components/${key}'\n`
   })
-  str += `export default[\n  ${comObj.keys.join(',\n  ')}\n]`
+  cssI += `@forward './end/index.scss';`
+  str += `export default[\n  ${comObj.keys.map(dealNameStr).join(',\n  ')}\n]`
   return Promise.all([
+    // 创建z-ui/commponent.ts
     write(resolve(epRoot, 'component.ts'), str),
-    write(resolve(compRoot, 'index.ts'), component)
+    // 创建commponents/index.ts
+    write(resolve(compRoot, 'index.ts'), component),
+    // 修改styles/src/index.scss
+    write(resolve(stylesRoot, 'index.scss'), cssI),
+    // 修改hooks/use-provide/index.scss
+    write(resolve(provideRoot, 'index.ts'), provide),
+    // 修改hooks/use-inject/index.scss
+    write(resolve(InjectRoot, 'index.ts'), inject)
   ])
 }
 async function componentD() {
@@ -97,7 +119,7 @@ async function componentD() {
   // 修改styles/src/index.scss
   write(resolve(stylesRoot, 'index.scss'), st)
   // 修改hooks/use-provide/index.scss
-  write(resolve(hooksRoot, 'index.ts'), str1)
+  // write(resolve(hooksRoot, 'index.ts'), str1)
   return write(resolve(projRoot, 'typings/components.d.ts'), str)
 }
 async function componentG() {
