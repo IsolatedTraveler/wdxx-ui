@@ -11,8 +11,7 @@ export interface ComObj {
   keys: string[]
 }
 export interface ComsObj {
-  keys: string[],
-  [index: string]: ComObj | true | string[]
+  [index: string]: ComObj | true
 }
 export interface filesObj {
   name: string,
@@ -21,7 +20,7 @@ export interface filesObj {
 const comArrObj: any = {}
 const comObj: ComsObj = require(path.resolve(projRoot, 'component.json'))
 const comKey: string[] = Object.keys(comObj)
-const keys: string[] = []
+const comKeys: string[] = []
 comKey.map(key => {
   let obj = comObj[key] as ComObj | true
   if (obj === true) {
@@ -37,12 +36,11 @@ comKey.map(key => {
     }
   }
   comObj[key] = obj
-  keys.push(...obj.keys)
+  comKeys.push(...obj.keys)
 })
-comObj.keys = keys
-console.log(JSON.stringify(comObj))
 export {
   comObj,
   comKey,
+  comKeys,
   comArrObj
 }
