@@ -1,2 +1,4 @@
-@forward "./vars/index.scss";
-@forward "./base/index.scss";
+@use './module/base.scss';
+@use './module/btn.scss';
+@use './module/btn-group.scss';
+@use './end/index.scss';
