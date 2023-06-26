@@ -1,2 +1,2 @@
-@use "./vars/index.scss";
-@use "./base/index.scss";
+@forward "./vars/index.scss";
+@forward "./base/index.scss";
