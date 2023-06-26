@@ -6,7 +6,7 @@ A-->AB("props")-->ABA("描述")-->ABAA("定义所有组件具备的属性")
 
 A-->AC("styles")-->ACA("描述")-->ACAA("实现所有组件样式功能")
 AC-->ACB("src")-->ACBA("vars")-->ACBA("样式通用参数，此处样式变更将改变全局样式")
-ACB-->ACBB("base")-->ACBA("全局样式，清除默认样式")
+ACB-->ACBB("base")-->ACBBA("全局样式，清除默认样式")
 
 A-->AD("utils")-->ADA("描述")-->ADAA("实现通用逻辑处理功能")
 
