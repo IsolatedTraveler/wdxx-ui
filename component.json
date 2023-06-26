@@ -1,12 +1,16 @@
 {
   "icon": true,
   "btn": {
-    "child": {
-      "btn-group": {
-        "provide": true
-      }
+    "next": [
+      "btn-group"
+    ],
+    "inject": {
+      "btn": [
+        "btn-group",
+        "form"
+      ]
     },
-    "inject": [
+    "provide": [
       "btn-group"
     ]
   },

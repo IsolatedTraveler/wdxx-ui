@@ -12,6 +12,9 @@ export function getName(arr: Array<string>): string {
 export const dealName = (arr: Array<string>): string => {
   return getName([PKG_PREFIX, ...arr])
 }
+export const dealNameStr = (str: string): string => {
+  return dealName(str.split('-'))
+}
 export const getComponent = () => {
   return readdir(compRoot).then(arr => {
     return (arr as Array<any>).map(({ name }) => ({ name: dealName(name.split('-')), fileName: name }))

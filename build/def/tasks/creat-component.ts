@@ -1,4 +1,5 @@
-import { hooksRoot, comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName, componentUse, componentProp, CSS_PATH, stylesModuleRoot, getName } from "@ui/build-utils"
+import { hooksRoot, comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName, componentUse, componentProp, CSS_PATH, stylesModuleRoot, getName, comKey, ComObj, dealNameStr } from "@ui/build-utils"
+import { group } from "console";
 import { mkdir } from 'fs/promises'
 import { resolve } from "path";
 function excludeCom(arr: Array<filesObj>) {
@@ -55,19 +56,25 @@ export const useInject${name} = (props: ${name}Props) => {
 }`
 }
 async function UiComponent() {
-  let component = ''
-  const keys = Object.keys(comArrObj), arrE: Array<string> = [],
-    arri = keys.map(key => {
-      component += `export * from './${key}'\n`
-      const name = dealName(key.split('-')),
-        group = comArrObj[key] === true ? false :
-          comArrObj[key] ? comArrObj[key].map((it: string) => dealName(it.split('-'))) : false,
-        groupStr = group ? (', ' + group.join(', ')) : ''
-      arrE.push(name)
-      group && arrE.push(...group)
-      return `import {${name}${groupStr}} from '@ui/components/${key}'`
-    })
-  const str = arri.join('\n') + '\n' + `export default [\n  ${arrE.join(',\n  ')}\n]`
+  let component = '', str = ''
+  comKey.map(key => {
+    let obj = comObj[key] as ComObj | true
+    if (obj === true) {
+      obj = { keys: [key] } as ComObj
+    } else {
+      obj.keys = [key]
+      if (obj.prev) {
+        obj.keys.push(...obj.prev)
+      }
+      if (obj.next) {
+        obj.keys.push(...obj.next)
+      }
+    }
+    comObj.keys.push(...obj.keys)
+    component += `export * from './${key}'\n`
+    str += `import {${obj.keys.map(dealNameStr).join(',')}} from '@ui/components/${key}'\n`
+  })
+  str += `export default[\n  ${comObj.keys.join(',\n  ')}\n]`
   return Promise.all([
     write(resolve(epRoot, 'component.ts'), str),
     write(resolve(compRoot, 'index.ts'), component)
@@ -112,12 +119,12 @@ export const creatComponent = async () => {
     return Promise.all([
       // 创建componts.ts
       UiComponent(),
-      // 创建typings/components.d.ts
-      componentD(),
-      // 创建global.d.ts
-      componentG(),
-      // 创建components
-      createCom(arr)
+      // // 创建typings/components.d.ts
+      // componentD(),
+      // // 创建global.d.ts
+      // componentG(),
+      // // 创建components
+      // createCom(arr)
     ])
   })
 }
