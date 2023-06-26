@@ -2,9 +2,9 @@ import path from "path";
 import type { ModuleFormat } from "rollup";
 import { epOutput } from "./path";
 import { compilerOptions } from '../../../tsconfig.base.json'
+export { PKG_PREFIX } from "@ui/vars";
 export const target = compilerOptions.target;
 export const PKG_GROUP = "@ui";
-export const PKG_PREFIX = "z";
 export const PKG_NAME = "z-uis";
 export const PKG_CAMELCASE_NAME = "ZUis";
 export const PKG_CAMELCASE_LOCAL_NAME = "ZUisLocale";
