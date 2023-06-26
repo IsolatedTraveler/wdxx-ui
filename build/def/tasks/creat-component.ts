@@ -58,7 +58,8 @@ function getExportStr(arr: string[], prev = `export * from './`, next = `';\n`) 
   return arr.map(it => `${prev}${it}${next}`).join('')
 }
 async function UiComponent() {
-  let component = getExportStr(comKey), str = '', cssI = `@forward './base/index.scss';\n`, provide = '', inject = ''
+  let component = getExportStr(comKey), str = '', cssI = `@forward './base/index.scss';\n`, provide = '', inject = '',
+    typeing = 'declare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    '
   comKey.map(key => {
     let obj = comObj[key] as ComObj | true
     if (obj === true) {
@@ -81,6 +82,12 @@ async function UiComponent() {
   })
   cssI += `@forward './end/index.scss';`
   str += `export default[\n  ${comObj.keys.map(dealNameStr).join(',\n  ')}\n]`
+  typeing += comObj.keys.map(it => {
+    let name = dealNameStr(it)
+    return `${name}: typeof import("${PKG_NAME}")["${name}"];`
+  }).join('\n    ')
+  typeing += '\n  }\n  interface ComponentCustomProperties {\n    '
+  typeing += '\n  }\n}\nexport {}'
   return Promise.all([
     // 创建z-ui/commponent.ts
     write(resolve(epRoot, 'component.ts'), str),
@@ -91,28 +98,10 @@ async function UiComponent() {
     // 修改hooks/use-provide/index.scss
     write(resolve(provideRoot, 'index.ts'), provide),
     // 修改hooks/use-inject/index.scss
-    write(resolve(InjectRoot, 'index.ts'), inject)
+    write(resolve(InjectRoot, 'index.ts'), inject),
+    // 修改typings/components.d.ts
+    write(resolve(projRoot, 'global.d.ts'), typeing)
   ])
-}
-async function componentD() {
-  const com = Object.keys(comObj)
-  let str = 'import "@vue/runtime-core"\ndeclare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    ', st = `@forward './base/index.scss';`, str1 = ''
-  // com
-  str += com.map((name) => {
-    st += `\n@forward '${CSS_PATH}${name}/index.scss';`
-    str1 += `export * from './${name}'\n`
-    name = dealName(name.split('-'))
-    return `${name}: typeof import("../packages/${uiFileName}")["${name}"];`
-  }).join('\n    ')
-  str += '\n  }\n  interface ComponentCustomProperties {\n    '
-  // plugin
-  str += '\n  }\n}\nexport {}'
-  st += `\n@forward './end/index.scss';`
-  // 修改styles/src/index.scss
-  write(resolve(stylesRoot, 'index.scss'), st)
-  // 修改hooks/use-provide/index.scss
-  // write(resolve(hooksRoot, 'index.ts'), str1)
-  return write(resolve(projRoot, 'typings/components.d.ts'), str)
 }
 async function componentG() {
   const com = Object.keys(comObj)
@@ -133,8 +122,6 @@ export const creatComponent = async () => {
     return Promise.all([
       // 创建componts.ts
       UiComponent(),
-      // // 创建typings/components.d.ts
-      // componentD(),
       // // 创建global.d.ts
       // componentG(),
       // // 创建components
