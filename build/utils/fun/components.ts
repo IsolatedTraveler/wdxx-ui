@@ -1,5 +1,4 @@
 import { compRoot, PKG_PREFIX } from "../var"
-import { comObj, filesObj } from "../var/component"
 import { readdir } from "./fs"
 export function firstMax(it: string, judge = false): string {
   return (judge ? it.slice(0, 1).toLowerCase() : it.slice(0, 1).toUpperCase()) + it.slice(1)
@@ -20,22 +19,6 @@ export const getComponent = () => {
     return (arr as Array<any>).map(({ name }) => ({ name: dealName(name.split('-')), fileName: name }))
   })
 }
-export const getComponentName = (com: Array<filesObj>) => {
-  const comName: Array<string> = []
-  const files: Array<filesObj> = com.filter(({ name }) => {
-    if (comObj[name] === true) {
-      return false
-    } else {
-      const arr: Array<string> = comObj[name]
-      comName.push(name)
-      if (arr) {
-        comName.push(...arr)
-      }
-      return true
-    }
-  })
-  return { comName, files }
-}
 function getImport(arr: Array<string>, pre = ''): Array<string> {
   return arr.map(it => {
     return `import ${getName(it.split('-'))} from '.${pre}/${it}.vue'`
@@ -47,8 +30,8 @@ function getExport(arr: Array<string>): Array<string> {
     return `export type ${name}Instance = InstanceType<typeof ${name}>`
   })
 }
-export const componentInstance = (key: string, group: Array<string> = []) => {
-  const arrI: Array<string> = getImport([key, ...group]), arrE: Array<string> = getExport([key, ...group])
+export const componentInstance = (group: Array<string> = []) => {
+  const arrI: Array<string> = getImport(group), arrE: Array<string> = getExport(group)
   return [
     ...arrI,
     ...arrE
@@ -76,7 +59,8 @@ export const componentVue = (key: string): string => {
   ].join('\n')
 }
 export const componentIndex = (key: string, group: Array<string> = []) => {
-  const arrI: Array<string> = getImport([key, ...group], '/src')
+  const arrI: Array<string> = getImport(group, '/src')
+  group = group.filter(it => it != key)
   return [
     group.length ? `import { withInstall, withNoopInstall } from '@ui/utils'` : `import { withInstall } from '@ui/utils'`,
     ...arrI,

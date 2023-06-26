@@ -1,5 +1,5 @@
 import { useHtmlDisabled, useCss } from "@ui/hooks"
-import { useInjectBtn } from "@ui/hooks/use-provide/btn"
+import { useInjectBtn } from "@ui/hooks/use-inject/btn"
 import { computed, ref, SetupContext } from "vue"
 import type { BtnProps, BtnEmits } from "./btn"
 export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) => {

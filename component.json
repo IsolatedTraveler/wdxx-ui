@@ -1,17 +1,17 @@
 {
   "icon": true,
-  "btn": {
+  "btn1": {
     "next": [
-      "btn-group"
+      "btn1-group"
     ],
     "inject": {
-      "btn": [
-        "btn-group",
+      "btn1": [
+        "btn1-group",
         "form"
       ]
     },
     "provide": [
-      "btn-group"
+      "btn1-group"
     ]
   },
   "form": {

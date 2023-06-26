@@ -17,7 +17,6 @@ export interface filesObj {
   name: string,
   fileName: string
 }
-const comArrObj: any = {}
 const comObj: ComsObj = require(path.resolve(projRoot, 'component.json'))
 const comKey: string[] = Object.keys(comObj)
 const comKeys: string[] = []
@@ -41,6 +40,5 @@ comKey.map(key => {
 export {
   comObj,
   comKey,
-  comKeys,
-  comArrObj
+  comKeys
 }
