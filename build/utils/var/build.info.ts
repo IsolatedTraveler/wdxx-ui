@@ -1,7 +1,7 @@
 import path from "path";
 import type { ModuleFormat } from "rollup";
 import { epOutput } from "./path";
-import {compilerOptions} from '../../../tsconfig.base.json'
+import { compilerOptions } from '../../../tsconfig.base.json'
 export const target = compilerOptions.target;
 export const PKG_GROUP = "@ui";
 export const PKG_PREFIX = "z";
@@ -10,6 +10,7 @@ export const PKG_CAMELCASE_NAME = "ZUis";
 export const PKG_CAMELCASE_LOCAL_NAME = "ZUisLocale";
 export const PKG_BRAND_NAME = "Z Uis";
 export const themeChalk = "styles"
+export const CSS_PATH = './module/'
 
 export const modules = ["esm", "cjs"] as const;
 export interface BuildInfo {

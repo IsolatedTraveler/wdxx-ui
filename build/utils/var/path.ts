@@ -7,7 +7,12 @@ export const projRoot = resolve(__dirname, "..", "..", "..");
 export const pkgRoot = resolve(projRoot, "packages");
 export const compRoot = resolve(pkgRoot, 'components')
 export const epRoot = resolve(pkgRoot, uiFileName);
+<<<<<<< HEAD
 export const stylesRoot = resolve(pkgRoot, "styles");
+=======
+export const stylesRoot = resolve(pkgRoot, "styles/src");
+export const stylesModuleRoot = resolve(stylesRoot, "module");
+>>>>>>> dev
 export const epPackage = resolve(epRoot, "package.json");
 
 // 构建工具位置

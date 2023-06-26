@@ -1,5 +1,7 @@
-import { withInstall } from '@ui/utils'
+import { withInstall, withNoopInstall } from '@ui/utils'
 import Btn from './src/btn.vue'
-export const ZBtn = withInstall(Btn)
-export default ZBtn
+import BtnGroup from './src/btn-group.vue'
+export const ZBtn = withInstall(Btn, {BtnGroup})
+export const ZBtnGroup = withNoopInstall(BtnGroup)
 export * from './src/instance'
+export default ZBtn

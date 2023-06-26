@@ -1,0 +1,8 @@
+@use 'sass:map';
+@use '../mixins/index.scss' as *;
+@use '../config/index.scss' as *;
+@use '../mod/table.scss' as *;
+// @include styles(table, $table, $attr, $state, $media);
+// @include create(table) {
+
+// }

@@ -2,9 +2,7 @@
   "name": "@ui/build-utils",
   "version": "1.0.0",
   "description": "All view components are included here",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./index",
   "sideEffects": false,
   "scripts": {
     "stub": "unbuild --stub"

@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use '../mixins/base.scss' as *;
+%flex{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  box-sizing: border-box;
+  position: relative;
+  @include create('wrap') {
+    flex-wrap: wrap;
+  }
+}
+@include create('row') {
+  @extend %flex;
+  flex-flow: row nowrap;
+}
+@include create('col') {
+  @extend %flex;
+  flex-flow: column nowrap;
+}

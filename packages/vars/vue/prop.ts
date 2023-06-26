@@ -1,9 +1,14 @@
-export interface Prop {
-  key?: string
-  type?: any
-  values?: Array<any>
-  required?: boolean
-  validator?: any
-  default?: any
-}
+
+export const ComponentRadius = ['', 'circle', 'round', 'ellipse', 'none']
+export const ComponentRule = ['', 'required']
 export const ComponentSize = ['', 'sm', 'md', 'lg']
+export const ComponentState = ['', 'primary', 'success', 'warning', 'danger', 'info']
+export const ComponentAlign = ['', 'left', 'center', 'right']
+export const ComponentFixed = ['', 'left', 'right']
+// flex
+export const ComponentRowAlign = ['', 'evenly', 'start', 'end', 'center', 'around', 'between', 'stretch']
+export const ComponentColAlign = ['', 'start', 'end', 'center', 'around', 'between', 'stretch']
+export const ComponentSelfAlign = ['', 'start', 'end', 'center', 'stretch']
+export const ComponentFlex = ['', 'row', 'col']
+// table
+export const ComponentTableShape = ['', 'stripe']

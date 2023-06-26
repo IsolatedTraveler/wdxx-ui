@@ -1,0 +1,7 @@
+@use 'sass:map';
+@use '../mixins/index.scss' as *;
+@use '../config/index.scss' as *;
+@use '../mod/page.scss' as *;
+@include styles(page, $page, $attr, $state, $media);
+
+@include create(page) {}

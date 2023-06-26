@@ -1,0 +1,11 @@
+@use 'sass:map';
+@use '../config/index.scss' as *;
+$attr:('disabled');
+$media: ('hover');
+$state: ();
+$th: (
+  'mod': (),
+  'attr': setAttr($attr),
+  'state': setState($state),
+  'media': setMedia($media)
+) !default;

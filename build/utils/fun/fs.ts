@@ -3,7 +3,7 @@ import path from 'path'
 const judgeDir = (file: string, name: string) => {
   return new Promise((resolve) => {
     fs.stat(file, (err, stats) => {
-      resolve(!err && stats.isDirectory() ? {file, name} : '')
+      resolve(!err && stats.isDirectory() ? { file, name } : '')
     })
   })
 }

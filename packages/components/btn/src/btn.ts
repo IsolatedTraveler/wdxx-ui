@@ -1,12 +1,25 @@
-import { useSizeProp } from "@ui/hooks";
-import { ExtractPropTypes, PropType } from "vue";
+import { propsBuildS } from "@ui/hooks";
+import { PropsBtnType, PropsBaseBoolean, PropsBaseString, PropsFlex, PropsFlexRow, PropsFlexCol, PropsBasePositiveInteger, PropsBaseRadius, PropsFlexSelf, PropsBtnShape, PropsBaseSize, PropsBaseState } from "@ui/props";
+import { EventClick } from "@ui/vars";
+import { ExtractPropTypes } from "vue";
 
-export const btnProps = {
-  size: useSizeProp,
-  disabled: Boolean as PropType<boolean>
-}
+export const btnProps = propsBuildS({
+  disabled: PropsBaseBoolean,
+  icon: PropsBaseString,
+  order: PropsBasePositiveInteger,
+  radius: PropsBaseRadius,
+  full: PropsBaseBoolean,
+  type: PropsBtnType,
+  flex: PropsFlex,
+  row: PropsFlexRow,
+  col: PropsFlexCol,
+  self: PropsFlexSelf,
+  shape: PropsBtnShape,
+  size: PropsBaseSize,
+  state: PropsBaseState
+})
 export const btnEmits = {
-  click: (evt: MouseEvent) => evt instanceof MouseEvent
+  [EventClick]: (evt: MouseEvent) => evt instanceof MouseEvent
 }
 export type BtnProps = ExtractPropTypes<typeof btnProps>
 export type BtnEmits = typeof btnEmits

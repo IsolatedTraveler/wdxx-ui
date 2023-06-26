@@ -1,4 +1,29 @@
 [
-  ["btn", ["btn-group"]],
-  ["table", ["th"]]
+  [
+    "btn",
+    [
+      "btn-group"
+    ]
+  ],
+  [
+    "icon"
+  ],
+  [
+    "form"
+  ],
+  [
+    "td"
+  ],
+  [
+    "tr"
+  ],
+  [
+    "table",
+    [
+      "th"
+    ]
+  ],
+  [
+    "page"
+  ]
 ]

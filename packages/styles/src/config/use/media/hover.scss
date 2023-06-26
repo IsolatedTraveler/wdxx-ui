@@ -1,0 +1,86 @@
+@use '../var.scss' as *;
+@use 'sass:map';
+$hover-val: (
+  def: (
+    color: var(--color-primary),
+    bg: var(--color-white),
+    bd: var(--color-primary),
+    def: var(--color-text)
+  ),
+  primary: (
+    def: var(--color-primary),
+    bg: var(--color-primary-hover),
+    bd: var(--color-primary-hover)
+  ),
+  success: (
+    def: var(--color-success),
+    bg: var(--color-success-hover),
+    bd: var(--color-success-hover)
+  ),
+  warning: (
+    def: var(--color-warning),
+    bg: var(--color-warning-hover),
+    bd: var(--color-warning-hover)
+  ),
+  danger: (
+    def: var(--color-danger),
+    bg: var(--color-danger-hover),
+    bd: var(--color-danger-hover)
+  ),
+  info: (
+    def: var(--color-info),
+    bg: var(--color-info-hover),
+    bd: var(--color-info-hover)
+  ),
+  'white': var(--color-white),
+  'transparent': var(--color-transparent)
+);
+@function setHovers($re: ()) {
+  $re: setHoverStates($re);
+  $re: map.set($re, 'def', setHoverAttrs((), 'def'));
+  @return $re;
+};
+@function setHoverStates($re) {
+  @each $key in $css-state-keys {
+    $re: map.set($re, $key, setHoverAttrs((), $key));
+  }
+  @return $re;
+};
+@function setHoverAttrs($re, $state) {
+  @each $key in $attr-keys {
+    $re: map.set($re, $key, setHover($state, $key));
+  }
+  $re: map.set($re, 'def', setHover($state));
+  @return $re;
+};
+@function setHover($state, $attr:false) {
+  $val: map.get($hover-val, $state);
+  $color: map.get($hover-val, 'white');
+  @if $state == 'def' {
+    $color: map.get($val, 'color');
+  }
+  @if $attr {
+    $val: map.get($val, #{'_' + $attr});
+  }
+  @if $val {
+    @return (
+      def:(
+        color: $color,
+        background-color: map.get($val, 'bg'),
+        border-color:  map.get($val, 'bd')
+      ),
+      re:(
+        color: $color,
+        background-color: map.get($val, 'bg'),
+        border-color:  map.get($val, 'bd')
+      ),
+      text: (
+        color: map.get($val, 'def'),
+        background-color:map.get($hover-val, 'transparent'),
+        border-color:  map.get($hover-val, 'transparent')
+      )
+    );
+  }
+  @return null;
+};
+$hover: setHovers();

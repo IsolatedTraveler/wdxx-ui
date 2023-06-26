@@ -1,0 +1,10 @@
+html{
+  font-size: 100px;
+}
+body{
+  font-size: var(--width-font);
+}
+button{
+  margin: 0;
+  user-select: none;
+}
