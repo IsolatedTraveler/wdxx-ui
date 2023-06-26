@@ -1,4 +1,4 @@
-import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, epRoot, projRoot, PKG_NAME, componentUse, componentProp, CSS_PATH, stylesModuleRoot, getName, comKey, ComObj, dealNameStr, InjectRoot, provideRoot } from "@ui/build-utils"
+import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, epRoot, projRoot, PKG_NAME, componentUse, componentProp, CSS_PATH, stylesModuleRoot, getName, comKey, ComObj, dealNameStr, InjectRoot, provideRoot, comKeys } from "@ui/build-utils"
 import { mkdir } from 'fs/promises'
 import { resolve } from "path";
 function getExportStr(arr: string[], prev = `export * from './`, next = `';\n`) {
@@ -15,8 +15,8 @@ async function UiComponent() {
     str += `import {${obj.keys.map(dealNameStr).join(',')}} from '@ui/components/${key}'\n`
   })
   cssI += `@forward './end/index.scss';`
-  str += `export default[\n  ${comObj.keys.map(dealNameStr).join(',\n  ')}\n]`
-  typeing += comObj.keys.map(it => {
+  str += `export default[\n  ${comKeys.map(dealNameStr).join(',\n  ')}\n]`
+  typeing += comKeys.map(it => {
     let name = dealNameStr(it)
     return `${name}: typeof import("${PKG_NAME}")["${name}"];`
   }).join('\n    ')
@@ -39,8 +39,6 @@ async function UiComponent() {
 }
 function createCom(arr: Array<filesObj>) {
   excludeCom(arr)
-  console.log(comObj)
-  console.log(arr)
   // const keys = Object.keys(comObj)
   // return Promise.all(keys.map(async (key) => {
   //   const keyComUrl = resolve(compRoot, key), styleUrl = resolve(keyComUrl, 'style'), styleMod = resolve(stylesModuleRoot, key), arr: Array<Promise<any>> = []
