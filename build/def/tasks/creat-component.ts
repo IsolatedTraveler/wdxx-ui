@@ -1,4 +1,4 @@
-import { comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName, componentUse, componentProp, CSS_PATH, stylesModuleRoot } from "@ui/build-utils"
+import { hooksRoot, comObj, comArrObj, getComponent, filesObj, compRoot, write, stylesRoot, componentInstance, componentVue, componentIndex, dealName, epRoot, projRoot, PKG_NAME, uiFileName, componentUse, componentProp, CSS_PATH, stylesModuleRoot, getName } from "@ui/build-utils"
 import { mkdir } from 'fs/promises'
 import { resolve } from "path";
 function excludeCom(arr: Array<filesObj>) {
@@ -30,16 +30,29 @@ function createCom(arr: Array<filesObj>) {
       arr.push(write(resolve(keyComUrl, 'index.ts'), componentIndex(key, comArrObj[key])))
       delete comObj[key]
     }
+    // 创建hooks/use-provide/${key}.ts
+    console.log(resolve(hooksRoot, `${key}.ts`))
+    arr.push(write(resolve(hooksRoot, `${key}.ts`), getHooks(key)))
     // 创建components/${key}/style/index.ts
     arr.push(write(resolve(styleUrl, 'index.ts'), `import '@ui/styles/src/base.scss'\nimport '@ui/styles/src/${key}.scss'\nimport '@ui/styles/src/end.scss'`))
     // 创建components/${key}/style/css.ts
     arr.push(write(resolve(styleUrl, 'css.ts'), `import '@ui/styles/base.css'\nimport '@ui/styles/${key}.css'\nimport '@ui/styles/end.css'`))
     // 创建styles/src/mod/${key}/index.scss
-    arr.push(write(resolve(styleMod, 'index.scss'), `@use 'sass:map';\n@use '../mixins/index.scss' as *;\n@use '../config/index.scss' as *;\n@use '../mod/${key}.scss' as *;\n@include styles(${key}, $${key}, $attr, $state, $media);\n@include create(${key}) {\n\n}`))
+    arr.push(write(resolve(styleMod, 'index.scss'), `@use 'sass:map';\n@use '../../mixins/index.scss' as *;\n@use '../../config/index.scss' as *;\n@use './${key}.scss' as *;\n@include styles(${key}, $${key}, $attr, $state, $media);\n@include create(${key}) {\n\n}`))
     // 创建styles/src/mod/${key}/${key}.scss
-    arr.push(write(resolve(styleMod, key + '.scss'), `@use 'sass:map';\n@use '../config/index.scss' as *;\n$attr:('disabled');\n$media: ('hover');\n$state: ();\n$${key}: (\n  'mod': (),\n  'attr': setAttr($attr),\n  'state': setState($state),\n  'media': setMedia($media)\n) !default;`))
+    arr.push(write(resolve(styleMod, key + '.scss'), `@use 'sass:map';\n@use '../../config/index.scss' as *;\n$attr:('disabled');\n$media: ('hover');\n$state: ();\n$${key}: (\n  'mod': (),\n  'attr': setAttr($attr),\n  'state': setState($state),\n  'media': setMedia($media)\n) !default;`))
     return Promise.all(arr)
   }))
+}
+function getHooks(key: any) {
+  let name = getName([key])
+  return `import { ${name}Props } from "@ui/components/${key}/src/${key}";
+import { computed, inject } from "vue";
+
+export const useInject${name} = (props: ${name}Props) => {
+  return {
+  }
+}`
 }
 async function UiComponent() {
   let component = ''
@@ -62,10 +75,11 @@ async function UiComponent() {
 }
 async function componentD() {
   const com = Object.keys(comObj)
-  let str = 'import "@vue/runtime-core"\ndeclare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    ', st = `@forward './base/index.scss';`
+  let str = 'import "@vue/runtime-core"\ndeclare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    ', st = `@forward './base/index.scss';`, str1 = ''
   // com
   str += com.map((name) => {
     st += `\n@forward '${CSS_PATH}${name}/index.scss';`
+    str1 += `export * from './${name}'\n`
     name = dealName(name.split('-'))
     return `${name}: typeof import("../packages/${uiFileName}")["${name}"];`
   }).join('\n    ')
@@ -75,6 +89,8 @@ async function componentD() {
   st += `\n@forward './end/index.scss';`
   // 修改styles/src/index.scss
   write(resolve(stylesRoot, 'index.scss'), st)
+  // 修改hooks/use-provide/index.scss
+  write(resolve(hooksRoot, 'index.ts'), str1)
   return write(resolve(projRoot, 'typings/components.d.ts'), str)
 }
 async function componentG() {

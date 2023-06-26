@@ -10,6 +10,7 @@ export const epRoot = resolve(pkgRoot, uiFileName);
 export const stylesRoot = resolve(pkgRoot, "styles/src");
 export const stylesModuleRoot = resolve(stylesRoot, "mod");
 export const epPackage = resolve(epRoot, "package.json");
+export const hooksRoot = resolve(pkgRoot, "hooks/use-provide");
 
 // 构建工具位置
 export const buildRoot = resolve(projRoot, "build/def");
