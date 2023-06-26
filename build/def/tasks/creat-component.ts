@@ -10,9 +10,10 @@ function createCom(arr: Array<filesObj>) {
   excludeCom(arr)
   const keys = Object.keys(comObj)
   return Promise.all(keys.map(async (key) => {
-    const keyComUrl = resolve(compRoot, key), styleUrl = resolve(keyComUrl, 'style'), arr: Array<Promise<any>> = []
+    const keyComUrl = resolve(compRoot, key), styleUrl = resolve(keyComUrl, 'style'), styleMod = resolve(stylesModuleRoot, key), arr: Array<Promise<any>> = []
     await mkdir(keyComUrl, { recursive: true })
     await mkdir(styleUrl, { recursive: true })
+    await mkdir(styleMod, { recursive: true })
     if (comObj[key] === true) {
       const comUrl = resolve(keyComUrl, 'src')
       // 创建components
@@ -34,25 +35,11 @@ function createCom(arr: Array<filesObj>) {
     // 创建components/${key}/style/css.ts
     arr.push(write(resolve(styleUrl, 'css.ts'), `import '@ui/styles/base.css'\nimport '@ui/styles/${key}.css'\nimport '@ui/styles/end.css'`))
     // 创建styles/src/mod/${key}/index.scss
-    arr.push(write(resolve(stylesModuleRoot, key + '/index.scss'), `@use 'sass:map';\n@use '../mixins/index.scss' as *;\n@use '../config/index.scss' as *;\n@use '../mod/${key}.scss' as *;\n@include styles(${key}, $${key}, $attr, $state, $media);\n@include create(${key}) {\n\n}`))
+    arr.push(write(resolve(styleMod, 'index.scss'), `@use 'sass:map';\n@use '../mixins/index.scss' as *;\n@use '../config/index.scss' as *;\n@use '../mod/${key}.scss' as *;\n@include styles(${key}, $${key}, $attr, $state, $media);\n@include create(${key}) {\n\n}`))
     // 创建styles/src/mod/${key}/${key}.scss
-    arr.push(write(resolve(stylesModuleRoot, + key + '/' + key + '.scss'), `@use 'sass:map';\n@use '../config/index.scss' as *;\n$attr:('disabled');\n$media: ('hover');\n$state: ();\n$${key}: (\n  'mod': (),\n  'attr': setAttr($attr),\n  'state': setState($state),\n  'media': setMedia($media)\n) !default;`))
+    arr.push(write(resolve(styleMod, key + '.scss'), `@use 'sass:map';\n@use '../config/index.scss' as *;\n$attr:('disabled');\n$media: ('hover');\n$state: ();\n$${key}: (\n  'mod': (),\n  'attr': setAttr($attr),\n  'state': setState($state),\n  'media': setMedia($media)\n) !default;`))
     return Promise.all(arr)
-  })).then(() => {
-    const keys = Object.keys(comObj)
-    return Promise.all(
-      keys.map(async (key) => {
-        const name = comObj[key], comUrl = resolve(resolve(compRoot, name), 'src'), arr = []
-        arr.push(write(resolve(comUrl, key + '.ts'), componentProp(key)))
-        arr.push(write(resolve(comUrl, key + '.vue'), componentVue(key)))
-        arr.push(write(resolve(comUrl, 'use-' + key + '.ts'), componentUse(key)))
-        const keyUrl = resolve(compRoot, name + '/src/instance.ts')
-        arr.push(write(keyUrl, componentInstance(name, comArrObj[name])))
-        arr.push(write(resolve(compRoot, name + '/index.ts'), componentIndex(name, comArrObj[name])))
-        return Promise.resolve(arr)
-      })
-    )
-  })
+  }))
 }
 async function UiComponent() {
   let component = ''
@@ -75,17 +62,18 @@ async function UiComponent() {
 }
 async function componentD() {
   const com = Object.keys(comObj)
-  let str = 'import "@vue/runtime-core"\ndeclare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    ', st = `@use '${CSS_PATH}base.scss';`
+  let str = 'import "@vue/runtime-core"\ndeclare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    ', st = `@forward './base/index.scss';`
   // com
   str += com.map((name) => {
-    st += `\n@use '${CSS_PATH}${name}.scss';`
+    st += `\n@forward '${CSS_PATH}${name}/index.scss';`
     name = dealName(name.split('-'))
     return `${name}: typeof import("../packages/${uiFileName}")["${name}"];`
   }).join('\n    ')
   str += '\n  }\n  interface ComponentCustomProperties {\n    '
   // plugin
   str += '\n  }\n}\nexport {}'
-  st += `\n@use '${CSS_PATH}end.scss';`
+  st += `\n@forward './end/index.scss';`
+  // 修改styles/src/index.scss
   write(resolve(stylesRoot, 'index.scss'), st)
   return write(resolve(projRoot, 'typings/components.d.ts'), str)
 }

@@ -10,7 +10,7 @@ export const PKG_CAMELCASE_NAME = "ZUis";
 export const PKG_CAMELCASE_LOCAL_NAME = "ZUisLocale";
 export const PKG_BRAND_NAME = "Z Uis";
 export const themeChalk = "styles"
-export const CSS_PATH = './module/'
+export const CSS_PATH = './mod/'
 
 export const modules = ["esm", "cjs"] as const;
 export interface BuildInfo {

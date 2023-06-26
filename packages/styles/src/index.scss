@@ -1,5 +1,5 @@
-@use './module/base.scss';
-@use './module/btn.scss';
-@use './module/btn-group.scss';
-@use './module/form.scss';
-@use './module/end.scss';
+@forward './base/index.scss';
+@forward './mod/btn/index.scss';
+@forward './mod/btn-group/index.scss';
+@forward './mod/form/index.scss';
+@forward './end/index.scss';
