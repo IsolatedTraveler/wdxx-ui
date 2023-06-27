@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use './createMod.scss' as *;
+
+@mixin async($data) {
+  $attr: map.get($data, attr);
+  @include asyncClass(map.get($data, class));
+  @include asyncAttr(map.get($data, attr));
+  @include asyncMedia(map.get($data, media));
+}
+
+@mixin asyncAttr($data) {
+  @if $data {
+    width: 1em;
+  }
+}
+
+@mixin asyncClass($data) {
+  @if $data {
+    height: 1em;
+  }
+}
+
+@mixin asyncMedia($data) {
+  @if $data {
+    max-width: 1em;
+  }
+}
