@@ -5,7 +5,7 @@ function getExportStr(arr: string[], prev = `export * from './`, next = `';\n`) 
   return arr.map(it => `${prev}${it}${next}`).join('')
 }
 async function UiComponent() {
-  let component = getExportStr(comKey), str = '', cssI = `@forward './base/index.scss';\n`, provide = '', inject = '',
+  let component = getExportStr(comKey), str = '', cssI = `@forward './var/index.scss';\n@forward './base/index.scss';\n`, provide = '', inject = '',
     typeing = 'declare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    '
   comKey.map(key => {
     let obj = comObj[key] as ComObj
