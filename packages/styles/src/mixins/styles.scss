@@ -1,9 +1,10 @@
 @use 'sass:map';
 @use '../config/use/var.scss' as *;
-@use './base.scss' as *;
+@use './createMod.scss' as *;
+
 @mixin styles($block, $val, $attrs: false, $states: false, $media: false) {
   @if $val {
-    @include create($block){
+    @include create($block) {
       @include setStyle(map.get($val, 'def'), $block);
       @include setStyleMod(map.get($val, 'mod'), $block, $attrs, $states, $media);
       @include setStyleStates(map.get($val, 'state'), $block, $states);
@@ -12,9 +13,12 @@
     }
   }
 }
+
 @mixin setStyleMod($vals, $block, $attrs: false, $states: false, $media: false) {
   @if $vals {
-    @each $key, $val in $vals {
+
+    @each $key,
+    $val in $vals {
       @if $val {
         @include create($key) {
           @include setStyle(map.get($val, 'def'), $block);
@@ -27,30 +31,38 @@
     }
   }
 }
+
 @mixin setStyleAttrs($vals, $block, $attrs: false, $states: false, $media: false) {
   @if $vals {
     @if $attrs {
       @include setStyleAttr($attrs, $vals, $block, $states, $media);
-    } @else {
+    }
+
+    @else {
       @include setStyleAttr(map.keys($vals), $vals, $block, $states, $media);
     }
   }
 }
+
 @mixin setStyleAttr($keys, $vals, $block, $states: false, $media: false) {
   @each $key in $keys {
     $val: map.get($vals, $key);
+
     @if $val {
       @include setStyleStates(map.get($val, 'state'), $block, $states);
       @include setStyleMedias(map.get($val, 'media'), $block, $media);
-      &[#{$key}]{
+
+      &[#{$key}] {
         @include setStyle(map.get($val, 'def'), $block);
       }
     }
   }
 }
+
 @mixin setStyleState($vals, $block, $keys) {
   @each $key in $keys {
     $val: map.get($vals, $key);
+
     @if $val {
       &:#{$key} {
         @include setStyle($val, $block);
@@ -58,39 +70,50 @@
     }
   }
 }
+
 @mixin setStyleStates($vals, $block, $state: false) {
   @if $vals {
     @if $state {
       @include setStyleState($vals, $block, $state)
-    } @else {
+    }
+
+    @else {
       @include setStyleState($vals, $block, map.keys($vals))
     }
   }
 }
+
 @mixin setStyleMedia($vals, $block, $keys) {
   @each $key in $keys {
     $val: map.get($vals, $key);
+
     @if $val {
       &:#{$key} {
-        @media (any-#{$key}: #{$key}){
+        @media (any-#{$key}: #{$key}) {
           @include setStyle($val, $block);
         }
       }
     }
   }
 }
+
 @mixin setStyleMedias($vals, $block, $state: false) {
   @if $vals {
     @if $state {
       @include setStyleMedia($vals, $block, $state)
-    } @else {
+    }
+
+    @else {
       @include setStyleMedia($vals, $block, map.keys($vals))
     }
   }
 }
+
 @mixin setStyle($vals, $block) {
   @if $vals {
-    @each $key,$val in $vals {
+
+    @each $key,
+    $val in $vals {
       #{$key}: #{$val};
     }
   }

@@ -6,7 +6,7 @@
 @include create(btn-group) {
   @each $key in $group {
     @include create('group-' + $key) {
-      @include create1('btn') {
+      @include createClass('btn1') {
         @extend %group-#{$key}
       }
     }
