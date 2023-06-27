@@ -13,5 +13,8 @@
     "provide": [
       "btn-group"
     ]
+  },
+  "form": {
+    "provide": true
   }
 }
