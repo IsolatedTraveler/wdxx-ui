@@ -1,3 +1,3 @@
 export * from './icon';
-export * from './btn1';
+export * from './btn';
 export * from './form';
