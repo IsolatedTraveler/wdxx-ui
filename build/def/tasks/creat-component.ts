@@ -37,24 +37,13 @@ async function UiComponent() {
     write(resolve(projRoot, 'global.d.ts'), typeing)
   ])
 }
-function creatComponentMod(arr: Array<Promise<any>>, key: string, comUrl: any, keyComUrl: any, obj: ComObj) {
+function creatComponentMod(arr: Array<Promise<any>>, key: string, comUrl: any) {
   // 创建components/${key}/src/${key}.ts
   arr.push(write(resolve(comUrl, key + '.ts'), componentProp(key)))
   // 创建components/${key}/src/${key}.vue
   arr.push(write(resolve(comUrl, key + '.vue'), componentVue(key)))
   // 创建components/${key}/src/use-${key}.ts
   arr.push(write(resolve(comUrl, 'use-' + key + '.ts'), componentUse(key)))
-  // 创建hooks/use-provide/${key}.ts
-  if (obj.provide) {
-    (obj.provide === true ? [key] : obj.provide).map(key => {
-      arr.push(write(resolve(provideRoot, `${key}.ts`), getHooks(key)))
-    })
-  }
-  if (obj.inject) {
-    Object.keys(obj.inject).map(key => {
-      arr.push(write(resolve(InjectRoot, `${key}.ts`), getHooks(key)))
-    })
-  }
 }
 function createCom(arr: Array<filesObj>) {
   excludeCom(arr)
@@ -69,8 +58,20 @@ function createCom(arr: Array<filesObj>) {
     ]).then(() => {
       let obj = comObj[key] as ComObj
       obj.keys.forEach(it => {
-        creatComponentMod(arr, it, comUrl, keyComUrl, obj)
+        creatComponentMod(arr, it, comUrl)
       })
+      // 创建hooks/use-provide/${key}.ts
+      if (obj.provide) {
+        (obj.provide === true ? [key] : obj.provide).map(it => {
+          arr.push(write(resolve(provideRoot, `${it}.ts`), getProvide(it, key)))
+        })
+      }
+      if (obj.inject) {
+        let data = obj.inject, keys = Object.keys(data)
+        keys.forEach(it => {
+          arr.push(write(resolve(InjectRoot, `${it}.ts`), getInject(it, key, data[it])))
+        })
+      }
       // 创建components/${key}/src/insstance.ts
       arr.push(write(resolve(comUrl, 'instance.ts'), componentInstance(obj.keys)))
       // // 创建components/${key}/index.ts
@@ -92,11 +93,31 @@ function excludeCom(arr: Array<filesObj>) {
     delete comObj[fileName]
   })
 }
-function getHooks(key: any) {
-  let name = getName([key])
-  return `import { ${name}Props } from "@ui/components/${key}/src/${key}";
+function getProvide(key: string, ml: string) {
+  let name = getName(key.split('-'))
+  return `import { ${name}Props } from "@ui/components/${ml}/src/${key}";
+import { computed, ComputedRef, InjectionKey, provide } from "vue";
+export interface Provide${name} {
+
+}
+export const provide${name}Id:InjectionKey<Provide${name}> = Symbol('${key}')
+export const useProvide${name} = (props: ${name}Props) => {
+  provide(provide${name}Id, {
+    
+  })
+}`
+}
+function getInject(key: any, ml: string, provides: string[]) {
+  let name = getName(key.split('-'))
+  return `import { ${name}Props } from "@ui/components/${ml}/src/${key}";
 import { computed, inject } from "vue";
+${provides.map(it => {
+    return `import { provid${getName(it.split('-'))}Id } from "../use-provide/${it}";`
+  }).join('\n')}
 export const useInject${name} = (props: ${name}Props) => {
+  ${provides.map(it => {
+    return `  const {  } = inject(provide${getName(it.split('-'))}Id, { })`
+  }).join('\n')}
   return {
   }
 }`
