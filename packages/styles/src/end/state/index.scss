@@ -1,0 +1,41 @@
+@use '../../mixins/index.scss' as *;
+@use './shape.scss' as *;
+$state-style--def: (
+  color: var(--z-color-white)
+);
+$state-style--primary: (
+  background-color: var(--z-color-primary-1),
+  border-color: var(--z-color-primary-1)
+);
+$state-style--success: (
+  background-color: var(--z-color-success-1),
+  border-color: var(--z-color-success-1)
+);
+$state-style--warning: (
+  background-color: var(--z-color-warning-1),
+  border-color: var(--z-color-warning-1)
+);
+$state-style--info: (
+  background-color: var(--z-color-info-1),
+  border-color: var(--z-color-info-1)
+);
+$state-style--danger: (
+  background-color: var(--z-color-danger-1),
+  border-color: var(--z-color-danger-1)
+);
+$state-child--def: getStyle($shape, $shapeAttr, $shapeMedia);
+$state-child--primary: getStyle($shape--primary, $shapeAttr--primary, $shapeMedia--primary);
+$state-child--success: getStyle($shape--success, $shapeAttr--success, $shapeMedia--success);
+$state-child--warning: getStyle($shape--warning, $shapeAttr--warning, $shapeMedia--warning);
+$state-child--info: getStyle($shape--info, $shapeAttr--info, $shapeMedia--info);
+$state-child--danger: getStyle($shape--danger, $shapeAttr--danger, $shapeMedia--danger);
+$stateClass: (
+  primary: getStyleObj($state-style--primary, $state-child--primary),
+  success: getStyleObj($state-style--success, $state-child--success),
+  warning: getStyleObj($state-style--warning, $state-child--warning),
+  info: getStyleObj($state-style--info, $state-child--info),
+  danger: getStyleObj($state-style--danger, $state-child--danger),
+  (primary, success, warning, info, danger): getStyleObj($state-style--def, $state-child--def )
+);
+$style: getStyle($stateClass, (), ());
+@include async($style, '')

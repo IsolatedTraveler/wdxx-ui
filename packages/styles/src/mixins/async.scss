@@ -31,7 +31,7 @@
   }
 }
 
-@function getNames($names, $block, $lx) {
+@function getNames($names, $block, $lx, $add) {
   $nameVal: "";
   $val: "";
 
@@ -51,21 +51,21 @@
     @else {
       @if $i ==1 {
         @if $block =='' {
-          $nameVal: getClassName($name, $lx, '');
+          $nameVal: $add+getClassName($name, $lx, '');
         }
 
         @else {
-          $nameVal: getClassName($block, $lx, $name);
+          $nameVal: $add+getClassName($block, $lx, $name);
         }
       }
 
       @else {
         @if $block =='' {
-          $nameVal: $nameVal"," getClassName($name, $lx, '');
+          $nameVal: $nameVal","$add+getClassName($name, $lx, '');
         }
 
         @else {
-          $nameVal: $nameVal"," getClassName($block, $lx, $name);
+          $nameVal: $nameVal","$add+getClassName($block, $lx, $name);
         }
 
       }
@@ -83,9 +83,18 @@
     $val in $data {
       @if $name {
         @if $val {
-          #{getNames(($name),$block,$lx)} {
-            @include getStyle($val, $block);
+          @if & {
+            #{getNames($name, $block, $lx, '&')} {
+              @include getStyle($val, $block);
+            }
           }
+
+          @else {
+            #{getNames($name,$block, $lx, '')} {
+              @include getStyle($val, $block);
+            }
+          }
+
         }
       }
     }

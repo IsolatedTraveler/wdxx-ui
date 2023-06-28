@@ -1,33 +1,14 @@
 @use '../mixins/index.scss' as *;
-$shape-style--def: (
-  color: #333,
-  border: '1px solid #dcdcdc'
-);
+
 $shape-style--ghost: (
 );
 $shape-style--text: (
   border-color: transparent
 );
-$shape-style--def-text: (
-);
-$shape-style--def-ghost: (
-);
 $shape-style--text-ghost: (
-);
-$shape--def-text: (
-  style: $shape-style--def-text,
-  child: ()
-);
-$shape--def-ghost: (
-  style: $shape-style--def-ghost,
-  child: ()
 );
 $shape--text-ghost: (
   style: $shape-style--text-ghost,
-  child: ()
-);
-$shape--def: (
-  style: $shape-style--def,
   child: ()
 );
 $shape--ghost: (

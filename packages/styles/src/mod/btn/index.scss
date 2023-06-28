@@ -11,6 +11,8 @@
   outline: none;
   cursor: pointer;
   user-select: none;
+  border: 1px solid var(--z-color-3);
+  color: var(--z-color);
 
   &+& {
     margin-left: 8px;

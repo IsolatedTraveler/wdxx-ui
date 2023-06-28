@@ -1,0 +1,103 @@
+@use '../../mixins/index.scss' as *;
+$shape-child--def: (
+);
+$shape-success-child--def: (
+);
+$shape-warning-child--def: (
+);
+$shape-primary-child--def: (
+);
+$shape-info-child--def: (
+);
+$shape-danger-child--def: (
+);
+$shape-success-child--ghost: (
+);
+$shape-warning-child--ghost: (
+);
+$shape-primary-child--ghost: (
+);
+$shape-info-child--ghost: (
+);
+$shape-danger-child--ghost: (
+);
+$shape-style--def: (
+  background-color: var(--z-color-white)
+);
+$shape-success-style--def: (
+  color: var(--z-color-success-1)
+);
+$shape-warning-style--def: (
+  color: var(--z-color-warning-1)
+);
+$shape-primary-style--def: (
+  color: var(--z-color-primary-1)
+);
+$shape-info-style--def: (
+  color: var(--z-color-info-1)
+);
+$shape-danger-style--def: (
+  color: var(--z-color-danger-1)
+);
+$shape-success-style--ghost: (
+  border-color: var(--z-color-success-3)
+);
+$shape-warning-style--ghost: (
+  border-color: var(--z-color-warning-3)
+);
+$shape-primary-style--ghost: (
+  border-color: var(--z-color-primary-3)
+);
+$shape-info-style--ghost: (
+  border-color: var(--z-color-info-3)
+);
+$shape-danger-style--ghost: (
+  border-color: var(--z-color-danger-3)
+);
+$shape: (
+  (text, ghost):getStyleObj($shape-style--def, $shape-child--def)
+);
+$shapeAttr: (
+);
+$shapeMedia: (
+);
+$shape--primary: (
+  ghost: getStyleObj($shape-primary-style--ghost, $shape-primary-child--ghost),
+  (text, ghost):getStyleObj($shape-primary-style--def, $shape-primary-child--def)
+);
+$shapeAttr--primary: (
+);
+$shapeMedia--primary: (
+);
+$shape--warning: (
+  ghost: getStyleObj($shape-warning-style--ghost, $shape-warning-child--ghost),
+  (text, ghost):getStyleObj($shape-warning-style--def, $shape-warning-child--def)
+);
+$shapeAttr--warning: (
+);
+$shapeMedia--warning: (
+);
+$shape--success: (
+  ghost: getStyleObj($shape-success-style--ghost, $shape-success-child--ghost),
+  (text, ghost):getStyleObj($shape-success-style--def, $shape-success-child--def)
+);
+$shapeAttr--success: (
+);
+$shapeMedia--success: (
+);
+$shape--info: (
+  ghost: getStyleObj($shape-info-style--ghost, $shape-info-child--ghost),
+  (text, ghost):getStyleObj($shape-info-style--def, $shape-info-child--def)
+);
+$shapeAttr--info: (
+);
+$shapeMedia--info: (
+);
+$shape--danger: (
+  ghost: getStyleObj($shape-danger-style--ghost, $shape-danger-child--ghost),
+  (text, ghost):getStyleObj($shape-danger-style--def, $shape-danger-child--def)
+);
+$shapeAttr--danger: (
+);
+$shapeMedia--danger: (
+);
