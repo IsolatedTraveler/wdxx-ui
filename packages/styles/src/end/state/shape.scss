@@ -80,8 +80,6 @@ $shape: (
 );
 $shapeAttr: (
 );
-$shapeMedia: (
-);
 $shape--primary: (
   ghost: (style: $shape-primary-style--ghost, child: $shape-primary-child--ghost),
   text: (style: (), child: $shape-primary-child--text),
@@ -89,8 +87,6 @@ $shape--primary: (
 );
 $shapeAttr--primary: (
   disabled:(style: $disabled-primary)
-);
-$shapeMedia--primary: (
 );
 $shape--warning: (
   ghost: (style: $shape-warning-style--ghost, child: $shape-warning-child--ghost),
@@ -100,8 +96,6 @@ $shape--warning: (
 $shapeAttr--warning: (
   disabled:(style: $disabled-warning)
 );
-$shapeMedia--warning: (
-);
 $shape--success: (
   ghost: (style: $shape-success-style--ghost, child: $shape-success-child--ghost),
   text: (style: (), child: $shape-success-child--text),
@@ -109,8 +103,6 @@ $shape--success: (
 );
 $shapeAttr--success: (
   disabled:(style: $disabled-success)
-);
-$shapeMedia--success: (
 );
 $shape--info: (
   ghost: (style: $shape-info-style--ghost, child: $shape-info-child--ghost),
@@ -120,8 +112,6 @@ $shape--info: (
 $shapeAttr--info: (
   disabled:(style: $disabled-info)
 );
-$shapeMedia--info: (
-);
 $shape--danger: (
   ghost: (style: $shape-danger-style--ghost, child: $shape-danger-child--ghost),
   text: (style: (), child: $shape-danger-child--text),
@@ -129,6 +119,4 @@ $shape--danger: (
 );
 $shapeAttr--danger: (
   disabled:(style: $disabled-danger)
-);
-$shapeMedia--danger: (
 );

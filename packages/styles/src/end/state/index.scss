@@ -1,5 +1,6 @@
 @use '../../mixins/index.scss' as *;
 @use './shape.scss' as *;
+@use './hover.scss' as *;
 $state-style--def: (
   color: var(--z-color-white)
 );
@@ -23,17 +24,16 @@ $state-style--danger: (
   background-color: var(--z-color-danger-1),
   border-color: var(--z-color-danger-1)
 );
-$state-child--def: getStyle($shape, $shapeAttr, $shapeMedia);
 $styleClass: (
-  primary: (style: $state-style--primary, child: (class: $shape--primary, attr: $shapeAttr--primary, media: $shapeMedia--primary)),
-  success: (style: $state-style--success, child: (class: $shape--success, attr: $shapeAttr--success, media: $shapeMedia--success)),
-  warning: (style: $state-style--warning, child: (class: $shape--warning, attr: $shapeAttr--warning, media: $shapeMedia--warning)),
-  info: (style: $state-style--info, child: (class: $shape--info, attr: $shapeAttr--info, media: $shapeMedia--info)),
-  danger: (style: $state-style--danger, child: (class: $shape--danger, attr: $shapeAttr--danger, media: $shapeMedia--danger)),
-  (primary, success, warning, info, danger): (style: $state-style--def, child: (class: $shape, attr: $shapeAttr, media: $shapeMedia))
+  primary: (style: $state-style--primary, child: (class: $shape--primary, attr: $shapeAttr--primary)),
+  success: (style: $state-style--success, child: (class: $shape--success, attr: $shapeAttr--success)),
+  warning: (style: $state-style--warning, child: (class: $shape--warning, attr: $shapeAttr--warning)),
+  info: (style: $state-style--info, child: (class: $shape--info, attr: $shapeAttr--info)),
+  danger: (style: $state-style--danger, child: (class: $shape--danger, attr: $shapeAttr--danger)),
+  (primary, success, warning, info, danger): (style: $state-style--def, child: (class: $shape, attr: $shapeAttr))
 );
 $style: (
-  class:$styleClass,
-  media: (hover: (style: (color: var(--z-color-white))))
+  class:$styleClass
 );
 @include async($style, '');
+@include asyncMedia($styleHover, '');

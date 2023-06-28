@@ -1,0 +1,23 @@
+$shape-hover--primary: (
+);
+$shape-hover--success: (
+);
+$shape-hover--warning: (
+);
+$shape-hover--info: (
+);
+$shape-hover--danger: (
+);
+$hoverClass: (
+  primary: (child: (class: $shape-hover--primary)),
+  success: (child: (class: $shape-hover--success)),
+  warning: (child: (class: $shape-hover--warning)),
+  info: (child: (class: $shape-hover--info)),
+  danger: (child: (class: $shape-hover--danger)),
+  (primary, success, warning, info, danger): (style:(color: var(--z-color-white)))
+);
+$styleHover: (
+  hover: (class: $hoverClass)
+);
+
+@media (any-hover) {}

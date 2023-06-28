@@ -27,7 +27,6 @@
   @if $data {
     @include asyncClass(map.get($data, class), $block, '');
     @include asyncClass(map.get($data, attr), $block, 'attr');
-    @include asyncClass(map.get($data, media), $block, 'media');
   }
 }
 
@@ -83,24 +82,31 @@
     $val in $data {
       @if $name {
         @if $val {
-          @if $lx ==media {
-            @media screen {}
+
+          @if & {
+            #{getNames($name, $block, $lx, '&')} {
+              @include getStyle($val, $block);
+            }
           }
 
           @else {
-            @if & {
-              #{getNames($name, $block, $lx, '&')} {
-                @include getStyle($val, $block);
-              }
-            }
-
-            @else {
-              #{getNames($name,$block, $lx, '')} {
-                @include getStyle($val, $block);
-              }
+            #{getNames($name,$block, $lx, '')} {
+              @include getStyle($val, $block);
             }
           }
         }
+      }
+    }
+  }
+}
+
+@mixin asyncMedia($data, $block) {
+
+  @each $name,
+  $val in $data {
+    @if $name ==hover {
+      @media (any-hover:hover) {
+        @include async($data, $block)
       }
     }
   }
