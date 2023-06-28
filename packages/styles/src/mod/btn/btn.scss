@@ -5,7 +5,11 @@ $shape-child: (
   attr: '',
   media: ''
 );
+$shape-style-none-def-ghost: (
+  border: '1px solid #dcdcdc'
+);
 $shape-style-none: (
+  (def, ghost): $shape-style-none-def-ghost
 );
 $shape-style: (
 );

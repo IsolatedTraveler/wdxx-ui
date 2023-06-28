@@ -1,33 +1,79 @@
 @use 'sass:map';
 @use './createMod.scss' as *;
 
+
+%styleVal {
+  width: 2px;
+}
+
+@mixin getStyle($data) {
+
+  @each $key,
+  $val in $data {
+    #{$key}: #{$val};
+  }
+}
+
 @mixin async($data, $block) {
   @if $data {
-    @include asyncClass(map.get($data, class), $block);
+    @include asyncClass(map.get($data, class), $block, '');
     @include asyncAttr(map.get($data, attr), $block);
     @include asyncMedia(map.get($data, media), $block);
   }
 }
 
-@mixin getStyle($data) {}
+@function getNames($names, $block, $lx) {
+  $nameVal: "";
+  $val: "";
 
-@mixin asyncClass($data, $block) {
+  @each $name in $names {
+    $i: index($names, $name);
+
+    @if $name ==def {
+      @if $i ==1 {
+        $nameVal: "&";
+      }
+
+      @else {
+        $nameVal: $nameVal",&";
+      }
+    }
+
+    @else {
+      @if $i ==1 {
+        $nameVal: getClassName($block, $lx, $name);
+      }
+
+      @else {
+        $nameVal: $nameVal"," getClassName($block, $lx, $name);
+      }
+    }
+  }
+
+  @return $nameVal;
+}
+
+@mixin asyncClass($data, $block, $lx) {
+
   @if $data {
     $style: map.get($data, style);
     $style-none: map.get($data, style-none);
     $child: map.get($data, child);
 
-    @if $style {
-      min-width: 3em;
-    }
+    @if $style {}
 
     @if $style-none {
-      max-width: 3em;
+
+      @each $names,
+      $val in $style-none {
+
+        #{getNames($names, $block, $lx)} {
+          @include getStyle($val)
+        }
+      }
     }
 
-    @if $child {
-      min-height: 3em;
-    }
+    @if $child {}
   }
 }
 
