@@ -1,3 +1,4 @@
+@use '../mixins/index.scss' as *;
 $shape-style--def: (
   color: #333,
   border: '1px solid #dcdcdc'
@@ -38,10 +39,11 @@ $shape--text: (
   child: ()
 );
 $shape: (
-  def: $shape--def,
-  (def, text): $shape--def-text,
-  (def, ghost): $shape--def-ghost,
   (text, ghost): $shape--text-ghost,
   ghost: $shape--ghost,
   text: $shape--text
 );
+$style: (
+  class: $shape
+);
+@include async($style, '');

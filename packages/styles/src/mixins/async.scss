@@ -50,11 +50,24 @@
 
     @else {
       @if $i ==1 {
-        $nameVal: getClassName($block, $lx, $name);
+        @if $block =='' {
+          $nameVal: getClassName($name, $lx, '');
+        }
+
+        @else {
+          $nameVal: getClassName($block, $lx, $name);
+        }
       }
 
       @else {
-        $nameVal: $nameVal"," getClassName($block, $lx, $name);
+        @if $block =='' {
+          $nameVal: $nameVal"," getClassName($name, $lx, '');
+        }
+
+        @else {
+          $nameVal: $nameVal"," getClassName($block, $lx, $name);
+        }
+
       }
     }
   }

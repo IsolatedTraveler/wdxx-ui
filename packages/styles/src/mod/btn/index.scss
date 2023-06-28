@@ -1,24 +1,24 @@
 @use '../../mixins/index.scss' as *;
-@use './btn.scss' as *;
+// @use './btn.scss' as *;
 
 @include createSingleClass(btn, '', '') {
-  // white-space: nowrap;
-  // text-align: center;
-  // box-sizing: border-box;
-  // transition: .1s;
-  // vertical-align: middle;
-  // line-height: 1;
-  // outline: none;
-  // cursor: pointer;
-  // user-select: none;
+  white-space: nowrap;
+  text-align: center;
+  box-sizing: border-box;
+  transition: .1s;
+  vertical-align: middle;
+  line-height: 1;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
 
-  // &+& {
-  //   margin-left: var(--width-margin);
-  // }
+  &+& {
+    margin-left: 8px;
+  }
 }
 
 
 @include createClass(btn, '', '') {
 
-  @include async($style, btn)
+  // @include async($style, btn)
 }
