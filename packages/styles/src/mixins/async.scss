@@ -83,18 +83,23 @@
     $val in $data {
       @if $name {
         @if $val {
-          @if & {
-            #{getNames($name, $block, $lx, '&')} {
-              @include getStyle($val, $block);
-            }
+          @if $lx ==media {
+            @media screen {}
           }
 
           @else {
-            #{getNames($name,$block, $lx, '')} {
-              @include getStyle($val, $block);
+            @if & {
+              #{getNames($name, $block, $lx, '&')} {
+                @include getStyle($val, $block);
+              }
+            }
+
+            @else {
+              #{getNames($name,$block, $lx, '')} {
+                @include getStyle($val, $block);
+              }
             }
           }
-
         }
       }
     }

@@ -1,26 +1,5 @@
 @use '../../mixins/index.scss' as *;
-$shape-child--def: (
-);
-$shape-success-child--def: (
-);
-$shape-warning-child--def: (
-);
-$shape-primary-child--def: (
-);
-$shape-info-child--def: (
-);
-$shape-danger-child--def: (
-);
-$shape-success-child--ghost: (
-);
-$shape-warning-child--ghost: (
-);
-$shape-primary-child--ghost: (
-);
-$shape-info-child--ghost: (
-);
-$shape-danger-child--ghost: (
-);
+@use './disabled.scss' as *;
 $shape-style--def: (
   background-color: var(--z-color-white)
 );
@@ -54,50 +33,102 @@ $shape-info-style--ghost: (
 $shape-danger-style--ghost: (
   border-color: var(--z-color-danger-3)
 );
+$shape-child--def: (
+);
+$shape-success-child--def: (
+);
+$shape-warning-child--def: (
+);
+$shape-primary-child--def: (
+);
+$shape-info-child--def: (
+);
+$shape-danger-child--def: (
+);
+$shape-success-child--ghost: (
+  attr: (disabled:(style: $disabled-success--ghost ))
+);
+$shape-warning-child--ghost: (
+  attr: (disabled:(style: $disabled-warning--ghost ))
+);
+$shape-primary-child--ghost: (
+  attr: (disabled:(style: $disabled-primary--ghost ))
+);
+$shape-info-child--ghost: (
+  attr: (disabled:(style: $disabled-info--ghost ))
+);
+$shape-danger-child--ghost: (
+  attr: (disabled:(style: $disabled-danger--ghost ))
+);
+$shape-success-child--text: (
+  attr: (disabled:(style: $disabled-success--text ))
+);
+$shape-warning-child--text: (
+  attr: (disabled:(style: $disabled-warning--text ))
+);
+$shape-primary-child--text: (
+  attr: (disabled:(style: $disabled-primary--text ))
+);
+$shape-info-child--text: (
+  attr: (disabled:(style: $disabled-info--text ))
+);
+$shape-danger-child--text: (
+  attr: (disabled:(style: $disabled-danger--text ))
+);
 $shape: (
-  (text, ghost):getStyleObj($shape-style--def, $shape-child--def)
+  (text, ghost):(style: $shape-style--def, child:$shape-child--def)
 );
 $shapeAttr: (
 );
 $shapeMedia: (
 );
 $shape--primary: (
-  ghost: getStyleObj($shape-primary-style--ghost, $shape-primary-child--ghost),
-  (text, ghost):getStyleObj($shape-primary-style--def, $shape-primary-child--def)
+  ghost: (style: $shape-primary-style--ghost, child: $shape-primary-child--ghost),
+  text: (style: (), child: $shape-primary-child--text),
+  (text, ghost): (style: $shape-primary-style--def, child: $shape-primary-child--def)
 );
 $shapeAttr--primary: (
+  disabled:(style: $disabled-primary)
 );
 $shapeMedia--primary: (
 );
 $shape--warning: (
-  ghost: getStyleObj($shape-warning-style--ghost, $shape-warning-child--ghost),
-  (text, ghost):getStyleObj($shape-warning-style--def, $shape-warning-child--def)
+  ghost: (style: $shape-warning-style--ghost, child: $shape-warning-child--ghost),
+  text: (style: (), child: $shape-warning-child--text),
+  (text, ghost): (style: $shape-warning-style--def, child: $shape-warning-child--def)
 );
 $shapeAttr--warning: (
+  disabled:(style: $disabled-warning)
 );
 $shapeMedia--warning: (
 );
 $shape--success: (
-  ghost: getStyleObj($shape-success-style--ghost, $shape-success-child--ghost),
-  (text, ghost):getStyleObj($shape-success-style--def, $shape-success-child--def)
+  ghost: (style: $shape-success-style--ghost, child: $shape-success-child--ghost),
+  text: (style: (), child: $shape-success-child--text),
+  (text, ghost): (style: $shape-success-style--def, child: $shape-success-child--def)
 );
 $shapeAttr--success: (
+  disabled:(style: $disabled-success)
 );
 $shapeMedia--success: (
 );
 $shape--info: (
-  ghost: getStyleObj($shape-info-style--ghost, $shape-info-child--ghost),
-  (text, ghost):getStyleObj($shape-info-style--def, $shape-info-child--def)
+  ghost: (style: $shape-info-style--ghost, child: $shape-info-child--ghost),
+  text: (style: (), child: $shape-info-child--text),
+  (text, ghost): (style: $shape-info-style--def, child: $shape-info-child--def)
 );
 $shapeAttr--info: (
+  disabled:(style: $disabled-info)
 );
 $shapeMedia--info: (
 );
 $shape--danger: (
-  ghost: getStyleObj($shape-danger-style--ghost, $shape-danger-child--ghost),
-  (text, ghost):getStyleObj($shape-danger-style--def, $shape-danger-child--def)
+  ghost: (style: $shape-danger-style--ghost, child: $shape-danger-child--ghost),
+  text: (style: (), child: $shape-danger-child--text),
+  (text, ghost): (style: $shape-danger-style--def, child: $shape-danger-child--def)
 );
 $shapeAttr--danger: (
+  disabled:(style: $disabled-danger)
 );
 $shapeMedia--danger: (
 );

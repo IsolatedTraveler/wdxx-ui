@@ -1,0 +1,65 @@
+$disabled-primary: (
+  background-color: var(--z-color-primary-3),
+  border-color: var(--z-color-primary-3),
+  color: var(--z-color-white)
+);
+$disabled-warning: (
+  background-color: var(--z-color-warning-3),
+  border-color: var(--z-color-warning-3),
+  color: var(--z-color-white)
+);
+$disabled-danger: (
+  background-color: var(--z-color-danger-3),
+  border-color: var(--z-color-danger-3),
+  color: var(--z-color-white)
+);
+$disabled-info: (
+  background-color: var(--z-color-info-3),
+  border-color: var(--z-color-info-3),
+  color: var(--z-color-white)
+);
+$disabled-success: (
+  background-color: var(--z-color-success-3),
+  border-color: var(--z-color-success-3),
+  color: var(--z-color-white)
+);
+$disabled-primary--ghost: (
+  color: var(--z-color-primary-3),
+  border-color: var(--z-color-primary-5)
+);
+$disabled-warning--ghost: (
+  color: var(--z-color-warning-3),
+  border-color: var(--z-color-warning-5)
+);
+$disabled-danger--ghost: (
+  color: var(--z-color-danger-3),
+  border-color: var(--z-color-danger-5)
+);
+$disabled-info--ghost: (
+  color: var(--z-color-info-3),
+  border-color: var(--z-color-info-5)
+);
+$disabled-success--ghost: (
+  color: var(--z-color-success-3),
+  border-color: var(--z-color-success-5)
+);
+$disabled-primary--text: (
+  color: var(--z-color-primary-3),
+  border-color: transparent
+);
+$disabled-warning--text: (
+  color: var(--z-color-warning-3),
+  border-color: transparent
+);
+$disabled-danger--text: (
+  color: var(--z-color-danger-3),
+  border-color: transparent
+);
+$disabled-info--text: (
+  color: var(--z-color-info-3),
+  border-color: transparent
+);
+$disabled-success--text: (
+  color: var(--z-color-success-3),
+  border-color: transparent
+);

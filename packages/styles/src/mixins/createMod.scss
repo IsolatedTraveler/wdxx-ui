@@ -17,7 +17,14 @@
 
 @function getClassName($block, $lx, $name) {
   @if $lx ==attr {
-    @return [#{$name}];
+    @if $name=='' {
+      @return [#{$block}];
+    }
+
+    @else {
+      @return [#{$name}];
+    }
+
   }
 
   @else {

@@ -24,18 +24,16 @@ $state-style--danger: (
   border-color: var(--z-color-danger-1)
 );
 $state-child--def: getStyle($shape, $shapeAttr, $shapeMedia);
-$state-child--primary: getStyle($shape--primary, $shapeAttr--primary, $shapeMedia--primary);
-$state-child--success: getStyle($shape--success, $shapeAttr--success, $shapeMedia--success);
-$state-child--warning: getStyle($shape--warning, $shapeAttr--warning, $shapeMedia--warning);
-$state-child--info: getStyle($shape--info, $shapeAttr--info, $shapeMedia--info);
-$state-child--danger: getStyle($shape--danger, $shapeAttr--danger, $shapeMedia--danger);
-$stateClass: (
-  primary: getStyleObj($state-style--primary, $state-child--primary),
-  success: getStyleObj($state-style--success, $state-child--success),
-  warning: getStyleObj($state-style--warning, $state-child--warning),
-  info: getStyleObj($state-style--info, $state-child--info),
-  danger: getStyleObj($state-style--danger, $state-child--danger),
-  (primary, success, warning, info, danger): getStyleObj($state-style--def, $state-child--def )
+$styleClass: (
+  primary: (style: $state-style--primary, child: (class: $shape--primary, attr: $shapeAttr--primary, media: $shapeMedia--primary)),
+  success: (style: $state-style--success, child: (class: $shape--success, attr: $shapeAttr--success, media: $shapeMedia--success)),
+  warning: (style: $state-style--warning, child: (class: $shape--warning, attr: $shapeAttr--warning, media: $shapeMedia--warning)),
+  info: (style: $state-style--info, child: (class: $shape--info, attr: $shapeAttr--info, media: $shapeMedia--info)),
+  danger: (style: $state-style--danger, child: (class: $shape--danger, attr: $shapeAttr--danger, media: $shapeMedia--danger)),
+  (primary, success, warning, info, danger): (style: $state-style--def, child: (class: $shape, attr: $shapeAttr, media: $shapeMedia))
 );
-$style: getStyle($stateClass, (), ());
-@include async($style, '')
+$style: (
+  class:$styleClass,
+  media: (hover: (style: (color: var(--z-color-white))))
+);
+@include async($style, '');
