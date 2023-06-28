@@ -1,29 +1,12 @@
 @use 'sass:map';
 // @use '../../vars/index.scss' as *;
-$shape-child: (
-  class: '',
-  attr: '',
-  media: ''
-);
-$shape-style-none-def-ghost: (
-  border: '1px solid #dcdcdc'
-);
-$shape-style-none: (
-  (def, ghost): $shape-style-none-def-ghost
-);
-$shape-style: (
-);
-$class: (
-  style: $shape-style,
-  style-none: $shape-style-none,
-  child: $shape-child
-);
+@use './shape.scss' as *;
 $media: (
 );
 $attr: (
 );
 $style: (
-  class: $class,
+  class: $shape,
   attr: $attr,
   media: $media
 );

@@ -1,0 +1,47 @@
+$shape-style--def: (
+  color: #333,
+  border: '1px solid #dcdcdc'
+);
+$shape-style--ghost: (
+);
+$shape-style--text: (
+  border-color: transparent
+);
+$shape-style--def-text: (
+);
+$shape-style--def-ghost: (
+);
+$shape-style--text-ghost: (
+);
+$shape--def-text: (
+  style: $shape-style--def-text,
+  child: ()
+);
+$shape--def-ghost: (
+  style: $shape-style--def-ghost,
+  child: ()
+);
+$shape--text-ghost: (
+  style: $shape-style--text-ghost,
+  child: ()
+);
+$shape--def: (
+  style: $shape-style--def,
+  child: ()
+);
+$shape--ghost: (
+  style: $shape-style--ghost,
+  child: ()
+);
+$shape--text: (
+  style: $shape-style--text,
+  child: ()
+);
+$shape: (
+  def: $shape--def,
+  (def, text): $shape--def-text,
+  (def, ghost): $shape--def-ghost,
+  (text, ghost): $shape--text-ghost,
+  ghost: $shape--ghost,
+  text: $shape--text
+);

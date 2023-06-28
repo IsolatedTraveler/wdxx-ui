@@ -2,7 +2,7 @@ import { isNumber } from "@ui/utils"
 import { ComponentRadius, ObjStr, ObjTrue } from "@ui/vars"
 import { watch, nextTick, Ref } from "vue"
 import { setCss } from "./flex"
-export const getStylePx = (v:string | number): string => {
+export const getStylePx = (v: string | number): string => {
   if (v === 'none') {
     v = '0px'
   } else if (isNumber(v)) {
@@ -13,7 +13,7 @@ export const getStylePx = (v:string | number): string => {
 function getMax(a: number, b: number) {
   return a > b ? a : b
 }
-export default (props:any, obj: ObjStr, classVal: ObjTrue, styleVal: any, el: Ref<any>) => {
+export default (props: any, obj: ObjStr, classVal: ObjTrue, key: string, name: string, styleVal: any, el: Ref<any>) => {
   watch(() => props.value?.radius, (v, o) => {
     if (o) {
       classVal[obj.radius] = false
@@ -38,5 +38,5 @@ export default (props:any, obj: ObjStr, classVal: ObjTrue, styleVal: any, el: Re
     } else {
       styleVal.borderRadius = false
     }
-  }, {immediate: true})
+  }, { immediate: true })
 }

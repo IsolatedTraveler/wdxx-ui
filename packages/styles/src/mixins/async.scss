@@ -6,19 +6,28 @@
   width: 2px;
 }
 
-@mixin getStyle($data) {
+@mixin getStyle($data, $block) {
+  $style : map.get($data, style);
+  $child : map.get($data, child);
 
-  @each $key,
-  $val in $data {
-    #{$key}: #{$val};
+  @if $style {
+
+    @each $key,
+    $val in $style {
+      #{$key}: #{$val};
+    }
+  }
+
+  @if $child {
+    @include async($child, $block);
   }
 }
 
 @mixin async($data, $block) {
   @if $data {
     @include asyncClass(map.get($data, class), $block, '');
-    @include asyncAttr(map.get($data, attr), $block);
-    @include asyncMedia(map.get($data, media), $block);
+    @include asyncClass(map.get($data, attr), $block, 'attr');
+    @include asyncClass(map.get($data, media), $block, 'media');
   }
 }
 
@@ -56,35 +65,16 @@
 @mixin asyncClass($data, $block, $lx) {
 
   @if $data {
-    $style: map.get($data, style);
-    $style-none: map.get($data, style-none);
-    $child: map.get($data, child);
 
-    @if $style {}
-
-    @if $style-none {
-
-      @each $names,
-      $val in $style-none {
-
-        #{getNames($names, $block, $lx)} {
-          @include getStyle($val)
+    @each $name,
+    $val in $data {
+      @if $name {
+        @if $val {
+          #{getNames(($name),$block,$lx)} {
+            @include getStyle($val, $block);
+          }
         }
       }
     }
-
-    @if $child {}
-  }
-}
-
-@mixin asyncAttr($data, $block) {
-  @if $data {
-    // width: 1em;
-  }
-}
-
-@mixin asyncMedia($data, $block) {
-  @if $data {
-    // max-width: 1em;
   }
 }
