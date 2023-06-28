@@ -1,13 +1,13 @@
 <template>
   <div class="element-btn">
-    <element-btn-mod text="默认按钮" />
-    <element-btn-mod text="简洁按钮" shape="ghost" />
-    <element-btn-mod text="文字按钮" shape="text" />
-    <element-btn-mod text="禁用按钮" disabled />
-    <element-btn-mod text="禁用按钮" shape="ghost" disabled />
-    <element-btn-mod text="禁用按钮" shape="text" disabled />
-    <element-btn-mod text="小型按钮" size="sm" />
-    <element-btn-mod text="大型按钮" size="lg" />
+    <element-btn-mod text="正常默认按钮" />
+    <element-btn-mod text="正常简洁按钮" shape="ghost" />
+    <element-btn-mod text="正常文字按钮" shape="text" />
+    <element-btn-mod text="禁用默认按钮" disabled />
+    <element-btn-mod text="禁用简洁按钮" shape="ghost" disabled />
+    <element-btn-mod text="禁用文字按钮" shape="text" disabled />
+    <element-btn-mod text="小型默认按钮" size="sm" />
+    <element-btn-mod text="大型默认按钮" size="lg" />
     <div>
       <z-btn state="primary" radius="round">round</z-btn>
       <z-btn state="primary" radius="circle">circle</z-btn>
