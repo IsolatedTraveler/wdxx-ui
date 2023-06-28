@@ -26,7 +26,7 @@
     }
 
     @else {
-      @return '.'+#{$CSSNAME}#{$block}+'-'+#{$name};
+      @return '.'+#{$CSSNAME}#{$block}+'--'+#{$name};
     }
   }
 }
