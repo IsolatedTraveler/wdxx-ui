@@ -1,9 +1,18 @@
 @use 'sass:map';
-@use '../../vars/index.scss' as *;
-$classVal: (
+// @use '../../vars/index.scss' as *;
+$shape-child: (
+  class: '',
+  attr: '',
+  media: ''
+);
+$shape-style-none: (
+);
+$shape-style: (
 );
 $class: (
-  val: $classVal
+  style: $shape-style,
+  style-none: $shape-style-none,
+  child: $shape-child
 );
 $media: (
 );

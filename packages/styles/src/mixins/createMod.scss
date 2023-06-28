@@ -1,29 +1,39 @@
 @use './vars.scss' as *;
 
-@mixin createClass($block) {
+@mixin createClass($block, $lx) {
 
   @if & {
-    @include createAddClass($block)
+    @include createAddClass($block, $lx)
   }
 
   @else {
-    @include createClass($block)
+    @include createClass($block, $lx)
   }
 }
 
-@mixin createAddClass($block) {
-  $B: #{$CSSNAME}#{$block};
+@mixin getClassName($block, $lx) {
+  @if $lx ==attr {
+    $_B: [#{$block}] !global;
+  }
 
-  &.#{$B} {
+  @else {
+    $_B: '.'+#{$CSSNAME}#{$block} !global;
+  }
+}
+
+@mixin createAddClass($block, $lx) {
+  @include getClassName($block, $lx);
+
+  &#{$_B} {
     @content;
   }
 }
 
 // 创建css样式名，并将内容存放入内
-@mixin createSingleClass($block) {
-  $B: #{$CSSNAME}#{$block};
+@mixin createSingleClass($block, $lx) {
+  @include getClassName($block, $lx);
 
-  .#{$B} {
+  #{$_B} {
     @content;
   }
 }
