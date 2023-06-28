@@ -1,30 +1,10 @@
 @use '../mixins/index.scss' as *;
 
-$shape-style--ghost: (
-);
-$shape-style--text: (
-  border-color: transparent
-);
-$shape-style--text-ghost: (
-);
-$shape--text-ghost: (
-  style: $shape-style--text-ghost,
-  child: ()
-);
-$shape--ghost: (
-  style: $shape-style--ghost,
-  child: ()
-);
-$shape--text: (
-  style: $shape-style--text,
-  child: ()
-);
-$shape: (
-  (text, ghost): $shape--text-ghost,
-  ghost: $shape--ghost,
-  text: $shape--text
-);
-$style: (
-  class: $shape
-);
-@include async($style, '');
+@include createClass('ghost', '', '') {
+  background-color: transparent;
+}
+
+@include createClass('text', '', '') {
+  border-color: transparent;
+  background-color: transparent;
+}

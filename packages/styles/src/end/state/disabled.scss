@@ -1,65 +1,72 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
 $disabled-primary: (
-  background-color: var(--z-color-primary-3),
-  border-color: var(--z-color-primary-3),
-  color: var(--z-color-white)
+  background-color: map.get($color, primary, 4),
+  border-color: map.get($color, primary, 4),
+  color: map.get($color, color, 3)
 );
 $disabled-warning: (
-  background-color: var(--z-color-warning-3),
-  border-color: var(--z-color-warning-3),
-  color: var(--z-color-white)
+  background-color: map.get($color, warning, 4),
+  border-color: map.get($color, warning, 4),
+  color: map.get($color, color, 3)
 );
 $disabled-danger: (
-  background-color: var(--z-color-danger-3),
-  border-color: var(--z-color-danger-3),
-  color: var(--z-color-white)
+  background-color: map.get($color, danger, 4),
+  border-color: map.get($color, danger, 4),
+  color: map.get($color, color, 3)
 );
 $disabled-info: (
-  background-color: var(--z-color-info-3),
-  border-color: var(--z-color-info-3),
-  color: var(--z-color-white)
+  background-color: map.get($color, info, 4),
+  border-color: map.get($color, info, 4),
+  color: map.get($color, color, 3)
 );
 $disabled-success: (
-  background-color: var(--z-color-success-3),
-  border-color: var(--z-color-success-3),
-  color: var(--z-color-white)
+  background-color: map.get($color, success, 4),
+  border-color: map.get($color, success, 4),
+  color: map.get($color, color, 3)
 );
 $disabled-primary--ghost: (
-  color: var(--z-color-primary-3),
-  border-color: var(--z-color-primary-5)
+  color: map.get($color, primary, 4),
+  border-color: map.get($color, primary, 6),
+  background-color: map.get($color, color, 3)
 );
 $disabled-warning--ghost: (
-  color: var(--z-color-warning-3),
-  border-color: var(--z-color-warning-5)
+  color: map.get($color, warning, 4),
+  border-color: map.get($color, warning, 6),
+  background-color: map.get($color, color, 3)
 );
 $disabled-danger--ghost: (
-  color: var(--z-color-danger-3),
-  border-color: var(--z-color-danger-5)
+  color: map.get($color, danger, 4),
+  border-color: map.get($color, success, 6),
+  background-color: map.get($color, color, 3)
 );
 $disabled-info--ghost: (
-  color: var(--z-color-info-3),
-  border-color: var(--z-color-info-5)
+  color: map.get($color, info, 4),
+  border-color: map.get($color, info, 6),
+  background-color: map.get($color, color, 3)
 );
 $disabled-success--ghost: (
-  color: var(--z-color-success-3),
-  border-color: var(--z-color-success-5)
+  color: map.get($color, success, 4),
+  border-color: map.get($color, success, 6),
+  background-color: map.get($color, color, 3)
 );
 $disabled-primary--text: (
-  color: var(--z-color-primary-3),
+  color: map.get($color, primary, 4),
   border-color: transparent
 );
 $disabled-warning--text: (
-  color: var(--z-color-warning-3),
+  color: map.get($color, warning, 4),
   border-color: transparent
 );
 $disabled-danger--text: (
-  color: var(--z-color-danger-3),
+  color: map.get($color, danger, 4),
   border-color: transparent
 );
 $disabled-info--text: (
-  color: var(--z-color-info-3),
+  color: map.get($color, info, 4),
   border-color: transparent
 );
 $disabled-success--text: (
-  color: var(--z-color-success-3),
+  color: map.get($color, success, 4),
   border-color: transparent
 );

@@ -1,9 +1,9 @@
 @use 'sass:map';
 @use '../mixins/index.scss' as *;
-@use '../config/size.scss' as *;
+
 @each $key in $size {
-  @include create($key){
-    padding: map.get($size-pd, $key);
-    font-size: map.get($size-font, $key);
+  @include createSingleClass($key) {
+    padding: map.get($size, pd, $key);
+    font-size: map.get($size, font, $key);
   }
 }

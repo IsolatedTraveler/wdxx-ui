@@ -1,4 +1,6 @@
+@use 'sass:map';
 @use '../../mixins/index.scss' as *;
+@use '../../vars/index.scss' as *;
 // @use './btn.scss' as *;
 
 @include createSingleClass(btn, '', '') {
@@ -11,7 +13,7 @@
   outline: none;
   cursor: pointer;
   user-select: none;
-  border: 1px solid var(--z-color-3);
+  border: 1px solid map.get($color, color, 3);
   color: var(--z-color);
 
   &+& {

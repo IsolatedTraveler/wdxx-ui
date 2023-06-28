@@ -1,28 +1,30 @@
+@use 'sass:map';
 @use '../../mixins/index.scss' as *;
+@use '../../vars/index.scss' as *;
 @use './shape.scss' as *;
 @use './hover.scss' as *;
 $state-style--def: (
-  color: var(--z-color-white)
+  color: map.get($color, color, 3)
 );
 $state-style--primary: (
-  background-color: var(--z-color-primary-1),
-  border-color: var(--z-color-primary-1)
+  background-color: map.get($color, primary, 2),
+  border-color: map.get($color, primary, 2)
 );
 $state-style--success: (
-  background-color: var(--z-color-success-1),
-  border-color: var(--z-color-success-1)
+  background-color: map.get($color, success, 2),
+  border-color: map.get($color, success, 2)
 );
 $state-style--warning: (
-  background-color: var(--z-color-warning-1),
-  border-color: var(--z-color-warning-1)
+  background-color: map.get($color, warning, 2),
+  border-color: map.get($color, warning, 2)
 );
 $state-style--info: (
-  background-color: var(--z-color-info-1),
-  border-color: var(--z-color-info-1)
+  background-color: map.get($color, info, 2),
+  border-color: map.get($color, info, 2)
 );
 $state-style--danger: (
-  background-color: var(--z-color-danger-1),
-  border-color: var(--z-color-danger-1)
+  background-color: map.get($color, danger, 2),
+  border-color: map.get($color, danger, 2)
 );
 $styleClass: (
   primary: (style: $state-style--primary, child: (class: $shape--primary, attr: $shapeAttr--primary)),
@@ -35,5 +37,5 @@ $styleClass: (
 $style: (
   class:$styleClass
 );
-@include async($style, '');
 @include asyncMedia($styleHover, '');
+@include async($style, '', '');

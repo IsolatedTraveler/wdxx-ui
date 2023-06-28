@@ -6,75 +6,36 @@
   width: 2px;
 }
 
-@mixin getStyle($data, $block) {
+@mixin getStyle($data, $block, $add, $name, $name1) {
   $style : map.get($data, style);
   $child : map.get($data, child);
 
-  @if $style {
+  #{$name} {
+    @if $style {
 
-    @each $key,
-    $val in $style {
-      #{$key}: #{$val};
+      @each $key,
+      $val in $style {
+        #{$key}: #{$val};
+      }
     }
   }
 
   @if $child {
-    @include async($child, $block);
+    #{$name1} {
+      @include async($child, $block, $add);
+    }
   }
 }
 
-@mixin async($data, $block) {
+@mixin async($data, $block, $add) {
   @if $data {
-    @include asyncClass(map.get($data, class), $block, '');
-    @include asyncClass(map.get($data, attr), $block, 'attr');
+    @include asyncClass(map.get($data, class), $block, '', $add);
+    @include asyncClass(map.get($data, attr), $block, 'attr', $add);
   }
 }
 
-@function getNames($names, $block, $lx, $add) {
-  $nameVal: "";
-  $val: "";
 
-  @each $name in $names {
-    $i: index($names, $name);
-
-    @if $name ==def {
-      @if $i ==1 {
-        $nameVal: "&";
-      }
-
-      @else {
-        $nameVal: $nameVal",&";
-      }
-    }
-
-    @else {
-      @if $i ==1 {
-        @if $block =='' {
-          $nameVal: $add+getClassName($name, $lx, '');
-        }
-
-        @else {
-          $nameVal: $add+getClassName($block, $lx, $name);
-        }
-      }
-
-      @else {
-        @if $block =='' {
-          $nameVal: $nameVal","$add+getClassName($name, $lx, '');
-        }
-
-        @else {
-          $nameVal: $nameVal","$add+getClassName($block, $lx, $name);
-        }
-
-      }
-    }
-  }
-
-  @return $nameVal;
-}
-
-@mixin asyncClass($data, $block, $lx) {
+@mixin asyncClass($data, $block, $lx, $add) {
 
   @if $data {
 
@@ -82,17 +43,12 @@
     $val in $data {
       @if $name {
         @if $val {
-
           @if & {
-            #{getNames($name, $block, $lx, '&')} {
-              @include getStyle($val, $block);
-            }
+            @include getStyle($val, $block, $add, getNames($name, $block, $lx, '&', $add), getNames($name, $block, $lx, '&', ""));
           }
 
           @else {
-            #{getNames($name,$block, $lx, '')} {
-              @include getStyle($val, $block);
-            }
+            @include getStyle($val, $block, $add, getNames($name, $block, $lx, '', $add), getNames($name, $block, $lx, '', ""));
           }
         }
       }
@@ -106,7 +62,7 @@
   $val in $data {
     @if $name ==hover {
       @media (any-hover:hover) {
-        @include async($data, $block)
+        @include async($val, $block, ':hover')
       }
     }
   }

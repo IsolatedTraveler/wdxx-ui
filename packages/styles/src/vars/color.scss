@@ -1,43 +1,9 @@
-:root {
-  --z-color-white: #ffffff;
-  --z-color-black: #000000;
-  --z-color: #303133;
-  --z-color-2: #a8abb2;
-  --z-color-3: #dcdfe6;
-  --z-color-4: #e4e7ed;
-  --z-color-primary: #337ecc;
-  --z-color-primary-1: #409eff;
-  --z-color-primary-2: #79bbff;
-  --z-color-primary-3: #a0cfff;
-  --z-color-primary-4: #c6e2ff;
-  --z-color-primary-5: #d9ecff;
-  --z-color-primary-6: #ecf5ff;
-  --z-color-success: #529b2e;
-  --z-color-success-1: #67c23a;
-  --z-color-success-2: #95d475;
-  --z-color-success-3: #b3e19d;
-  --z-color-success-4: #d1edc4;
-  --z-color-success-5: #e1f3d8;
-  --z-color-success-6: #f0f9eb;
-  --z-color-warning: #b88230;
-  --z-color-warning-1: #e6a23c;
-  --z-color-warning-2: #eebe77;
-  --z-color-warning-3: #f3d19e;
-  --z-color-warning-4: #f8e3c5;
-  --z-color-warning-5: #faecd8;
-  --z-color-warning-6: #fdf6ec;
-  --z-color-danger: #c45656;
-  --z-color-danger-1: #f56c6c;
-  --z-color-danger-2: #f89898;
-  --z-color-danger-3: #fab6b6;
-  --z-color-danger-4: #fcd3d3;
-  --z-color-danger-5: #fde2e2;
-  --z-color-danger-6: #fef0f0;
-  --z-color-info: #73767a;
-  --z-color-info-1: #909399;
-  --z-color-info-2: #b1b3b8;
-  --z-color-info-3: #c8c9cc;
-  --z-color-info-4: #dedfe0;
-  --z-color-info-5: #e9e9eb;
-  --z-color-info-6: #f4f4f5;
-}
+$color: (
+  color: (1:#000000, 2: #303133, 3: #ffffff, 4: #e4e7ed),
+  border: (1:#a8abb2, 2: #dcdfe6, 3: #e4e7ed),
+  primary:(1:#337ecc, 2:#409eff, 3: #79bbff, 4: #a0cfff, 5: #c6e2ff, 6: #d9ecff, 7: #ecf5ff),
+  success:(1:#529b2e, 2:#67c23a, 3: #95d475, 4:#b3e19d, 5: #d1edc4, 6:#e1f3d8, 7: #f0f9eb),
+  warning:(1:#b88230, 2: #e6a23c, 3: #eebe77, 4:#f3d19e, 5: #f8e3c5, 6: #faecd8, 7:#fdf6ec),
+  danger:(1:#c45656, 2: #f56c6c, 3: #f89898, 4:#fab6b6, 5: #fcd3d3, 6: #fde2e2, 7:#fef0f0),
+  info:(1:#73767a, 2: #909399, 3: #b1b3b8, 4:#c8c9cc, 5:#dedfe0, 6:#e9e9eb, 7:#f4f4f5)
+);

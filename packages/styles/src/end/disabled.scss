@@ -1,5 +1,8 @@
+@use 'sass:map';
+@use "../vars/index.scss" as *;
+
 [disabled] {
   cursor: not-allowed;
-  border-color: var(--z-color-4);
-  color: var(--z-color-2);
+  border-color: map.get($color, border, 3);
+  color: map.get($color, color, 4);
 }

@@ -1,37 +1,39 @@
+@use 'sass:map';
 @use '../../mixins/index.scss' as *;
 @use './disabled.scss' as *;
+@use '../../vars/index.scss' as *;
 $shape-style--def: (
-  background-color: var(--z-color-white)
+  background-color: map.get($color, color, 3)
 );
 $shape-success-style--def: (
-  color: var(--z-color-success-1)
+  color: map.get($color, success, 2)
 );
 $shape-warning-style--def: (
-  color: var(--z-color-warning-1)
+  color: map.get($color, warning, 2)
 );
 $shape-primary-style--def: (
-  color: var(--z-color-primary-1)
+  color: map.get($color, primary, 2)
 );
 $shape-info-style--def: (
-  color: var(--z-color-info-1)
+  color: map.get($color, info, 2)
 );
 $shape-danger-style--def: (
-  color: var(--z-color-danger-1)
+  color: map.get($color, danger, 2)
 );
 $shape-success-style--ghost: (
-  border-color: var(--z-color-success-3)
+  border-color: map.get($color, success, 4)
 );
 $shape-warning-style--ghost: (
-  border-color: var(--z-color-warning-3)
+  border-color: map.get($color, warning, 4)
 );
 $shape-primary-style--ghost: (
-  border-color: var(--z-color-primary-3)
+  border-color: map.get($color, primary, 4)
 );
 $shape-info-style--ghost: (
-  border-color: var(--z-color-info-3)
+  border-color: map.get($color, info, 4)
 );
 $shape-danger-style--ghost: (
-  border-color: var(--z-color-danger-3)
+  border-color: map.get($color, danger, 4)
 );
 $shape-child--def: (
 );

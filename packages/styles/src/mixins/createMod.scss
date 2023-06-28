@@ -51,3 +51,47 @@
     @content;
   }
 }
+
+@function getNames($names, $block, $lx, $add, $add1) {
+  $nameVal: "";
+  $val: "";
+
+  @each $name in $names {
+    $i: index($names, $name);
+
+    @if $name ==def {
+      @if $i ==1 {
+        $nameVal: "&"$add1;
+      }
+
+      @else {
+        $nameVal: $nameVal",&"$add1;
+      }
+    }
+
+    @else {
+      @if $i ==1 {
+        @if $block =='' {
+          $nameVal: $add+getClassName($name, $lx, '')+$add1;
+        }
+
+        @else {
+          $nameVal: $add+getClassName($block, $lx, $name)+$add1;
+        }
+      }
+
+      @else {
+        @if $block =='' {
+          $nameVal: $nameVal","$add+getClassName($name, $lx, '')+$add1;
+        }
+
+        @else {
+          $nameVal: $nameVal","$add+getClassName($block, $lx, $name)+$add1;
+        }
+
+      }
+    }
+  }
+
+  @return $nameVal;
+}
