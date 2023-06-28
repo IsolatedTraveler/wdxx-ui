@@ -18,7 +18,7 @@ $shape-hover--info: (
 );
 $shape-hover--danger: (
   ghost: (style:(background-color: map.get($color, danger, 2), border-color: map.get($color, danger, 2), color: map.get($color, color, 3))),
-  text: (style:(background-color: map.get($color, color, 3), border-color: map.get($color, color, 3), color: map.get($color, primary, 4)))
+  text: (style:(background-color: map.get($color, color, 3), border-color: map.get($color, color, 3), color: map.get($color, danger, 4)))
 );
 $shape-hover--primary-def: (
   background-color: map.get($color, primary, 4),

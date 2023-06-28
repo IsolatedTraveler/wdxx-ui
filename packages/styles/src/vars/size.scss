@@ -1,14 +1,21 @@
 $size-pd: (
-  sm: var(--width-pd-sm),
-  md: var(--width-pd-md),
-  lg: var(--width-pd-lg)
+  sm: .05rem .11rem,
+  md: .08rem .15rem,
+  lg: .12rem .19rem
 );
 $size-font: (
-  sm: var(--width-font-sm),
-  md: var(--width-font-md),
-  lg: var(--width-font-lg)
+  sm: .12rem,
+  md: .14rem,
+  lg: .14rem
 );
 $size: (
   'pd': $size-pd,
-  'font'$size-font
+  'font':$size-font
 );
+$sizeKey: (
+  sm,
+  md,
+  lg
+);
+$htmlSize: 100px;
+$fontSize: .14rem;

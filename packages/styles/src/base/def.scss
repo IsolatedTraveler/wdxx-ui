@@ -1,10 +1,14 @@
-html{
-  font-size: 100px;
+@use "../vars/index.scss" as *;
+
+html {
+  font-size: $htmlSize;
 }
-body{
-  font-size: var(--width-font);
+
+body {
+  font-size: $fontSize;
 }
-button{
+
+button {
   margin: 0;
   user-select: none;
 }
