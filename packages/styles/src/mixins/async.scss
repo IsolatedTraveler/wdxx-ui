@@ -10,8 +10,8 @@
   $style : map.get($data, style);
   $child : map.get($data, child);
 
-  #{$name} {
-    @if $style {
+  @if $style {
+    #{$name} {
 
       @each $key,
       $val in $style {

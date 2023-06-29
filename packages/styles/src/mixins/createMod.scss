@@ -61,11 +61,11 @@
 
     @if $name ==def {
       @if $i ==1 {
-        $nameVal: "&"$add1;
+        $nameVal: "&"+$add1;
       }
 
       @else {
-        $nameVal: $nameVal",&"$add1;
+        $nameVal: $nameVal",&"+$add1;
       }
     }
 

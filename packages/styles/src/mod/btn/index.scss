@@ -3,7 +3,6 @@
 @use '../../vars/index.scss' as *;
 @use './btn.scss' as *;
 
-@include asyncMedia($styleHover, '');
 
 @include createSingleClass(btn, '', '') {
   white-space: nowrap;
@@ -15,11 +14,14 @@
   outline: none;
   cursor: pointer;
   user-select: none;
-  border: 1px solid map.get($color, color, 3);
+  border: 1px solid map.get($color, border, 2);
   color: var(--z-color);
   padding: map-get($size, pd, 'md');
 
   &+& {
     margin-left: 8px;
   }
+
+  @include asyncMedia($styleHover, '');
+
 }
