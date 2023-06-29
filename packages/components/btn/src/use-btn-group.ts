@@ -6,7 +6,7 @@ export const useBtnGroup = (props: BtnGroupProps) => {
     name: 'btn-group',
     flex: 'row',
     group: props.shape
-  })), {_class} = useCss(classVal, _ref)
+  })), { _class } = useCss(classVal, _ref, { group: 'comCss' })
   useProvideBtnGroup(props)
   return {
     _ref,
