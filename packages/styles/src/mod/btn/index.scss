@@ -1,7 +1,9 @@
 @use 'sass:map';
 @use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
-// @use './btn.scss' as *;
+@use './btn.scss' as *;
+
+@include asyncMedia($styleHover, '');
 
 @include createSingleClass(btn, '', '') {
   white-space: nowrap;
