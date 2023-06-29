@@ -1,0 +1,10 @@
+@use 'sass:map';
+@use '../mixins/index.scss' as *;
+@use '../vars/index.scss' as *;
+
+@each $key,
+$val in $radius {
+  @include createSingleClass($key, '', '') {
+    border-radius: $val;
+  }
+}
