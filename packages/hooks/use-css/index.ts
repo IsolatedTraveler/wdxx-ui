@@ -7,10 +7,10 @@ export { setCss } from './flex'
 export { getStylePx } from './radius'
 const cssV: any = {
   flex: useFlexCss,
-  comCss: useSingle,
+  comCss: useSingle1,
   group: useGroup,
   radius,
-  def: useSingle1
+  def: useSingle
 }
 export const useCss = (props: ComputedRef<any>, el: Ref<any>, judge?: ObjStr, keys: Array<string> = Object.keys(props.value)) => {
   const _class = ref({}), _style = ref({}), obj = {}, classVal = _class.value, styleVal = _style.value
