@@ -1,14 +1,12 @@
 import { ref, Ref, ComputedRef } from "vue"
 import { useFlexCss, useSingle, useSingle1 } from "./flex"
 import radius from "./radius"
-import useGroup from "./group"
 import { ObjStr } from "@ui/vars"
 export { setCss } from './flex'
 export { getStylePx } from './radius'
 const cssV: any = {
   flex: useFlexCss,
   comCss: useSingle1,
-  group: useGroup,
   radius,
   def: useSingle
 }
