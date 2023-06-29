@@ -21,7 +21,8 @@ export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) =>
       size: size.value,
       shape: props.shape,
       radius: props.radius,
-      full: props.full
+      full: props.full,
+      col: props.col
     }
   }), { _class, _style } = useCss(classProp, _ref)
   return {

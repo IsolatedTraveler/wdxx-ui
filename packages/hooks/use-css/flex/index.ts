@@ -33,7 +33,8 @@ export const useSingle = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTru
 }
 
 export const useFlexCss = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue) => {
-  ['flex', 'rowAlign', 'colAlign', 'self'].forEach(key => {
-    useSingle(props, obj, classVal, key)
+  useSingle(props, obj, classVal, 'flex');
+  ['row', 'col', 'self'].forEach(key => {
+    useSingle1(props, obj, classVal, key, key)
   })
 }

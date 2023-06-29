@@ -18,7 +18,7 @@
       <z-btn state="primary" radius="1em">1em</z-btn>
     </div>
     <z-btn-group>
-      <z-btn size="lg" state="success">success</z-btn>
+      <z-btn size="lg" state="success" col="center">success</z-btn>
       <z-btn shape="ghost" size="lg" state="warning">warning</z-btn>
     </z-btn-group>
     <z-btn-group shape="tight">
