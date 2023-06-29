@@ -5,7 +5,7 @@ function getExportStr(arr: string[], prev = `export * from './`, next = `';\n`) 
   return arr.map(it => `${prev}${it}${next}`).join('')
 }
 async function UiComponent() {
-  let component = getExportStr(comKey), str = '', cssI = `@forward './vars/index.scss';\n@forward './base/index.scss';\n`, provide = '', inject = '',
+  let component = getExportStr(comKey), str = '', cssI = '', provide = '', inject = '',
     typeing = 'declare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    '
   comKey.map(key => {
     let obj = comObj[key] as ComObj
@@ -14,7 +14,6 @@ async function UiComponent() {
     cssI += getExportStr(obj.keys, `@forward '${CSS_PATH}`, `/index.scss';\n`)
     str += `import {${obj.keys.map(dealNameStr).join(',')}} from '@ui/components/${key}'\n`
   })
-  cssI += `@forward './end/index.scss';`
   str += `export default[\n  ${comKeys.map(dealNameStr).join(',\n  ')}\n]`
   typeing += comKeys.map(it => {
     let name = dealNameStr(it)
@@ -27,8 +26,8 @@ async function UiComponent() {
     write(resolve(epRoot, 'component.ts'), str),
     // 创建commponents/index.ts
     write(resolve(compRoot, 'index.ts'), component),
-    // 修改styles/src/index.scss
-    write(resolve(stylesRoot, 'index.scss'), cssI),
+    // 修改styles/src/mod/index.scss
+    write(resolve(stylesRoot, 'mod/index.scss'), cssI),
     // 修改hooks/use-provide/index.scss
     write(resolve(provideRoot, 'index.ts'), provide),
     // 修改hooks/use-inject/index.scss
