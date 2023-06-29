@@ -9,17 +9,17 @@
   box-sizing: border-box;
   position: relative;
 
-  @include create('wrap') {
+  @include createClass('wrap', '', '') {
     flex-wrap: wrap;
   }
 }
 
-@include create('row') {
+@include createSingleClass('row', '', '') {
   @extend %flex;
   flex-flow: row nowrap;
 }
 
-@include create('col') {
+@include createSingleClass('col', '', '') {
   @extend %flex;
   flex-flow: column nowrap;
 }
