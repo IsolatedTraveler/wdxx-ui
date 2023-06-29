@@ -9,7 +9,7 @@ export interface flexProp {
 export const setCss = (name: string) => {
   return name ? (PKG_PREFIX + '-' + name) : ''
 }
-export const useSingle = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue, key: string, name: string = '') => {
+export const useSingle1 = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue, key: string, name: string = '') => {
   watch(() => props.value?.[key], (v, o) => {
     if (o) {
       classVal[obj[key]] = false
@@ -20,7 +20,7 @@ export const useSingle = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTru
     }
   }, { immediate: true })
 }
-export const useSingle1 = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue, key: string) => {
+export const useSingle = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue, key: string) => {
   watch(() => props.value?.[key], (v, o) => {
     if (o) {
       classVal[obj[key]] = false
