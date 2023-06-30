@@ -2,12 +2,4 @@
 @use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
 
-@include create(btn-group) {
-  @each $key in $group {
-    @include create('group-' + $key) {
-      @include createClass('btn1') {
-        @extend %group-#{$key}
-      }
-    }
-  }
-}
+@include async($styleVal, 'btn-group', '')
