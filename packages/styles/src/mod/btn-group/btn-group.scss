@@ -1,2 +1,20 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
+$btnGroupTightStyle: (
+  margin-left: 0
+);
+$btnGroupAutoStyle: (
+);
+$btnGroupTight: (
+  style: $btnGroupTightStyle
+);
+$btnGroupAuto: (
+  style: $btnGroupAutoStyle
+);
+$btnGroupClass: (
+  tight: $btnGroupTight,
+  auto: $btnGroupAuto
+);
+$styleVal: (
+  class: $btnGroupClass
+);
