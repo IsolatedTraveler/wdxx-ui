@@ -58,7 +58,7 @@ function creatComponentMod(key: string, comUrl: any) {
     // 创建styles/src/mod/${key}/index.scss
     write(resolve(styleMod, 'index.scss'), getComponentCss(key)),
     // 创建styles/src/mod/${key}/${key}Media.scss
-    write(resolve(styleMod, key + '.scss'), getComponentCss(key, 'hover-'))
+    write(resolve(styleMod, key + 'Media.scss'), getComponentCss(key, 'hover-'))
   ]))
 }
 function getComponentCss(key: string, add: string = '') {
@@ -93,6 +93,7 @@ function getIndexCss(key: string) {
   return `@use 'sass:map';
 @use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
+@use './${key}Media.scss' as *;
 @use './${key}.scss' as *;
 
 @include createSingleClass(${key}, '', '') {
