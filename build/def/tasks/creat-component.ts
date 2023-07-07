@@ -56,7 +56,7 @@ function creatComponentMod(key: string, comUrl: any) {
     // 创建styles/src/mod/${key}/index.scss
     write(resolve(styleMod, 'index.scss'), getIndexCss(key)),
     // 创建styles/src/mod/${key}/index.scss
-    write(resolve(styleMod, 'index.scss'), getComponentCss(key)),
+    write(resolve(styleMod, key + '.scss'), getComponentCss(key)),
     // 创建styles/src/mod/${key}/${key}Media.scss
     write(resolve(styleMod, key + 'Media.scss'), getComponentCss(key, 'hover-'))
   ]))
@@ -98,7 +98,7 @@ function getIndexCss(key: string) {
 
 @include createSingleClass(${key}, '', '') {
 
-  @include asyncMedia($styleHover, '');
+  @include asyncMedia($styleMedia, '');
 }
 @include async($style, ${key}, '');`
 }
