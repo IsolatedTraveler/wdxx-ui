@@ -16,5 +16,6 @@
   },
   "form": {
     "provide": true
-  }
+  },
+  "call-kit": true
 }
