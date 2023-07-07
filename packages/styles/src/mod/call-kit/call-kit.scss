@@ -1,11 +1,17 @@
 @use 'sass:map';
-@use '../../config/index.scss' as *;
-$attr:('disabled');
-$media: ('hover');
-$state: ();
-$call-kit: (
-  'mod': (),
-  'attr': setAttr($attr),
-  'state': setState($state),
-  'media': setMedia($media)
-) !default;
+@use '../../vars/index.scss' as *;
+$call-kit-hover: (
+  color:map.get($color, primary, 2)
+);
+$hoverClass: (
+  def: (style: $call-kit-hover)
+);
+$styleHover: (
+  hover: (class: $hoverClass)
+);
+$styleClass: (
+  key: (style: $state-style--key, child: (class: $shape--key, attr: $shapeAttr--key))
+);
+$style: (
+  class:$styleClass
+);

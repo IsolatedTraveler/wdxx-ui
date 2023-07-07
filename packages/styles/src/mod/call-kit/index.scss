@@ -1,8 +1,10 @@
 @use 'sass:map';
 @use '../../mixins/index.scss' as *;
-@use '../../config/index.scss' as *;
+@use '../../vars/index.scss' as *;
 @use './call-kit.scss' as *;
-@include styles(call-kit, $call-kit, $attr, $state, $media);
-@include create(call-kit) {
 
+@include createSingleClass(call-kit, '', '') {
+
+  @include asyncMedia($styleHover, '');
 }
+@include async($style, call-kit, '');

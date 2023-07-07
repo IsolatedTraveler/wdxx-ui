@@ -54,10 +54,42 @@ function creatComponentMod(key: string, comUrl: any) {
     // 创建components/${key}/style/css.ts
     write(resolve(styleUrl, 'css.ts'), `import '@ui/styles/base.css'\nimport '@ui/styles/${key}.css'\nimport '@ui/styles/end.css'`),
     // 创建styles/src/mod/${key}/index.scss
-    write(resolve(styleMod, 'index.scss'), `@use 'sass:map';\n@use '../../mixins/index.scss' as *;\n@use '../../config/index.scss' as *;\n@use './${key}.scss' as *;\n@include styles(${key}, $${key}, $attr, $state, $media);\n@include create(${key}) {\n\n}`),
+    write(resolve(styleMod, 'index.scss'), getIndexCss(key)),
     // 创建styles/src/mod/${key}/${key}.scss
-    write(resolve(styleMod, key + '.scss'), `@use 'sass:map';\n@use '../../config/index.scss' as *;\n$attr:('disabled');\n$media: ('hover');\n$state: ();\n$${key}: (\n  'mod': (),\n  'attr': setAttr($attr),\n  'state': setState($state),\n  'media': setMedia($media)\n) !default;`)
+    write(resolve(styleMod, key + '.scss'), getComponentCss(key))
   ]))
+}
+function getComponentCss(key: string) {
+  return `@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$${key}-hover: (
+  color:map.get($color, primary, 2)
+);
+$hoverClass: (
+  def: (style: $${key}-hover)
+);
+$styleHover: (
+  hover: (class: $hoverClass)
+);
+$styleClass: (
+  key: (style: $state-style--key, child: (class: $shape--key, attr: $shapeAttr--key))
+);
+$style: (
+  class:$styleClass
+);`
+
+}
+function getIndexCss(key: string) {
+  return `@use 'sass:map';
+@use '../../mixins/index.scss' as *;
+@use '../../vars/index.scss' as *;
+@use './${key}.scss' as *;
+
+@include createSingleClass(${key}, '', '') {
+
+  @include asyncMedia($styleHover, '');
+}
+@include async($style, ${key}, '');`
 }
 function createCom(arr: Array<filesObj>) {
   excludeCom(arr)
