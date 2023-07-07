@@ -1,8 +1,0 @@
-@use 'sass:map';
-@use '../../mixins/index.scss' as *;
-@use '../../config/index.scss' as *;
-@use './form.scss' as *;
-@include styles(form, $form, $attr, $state, $media);
-@include create(form) {
-
-}
