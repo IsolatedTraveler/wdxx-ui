@@ -14,8 +14,12 @@ $call-kit--attr: (
 );
 $call-kit--style: (
 );
-$style: (
+$hover-style: (
   class:$call-kit--class,
   attr:$call-kit--attr,
   style:$call-kit--style
+);
+
+$styleMedia: (
+  hover: $hover-style
 );
