@@ -71,8 +71,13 @@ $hoverClass: (
 $styleHover: (
   hover: (class: $hoverClass)
 );
+$key--style: (
+  background-color: map.get($color, primary, 2)
+);
+$key--class: ();
+$key--attr: ();
 $styleClass: (
-  key: (style: $state-style--key, child: (class: $shape--key, attr: $shapeAttr--key))
+  key: (style: $key--style, child: (class: $key--class, attr: $key--attr))
 );
 $style: (
   class:$styleClass
