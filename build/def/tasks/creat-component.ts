@@ -55,34 +55,39 @@ function creatComponentMod(key: string, comUrl: any) {
     write(resolve(styleUrl, 'css.ts'), `import '@ui/styles/base.css'\nimport '@ui/styles/${key}.css'\nimport '@ui/styles/end.css'`),
     // 创建styles/src/mod/${key}/index.scss
     write(resolve(styleMod, 'index.scss'), getIndexCss(key)),
-    // 创建styles/src/mod/${key}/${key}.scss
-    write(resolve(styleMod, key + '.scss'), getComponentCss(key))
+    // 创建styles/src/mod/${key}/index.scss
+    write(resolve(styleMod, 'index.scss'), getComponentCss(key)),
+    // 创建styles/src/mod/${key}/${key}Media.scss
+    write(resolve(styleMod, key + '.scss'), getComponentCss(key, 'hover-'))
   ]))
 }
-function getComponentCss(key: string) {
-  return `@use 'sass:map';
+function getComponentCss(key: string, add: string = '') {
+  let val = `@use 'sass:map';
 @use '../../vars/index.scss' as *;
-$${key}-hover: (
-  color:map.get($color, primary, 2)
-);
-$hoverClass: (
-  def: (style: $${key}-hover)
-);
-$styleHover: (
-  hover: (class: $hoverClass)
-);
-$key--style: (
+$${key}-key--style: (
   background-color: map.get($color, primary, 2)
 );
-$key--class: ();
-$key--attr: ();
-$styleClass: (
-  key: (style: $key--style, child: (class: $key--class, attr: $key--attr))
+$${key}-key--class: ();
+$${key}-key--attr: ();
+$${key}-class: (
+  key: (style: $${key}-key--style, child: (class: $${key}-key--class, attr: $${key}-key--attr))
 );
-$style: (
-  class:$styleClass
-);`
-
+$${key}--attr: ();
+$${key}--style: ();
+$${add}style: (
+  class:$${key}--class,
+  attr:$${key}--attr,
+  style:$${key}--style
+);
+  `
+  if (add === 'hover-') {
+    val += `
+    $styleMedia: (
+      hover: $hover-style
+    );
+    `
+  }
+  return val
 }
 function getIndexCss(key: string) {
   return `@use 'sass:map';
