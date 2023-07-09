@@ -1,0 +1,18 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$flex-child-key--style: (
+  background-color: map.get($color, primary, 2)
+);
+$flex-child-key--class: ();
+$flex-child-key--attr: ();
+$flex-child--class: (
+  key: (style: $flex-child-key--style, child: (class: $flex-child-key--class, attr: $flex-child-key--attr))
+);
+$flex-child--attr: ();
+$flex-child--style: ();
+$style: (
+  class:$flex-child--class,
+  attr:$flex-child--attr,
+  style:$flex-child--style
+);
+  

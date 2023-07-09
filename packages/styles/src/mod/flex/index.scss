@@ -10,5 +10,12 @@
   align-content: flex-start;
   box-sizing: border-box;
   position: relative;
+  flex-flow: row nowrap;
+
+  >* {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
   @include async($style, flex, '');
 }
