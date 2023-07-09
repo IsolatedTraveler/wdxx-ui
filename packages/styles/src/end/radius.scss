@@ -1,11 +1,14 @@
 @use 'sass:map';
 @use '../mixins/index.scss' as *;
 @use '../vars/index.scss' as *;
-
-@each $key,
-$val in $radius {
-  #{getNames($key, '', '', '', '')} {
-    border-radius: $val;
-    overflow: hidden;
-  }
-}
+$radius--class: (
+  square: (style:(border-radius: $radius-square)),
+  round:(style:(border-radius: $radius-round)),
+  ('btn', 'btn-group'): (style:(border-radius: $radius-btn)),
+  ('circle', 'ellipse'): (style:(border-radius: $radius-circle)),
+  ('btn', 'btn-group', 'square', 'circle', 'ellipse', 'round'):(style:(overflow:hidden))
+);
+$radiusStyle: (
+  class: $radius--class
+);
+@include async($radiusStyle, '', '')
