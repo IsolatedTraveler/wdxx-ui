@@ -1,9 +1,7 @@
 <template>
-  <div class="element-flex">
-    <z-flex>
-      <z-flex-auto></z-flex-auto>
-    </z-flex>
-  </div>
+  <z-flex class="element-flex">
+    <z-flex-auto></z-flex-auto>
+  </z-flex>
 </template>
 <script lang="ts">
 export default {
@@ -13,5 +11,6 @@ export default {
 <style lang="scss">
 .element-flex {
   width: 100%;
+  height: 100%;
 }
 </style>
