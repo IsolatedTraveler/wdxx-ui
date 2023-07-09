@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$flex-key--style: (
+  background-color: map.get($color, primary, 2)
+);
+$flex-key--class: ();
+$flex-key--attr: ();
+$flex--class: (
+  key: (style: $flex-key--style, child: (class: $flex-key--class, attr: $flex-key--attr))
+);
+$flex--attr: ();
+$flex--style: ();
+$hover-style: (
+  class:$flex--class,
+  attr:$flex--attr,
+  style:$flex--style
+);
+  
+    $styleMedia: (
+      hover: $hover-style
+    );
+    

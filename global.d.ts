@@ -3,6 +3,7 @@ declare module "@vue/runtime-core" {
     ZIcon: typeof import("z-uis")["ZIcon"];
     ZBtn: typeof import("z-uis")["ZBtn"];
     ZBtnGroup: typeof import("z-uis")["ZBtnGroup"];
+    ZFlex: typeof import("z-uis")["ZFlex"];
     ZForm: typeof import("z-uis")["ZForm"];
     ZCallKit: typeof import("z-uis")["ZCallKit"];
   }
