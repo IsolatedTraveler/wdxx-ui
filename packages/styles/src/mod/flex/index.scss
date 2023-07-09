@@ -5,7 +5,13 @@
 @use './flex.scss' as *;
 
 @include createSingleClass(flex, '', '') {
-
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  box-sizing: border-box;
+  position: relative;
   @include asyncMedia($styleMedia, '');
 }
+
 @include async($style, flex, '');
