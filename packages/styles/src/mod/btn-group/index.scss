@@ -1,3 +1,6 @@
 @use '../../mixins/index.scss' as *;
 @use './btn-group.scss' as *;
-@include async($styleVal, 'btn-group', '')
+
+@include createSingleClass(btn-group, '', '') {
+  @include async($styleVal, btn-group, '')
+}

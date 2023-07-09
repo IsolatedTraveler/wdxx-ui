@@ -31,9 +31,25 @@
   @if $data {
     @include asyncClass(map.get($data, class), $block, '', $add);
     @include asyncClass(map.get($data, attr), $block, 'attr', $add);
+    @include asyncClass(map.get($data, pseudo), $block, 'pseudo', $add);
+    @include asyncChild(map.get($data, childClass), '', '', '');
+    @include asyncChild(map.get($data, childAttr), '', 'attr', '')
   }
 }
 
+@mixin asyncChild($data, $block, $lx, $add) {
+  @if $data {
+
+    @each $name,
+    $val in $data {
+      @if $name {
+        @if $val {
+          @include getStyle($val, $block, $add, getNames($name, $block, $lx, '', $add), getNames($name, $block, $lx, '', ""));
+        }
+      }
+    }
+  }
+}
 
 @mixin asyncClass($data, $block, $lx, $add) {
 

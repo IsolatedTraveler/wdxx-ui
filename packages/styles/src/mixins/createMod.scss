@@ -27,6 +27,17 @@
 
   }
 
+  @if $lx ==pseudo {
+    @if $name=='' {
+      @return ':'+#{$block};
+    }
+
+    @else {
+      @return ':'+#{$name};
+    }
+
+  }
+
   @else {
     @if $name=='' {
       @return '.'+#{$CSSNAME}#{$block};

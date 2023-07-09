@@ -1,20 +1,42 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
-$btnGroupTightStyle: (
-  margin-left: 0
+$btn-group-auto-btn--style: (
+  flex: 1
 );
-$btnGroupAutoStyle: (
+$btn-group-auto--childClass: (
+  btn: (style: $btn-group-auto-btn--style)
 );
-$btnGroupTight: (
-  style: $btnGroupTightStyle
+$btn-group-tight--style: (
+  width: auto,
+  display: inline-block
 );
-$btnGroupAuto: (
-  style: $btnGroupAutoStyle
+$btn-group--class: (
+  tight:(style: $btn-group-tight--style),
+  auto: (child: (childClass: $btn-group-auto--childClass))
 );
-$btnGroupClass: (
-  tight: $btnGroupTight,
-  auto: $btnGroupAuto
+$btn-group-btn--style: (
+  margin: 0,
+  border-radius: 0
+);
+$btn-group-btn-first-child-style: (
+  border-top-left-radius: 0.05rem,
+  border-bottom-left-radius: 0.05rem
+);
+$btn-group-btn-last-child-style: (
+  border-top-right-radius: 0.05rem,
+  border-bottom-right-radius: 0.05rem
+);
+$btn-group-btn--pseudo: (
+  'first-child': (style: $btn-group-btn-first-child-style),
+  'last-child': (style: $btn-group-btn-last-child-style)
+);
+$btn-group-btn--child: (
+  pseudo: $btn-group-btn--pseudo
+);
+$btn-group--childClass: (
+  btn:(style:$btn-group-btn--style, child:$btn-group-btn--child)
 );
 $styleVal: (
-  class: $btnGroupClass
+  class: $btn-group--class,
+  childClass: $btn-group--childClass
 );

@@ -4,7 +4,8 @@
 
 @each $key,
 $val in $radius {
-  @include createSingleClass($key, '', '') {
+  #{getNames($key, '', '', '', '')} {
     border-radius: $val;
+    overflow: hidden;
   }
 }
