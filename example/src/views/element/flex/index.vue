@@ -1,5 +1,6 @@
 <template>
   <div class="element-form">
+    flex布局
   </div>
 </template>
 <script lang="ts">
@@ -8,6 +9,5 @@ export default {
 }
 </script>
 <style lang="scss">
-.element-form{
-}
+.element-form {}
 </style>
