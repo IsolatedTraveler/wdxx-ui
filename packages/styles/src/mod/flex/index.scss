@@ -3,7 +3,7 @@
 @use '../../vars/index.scss' as *;
 @use './flex.scss' as *;
 
-@include createSingleClass(flex, '', '') {
+#{getNames(('row', 'col'), '', '', '', '')} {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -17,5 +17,5 @@
     flex-shrink: 0;
   }
 
-  @include async($style, flex, '');
+  @include async($style, '', '');
 }
