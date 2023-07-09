@@ -19,12 +19,12 @@ $btn-group-btn--style: (
   border-radius: 0
 );
 $btn-group-btn-first-child-style: (
-  border-top-left-radius: 0.05rem,
-  border-bottom-left-radius: 0.05rem
+  border-top-left-radius: $radius-btn,
+  border-bottom-left-radius: $radius-btn
 );
 $btn-group-btn-last-child-style: (
-  border-top-right-radius: 0.05rem,
-  border-bottom-right-radius: 0.05rem
+  border-top-right-radius: $radius-btn,
+  border-bottom-right-radius: $radius-btn
 );
 $btn-group-btn--pseudo: (
   'first-child': (style: $btn-group-btn-first-child-style),
