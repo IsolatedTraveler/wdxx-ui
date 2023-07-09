@@ -1,4 +1,15 @@
 {
+  "flex": {
+    "next": [
+      "flex-auto"
+    ],
+    "inject": {
+      "flex-auto": [
+        "flex"
+      ]
+    },
+    "provide": true
+  },
   "icon": true,
   "btn": {
     "next": [
@@ -13,17 +24,6 @@
     "provide": [
       "btn-group"
     ]
-  },
-  "flex": {
-    "next": [
-      "flex-auto"
-    ],
-    "inject": {
-      "flex-auto": [
-        "flex"
-      ]
-    },
-    "provide": true
   },
   "form": {
     "provide": true
