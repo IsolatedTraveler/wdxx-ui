@@ -156,7 +156,7 @@ function getInject(key: any, ml: string, provides: string[]) {
   return `import { ${name}Props } from "@ui/components/${ml}/src/${key}";
 import { inject } from "vue";
 ${provides.map(it => {
-    return `import { provid${getName(it.split('-'))}Id } from "../use-provide/${it}";`
+    return `import { provide${getName(it.split('-'))}Id } from "../use-provide/${it}";`
   }).join('\n')}
 export const useInject${name} = (props: ${name}Props) => {
   ${provides.map(it => {

@@ -14,7 +14,17 @@
       "btn-group"
     ]
   },
-  "flex": true,
+  "flex": {
+    "next": [
+      "flex-auto"
+    ],
+    "inject": {
+      "flex-auto": [
+        "flex"
+      ]
+    },
+    "provide": true
+  },
   "form": {
     "provide": true
   },
