@@ -1,0 +1,55 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$btn-group-round-first-child--style: (
+  border-top-left-radius: $radius-round,
+  border-bottom-left-radius: $radius-round
+);
+$btn-group-round-last-child--style: (
+  border-top-right-radius: $radius-round,
+  border-bottom-right-radius: $radius-round
+);
+$btn-group-round--pseudo: (
+  'first-child': (style: $btn-group-round-first-child--style),
+  'last-child': (style: $btn-group-round-last-child--style)
+);
+$btn-group-round--childClass: (
+  btn:(child:(pseudo: $btn-group-round--pseudo))
+);
+$btn-group-square-first-child--style: (
+  border-top-left-radius: $radius-square,
+  border-bottom-left-radius: $radius-square
+);
+$btn-group-square-last-child--style: (
+  border-top-right-radius: $radius-square,
+  border-bottom-right-radius: $radius-square
+);
+$btn-group-square--pseudo: (
+  'first-child': (style: $btn-group-square-first-child--style),
+  'last-child': (style: $btn-group-square-last-child--style)
+);
+$btn-group-square--childClass: (
+  btn:(child:(pseudo: $btn-group-square--pseudo))
+);
+$btn-group-circle-first-child--style: (
+  border-top-left-radius: $radius-circle,
+  border-bottom-left-radius: $radius-circle
+);
+$btn-group-circle-last-child--style: (
+  border-top-right-radius: $radius-circle,
+  border-bottom-right-radius: $radius-circle
+);
+$btn-group-circle--pseudo: (
+  'first-child': (style: $btn-group-circle-first-child--style),
+  'last-child': (style: $btn-group-circle-last-child--style)
+);
+$btn-group-circle--childClass: (
+  btn:(child:(pseudo: $btn-group-circle--pseudo))
+);
+$btn-group--class: (
+  round:(child:(childClass: $btn-group-round--childClass)),
+  square:(child:(childClass: $btn-group-square--childClass)),
+  ('circle', 'ellipse'):(child:(childClass: $btn-group-circle--childClass))
+);
+$styleRadiusVal: (
+  class: $btn-group--class
+);
