@@ -1,15 +1,17 @@
 <template>
-  <div class="element-form">
-    flex布局
+  <div class="element-flex">
+    <z-flex>
+      <z-flex-auto></z-flex-auto>
+    </z-flex>
   </div>
 </template>
 <script lang="ts">
 export default {
-  name: 'element-form'
+  name: 'element-flex'
 }
 </script>
 <style lang="scss">
-.element-form {
+.element-flex {
   width: 100%;
 }
 </style>
