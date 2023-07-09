@@ -9,5 +9,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.element-form {}
+.element-form {
+  width: 100%;
+}
 </style>
