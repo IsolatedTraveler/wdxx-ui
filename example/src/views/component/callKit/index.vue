@@ -14,5 +14,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.component-callKit {}
+.component-callKit {
+  width: 100%;
+}
 </style>
