@@ -34,7 +34,7 @@ export const useSingle = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTru
 
 export const useFlexCss = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue) => {
   useSingle(props, obj, classVal, 'flex');
-  ['row', 'col', 'self'].forEach(key => {
-    useSingle1(props, obj, classVal, key, key)
+  ['row', 'col', 'self', 'wrap'].forEach(key => {
+    useSingle1(props, obj, classVal, key, 'flex')
   })
 }
