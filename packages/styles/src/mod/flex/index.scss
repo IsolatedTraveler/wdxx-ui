@@ -1,7 +1,6 @@
 @use 'sass:map';
 @use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
-@use './flex-media.scss' as *;
 @use './flex.scss' as *;
 
 @include createSingleClass(flex, '', '') {
@@ -11,7 +10,5 @@
   align-content: flex-start;
   box-sizing: border-box;
   position: relative;
-  @include asyncMedia($styleMedia, '');
+  @include async($style, flex, '');
 }
-
-@include async($style, flex, '');
