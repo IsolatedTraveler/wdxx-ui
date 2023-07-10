@@ -9,24 +9,13 @@ export interface flexProp {
 export const setCss = (name: string) => {
   return name ? (PKG_PREFIX + '-' + name) : ''
 }
-export const useSingle1 = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue, key: string, name: string = '') => {
+export const useSingle = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue, key: string, name: string = '') => {
   watch(() => props.value?.[key], (v, o) => {
     if (o) {
       classVal[obj[key]] = false
     }
     if (v) {
-      obj[key] = setCss(name + '--' + (v === true ? key : v))
-      classVal[obj[key]] = true
-    }
-  }, { immediate: true })
-}
-export const useSingle = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue, key: string) => {
-  watch(() => props.value?.[key], (v, o) => {
-    if (o) {
-      classVal[obj[key]] = false
-    }
-    if (v) {
-      obj[key] = setCss(v === true ? key : v)
+      obj[key] = setCss(name + (name ? '--' : '') + (v === true ? key : v))
       classVal[obj[key]] = true
     }
   }, { immediate: true })
@@ -34,7 +23,7 @@ export const useSingle = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTru
 
 export const useFlexCss = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue) => {
   useSingle(props, obj, classVal, 'flex');
-  ['row', 'col', 'self'].forEach(key => {
-    useSingle1(props, obj, classVal, key, 'flex')
+  ['justify', 'align', 'self'].forEach(key => {
+    useSingle(props, obj, classVal, key, key)
   })
 }

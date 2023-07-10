@@ -77,7 +77,6 @@ body {
 
     >.router {
       width: 100%;
-      display: block;
       padding-top: .5em;
     }
   }

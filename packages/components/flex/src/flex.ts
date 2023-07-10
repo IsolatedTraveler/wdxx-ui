@@ -5,7 +5,8 @@ export const flexProps = propsBuildS({
   col: PropsBaseBoolean,
   justify: PropsFlexJustify,
   align: PropsFlexAlign,
-  self: PropsFlexSelf
+  self: PropsFlexSelf,
+  wrap: PropsBaseBoolean
 })
 export const flexEmits = {
 }
