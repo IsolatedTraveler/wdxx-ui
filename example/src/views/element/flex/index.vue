@@ -1,6 +1,6 @@
 <template>
-  <z-flex class="element-flex">
-    <z-flex-auto></z-flex-auto>
+  <z-flex col class="element-flex">
+    <z-flex row></z-flex>
   </z-flex>
 </template>
 <script lang="ts">
