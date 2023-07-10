@@ -1,14 +1,13 @@
+import {ZFlex} from '@ui/components/flex'
 import {ZIcon} from '@ui/components/icon'
 import {ZBtn,ZBtnGroup} from '@ui/components/btn'
-import {ZFlex,ZFlexAuto} from '@ui/components/flex'
 import {ZForm} from '@ui/components/form'
 import {ZCallKit} from '@ui/components/call-kit'
 export default[
+  ZFlex,
   ZIcon,
   ZBtn,
   ZBtnGroup,
-  ZFlex,
-  ZFlexAuto,
   ZForm,
   ZCallKit
 ]
