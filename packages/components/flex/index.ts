@@ -1,7 +1,5 @@
-import { withInstall, withNoopInstall } from '@ui/utils'
+import { withInstall } from '@ui/utils'
 import Flex from './src/flex.vue'
-import FlexAuto from './src/flex-child.vue'
-export const ZFlex = withInstall(Flex, { FlexAuto })
-export const ZFlexAuto = withNoopInstall(FlexAuto)
+export const ZFlex = withInstall(Flex)
 export * from './src/instance'
 export default ZFlex

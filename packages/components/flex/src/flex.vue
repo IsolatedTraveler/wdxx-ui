@@ -9,7 +9,7 @@ defineOptions({
 })
 const props = defineProps(flexProps)
 const emit = defineEmits(flexEmits)
-const { _ref, _class } = useFlex(props, emit)
+const {_ref, _class} = useFlex(props, emit)
 defineExpose({
   ref: _ref
 })

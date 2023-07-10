@@ -1,11 +1,7 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
-import { PropsFlex, PropsFlexRow, PropsFlexCol, PropsFlexSelf } from "@ui/props";
+import {  } from "@ui/props";
 export const flexProps = propsBuildS({
-  flex: PropsFlex,
-  row: PropsFlexRow,
-  col: PropsFlexCol,
-  self: PropsFlexSelf
 })
 export const flexEmits = {
 }
