@@ -1,15 +1,15 @@
-import { propsFlex, propsFlexCol, propsFlexRow, propsFlexSelf } from '@ui/vars/props'
+import { propsFlex, propsFlexAlign, propsFlexJustify, propsFlexSelf } from '@ui/vars/props'
 export const PropsFlex = {
   type: String,
   values: propsFlex
 }
-export const PropsFlexRow = {
+export const PropsFlexJustify = {
   type: String,
-  values: propsFlexRow
+  values: propsFlexJustify
 }
-export const PropsFlexCol = {
+export const PropsFlexAlign = {
   type: String,
-  values: propsFlexCol
+  values: propsFlexAlign
 }
 export const PropsFlexSelf = {
   type: String,
