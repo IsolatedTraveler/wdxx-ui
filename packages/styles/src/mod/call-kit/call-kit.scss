@@ -1,21 +1,25 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
-$call-kit-key--style: (
-  background-color: map.get($color, primary, 2)
+$call-kit-single-main--style: (
+  width: 100%,
+  height: 100%,
+  background: red
 );
-$call-kit-key--class: (
+$call-kit-single-remote--style: (
+  width: 33%,
+  height: 33%,
+  position: absolute,
+  top: 0,
+  left: 0,
+  background: blue
 );
-$call-kit-key--attr: (
+$call-kit-single--class: (
+  'call-kit--main': (style: $call-kit-single-main--style),
+  'call-kit--remote': (style: $call-kit-single-remote--style)
 );
 $call-kit--class: (
-  key: (style: $call-kit-key--style, child: (class: $call-kit-key--class, attr: $call-kit-key--attr))
-);
-$call-kit--attr: (
-);
-$call-kit--style: (
+  single: (child: (childClass: $call-kit-single--class))
 );
 $style: (
-  class:$call-kit--class,
-  attr:$call-kit--attr,
-  style:$call-kit--style
+  class:$call-kit--class
 );

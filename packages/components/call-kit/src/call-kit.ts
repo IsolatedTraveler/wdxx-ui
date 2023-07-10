@@ -1,7 +1,11 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
-import {  } from "@ui/props";
+import { PropsBaseBoolean, PropsBaseObject, PropsCallKitShape } from "@ui/props";
 export const callKitProps = propsBuildS({
+  single: PropsBaseBoolean,
+  main: PropsBaseObject,
+  meida: PropsBaseObject,
+  shape: PropsCallKitShape
 })
 export const callKitEmits = {
 }

@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$media-key--style: (
+  background-color: map.get($color, primary, 2)
+);
+$media-key--class: ();
+$media-key--attr: ();
+$media--class: (
+  key: (style: $media-key--style, child: (class: $media-key--class, attr: $media-key--attr))
+);
+$media--attr: ();
+$media--style: ();
+$hover-style: (
+  class:$media--class,
+  attr:$media--attr,
+  style:$media--style
+);
+  
+    $styleMedia: (
+      hover: $hover-style
+    );
+    

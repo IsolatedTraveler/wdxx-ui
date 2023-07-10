@@ -1,5 +1,5 @@
 <template>
-  <div class="App">
+  <z-flex class="App">
     <div class="left">
       <ul>
         <li v-for="(it) in menu" @click.stop="clickEvent(it)">
@@ -12,10 +12,8 @@
         </li>
       </ul>
     </div>
-    <div class="right">
-      <router-view class="router"></router-view>
-    </div>
-  </div>
+    <router-view class="right" />
+  </z-flex>
 </template>
 <script lang="ts">
 import menu from './router/def/index'
@@ -45,7 +43,8 @@ export default {
 <style lang="scss">
 #app,
 html,
-body {
+body,
+.App {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -54,11 +53,8 @@ body {
 }
 
 .App {
-  display: flex;
-  width: 100%;
-  height: 100%;
-
   .left {
+    height: 100%;
     width: 30%;
     min-width: 12em;
     max-width: 18em;
@@ -66,6 +62,7 @@ body {
     overflow-y: auto;
     border-right: 1px solid #dcdcdc;
     padding: .5em;
+    box-sizing: border-box;
   }
 
   .right {
@@ -74,11 +71,7 @@ body {
     overflow-y: auto;
     padding-left: .5em;
     padding-right: .5em;
-
-    >.router {
-      width: 100%;
-      padding-top: .5em;
-    }
+    padding-top: .5em;
   }
 }
 </style>

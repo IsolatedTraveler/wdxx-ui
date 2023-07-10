@@ -1,6 +1,6 @@
 <template>
   <div class="component-callKit">
-    <z-call-kit />
+    <z-call-kit single />
   </div>
 </template>
 <script>
@@ -15,6 +15,7 @@ export default {
 </script>
 <style lang="scss">
 .component-callKit {
-  width: 100%;
+  flex-grow: 1;
+  box-sizing: border-box;
 }
 </style>

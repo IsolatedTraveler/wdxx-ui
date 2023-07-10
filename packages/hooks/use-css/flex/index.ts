@@ -10,11 +10,13 @@ export const setCss = (name: string) => {
   return name ? (PKG_PREFIX + '-' + name) : ''
 }
 export const useSingle = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue, key: string, name: string = '') => {
+  name == 'call-kit' && console.log(key, name, props.value)
   watch(() => props.value?.[key], (v, o) => {
     if (o) {
       classVal[obj[key]] = false
     }
     if (v) {
+
       obj[key] = setCss(name + (name ? '--' : '') + (v === true ? key : v))
       classVal[obj[key]] = true
     }

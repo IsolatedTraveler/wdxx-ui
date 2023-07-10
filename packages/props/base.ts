@@ -9,6 +9,9 @@ export const PropsBaseString = {
   type: String,
   default: ''
 }
+export const PropsBaseObject = {
+  type: Object
+}
 export const PropsBasePositiveInteger = {
   type: [String, Number],
   validator: isPositiveInteger

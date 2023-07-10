@@ -1,12 +1,5 @@
 {
-  "flex": {
-    "inject": {
-      "flex": [
-        "flex"
-      ]
-    },
-    "provide": true
-  },
+  "flex": true,
   "icon": true,
   "btn": {
     "next": [
@@ -25,5 +18,6 @@
   "form": {
     "provide": true
   },
+  "media": true,
   "call-kit": true
 }

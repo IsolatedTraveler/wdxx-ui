@@ -20,8 +20,9 @@
     flex-shrink: 0;
   }
 
-  @include async($style, '', '');
   @include async($styleJustify, 'justify', '');
   @include async($styleAlign, 'align', '');
   @include async($styleSelf, 'self', '');
 }
+
+@include async($style, '', '');
