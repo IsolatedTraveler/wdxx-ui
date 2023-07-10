@@ -1,5 +1,5 @@
 import { propsBuildS } from "@ui/hooks";
-import { PropsBtnType, PropsBaseBoolean, PropsBaseString, PropsFlex, PropsFlexRow, PropsFlexCol, PropsBasePositiveInteger, PropsBaseRadius, PropsFlexSelf, PropsBtnShape, PropsBaseSize, PropsBaseState } from "@ui/props";
+import { PropsBtnType, PropsBaseBoolean, PropsBaseString, PropsFlex, PropsFlexJustify, PropsFlexAlign, PropsBasePositiveInteger, PropsBaseRadius, PropsFlexSelf, PropsBtnShape, PropsBaseSize, PropsBaseState } from "@ui/props";
 import { EventClick } from "@ui/vars";
 import { ExtractPropTypes } from "vue";
 
@@ -11,8 +11,8 @@ export const btnProps = propsBuildS({
   full: PropsBaseBoolean,
   type: PropsBtnType,
   flex: PropsFlex,
-  row: PropsFlexRow,
-  col: PropsFlexCol,
+  junstify: PropsFlexJustify,
+  align: PropsFlexAlign,
   self: PropsFlexSelf,
   shape: PropsBtnShape,
   size: PropsBaseSize,
