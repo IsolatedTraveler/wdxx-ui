@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$flex-start--style: (
+  align-self: start
+);
+$flex-end--style: (
+  align-self: end
+);
+$flex-center--style: (
+  align-self: center
+);
+$flex-stretch--style: (
+  align-self: stretch
+);
+$flex--class: (
+  start: (style: $flex-start--style),
+  end: (style: $flex-end--style),
+  center: (style: $flex-center--style),
+  stretch: (style: $flex-stretch--style)
+);
+$styleSelf: (
+  class:$flex--class
+);

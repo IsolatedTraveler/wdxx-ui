@@ -1,7 +1,7 @@
 import { ref, Ref, ComputedRef } from "vue"
 import { useFlexCss, useSingle } from "./flex"
 import radius from "./radius"
-import { ObjStrBool } from "@ui/vars"
+import { ObjAny, ObjStrBool } from "@ui/vars"
 export { setCss } from './flex'
 export { getStylePx } from './radius'
 const cssV: any = {
@@ -10,7 +10,7 @@ const cssV: any = {
   def: useSingle
 }
 export const useCss = (props: ComputedRef<any>, el: Ref<any>, judge?: ObjStrBool, keys: Array<string> = Object.keys(props.value)) => {
-  const _class = ref({}), _style = ref({}), obj = {}, classVal = _class.value, styleVal = _style.value
+  const _class = ref({}), _style = ref({} as ObjAny), obj = {}, classVal = _class.value, styleVal = _style.value
   keys.forEach(key => {
     var funKey = judge?.[key]
     if (funKey === false) {

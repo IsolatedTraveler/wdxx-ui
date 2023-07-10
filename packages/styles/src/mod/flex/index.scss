@@ -2,6 +2,9 @@
 @use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
 @use './flex.scss' as *;
+@use './justify.scss' as *;
+@use './align.scss' as *;
+@use './self.scss' as *;
 
 #{getNames(('row', 'col'), '', '', '', '')} {
   display: flex;
@@ -18,4 +21,7 @@
   }
 
   @include async($style, '', '');
+  @include async($styleJustify, 'justify', '');
+  @include async($styleAlign, 'align', '');
+  @include async($styleSelf, 'self', '');
 }

@@ -1,5 +1,5 @@
 <template>
-  <div ref="_ref" :class="_class">
+  <div ref="_ref" :class="_class" :style="_style">
     <slot></slot>
   </div>
 </template>
@@ -11,7 +11,7 @@ defineOptions({
 })
 const props = defineProps(flexProps)
 const emit = defineEmits(flexEmits)
-const { _ref, _class } = useFlex(props, emit)
+const { _ref, _class, _style } = useFlex(props, emit)
 defineExpose({
   ref: _ref
 })

@@ -1,0 +1,35 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$flex-start--style: (
+  justify-content: start
+);
+$flex-end--style: (
+  justify-content: end
+);
+$flex-center--style: (
+  justify-content: center
+);
+$flex-stretch--style: (
+  justify-content: stretch
+);
+$flex-around--style: (
+  justify-content: space-around
+);
+$flex-between--style: (
+  justify-content: space-between
+);
+$flex-evenly--style: (
+  justify-content: space-evenly
+);
+$flex--class: (
+  start: (style: $flex-start--style),
+  end: (style: $flex-end--style),
+  center: (style: $flex-center--style),
+  stretch: (style: $flex-stretch--style),
+  around: (style: $flex-around--style),
+  between: (style: $flex-between--style),
+  evenly: (style: $flex-evenly--style)
+);
+$styleJustify: (
+  class:$flex--class
+);

@@ -21,9 +21,21 @@ export const useSingle = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTru
   }, { immediate: true })
 }
 
-export const useFlexCss = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue) => {
+export const useFlexCss = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue, key, name, styleVal, el) => {
   useSingle(props, obj, classVal, 'flex');
   ['justify', 'align', 'self'].forEach(key => {
     useSingle(props, obj, classVal, key, key)
   })
+  watch(() => props?.value?.auto, (v) => {
+    styleVal.flexGrow = v ? v : undefined
+  }, { immediate: true })
+  watch(() => props?.value?.left, (v) => {
+    styleVal.marginLeft = v ? (v + '%') : undefined
+  }, { immediate: true })
+  watch(() => props?.value?.right, (v) => {
+    styleVal.marginRight = v ? (v + '%') : undefined
+  }, { immediate: true })
+  watch(() => props?.value?.span, (v) => {
+    styleVal.flexBase = v ? (v + '%') : undefined
+  }, { immediate: true })
 }

@@ -15,3 +15,11 @@ export const PropsFlexSelf = {
   type: String,
   values: propsFlexSelf
 }
+export const PropsFlexBase = {
+  type: [String, Number],
+  validator: (v: any): string | undefined => {
+    if (v < 1 || v > 100) {
+      return 'greater than 1 and less than 100'
+    }
+  }
+}
