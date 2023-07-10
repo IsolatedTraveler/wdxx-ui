@@ -1,10 +1,7 @@
 {
   "flex": {
-    "next": [
-      "flex-auto"
-    ],
     "inject": {
-      "flex-auto": [
+      "flex": [
         "flex"
       ]
     },
