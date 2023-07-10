@@ -1,2 +1,2 @@
+export * from './flex';
 export * from './btn';
-export * from './flex-child';
