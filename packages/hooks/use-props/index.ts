@@ -1,14 +1,23 @@
-export * from './base'
-export * from './table'
-import { ComponentObjectPropsOptions, warn } from "vue";
-import { Prop, PropV } from "./type";
+import { warn } from "vue";
 import { fromPairs } from 'lodash-unified'
-const propsBuild = (prop: PropV, key: string, defaultValue?: any): Prop => {
+import { EpProp, IfPropFinally, PropFinalized, PropFinally, PropMergeType, PropSingle, epPropKey } from "./type";
+import { NativePropType } from "./base";
+import { isObject } from "@vue/shared";
+export const isEpProp = (val: unknown): val is EpProp<any, any, any> => isObject(val) && !!(val as any)[epPropKey]
+export const propsBuild = <
+  Type = never,
+  Value = never,
+  Validator = never,
+  Default extends PropMergeType<Type, Value, Validator> = never,
+  Required extends boolean = false
+>(prop: PropSingle<Type, Value, Validator, Default, Required>, key: string, defaultValue?: any): PropFinalized<Type, Value, Validator, Default, Required> => {
+  if (!isObject(prop) || isEpProp(prop)) return prop as any
   const { type, values, required, validator } = prop
   return {
+    [epPropKey]: true,
     type,
     validator: (values || validator) ? (val: any): boolean => {
-      let err: string = ''
+      let err: string | undefined = ''
       if (validator) {
         err = validator(val)
         if (!err)
@@ -29,12 +38,18 @@ const propsBuild = (prop: PropV, key: string, defaultValue?: any): Prop => {
     } : undefined,
     required: !!required,
     default: defaultValue === undefined ? prop.default : defaultValue
-  }
+  } as any
 }
-export const propsBuildS = <Props extends Record<string, PropV>>(props: Props, vals?: any): { [K in keyof Props]: ComponentObjectPropsOptions } =>
+export const propsBuildS = <
+  Props extends Record<string, PropSingle<any, any, any, any, any> | { [epPropKey]: true } | NativePropType>
+>(
+  props: Props, vals?: any
+): {
+    [K in keyof Props]: IfPropFinally<Props[K], Props[K], PropFinally<Props[K]>>
+  } =>
   fromPairs(
     Object.entries(props).map(([key, option]) => [
       key,
-      propsBuild(option, key, vals?.[key])
+      propsBuild(option as any, key, vals?.[key])
     ])
   ) as any

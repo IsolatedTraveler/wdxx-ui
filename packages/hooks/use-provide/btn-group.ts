@@ -6,6 +6,6 @@ export interface ProvideBtnGroup {
 export const provideBtnGroupId: InjectionKey<ProvideBtnGroup> = Symbol('btn-group')
 export const useProvideBtnGroup = (props: BtnGroupProps) => {
   provide(provideBtnGroupId, {
-    size: computed(() => props.size)
+    size: computed(() => props.size || '')
   })
 }

@@ -21,6 +21,8 @@ importers:
       '@vue/shared': ^3.2.45
       '@vueuse/core': ^9.6.0
       consola: ^3.1.0
+      crypto: ^1.0.1
+      crypto-js: ^4.1.1
       esbuild: ^0.15.15
       fast-glob: ^3.2.12
       fs-extra: ^10.1.0
@@ -37,6 +39,7 @@ importers:
       vite: ^3.2.4
       vue: ^3.2.45
       z-uis: workspace:*
+      zlib: ^1.0.5
     dependencies:
       '@ui/components': link:packages/components
       '@ui/hooks': link:packages/hooks
@@ -44,8 +47,11 @@ importers:
       '@ui/styles': link:packages/styles
       '@ui/utils': link:packages/utils
       '@ui/vars': link:packages/vars
+      crypto: 1.0.1
+      crypto-js: 4.1.1
       vue: 3.2.45
       z-uis: link:packages/z-ui
+      zlib: 1.0.5
     devDependencies:
       '@esbuild-kit/cjs-loader': 2.4.0
       '@pnpm/types': 8.9.0
@@ -112,18 +118,28 @@ importers:
   example:
     specifiers:
       '@vitejs/plugin-vue': ^3.2.0
+      agora-rtc-sdk-ng: ^4.18.1
+      crypto: ^1.0.1
+      crypto-js: ^4.1.1
       element-plus: ^2.2.27
       unplugin-vue-components: ^0.22.9
       vite: ^4.0.2
       vite-plugin-inspect: ^0.7.8
       vite-plugin-mkcert: ^1.10.1
       vue: ^3.2.13
+      vue-buffer: ^0.0.1
       vue-router: ^4.1.6
+      zlib: ^1.0.5
     dependencies:
+      agora-rtc-sdk-ng: 4.18.1
+      crypto: 1.0.1
+      crypto-js: 4.1.1
       element-plus: 2.2.27_vue@3.2.45
       vite: 4.0.2
       vue: 3.2.45
+      vue-buffer: 0.0.1
       vue-router: 4.1.6_vue@3.2.45
+      zlib: 1.0.5
     devDependencies:
       '@vitejs/plugin-vue': 3.2.0_vite@4.0.2+vue@3.2.45
       unplugin-vue-components: 0.22.9_vue@3.2.45
@@ -2934,6 +2950,16 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
+  /agora-rtc-sdk-ng/4.18.1:
+    resolution: {integrity: sha512-OZ4Bu6Y1DspfACwljJGYuBglwsyJpAyILqROUY40GXTnzy5ZUcjAljOqoPoQfrT8D6R7okk+sfTXr4vyHu8GLw==}
+    dependencies:
+      agora-rte-extension: 1.2.3
+    dev: false
+
+  /agora-rte-extension/1.2.3:
+    resolution: {integrity: sha512-k3yNrYVyzJRoQJjaJUktKUI1XRtf8J1XsW8OzYKFqGlS8WQRMsES1+Phj2rfuEriiLObfuyuCimG6KHQCt5tiw==}
+    dev: false
+
   /ajv/8.11.2:
     resolution: {integrity: sha512-E4bfmKAhGiSTvMfL1Myyycaub+cUEU2/IvpylXkUu7CHBkBj1f/ikdzbD7YQ6FKUbixDxeYvB/xY4fvyroDlQg==}
     dependencies:
@@ -3761,6 +3787,15 @@ packages:
       path-type: r2.cnpmjs.org/path-type/4.0.0
       yaml: r2.cnpmjs.org/yaml/1.10.2
     dev: true
+
+  /crypto-js/4.1.1:
+    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
+    dev: false
+
+  /crypto/1.0.1:
+    resolution: {integrity: sha512-VxBKmeNcqQdiUQUW2Tzq0t377b54N2bMtXO/qiLa+6eRRmmC4qT3D4OnTGoT/U6O9aklQ/jTwbOtRMTTY8G0Ig==}
+    deprecated: This package is no longer supported. It's now a built-in Node module. If you've depended on crypto, you should switch to the one that's built-in.
+    dev: false
 
   /css-declaration-sorter/6.3.1_postcss@8.4.19:
     resolution: {integrity: sha512-fBffmak0bPAnyqc/HO8C3n2sHrp9wcqQz6ES9koRF2/mLOVAx9zIQ3Y7R29sYCteTPqMCwns4WYQoCX91Xl3+w==}
@@ -7649,6 +7684,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
+  /vue-buffer/0.0.1:
+    resolution: {integrity: sha512-D9q93U6rzIeGthpq+yOgKKWDoSrWQlKHTxOW1Y8hVscA8uHYtE600VNLwoFrDhpdcgpMBetM/VRfDCb7/dmImA==}
+    dev: false
+
   /vue-demi/0.13.11_vue@3.2.45:
     resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
     engines: {node: '>=12'}
@@ -8018,6 +8057,11 @@ packages:
       y18n: 3.2.2
       yargs-parser: 5.0.1
     dev: true
+
+  /zlib/1.0.5:
+    resolution: {integrity: sha512-40fpE2II+Cd3k8HWTWONfeKE2jL+P42iWJ1zzps5W51qcTsOUKM5Q5m2PFb0CLxlmFAaUuUdJGc3OfZy947v0w==}
+    engines: {node: '>=0.2.0'}
+    dev: false
 
   r2.cnpmjs.org/@babel/plugin-syntax-async-generators/7.8.4_@babel+core@7.20.5:
     resolution: {integrity: sha512-tycmZxkGfZaxhMRbXlPXuVFpdWlXpir2W4AMhSJgRKzk/eDlIXOhb2LHWoLpDF7TEHylV5zNhykX6KAgHJmTNw==, registry: https://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/@babel/plugin-syntax-async-generators/-/plugin-syntax-async-generators-7.8.4.tgz}

@@ -4,9 +4,9 @@ import { EventClick } from "@ui/vars";
 import { ExtractPropTypes } from "vue";
 
 export const btnProps = propsBuildS({
+  order: PropsBasePositiveInteger,
   disabled: PropsBaseBoolean,
   icon: PropsBaseString,
-  order: PropsBasePositiveInteger,
   radius: PropsBaseRadius,
   full: PropsBaseBoolean,
   type: PropsBtnType,
@@ -17,7 +17,7 @@ export const btnProps = propsBuildS({
   shape: PropsBtnShape,
   size: PropsBaseSize,
   state: PropsBaseState
-})
+} as const)
 export const btnEmits = {
   [EventClick]: (evt: MouseEvent) => evt instanceof MouseEvent
 }

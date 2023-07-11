@@ -13,19 +13,20 @@ export const PropsBaseObject = {
   type: Object
 }
 export const PropsBasePositiveInteger = {
-  type: [String, Number],
+  type: String,
   validator: isPositiveInteger
 }
 export const PropsBaseRadius = {
-  type: [String, Number],
+  type: String,
   values: propsBaseRadius,
   validator: isCssLength
 }
 export const PropsBaseSize = {
-  type: [String, Number],
+  type: String,
   values: propsBaseSize
 }
 export const PropsBaseState = {
-  type: [String, Number],
-  values: propsBaseState
+  type: String,
+  values: propsBaseState,
+  default: ''
 }

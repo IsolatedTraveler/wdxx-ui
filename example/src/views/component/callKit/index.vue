@@ -1,15 +1,37 @@
 <template>
   <div class="component-callKit">
-    <z-call-kit single />
+    <z-call-kit v-if="isStart" :single="true" :media="media" :local-id="uid" />
+    <div v-else>
+      <input type="text" v-model="uid"><z-btn @click.stop="join">加入</z-btn>
+    </div>
   </div>
 </template>
-<script>
+<script lang="ts">
+import { join, leave } from './RTC/index'
+
 export default {
   name: 'component-callKit',
   data() {
-    return {}
+    return {
+      media: {},
+      room: '123',
+      uid: Math.floor(Math.random() * 100) + ''
+    }
+  },
+  computed: {
+    isStart() {
+      return !!Object.values(this.media).length
+    }
   },
   methods: {
+    join() {
+      join({ channel: this.room, uid: this.uid }, this.media)
+    }
+  },
+  beforeUnmount() {
+    if (this.isStart) {
+      leave()
+    }
   }
 }
 </script>
