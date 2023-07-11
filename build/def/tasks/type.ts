@@ -7,8 +7,18 @@ function getPage(ml: string, page: Array<string>) {
   return readFile(path.resolve(varsRoot, ml)).then((files) => {
     if (page && page.length) {
       return (files as Array<ObjStr>).filter(({ name }) => {
-        var key = name.split('.')[0]
-        return !page.includes(key) || !page.includes(name)
+        if (page.includes(name)) {
+          return false
+        } else {
+          var key = name.split('.')[0]
+          if (page.includes(key)) {
+            page.forEach((it, i) => {
+              page[i] = it == key ? name : it
+            })
+            return false
+          }
+        }
+        return true
       })
     }
     return files as Array<ObjStr>
