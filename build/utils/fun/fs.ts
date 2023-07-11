@@ -7,6 +7,13 @@ const judgeDir = (file: string, name: string) => {
     })
   })
 }
+const judgeFile = (file: string, name: string) => {
+  return new Promise((resolve) => {
+    fs.stat(file, (err, stats) => {
+      resolve(!err && stats.isDirectory() ? '' : { file, name })
+    })
+  })
+}
 export const readdir = (dir: string) => {
   return new Promise((resolve, reject) => {
     fs.readdir(dir, (err, files) => {
@@ -14,6 +21,19 @@ export const readdir = (dir: string) => {
         reject(null)
       } else {
         Promise.all(files.map(file => judgeDir(path.resolve(dir, file), file))).then(res => {
+          resolve(res.filter(it => it))
+        })
+      }
+    })
+  })
+}
+export const readFile = (dir: string) => {
+  return new Promise((resolve, reject) => {
+    fs.readdir(dir, (err, files) => {
+      if (err) {
+        reject(null)
+      } else {
+        Promise.all(files.map(file => judgeFile(path.resolve(dir, file), file))).then(res => {
           resolve(res.filter(it => it))
         })
       }

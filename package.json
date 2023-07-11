@@ -49,6 +49,7 @@
     "watch": "pnpm run -C packages/styles watch",
     "demo": "pnpm run -C demo dev",
     "page": "pnpm run -C build/def creatComponent",
+    "var": "pnpm run -C build/def creatVar",
     "build": "pnpm run -C build/def start",
     "clean": "npx rimraf dist && pnpm run -r --parallel clean",
     "stub": "pnpm run -r --parallel stub",

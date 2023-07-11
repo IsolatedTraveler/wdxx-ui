@@ -12,6 +12,7 @@ export const stylesModuleRoot = resolve(stylesRoot, "mod");
 export const epPackage = resolve(epRoot, "package.json");
 export const provideRoot = resolve(pkgRoot, "hooks/use-provide");
 export const InjectRoot = resolve(pkgRoot, "hooks/use-inject");
+export const varsRoot = resolve(pkgRoot, 'vars')
 
 // 构建工具位置
 export const buildRoot = resolve(projRoot, "build/def");
