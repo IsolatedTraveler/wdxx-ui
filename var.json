@@ -1,5 +1,7 @@
 {
-  "ml": "props",
+  "ml": [
+    "props"
+  ],
   "props": [
     "base",
     "btn",
