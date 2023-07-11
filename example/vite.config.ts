@@ -7,6 +7,7 @@ import Inspect from 'vite-plugin-inspect'
 import mkcert from 'vite-plugin-mkcert'
 import VueMacros from 'unplugin-vue-macros/vite'
 import esbuild from 'rollup-plugin-esbuild'
+import fs from 'fs'
 import type { Plugin } from 'vite'
 
 const esbuildPlugin = (): Plugin => ({
