@@ -1,7 +1,7 @@
 import { projRoot, varsRoot, readFile, firstMax, write } from "@ui/build-utils"
 import { ObjStr } from "@ui/vars"
 import path from "path"
-const vars = require(path.resolve(projRoot, 'var.json'))
+const root = path.resolve(projRoot, 'var.json'), vars = require(root)
 const ml = vars.ml
 function getPage(ml: string, page: Array<string>) {
   return readFile(path.resolve(varsRoot, ml)).then((files) => {
@@ -22,8 +22,8 @@ function create(ml: string) {
       const data = require(file)
       var keys = Object.keys(data)
       keys = keys.map(key => {
-        let val = data[key]
-        return `export const ${key} = ['${val.join("', '")}']\nexport type ${firstMax(key)}V = '${val.join("' | '")}'`
+        let val = data[key], Key = firstMax(key) + 'V'
+        return `export type ${Key} = '${val.join("' | '")}'\nexport const ${key}:Array<${Key}> = ['${val.join("', '")}']`
       })
       return write(file, keys.join('\n'))
     }))
@@ -33,7 +33,9 @@ export const createVar = () => {
   if (ml && ml.length) {
     return Promise.all(ml.filter((it: any) => it).map((it: any) => {
       return create(it as string)
-    }))
+    })).then(() => {
+      return write(root, JSON.stringify(vars))
+    })
   }
   return Promise.resolve()
 }
