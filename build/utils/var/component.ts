@@ -17,8 +17,9 @@ export interface filesObj {
   name: string,
   fileName: string
 }
-const comObj: ComsObj = require(path.resolve(projRoot, 'component.json'))
-const comKey: string[] = Object.keys(comObj)
+const obj: any = require(path.resolve(projRoot, 'component.json'))
+const comObj: ComsObj = Object.assign(obj.ywc, obj.wwc)
+const comKey: string[] = obj.keys
 const comKeys: string[] = []
 comKey.map(key => {
   let obj = comObj[key] as ComObj | true

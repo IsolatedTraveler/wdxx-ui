@@ -10,7 +10,8 @@ export const flexProps = propsBuildS({
   auto: PropsBasePositiveInteger,
   span: PropsFlexBase,
   left: PropsBasePositiveInteger,
-  right: PropsBasePositiveInteger
+  right: PropsBasePositiveInteger,
+  order: PropsBasePositiveInteger
 })
 export const flexEmits = {
 }

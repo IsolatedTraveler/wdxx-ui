@@ -40,4 +40,7 @@ export const useFlexCss = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTr
   watch(() => props?.value?.span, (v) => {
     styleVal.flexBase = v ? (v + '%') : undefined
   }, { immediate: true })
+  watch(() => props?.value?.order, (v) => {
+    styleVal.order = v || undefined
+  }, { immediate: true })
 }

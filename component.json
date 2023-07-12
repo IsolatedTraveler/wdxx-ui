@@ -1,23 +1,35 @@
 {
-  "flex": true,
-  "icon": true,
-  "btn": {
-    "next": [
-      "btn-group"
-    ],
-    "inject": {
-      "btn": [
-        "btn-group",
-        "form"
+  "keys": [
+    "flex",
+    "icon",
+    "media",
+    "btn",
+    "call-kit",
+    "form"
+  ],
+  "ywc": {
+    "flex": true,
+    "media": true,
+    "btn": {
+      "next": [
+        "btn-group"
+      ],
+      "inject": {
+        "btn": [
+          "btn-group",
+          "form"
+        ]
+      },
+      "provide": [
+        "btn-group"
       ]
+    }
+  },
+  "wwc": {
+    "icon": true,
+    "form": {
+      "provide": true
     },
-    "provide": [
-      "btn-group"
-    ]
-  },
-  "form": {
-    "provide": true
-  },
-  "media": true,
-  "call-kit": true
+    "call-kit": true
+  }
 }
