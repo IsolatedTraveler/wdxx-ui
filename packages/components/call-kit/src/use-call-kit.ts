@@ -14,14 +14,18 @@ export const useCallKit = (props: CallKitProps, emit: SetupContext<CallKitEmits>
     , singleMedia = ref()
     , medias: ComputedRef<any[]> = computed(() => Object.values(props.media || {}).filter(it => it && it.userId != id.value))
   // 独立逻辑   判断是会议还是单人通话，单人通话当一方挂断，将断开通话
-  watch(() => medias.value.length, (v, o) => {
-    var mediasV = medias.value
+  watch(() => props.media, (v) => {
     if (v) {
       if (id.value) {
         main.value = props.media?.[id.value]
       } else {
         main.value = undefined
       }
+    }
+  })
+  watch(() => medias.value.length, (v, o) => {
+    var mediasV = medias.value
+    if (v) {
       singleMedia.value = mediasV.filter(it => it.userId != id.value)[0]
     } else {
       main.value = undefined
