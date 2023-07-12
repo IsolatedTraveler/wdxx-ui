@@ -1,7 +1,7 @@
 import { appId, client, init } from "./init";
 import { getToken } from "./token";
 import AgoraRTC from 'agora-rtc-sdk-ng'
-let localAudioTrack, localVideoTrack
+export let localAudioTrack, localVideoTrack
 export function join({ channel, uid }, media) {
   init(media)
   getToken(channel)
@@ -10,7 +10,7 @@ export function join({ channel, uid }, media) {
     getMicrophone(),
     getToken(channel).then((token) => client.join(appId, channel, token, uid))
   ]).then(() => {
-    media[uid] = { video: localVideoTrack, audio: localAudioTrack, id: uid }
+    media[uid] = { video: localVideoTrack, audio: localAudioTrack, userId: uid }
     return client.publish([localAudioTrack, localVideoTrack])
   })
 }

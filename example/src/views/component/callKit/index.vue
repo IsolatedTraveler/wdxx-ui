@@ -1,6 +1,6 @@
 <template>
   <div class="component-callKit">
-    <z-call-kit v-if="isStart" :single="true" :media="media" :local-id="uid" />
+    <z-call-kit v-if="isStart" :single="true" :media="media" :local-id="uid" @leave="leave" />
     <div v-else>
       <input type="text" v-model="uid"><z-btn @click.stop="join">加入</z-btn>
     </div>
@@ -15,22 +15,19 @@ export default {
     return {
       media: {},
       room: '123',
-      uid: Math.floor(Math.random() * 100) + ''
-    }
-  },
-  computed: {
-    isStart() {
-      return !!Object.values(this.media).length
+      uid: Math.floor(Math.random() * 100) + '',
+      isStart: false
     }
   },
   methods: {
     join() {
-      join({ channel: this.room, uid: this.uid }, this.media)
-    }
-  },
-  beforeUnmount() {
-    if (this.isStart) {
+      join({ channel: this.room, uid: this.uid }, this.media).then(() => {
+        this.isStart = true
+      })
+    },
+    leave(id: string) {
       leave()
+      this.isStart = false
     }
   }
 }

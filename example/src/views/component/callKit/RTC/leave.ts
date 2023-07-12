@@ -1,4 +1,5 @@
 import { client, media } from "./init";
+import { localAudioTrack, localVideoTrack } from "./join";
 
 export async function leave() {
   if (client) {
@@ -6,6 +7,10 @@ export async function leave() {
       media[key] = undefined
     })
     await client.unpublish()
+    localVideoTrack.stop()
+    localVideoTrack.close()
+    localAudioTrack.stop()
+    localAudioTrack.close()
     await client.leave()
   }
 }

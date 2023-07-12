@@ -1,10 +1,11 @@
 <template>
   <z-flex ref="_ref" :class="_class">
-    <z-media v-if="single" class="z-call-kit--remote"></z-media>
+    <z-media v-if="single" v-show="singleMedia" class="z-call-kit--remote" v-bind="singleMedia"></z-media>
     <z-flex class="z-call-kit--multi" auto="1" v-else>
-      <z-media v-for="(it,i) in media" :key="i" :order="it.id == localId ? 1 : it.id == clickId ? 2 : 3" :props="it"></z-media>
+      <z-media v-for="(it, i) in media" :key="i" :order="it.userId == localId ? 1 : it.userId == clickId ? 2 : 3"
+        v-bind="it"></z-media>
     </z-flex>
-    <z-media class="z-call-kit--main" :props="main"></z-media>
+    <z-media class="z-call-kit--main" v-bind="main"></z-media>
   </z-flex>
 </template>
 <script lang="ts" setup>
@@ -17,7 +18,7 @@ defineOptions({
 })
 const props = defineProps(callKitProps)
 const emit = defineEmits(callKitEmits)
-const { _ref, _class, main, clickId } = useCallKit(props, emit)
+const { _ref, _class, main, clickId, singleMedia } = useCallKit(props, emit)
 defineExpose({
   ref: _ref
 })

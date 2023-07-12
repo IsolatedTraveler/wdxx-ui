@@ -11,7 +11,8 @@ $call-kit-single-remote--style: (
   position: absolute,
   top: 0,
   left: 0,
-  background: blue
+  background: blue,
+  z-index: 1
 );
 $call-kit-single--class: (
   'call-kit--main': (style: $call-kit-single-main--style),

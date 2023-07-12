@@ -1,5 +1,6 @@
 <template>
-  <div ref="_ref" :class="_class"></div>
+  <div ref="_ref" :class="_class">
+  </div>
 </template>
 <script lang="ts" setup>
 import { mediaEmits, mediaProps } from './media'
@@ -9,7 +10,7 @@ defineOptions({
 })
 const props = defineProps(mediaProps)
 const emit = defineEmits(mediaEmits)
-const {_ref, _class} = useMedia(props, emit)
+const { _ref, _class } = useMedia(props, emit)
 defineExpose({
   ref: _ref
 })
