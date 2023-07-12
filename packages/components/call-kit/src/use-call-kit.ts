@@ -10,25 +10,15 @@ export const useCallKit = (props: CallKitProps, emit: SetupContext<CallKitEmits>
     })), { _class } = useCss(classVal, _ref, { shape: 'comCss' })
     , clickId = ref('')
     , id = computed(() => props.mainId || clickId.value || props.localId)
-    , main = ref()
+    , main = computed(() => id.value ? props.media?.[id.value] : undefined)
     , singleMedia = ref()
     , medias: ComputedRef<any[]> = computed(() => Object.values(props.media || {}).filter(it => it && it.userId != id.value))
   // 独立逻辑   判断是会议还是单人通话，单人通话当一方挂断，将断开通话
-  watch(() => props.media, (v) => {
-    if (v) {
-      if (id.value) {
-        main.value = props.media?.[id.value]
-      } else {
-        main.value = undefined
-      }
-    }
-  })
   watch(() => medias.value.length, (v, o) => {
     var mediasV = medias.value
     if (v) {
       singleMedia.value = mediasV.filter(it => it.userId != id.value)[0]
     } else {
-      main.value = undefined
       singleMedia.value = undefined
     }
     if (props.single && v == 1 && o == 2) {
