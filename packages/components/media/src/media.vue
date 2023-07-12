@@ -1,5 +1,5 @@
 <template>
-  <div ref="_ref" :class="_class">
+  <div ref="_ref" :class="_class" :style="_style">
   </div>
 </template>
 <script lang="ts" setup>
@@ -10,7 +10,7 @@ defineOptions({
 })
 const props = defineProps(mediaProps)
 const emit = defineEmits(mediaEmits)
-const { _ref, _class } = useMedia(props, emit)
+const { _ref, _class, _style } = useMedia(props, emit)
 defineExpose({
   ref: _ref
 })

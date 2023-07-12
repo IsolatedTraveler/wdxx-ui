@@ -6,8 +6,8 @@ $call-kit-single-main--style: (
   background: red
 );
 $call-kit-single-remote--style: (
-  width: 33%,
-  height: 33%,
+  width: 20%,
+  height: 20%,
   position: absolute,
   top: 0,
   left: 0,
@@ -18,8 +18,33 @@ $call-kit-single--class: (
   'call-kit--main': (style: $call-kit-single-main--style),
   'call-kit--remote': (style: $call-kit-single-remote--style)
 );
+$call-kit-meet-main--style: (
+  flex-grow:1,
+  height: 100%
+);
+$call-kit-meet-multi--style: (
+  width: 10%,
+  height: 100%,
+  min-width: 1.7rem,
+  max-width: 50%
+);
+$call-kit-meet-multi-media--style: (
+  min-width: 1.7rem,
+  max-width: 3.5rem,
+  width: 100%,
+  margin-bottom: 0.05rem,
+  margin-left: 0.05rem
+);
+$call-kit-meet-multi--class: (
+  'media': (style:$call-kit-meet-multi-media--style )
+);
+$call-kit-meet--class: (
+  'call-kit--main': (style: $call-kit-meet-main--style),
+  'call-kit--multi': (style: $call-kit-meet-multi--style, child: (childClass: $call-kit-meet-multi--class))
+);
 $call-kit--class: (
-  single: (child: (childClass: $call-kit-single--class))
+  single: (child: (childClass: $call-kit-single--class)),
+  meet: (child: (childClass: $call-kit-meet--class))
 );
 $style: (
   class:$call-kit--class

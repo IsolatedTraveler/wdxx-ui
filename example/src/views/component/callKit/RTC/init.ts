@@ -1,4 +1,4 @@
-import AgoraRTC, { IAgoraRTCClient, IAgoraRTCRemoteUser, IRemoteAudioTrack, IRemoteVideoTrack, ILocalTrack } from 'agora-rtc-sdk-ng'
+import AgoraRTC, { IAgoraRTCClient, IAgoraRTCRemoteUser, IRemoteAudioTrack, IRemoteVideoTrack, ILocalTrack, RemoteStreamType } from 'agora-rtc-sdk-ng'
 export type AgoraRTCUserId = string | number
 export type MediaType = 'audio' | 'video'
 export interface MediaT {
@@ -32,11 +32,19 @@ export function setMain(mId: AgoraRTCUserId) {
     if (!mainId) {
       client.enableDualStream()
       client.setRemoteDefaultVideoStreamType(1)
-    } else if (mainId != mId) {
-      client.setRemoteVideoStreamType(mainId, 1)
     }
+    setStreamType(mainId, 1)
     mainId = mId
-    client.setRemoteVideoStreamType(mId, 0)
+    setStreamType(mId)
+  }
+}
+function setStreamType(id: AgoraRTCUserId, type: RemoteStreamType | false = false) {
+  if (id && (mainId || type !== false) && media[id]) {
+    try {
+      client.setRemoteVideoStreamType(id, type == false ? (id == mainId ? 0 : 1) : type)
+    } catch (e) {
+      console.error(e)
+    }
   }
 }
 function setMidia(user: IAgoraRTCRemoteUser, mediaType: MediaType) {
@@ -45,6 +53,7 @@ function setMidia(user: IAgoraRTCRemoteUser, mediaType: MediaType) {
     if (!obj) {
       media[id] = obj = { userId: id }
     }
+    setStreamType(id)
     if (mediaType === 'audio') {
       obj.audio = user.audioTrack
     }

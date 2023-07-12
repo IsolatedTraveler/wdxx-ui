@@ -3,7 +3,8 @@ import { propsBuildS } from "@ui/hooks";
 import { PropsBaseObject } from "@ui/props";
 export const mediaProps = propsBuildS({
   video: PropsBaseObject,
-  audio: PropsBaseObject
+  audio: PropsBaseObject,
+  auto: Number
 })
 export const mediaEmits = {
 }
