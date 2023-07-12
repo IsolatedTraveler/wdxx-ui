@@ -1,6 +1,6 @@
 <template>
   <div class="component-callKit">
-    <z-call-kit v-if="isStart" :single="true" :media="media" :local-id="uid" @leave="leave" />
+    <z-call-kit v-if="isStart" :media="media" :local-id="uid" @leave="leave" />
     <div v-else>
       <input type="text" v-model="uid"><z-btn @click.stop="join">加入</z-btn>
     </div>

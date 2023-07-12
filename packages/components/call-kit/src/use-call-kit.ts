@@ -7,7 +7,7 @@ export const useCallKit = (props: CallKitProps, emit: SetupContext<CallKitEmits>
     shape: props.single ? 'single' : props.shape
   })), { _class } = useCss(classVal, _ref, { shape: 'comCss' })
     , clickId = ref('')
-    , id = computed(() => clickId.value || props.localId)
+    , id = computed(() => props.mainId || clickId.value || props.localId)
     , main = ref()
     , singleMedia = ref()
     , medias: ComputedRef<any[]> = computed(() => Object.values(props.media || {}).filter(it => it))

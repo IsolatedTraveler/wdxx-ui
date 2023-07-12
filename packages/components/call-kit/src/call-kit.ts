@@ -6,7 +6,8 @@ export const callKitProps = propsBuildS({
   single: PropsBaseBoolean,
   media: PropsBaseObject,
   shape: PropsCallKitShape,
-  localId: PropsBaseString
+  localId: PropsBaseString,
+  mainId: PropsBaseString
 })
 export const callKitEmits = {
   [EventLeave]: (evt: string) => undefined

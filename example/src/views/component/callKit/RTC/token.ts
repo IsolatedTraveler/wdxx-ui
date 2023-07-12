@@ -1,3 +1,4 @@
-export function getToken(channel) {
-  return Promise.resolve('007eJxTYNi71LBUvIXtqV++QoQWe7/ptpbbYduf+UTvtn/2cPHcHGUFhkRjc/Mkw9TUFPNkI5PkFDPLREsD8+S0JBOzRNMUC8NUnvtrUhoCGRlK5X4wMEIhiM/MYGhkzMAAAAAHHlY=')
+export function getToken(channel: string) {
+  var token = '007eJxTYNjD9kvmxKYy5mnGNzyymW9pBtevU2XuO7ymfsr1DbEtzscVGBKNzc2TDFNTU8yTjUySU8wsEy0NzJPTkkzMEk1TLAxTN7ivS2kIZGTwkAhnZmSAQBCfmcHQyJiBAQAVwx3r'
+  return Promise.resolve(token)
 };

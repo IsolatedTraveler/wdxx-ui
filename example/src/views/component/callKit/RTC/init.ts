@@ -1,44 +1,71 @@
-import AgoraRTC from 'agora-rtc-sdk-ng'
-export let client,
-  appId = 'a377b1eed7c24cd69a907cfb46a5d81e',
+import AgoraRTC, { IAgoraRTCClient, IAgoraRTCRemoteUser, IRemoteAudioTrack, IRemoteVideoTrack, ILocalTrack } from 'agora-rtc-sdk-ng'
+export type AgoraRTCUserId = string | number
+export type MediaType = 'audio' | 'video'
+export interface MediaT {
+  userId?: AgoraRTCUserId
+  video?: IRemoteVideoTrack | ILocalTrack
+  audio?: IRemoteAudioTrack | ILocalTrack
+}
+export type Media = MediaT | undefined
+export interface Medias {
+  [index: AgoraRTCUserId]: Media
+}
+export let client: IAgoraRTCClient,
+  appId: string = 'a377b1eed7c24cd69a907cfb46a5d81e',
   // 证书
-  appCertificate = '96883e5a99474ede89f4d0d970b5364d',
-  media
-export function init(obj) {
+  appCertificate: string = '96883e5a99474ede89f4d0d970b5364d',
+  media: Medias,
+  mainId: AgoraRTCUserId;
+export function init(obj: Medias, mId: AgoraRTCUserId = '') {
   media = obj
   if (!client) {
     client = AgoraRTC.createClient({ mode: 'rtc', codec: 'vp8' })
     client.on('user-published', setMidia)
     client.on('user-unpublished', cancel)
     client.on('connection-state-change', stateChange)
+    setMain(mId)
   }
   return client
 }
-function setMidia(user, mediaType) {
+export function setMain(mId: AgoraRTCUserId) {
+  if (client && mId) {
+    if (!mainId) {
+      client.enableDualStream()
+      client.setRemoteDefaultVideoStreamType(1)
+    } else if (mainId != mId) {
+      client.setRemoteVideoStreamType(mainId, 1)
+    }
+    mainId = mId
+    client.setRemoteVideoStreamType(mId, 0)
+  }
+}
+function setMidia(user: IAgoraRTCRemoteUser, mediaType: MediaType) {
   return client.subscribe(user, mediaType).then(() => {
-    let id = user.uid
-    media[id] = media[id] || { userId: id }
+    let id: AgoraRTCUserId = user.uid, obj: Media = media[id]
+    if (!obj) {
+      media[id] = obj = { userId: id }
+    }
     if (mediaType === 'audio') {
-      media[id].audio = user.audioTrack
+      obj.audio = user.audioTrack
     }
     if (mediaType === 'video') {
-      media[id].video = user.videoTrack
+      obj.video = user.videoTrack
     }
   })
 }
-function cancel(user, mediaType) {
-  let id = user.uid
-  if (media[id]) {
+function cancel(user: IAgoraRTCRemoteUser, mediaType: MediaType) {
+  let id = user.uid, obj: Media = media[id]
+  if (obj) {
     if (mediaType === 'audio') {
-      media[id].audio = undefined
+      obj.audio = undefined
     }
     if (mediaType === 'video') {
-      media[id].video = undefined
+      obj.video = undefined
     }
-    media[id] = media[id].audio || media[id].video ? media[id] : undefined
+    media[id] = obj.audio || obj.video ? obj : undefined
   }
 }
-function stateChange(a, b) {
+function stateChange(a: any, b: any) {
   console.warn(a)
   console.warn(b)
 }
