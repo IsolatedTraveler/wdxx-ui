@@ -1,5 +1,7 @@
 <template>
-  <div ref="_ref" :class="_class"></div>
+  <div ref="_ref" :class="_class">
+    <slot></slot>
+  </div>
 </template>
 <script lang="ts" setup>
 import { formEmits, formProps } from './form'

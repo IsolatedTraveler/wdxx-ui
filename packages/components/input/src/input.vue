@@ -1,6 +1,6 @@
 <template>
   <div ref="_ref" :class="_class">
-  <input :type="type" :placeholder="placeholder" autocomplete="off" :disabled="disabled" :readonly="readonly"
+    <input :type="type" :placeholder="placeholder" autocomplete="off" :="prop"
   >
   </div>
 </template>
@@ -12,7 +12,7 @@ defineOptions({
 })
 const props = defineProps(inputProps)
 const emit = defineEmits(inputEmits)
-const {_ref, _class} = useInput(props, emit)
+const {_ref, _class, prop} = useInput(props, emit)
 defineExpose({
   ref: _ref
 })

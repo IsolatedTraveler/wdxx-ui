@@ -1,4 +1,7 @@
-import {propsInputValidateEvent, propsInputType } from '@ui/vars/props'
+// import { propsInputType, propsInputValidateEvent } from "@ui/vars/props"
+
+import { propsInputType, propsInputValidateEvent } from "@ui/vars/props"
+
 export const PropsInputType = {
   type: String,
   default: 'text',
