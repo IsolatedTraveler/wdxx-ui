@@ -9,11 +9,15 @@ export const PropsBaseString = {
   type: String,
   default: ''
 }
+export const PropsBaseStringN = {
+  type: [String, Number],
+  default: ''
+}
 export const PropsBaseObject = {
   type: Object
 }
 export const PropsBasePositiveInteger = {
-  type: String,
+  type: [String, Number],
   validator: isPositiveInteger
 }
 export const PropsBaseRadius = {

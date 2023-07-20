@@ -1,11 +1,13 @@
 import { NOOP } from '@vue/shared'
 
-import type { App } from 'vue'
 import { SFCWithInstall } from "./typescript"
 
-export const withInstall = <T, E extends Record<string, any>>(main:T, extra?: E) => {
-  (main as SFCWithInstall<T>).install = (app: App): void => {
-    for (const comp of [main, ...Object.values(extra || {})]) {
+export const withInstall = <T, E extends Record<string, any>>(
+  main:T,
+  extra?: E
+) => {
+  ;(main as SFCWithInstall<T>).install = (app): void => {
+    for (const comp of [main, ...Object.values(extra ?? {})]) {
       app.component(comp.name, comp)
     }
   }

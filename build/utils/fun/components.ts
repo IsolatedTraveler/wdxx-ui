@@ -69,7 +69,8 @@ export const componentIndex = (key: string, group: Array<string> = []) => {
     ...group.map(it => {
       return `export const ${firstMax(PKG_PREFIX)}${getName(it.split('-'))} = withNoopInstall(${getName(it.split('-'))})`
     }),
-    `export * from './src/instance'`,
+    `export * from './src/${key}'`,
+    `export type {${[key, ...(group||[])].map(it=>getName(it.split('-'))).join(', ')}} from './src/instance'`,
     `export default ${firstMax(PKG_PREFIX)}${getName(key.split('-'))}`
   ].join('\n')
 }
