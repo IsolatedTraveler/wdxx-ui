@@ -1,5 +1,5 @@
 import { useCss } from "@ui/hooks"
-import { ref, SetupContext, computed, watch, nextTick, onMounted } from "vue"
+import { ref, SetupContext, computed, watch, nextTick } from "vue"
 import { MediaEmits, MediaProps } from "./media"
 export const useMedia = (props: MediaProps, emit: SetupContext<MediaEmits>['emit']) => {
   const _ref = ref<HTMLDivElement>(), classVal = computed(() => ({
@@ -7,7 +7,7 @@ export const useMedia = (props: MediaProps, emit: SetupContext<MediaEmits>['emit
   })), { _class, _style } = useCss(classVal, _ref)
     , calc = document.body.clientHeight / document.body.clientWidth
   var maxWidth: number, marginLeft: number
-  function setHeight(width) {
+  function setHeight(width: number) {
     var el = _ref.value
     if (el) {
       var elWidth = el.clientWidth

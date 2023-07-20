@@ -1,9 +1,8 @@
 import { useCss } from "@ui/hooks"
 import { ref, SetupContext, computed, watch, ComputedRef, nextTick } from "vue"
 import { CallKitEmits, CallKitProps } from "./call-kit"
-import { FlexInstance } from "@ui/components/flex"
 export const useCallKit = (props: CallKitProps, emit: SetupContext<CallKitEmits>['emit']) => {
-  const _ref = ref<HTMLDivElement>(), _refMulti = ref<FlexInstance>(),
+  const _ref = ref<HTMLDivElement>(), _refMulti = ref<any>(),
     multiWidth = ref<Number>(), classVal = computed(() => ({
       name: 'call-kit',
       shape: props.single ? 'single' : (props.shape || 'meet')
@@ -33,7 +32,7 @@ export const useCallKit = (props: CallKitProps, emit: SetupContext<CallKitEmits>
   }, { immediate: true })
   function setMultiWidth() {
     if (_refMulti.value) {
-      multiWidth.value = _refMulti.value.ref.clientWidth
+      multiWidth.value = _refMulti.value?.ref?.clientWidth
     } else {
       nextTick(() => {
         setMultiWidth()
