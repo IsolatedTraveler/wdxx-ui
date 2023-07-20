@@ -17,7 +17,6 @@ export default {
   mounted(){
     setTimeout(() => {
       this.disabled = !this.disabled
-      alert(this.disabled)
     }, 10*1000);
   }
 }
