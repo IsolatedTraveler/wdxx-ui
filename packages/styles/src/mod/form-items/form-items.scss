@@ -1,0 +1,18 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$form-items-key--style: (
+  background-color: map.get($color, primary, 2)
+);
+$form-items-key--class: ();
+$form-items-key--attr: ();
+$form-items--class: (
+  key: (style: $form-items-key--style, child: (class: $form-items-key--class, attr: $form-items-key--attr))
+);
+$form-items--attr: ();
+$form-items--style: ();
+$style: (
+  class:$form-items--class,
+  attr:$form-items--attr,
+  style:$form-items--style
+);
+  

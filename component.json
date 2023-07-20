@@ -5,7 +5,9 @@
     "media",
     "btn",
     "call-kit",
-    "form"
+    "form",
+    "form-items",
+    "input"
   ],
   "ywc": {
     "flex": true,
@@ -27,6 +29,22 @@
   },
   "wwc": {
     "icon": true,
+    "input": {
+      "inject": {
+        "input": [
+          "form-items",
+          "form"
+        ]
+      }
+    },
+    "form-items": {
+      "inject": {
+        "form-items": [
+          "form"
+        ]
+      },
+      "provide": true
+    },
     "form": {
       "provide": true
     },
