@@ -6,7 +6,7 @@
     </z-form>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default {
   name: 'component-form',
   data(){
@@ -24,5 +24,6 @@ export default {
 </script>
 <style lang="scss">
 .component-form{
+  width: 100%;
 }
 </style>
