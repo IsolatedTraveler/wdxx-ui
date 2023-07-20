@@ -70,7 +70,7 @@ export const componentIndex = (key: string, group: Array<string> = []) => {
       return `export const ${firstMax(PKG_PREFIX)}${getName(it.split('-'))} = withNoopInstall(${getName(it.split('-'))})`
     }),
     `export * from './src/${key}'`,
-    `export type {${[key, ...(group||[])].map(it=>getName(it.split('-'))).join(', ')}} from './src/instance'`,
+    `export type {${[key, ...(group||[])].map(it=>getName(it.split('-'))+'Instance').join(', ')}} from './src/instance'`,
     `export default ${firstMax(PKG_PREFIX)}${getName(key.split('-'))}`
   ].join('\n')
 }
