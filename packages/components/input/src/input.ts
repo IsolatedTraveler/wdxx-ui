@@ -1,6 +1,6 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
-import { PropsBaseBoolean, PropsBaseObject, PropsBasePositiveInteger, PropsBaseSize, PropsBaseString, PropsBaseStringN, PropsInputType, PropsInputValidateEvent } from "@ui/props";
+import { PropsBaseBoolean, PropsBaseObject, PropsBasePositiveInteger, PropsBaseSize, PropsBaseString, PropsBaseStringN, PropsInputShape, PropsInputType, PropsInputValidateEvent } from "@ui/props";
 export const inputProps = propsBuildS({
   modelValue:PropsBaseStringN,
   value:PropsBaseStringN,
@@ -14,7 +14,8 @@ export const inputProps = propsBuildS({
   tabIndex:PropsBasePositiveInteger,
   verify:PropsBaseString,
   validateEvent:PropsInputValidateEvent,
-  validateFun:PropsBaseObject
+  validateFun:PropsBaseObject,
+  shape: PropsInputShape
 })
 export const inputEmits = {
 }

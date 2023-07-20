@@ -1,7 +1,6 @@
 <template>
   <div ref="_ref" :class="_class">
-    <input :type="type" :placeholder="placeholder" autocomplete="off" :="prop"
-  >
+    <input autocomplete="off" :="prop">
   </div>
 </template>
 <script lang="ts" setup>

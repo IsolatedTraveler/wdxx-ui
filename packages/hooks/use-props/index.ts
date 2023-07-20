@@ -2,7 +2,7 @@ import { warn } from "vue";
 import { fromPairs } from 'lodash-unified'
 import { EpProp, IfPropFinally, PropFinalized, PropFinally, PropMergeType, PropSingle, epPropKey } from "./type";
 import { NativePropType } from "./base";
-import { isObject } from "@vue/shared";
+import { isObject } from "@ui/utils";
 export const isEpProp = (val: unknown): val is EpProp<any, any, any> => isObject(val) && !!(val as any)[epPropKey]
 export const propsBuild = <
   Type = never,

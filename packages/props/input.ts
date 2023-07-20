@@ -1,6 +1,6 @@
 // import { propsInputType, propsInputValidateEvent } from "@ui/vars/props"
 
-import { propsInputType, propsInputValidateEvent } from "@ui/vars/props"
+import { propsInputShape, propsInputType, propsInputValidateEvent } from "@ui/vars/props"
 
 export const PropsInputType = {
   type: String,
@@ -10,4 +10,8 @@ export const PropsInputType = {
 export const PropsInputValidateEvent = {
   type: String,
   values: propsInputValidateEvent
+}
+export const PropsInputShape = {
+  type: String,
+  values: propsInputShape
 }
