@@ -1,5 +1,8 @@
 <template>
-  <div ref="_ref" :class="_class"></div>
+  <div ref="_ref" :class="_class">
+  <input :type="type" :placeholder="placeholder" autocomplete="off" :disabled="disabled" :readonly="readonly"
+  >
+  </div>
 </template>
 <script lang="ts" setup>
 import { inputEmits, inputProps } from './input'

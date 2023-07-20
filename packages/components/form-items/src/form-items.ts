@@ -1,7 +1,10 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
-import {  } from "@ui/props";
+import { PropsBaseBoolean, PropsBaseObject } from "@ui/props";
 export const formItemsProps = propsBuildS({
+  disabled:PropsBaseBoolean,
+  readonly:PropsBaseBoolean,
+  validateFun:PropsBaseObject
 })
 export const formItemsEmits = {
 }
