@@ -5,4 +5,5 @@ export * from './btn';
 export * from './call-kit';
 export * from './form';
 export * from './form-items';
+export * from './form-item';
 export * from './input';

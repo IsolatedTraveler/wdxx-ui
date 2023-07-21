@@ -5,6 +5,7 @@ import {ZBtn,ZBtnGroup} from '@ui/components/btn'
 import {ZCallKit} from '@ui/components/call-kit'
 import {ZForm} from '@ui/components/form'
 import {ZFormItems} from '@ui/components/form-items'
+import {ZFormItem} from '@ui/components/form-item'
 import {ZInput} from '@ui/components/input'
 export default[
   ZFlex,
@@ -15,5 +16,6 @@ export default[
   ZCallKit,
   ZForm,
   ZFormItems,
+  ZFormItem,
   ZInput
 ]

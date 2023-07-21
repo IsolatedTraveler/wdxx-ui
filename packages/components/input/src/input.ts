@@ -10,7 +10,6 @@ export const inputProps = propsBuildS({
   type:PropsInputType,
   size:PropsBaseSize,
   readonly:PropsBaseBoolean,
-  label:PropsBaseStringN,
   tabIndex:PropsBasePositiveInteger,
   verify:PropsBaseString,
   validateEvent:PropsInputValidateEvent,

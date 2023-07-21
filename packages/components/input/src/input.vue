@@ -1,6 +1,5 @@
 <template>
   <div ref="_ref" :class="_class">
-    <label v-if="label">{{ label }}</label>
     <input autocomplete="off" :="prop" style="flex-grow: 1;">
   </div>
 </template>
