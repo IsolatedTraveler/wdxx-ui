@@ -1,6 +1,6 @@
 <template>
   <div ref="_ref" :class="_class">
-    <input autocomplete="off" :="prop" style="flex-grow: 1;">
+    <input autocomplete="off" :="prop">
   </div>
 </template>
 <script lang="ts" setup>
