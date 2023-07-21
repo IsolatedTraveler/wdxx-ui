@@ -1,6 +1,7 @@
 <template>
   <div ref="_ref" :class="_class">
     <input autocomplete="off" :="prop">
+    <span v-if="unit">{{ unit }}</span>
   </div>
 </template>
 <script lang="ts" setup>
