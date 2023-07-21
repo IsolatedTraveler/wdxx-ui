@@ -1,7 +1,9 @@
 <template>
   <div class="component-form">
     <z-form :disabled="disabled">
-      <z-input disabled label="测试"></z-input>
+      <z-form-item label="测试">
+        <z-input disabled label="测试"></z-input>
+      </z-form-item>
       <z-input></z-input>
     </z-form>
   </div>
