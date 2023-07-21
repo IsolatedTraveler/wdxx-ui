@@ -1,5 +1,5 @@
 <template>
-  <div ref="_ref" :class="_class">
+  <div ref="_ref" :class="_class" :style="_style">
     <input autocomplete="off" :="prop">
     <span v-if="unit">{{ unit }}</span>
   </div>
@@ -12,7 +12,7 @@ defineOptions({
 })
 const props = defineProps(inputProps)
 const emit = defineEmits(inputEmits)
-const {_ref, _class, prop} = useInput(props, emit)
+const {_ref, _class, prop, _style} = useInput(props, emit)
 defineExpose({
   ref: _ref
 })
