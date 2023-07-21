@@ -3,7 +3,7 @@
     <z-input v-model="a"></z-input>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default {
   name: 'element-input',
   data() {
