@@ -47,6 +47,7 @@
   "scripts": {
     "dev": "pnpm run -C example dev",
     "watch": "pnpm run -C packages/styles watch",
+    "css": "pnpm run -C packages/styles build",
     "demo": "pnpm run -C demo dev",
     "page": "pnpm run -C build/def creatComponent",
     "var": "pnpm run -C build/def creatVar",
