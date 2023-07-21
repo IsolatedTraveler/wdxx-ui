@@ -1,6 +1,6 @@
 <template>
   <div ref="_ref" :class="_class">
-    <label v-if="label">{{ label }}</label>
+    <label>{{ label }}</label>
     <slot></slot>
   </div>
 </template>
