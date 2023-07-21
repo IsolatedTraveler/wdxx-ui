@@ -2,7 +2,7 @@
   <div class="component-form">
     <z-form :disabled="disabled">
       <z-form-item label="测试">
-        <z-input disabled label="测试"></z-input>
+        <z-input disabled label="测试" size="md"></z-input>
       </z-form-item>
       <z-input></z-input>
     </z-form>
