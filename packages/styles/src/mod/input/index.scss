@@ -4,6 +4,5 @@
 @use './input.scss' as *;
 
 @include createSingleClass(input, '', '') {
-
 }
 @include async($style, input, '');
