@@ -1,0 +1,8 @@
+@use 'sass:map';
+@use '../../mixins/index.scss' as *;
+@use '../../vars/index.scss' as *;
+@use './form.scss' as *;
+
+@include createSingleClass(form, '', '') {
+  @include async($style, form, '');
+}
