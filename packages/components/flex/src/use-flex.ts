@@ -9,9 +9,9 @@ export const useFlex = (props: FlexProps, emit: SetupContext<FlexEmits>['emit'])
     self: props.self,
     wrap: props.wrap,
     auto: props.span ? undefined : props.auto,
+    span: props.span,
     left: props.left,
     right: props.right,
-    span: props.span,
     order: props.order
   })), { _class, _style } = useCss(classVal, _ref, { order: false, justify: false, align: false, self: false, span: false, left: false, right: false, auto: false })
   return {
