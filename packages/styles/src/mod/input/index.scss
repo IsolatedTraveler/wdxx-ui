@@ -1,11 +1,9 @@
 @use 'sass:map';
 @use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
-@use './input-media.scss' as *;
 @use './input.scss' as *;
 
 @include createSingleClass(input, '', '') {
 
-  @include asyncMedia($styleMedia, '');
 }
 @include async($style, input, '');
