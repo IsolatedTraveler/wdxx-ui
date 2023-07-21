@@ -50,7 +50,18 @@
     }
   }
 }
+@mixin setStyle($val, $block, $lx, $add, $name) {
+  
+  @if $val {
+    @if & {
+      @include getStyle($val, $block, $add, getNames($name, $block, $lx, '&', $add), getNames($name, $block, $lx, '&', ""));
+    }
 
+    @else {
+      @include getStyle($val, $block, $add, getNames($name, $block, $lx, '', $add), getNames($name, $block, $lx, '', ""));
+    }
+  }
+}
 @mixin asyncClass($data, $block, $lx, $add) {
 
   @if $data {
@@ -58,15 +69,7 @@
     @each $name,
     $val in $data {
       @if $name {
-        @if $val {
-          @if & {
-            @include getStyle($val, $block, $add, getNames($name, $block, $lx, '&', $add), getNames($name, $block, $lx, '&', ""));
-          }
-
-          @else {
-            @include getStyle($val, $block, $add, getNames($name, $block, $lx, '', $add), getNames($name, $block, $lx, '', ""));
-          }
-        }
+        @include setStyle($val,$block ,$lx , $add, $name)
       }
     }
   }
