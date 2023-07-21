@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
 $input-def--style: (
-  border: 1px solid map.get($color, border, 3)
+  border: 1px solid map.get($color, border, 2)
 );
 $input-def--class: ();
 $input-def--attr: ();
