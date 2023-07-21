@@ -2,6 +2,7 @@ import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
 import { PropsBaseBoolean, PropsBaseObject, PropsBasePositiveInteger, PropsBaseSize, PropsBaseString, PropsBaseStringN, PropsInputShape, PropsInputType, PropsInputValidateEvent } from "@ui/props";
 export const inputProps = propsBuildS({
+  unit: PropsBasePositiveInteger,
   modelValue:PropsBaseStringN,
   value:PropsBaseStringN,
   placeholder:PropsBaseString,
