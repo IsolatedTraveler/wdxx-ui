@@ -6,8 +6,7 @@ export const useInput = (props: InputProps, emit: SetupContext<InputEmits>['emit
   const {prop } = useInjectInput(props)
   const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
     name: 'input',
-    size:prop?.value?.size,
-    add: 'form-item'
+    size:prop?.value?.size
   })), {_class} = useCss(classVal, _ref)
   return {
     _ref,
