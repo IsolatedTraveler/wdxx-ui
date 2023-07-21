@@ -10,7 +10,7 @@ export const useInput = (props: InputProps, emit: SetupContext<InputEmits>['emit
     auto: props.span ? undefined : props.auto,
     span: props.span,
     flex: 'row'
-  })), {_class,_style} = useCss(classVal, _ref)
+  })), {_class,_style} = useCss(classVal, _ref, { span: false, auto: false })
   return {
     _ref,
     _class,
