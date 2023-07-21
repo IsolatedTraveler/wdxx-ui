@@ -1,7 +1,6 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
 $input-key--style: (
-  border: 1px solid map.get($color, primary, 2)
 );
 $input-key--class: ();
 $input-key--attr: ();
@@ -9,7 +8,9 @@ $input--class: (
   key: (style: $input-key--style, child: (class: $input-key--class, attr: $input-key--attr))
 );
 $input--attr: ();
-$input--style: ();
+$input--style: (
+  border: 1px solid map.get($color, primary, 2)
+);
 $style: (
   class:$input--class,
   attr:$input--attr,
