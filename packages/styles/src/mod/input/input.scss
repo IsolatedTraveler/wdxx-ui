@@ -1,16 +1,15 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
-$input-key--style: (
+$input-def--style: (
+  border: 1px solid map.get($color, border, 1)
 );
-$input-key--class: ();
-$input-key--attr: ();
+$input-def--class: ();
+$input-def--attr: ();
 $input--class: (
-  key: (style: $input-key--style, child: (class: $input-key--class, attr: $input-key--attr))
+  def: (style: $input-def--style, child: (class: $input-def--class, attr: $input-def--attr))
 );
 $input--attr: ();
-$input--style: (
-  border: 1px solid map.get($color, primary, 2)
-);
+$input--style: ();
 $style: (
   class:$input--class,
   attr:$input--attr,
