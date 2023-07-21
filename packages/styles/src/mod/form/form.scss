@@ -1,0 +1,18 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$form-item-def--style: (
+  line-height:2em
+);
+$form-item-def--class: ();
+$form-item-def--attr: ();
+$form-item--class: (
+  def: (style: $form-item-def--style, child: (class: $form-item-def--class, attr: $form-item-def--attr))
+);
+$form-item--attr: ();
+$form-item--style: ();
+$style: (
+  class:$form-item--class,
+  attr:$form-item--attr,
+  style:$form-item--style
+);
+  
