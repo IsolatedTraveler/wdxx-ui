@@ -1,12 +1,12 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
-$form-item-key--style: (
-  background-color: map.get($color, primary, 2)
+$form-item-def--style: (
+  margin-bottom: 0.05rem
 );
-$form-item-key--class: ();
-$form-item-key--attr: ();
+$form-item-def--class: ();
+$form-item-def--attr: ();
 $form-item--class: (
-  key: (style: $form-item-key--style, child: (class: $form-item-key--class, attr: $form-item-key--attr))
+  def: (style: $form-item-def--style, child: (class: $form-item-def--class, attr: $form-item-def--attr))
 );
 $form-item--attr: ();
 $form-item--style: ();

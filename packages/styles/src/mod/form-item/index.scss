@@ -4,5 +4,5 @@
 @use './form-item.scss' as *;
 
 @include createSingleClass(form-item, '', '') {
+  @include async($style, form-item, '');
 }
-@include async($style, form-item, '');

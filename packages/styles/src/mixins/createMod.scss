@@ -27,13 +27,23 @@
 
   }
 
-  @if $lx ==pseudo {
+  @else if $lx ==pseudo {
     @if $name=='' {
       @return ':'+#{$block};
     }
 
     @else {
       @return ':'+#{$name};
+    }
+
+  }
+  @else if $lx ==el {
+    @if $name=='' {
+      @return '*';
+    }
+
+    @else {
+      @return #{$name};
     }
 
   }

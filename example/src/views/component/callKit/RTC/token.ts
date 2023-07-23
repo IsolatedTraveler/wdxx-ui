@@ -1,4 +1,4 @@
-export function getToken(channel: string) {
-  var token = '007eJxTYNjD9kvmxKYy5mnGNzyymW9pBtevU2XuO7ymfsr1DbEtzscVGBKNzc2TDFNTU8yTjUySU8wsEy0NzJPTkkzMEk1TLAxTN7ivS2kIZGTwkAhnZmSAQBCfmcHQyJiBAQAVwx3r'
-  return Promise.resolve(token)
-};
+import { post } from './magic'
+export function getToken(channelName: string): Promise<string> {
+  return post('/yy89-yzhz/swjk/fwlp-1', {channelName}).then((res:any) => res.data)
+}

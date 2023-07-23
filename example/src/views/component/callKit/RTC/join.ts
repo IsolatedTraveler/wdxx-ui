@@ -1,6 +1,6 @@
-import { AgoraRTCUserId, Medias, appId, client, init } from "./init";
+import { type AgoraRTCUserId, type Medias, appId, client, init } from "./init";
 import { getToken } from "./token";
-import AgoraRTC, { ILocalTrack } from 'agora-rtc-sdk-ng'
+import AgoraRTC, { type ILocalTrack } from 'agora-rtc-sdk-ng'
 export let localAudioTrack: ILocalTrack, localVideoTrack: ILocalTrack
 export interface JoinRoomType {
   channel: string
@@ -8,7 +8,6 @@ export interface JoinRoomType {
 }
 export function join({ channel, uid }: JoinRoomType, media: Medias, mId: AgoraRTCUserId = '') {
   init(media, mId)
-  getToken(channel)
   return Promise.all([
     getVideo(),
     getMicrophone(),

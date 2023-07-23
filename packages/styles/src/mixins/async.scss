@@ -32,8 +32,10 @@
     @include asyncClass(map.get($data, class), $block, '', $add);
     @include asyncClass(map.get($data, attr), $block, 'attr', $add);
     @include asyncClass(map.get($data, pseudo), $block, 'pseudo', $add);
+    @include asyncClass(map.get($data, pseudo), $block, 'el', $add);
     @include asyncChild(map.get($data, childClass), '', '', '');
-    @include asyncChild(map.get($data, childAttr), '', 'attr', '')
+    @include asyncChild(map.get($data, childAttr), '', 'attr', '');
+    @include asyncChild(map.get($data, childEl), '', 'el', '')
   }
 }
 

@@ -1,4 +1,4 @@
-import AgoraRTC, { IAgoraRTCClient, IAgoraRTCRemoteUser, IRemoteAudioTrack, IRemoteVideoTrack, ILocalTrack, RemoteStreamType } from 'agora-rtc-sdk-ng'
+import AgoraRTC, { type IAgoraRTCClient, type IAgoraRTCRemoteUser, type IRemoteAudioTrack, type IRemoteVideoTrack, type ILocalTrack, RemoteStreamType } from 'agora-rtc-sdk-ng'
 export type AgoraRTCUserId = string | number
 export type MediaType = 'audio' | 'video'
 export interface MediaT {
@@ -10,10 +10,10 @@ export type Media = MediaT | undefined
 export interface Medias {
   [index: AgoraRTCUserId]: Media
 }
-export let client: IAgoraRTCClient,
-  appId: string = 'a377b1eed7c24cd69a907cfb46a5d81e',
+export const appId: string = 'a377b1eed7c24cd69a907cfb46a5d81e',
   // 证书
-  appCertificate: string = '96883e5a99474ede89f4d0d970b5364d',
+  appCertificate: string = '96883e5a99474ede89f4d0d970b5364d'
+export let client: IAgoraRTCClient,
   media: Medias,
   mainId: AgoraRTCUserId;
 export function init(obj: Medias, mId: AgoraRTCUserId = '') {
@@ -49,7 +49,8 @@ function setStreamType(id: AgoraRTCUserId, type: RemoteStreamType | false = fals
 }
 function setMidia(user: IAgoraRTCRemoteUser, mediaType: MediaType) {
   return client.subscribe(user, mediaType).then(() => {
-    let id: AgoraRTCUserId = user.uid, obj: Media = media[id]
+    const id: AgoraRTCUserId = user.uid
+    let obj: Media = media[id]
     if (!obj) {
       media[id] = obj = { userId: id }
     }
@@ -63,7 +64,7 @@ function setMidia(user: IAgoraRTCRemoteUser, mediaType: MediaType) {
   })
 }
 function cancel(user: IAgoraRTCRemoteUser, mediaType: MediaType) {
-  let id = user.uid, obj: Media = media[id]
+  const id = user.uid, obj: Media = media[id]
   if (obj) {
     if (mediaType === 'audio') {
       obj.audio = undefined

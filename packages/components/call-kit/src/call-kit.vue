@@ -1,7 +1,7 @@
 <template>
   <z-flex ref="_ref" :class="_class">
     <z-media class="z-call-kit--main" v-bind="main"></z-media>
-    <z-media v-if="single" v-show="singleMedia" class="z-call-kit--remote" v-bind="singleMedia"></z-media>
+    <z-media v-if="single" v-show="singleMedia" class="z-call-kit--remote" v-bind="singleMedia" @click.stop="clickId = singleMedia.userId"></z-media>
     <z-flex class="z-call-kit--multi" wrap ref="_refMulti" v-else>
       <z-media v-for="(it) in medias" :key="it.userId" :auto="multiWidth"
         :order="it.userId == localId ? 1 : it.userId == clickId ? 2 : 3" v-bind="it"
