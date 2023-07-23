@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       media: {},
-      room: '',
+      room: '123',
       uid: '',
       isStart: false
     }
