@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHashHistory } from "vue-router"
 import def from './def/index'
-let baseUrl:string
+let baseUrl: string
 export function getJsUrl() {
   if (!baseUrl) {
     let elem = document.currentScript
@@ -13,14 +13,14 @@ export function getJsUrl() {
 }
 export let loadXt: any = {}
 const router: any = createRouter({
-  history: createWebHistory(getJsUrl()),
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/',
       redirect: '/base'
-    }, 
-    {path: '/:pathMatch(.*)*', redirect: '/404'},
-    {path: '/404', name: '404', meta: {notAuth: true}, component:() => import('../views/404.vue')},
+    },
+    { path: '/:pathMatch(.*)*', redirect: '/404' },
+    { path: '/404', name: '404', meta: { notAuth: true }, component: () => import('../views/404.vue') },
     ...def
   ]
 })
