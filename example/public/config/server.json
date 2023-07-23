@@ -1,0 +1,11 @@
+{
+  "baseUrl":[],
+  "RTCUrl":["http://loc.frp.cdjtwx.com:81/217-8089/api"],
+  "magic":{
+    "token":"Basic MDAwMDAwOmp0d3hAMjAyMw==",
+    "zhxx":{
+      "username": "admin",
+      "password": "9e6a933026b133a962a5d217d849f65c"
+    }
+  }
+}
