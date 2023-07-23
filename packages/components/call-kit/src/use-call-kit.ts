@@ -10,17 +10,11 @@ export const useCallKit = (props: CallKitProps, emit: SetupContext<CallKitEmits>
     , clickId = ref('')
     , id = computed(() => props.mainId || clickId.value || props.localId)
     , main = computed(() => id.value ? props.media?.[id.value] : undefined)
-    , singleMedia = ref()
     , medias: ComputedRef<any[]> = computed(() => Object.values(props.media || {}).filter(it => it && it.userId != id.value))
+    , singleMedia = computed(() => props.single && medias.value.length ? medias.value.filter(it => it.userId != id.value)[0] : undefined)
   // 独立逻辑   判断是会议还是单人通话，单人通话当一方挂断，将断开通话
-  watch(() => medias.value.length, (v, o) => {
-    var mediasV = medias.value
-    if (v) {
-      singleMedia.value = mediasV.filter(it => it.userId != id.value)[0]
-    } else {
-      singleMedia.value = undefined
-    }
-    if (props.single && v == 1 && o == 2) {
+  watch(() => singleMedia.value, (v, o) => {
+    if (v === undefined && o !== undefined) {
       emit?.('leave', (main.value || singleMedia.value).userId)
     }
   }, { immediate: true })
