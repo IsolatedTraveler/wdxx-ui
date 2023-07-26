@@ -2,6 +2,7 @@ import { useHtmlDisabled, useCss } from "@ui/hooks"
 import { useInjectBtn } from "@ui/hooks/use-inject/btn"
 import { computed, ref, SetupContext } from "vue"
 import type { BtnProps, BtnEmits } from "./btn"
+import { EventClick } from "@ui/vars"
 export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) => {
   const { size, submit, reset } = useInjectBtn(props)
   const handleClick = (evt: MouseEvent) => {
@@ -10,7 +11,7 @@ export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) =>
     } else if (props.type === 'reset') {
       reset()
     } else {
-      emit?.('click', evt)
+      emit?.(EventClick, evt)
     }
   }
   const _ref = ref<HTMLButtonElement>(), { _disabled, _handleClick } = useHtmlDisabled(props, handleClick), classProp = computed(() => {

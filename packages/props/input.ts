@@ -15,3 +15,7 @@ export const PropsInputShape = {
   type: String,
   values: propsInputShape
 }
+export const PropsInputName = {
+  type: [Number, String],
+  default: ''
+}

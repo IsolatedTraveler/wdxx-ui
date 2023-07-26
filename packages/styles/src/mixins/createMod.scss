@@ -37,6 +37,7 @@
     }
 
   }
+
   @else if $lx ==el {
     @if $name=='' {
       @return '*';

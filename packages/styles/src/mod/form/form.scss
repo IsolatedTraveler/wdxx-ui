@@ -3,22 +3,26 @@
 $form-item-def--style: (
   line-height:2em
 );
-$form-item-def--class: ();
-$form-item-def--attr: ();
-$form-item-def-input--style:(
+$form-item-def--class: (
+);
+$form-item-def--attr: (
+);
+$form-item-def-input--style: (
   height: 2em
 );
-$form-item-def--childEl:(
+$form-item-def--childEl: (
   input:(style: $form-item-def-input--style)
 );
 $form-item--class: (
-  def: (style: $form-item-def--style, child: (class: $form-item-def--class, attr: $form-item-def--attr, childEl:$form-item-def--childEl))
+  def: (style: $form-item-def--style, child: (class: $form-item-def--class, attr: $form-item-def--attr))
 );
-$form-item--attr: ();
-$form-item--style: ();
+$form-item--attr: (
+);
+$form-item--style: (
+);
 $style: (
   class:$form-item--class,
   attr:$form-item--attr,
-  style:$form-item--style
+  style:$form-item--style,
+  childEl:$form-item-def--childEl
 );
-  
