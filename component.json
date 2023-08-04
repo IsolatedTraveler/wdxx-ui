@@ -1,15 +1,4 @@
 {
-  "keys": [
-    "flex",
-    "icon",
-    "media",
-    "btn",
-    "call-kit",
-    "form",
-    "form-items",
-    "form-item",
-    "input"
-  ],
   "ywc": {
     "flex": true,
     "media": true,
@@ -26,10 +15,7 @@
       "provide": [
         "btn-group"
       ]
-    }
-  },
-  "wwc": {
-    "icon": true,
+    },
     "input": {
       "inject": {
         "input": [
@@ -51,5 +37,16 @@
       "provide": true
     },
     "call-kit": true
+  },
+  "wwc": {
+    "icon": true,
+    "select": {
+      "inject": {
+        "select": [
+          "form-items",
+          "form"
+        ]
+      }
+    }
   }
 }
