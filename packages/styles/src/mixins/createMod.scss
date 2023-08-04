@@ -40,7 +40,7 @@
 
   @else if $lx ==el {
     @if $name=='' {
-      @return '*';
+      @return #{$block};
     }
 
     @else {
