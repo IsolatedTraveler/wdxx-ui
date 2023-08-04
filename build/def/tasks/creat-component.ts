@@ -110,7 +110,9 @@ function createCom(arr: Array<filesObj>) {
     return Promise.all([
       mkdir(keyComUrl, { recursive: true }),
       mkdir(comUrl, { recursive: true })
-    ]).then(() => Promise.all(obj.keys.map(it => creatComponentMod(it, comUrl)))).then(() => {
+    ]).then(() => {
+      return Promise.all(obj.keys.map(it => creatComponentMod(it, comUrl)))
+    }).then(() => {
       const arr: Array<Promise<any>> = []
       // 创建hooks/use-provide/${key}.ts
       if (obj.provide) {
