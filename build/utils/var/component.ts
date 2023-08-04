@@ -19,7 +19,7 @@ export interface filesObj {
 }
 const obj: any = require(path.resolve(projRoot, 'component.json'))
 const comObj: ComsObj = Object.assign(obj.ywc, obj.wwc)
-const comKey: string[] = obj.keys
+const comKey: string[] = Object.keys(comObj)
 const comKeys: string[] = []
 comKey.map(key => {
   let obj = comObj[key] as ComObj | true
@@ -38,7 +38,6 @@ comKey.map(key => {
   comObj[key] = obj
   comKeys.push(...obj.keys)
 })
-console.log(comObj)
 export {
   comObj,
   comKey,
