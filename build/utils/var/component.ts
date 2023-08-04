@@ -38,6 +38,7 @@ comKey.map(key => {
   comObj[key] = obj
   comKeys.push(...obj.keys)
 })
+console.log(comObj)
 export {
   comObj,
   comKey,
