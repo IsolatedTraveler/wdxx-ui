@@ -1,0 +1,18 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$select-key--style: (
+  background-color: map.get($color, primary, 2)
+);
+$select-key--class: ();
+$select-key--attr: ();
+$select--class: (
+  key: (style: $select-key--style, child: (class: $select-key--class, attr: $select-key--attr))
+);
+$select--attr: ();
+$select--style: ();
+$style: (
+  class:$select--class,
+  attr:$select--attr,
+  style:$select--style
+);
+  
