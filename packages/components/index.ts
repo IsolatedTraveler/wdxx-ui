@@ -8,3 +8,4 @@ export * from './form-items';
 export * from './form-item';
 export * from './input';
 export * from './select';
+export * from './tree';

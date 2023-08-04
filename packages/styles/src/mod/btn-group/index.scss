@@ -1,8 +1,11 @@
+@use 'sass:map';
 @use '../../mixins/index.scss' as *;
+@use '../../vars/index.scss' as *;
+@use './btn-group-media.scss' as *;
 @use './btn-group.scss' as *;
-@use './btn-group-radius.scss' as *;
 
 @include createSingleClass(btn-group, '', '') {
-  @include async($styleVal, btn-group, '');
-  @include async($styleRadiusVal, '', '');
+
+  @include asyncMedia($styleMedia, '');
 }
+@include async($style, btn-group, '');

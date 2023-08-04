@@ -9,7 +9,8 @@
     "form-items",
     "form-item",
     "input",
-    "select"
+    "select",
+    "tree"
   ],
   "ywc": {
     "flex": true,
@@ -59,6 +60,19 @@
           "form"
         ]
       }
+    },
+    "tree": {
+      "prev": [
+        "btn-group"
+      ],
+      "inject": {
+        "tree-item": [
+          "tree"
+        ]
+      },
+      "provide": [
+        "tree"
+      ]
     }
   }
 }

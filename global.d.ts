@@ -11,6 +11,8 @@ declare module "@vue/runtime-core" {
     ZFormItem: typeof import("z-uis")["ZFormItem"];
     ZInput: typeof import("z-uis")["ZInput"];
     ZSelect: typeof import("z-uis")["ZSelect"];
+    ZBtnGroup: typeof import("z-uis")["ZBtnGroup"];
+    ZTree: typeof import("z-uis")["ZTree"];
   }
   interface ComponentCustomProperties {
     

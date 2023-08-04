@@ -10,9 +10,13 @@ $btn-group--class: (
 );
 $btn-group--attr: ();
 $btn-group--style: ();
-$style: (
+$hover-style: (
   class:$btn-group--class,
   attr:$btn-group--attr,
   style:$btn-group--style
 );
   
+    $styleMedia: (
+      hover: $hover-style
+    );
+    

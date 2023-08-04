@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$tree-key--style: (
+  background-color: map.get($color, primary, 2)
+);
+$tree-key--class: ();
+$tree-key--attr: ();
+$tree--class: (
+  key: (style: $tree-key--style, child: (class: $tree-key--class, attr: $tree-key--attr))
+);
+$tree--attr: ();
+$tree--style: ();
+$hover-style: (
+  class:$tree--class,
+  attr:$tree--attr,
+  style:$tree--style
+);
+  
+    $styleMedia: (
+      hover: $hover-style
+    );
+    
