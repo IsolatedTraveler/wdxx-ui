@@ -1,4 +1,16 @@
 {
+  "keys": [
+    "flex",
+    "icon",
+    "media",
+    "btn",
+    "call-kit",
+    "form",
+    "form-items",
+    "form-item",
+    "input",
+    "select"
+  ],
   "ywc": {
     "flex": true,
     "media": true,
