@@ -111,7 +111,6 @@ function createCom(arr: Array<filesObj>) {
       mkdir(keyComUrl, { recursive: true }),
       mkdir(comUrl, { recursive: true })
     ]).then(() => {
-      console.log(obj)
       return Promise.all(obj.keys.map(it => creatComponentMod(it, comUrl)))
     }).then(() => {
       const arr: Array<Promise<any>> = []
