@@ -1,8 +1,8 @@
 import { withInstall, withNoopInstall } from '@ui/utils'
-import BtnGroup from './src/btn-group.vue'
+import TreeItem from './src/tree-item.vue'
 import Tree from './src/tree.vue'
-export const ZTree = withInstall(Tree, {BtnGroup})
-export const ZBtnGroup = withNoopInstall(BtnGroup)
+export const ZTree = withInstall(Tree, {TreeItem})
+export const ZTreeItem = withNoopInstall(TreeItem)
 export * from './src/tree'
-export type {TreeInstance, BtnGroupInstance} from './src/instance'
+export type {TreeInstance, TreeItemInstance} from './src/instance'
 export default ZTree

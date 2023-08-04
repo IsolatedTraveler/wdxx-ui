@@ -1,9 +1,9 @@
 import { useCss } from "@ui/hooks"
 import { ref, SetupContext, computed } from "vue"
-import { BtnGroupEmits, BtnGroupProps } from "./btn-group"
-export const useBtnGroup = (props: BtnGroupProps, emit: SetupContext<BtnGroupEmits>['emit']) => {
+import { TreeItemEmits, TreeItemProps } from "./tree-item"
+export const useTreeItem = (props: TreeItemProps, emit: SetupContext<TreeItemEmits>['emit']) => {
   const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
-    name: 'btn-group'
+    name: 'tree-item'
   })), {_class} = useCss(classVal, _ref)
   return {
     _ref,

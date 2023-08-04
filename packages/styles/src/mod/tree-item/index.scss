@@ -1,0 +1,11 @@
+@use 'sass:map';
+@use '../../mixins/index.scss' as *;
+@use '../../vars/index.scss' as *;
+@use './tree-item-media.scss' as *;
+@use './tree-item.scss' as *;
+
+@include createSingleClass(tree-item, '', '') {
+
+  @include asyncMedia($styleMedia, '');
+}
+@include async($style, tree-item, '');

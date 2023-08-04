@@ -63,7 +63,7 @@
     },
     "tree": {
       "prev": [
-        "btn-group"
+        "tree-item"
       ],
       "inject": {
         "tree-item": [
