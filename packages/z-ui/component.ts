@@ -7,6 +7,7 @@ import {ZForm} from '@ui/components/form'
 import {ZFormItems} from '@ui/components/form-items'
 import {ZFormItem} from '@ui/components/form-item'
 import {ZInput} from '@ui/components/input'
+import {ZSelect} from '@ui/components/select'
 export default[
   ZFlex,
   ZIcon,
@@ -17,5 +18,6 @@ export default[
   ZForm,
   ZFormItems,
   ZFormItem,
-  ZInput
+  ZInput,
+  ZSelect
 ]
