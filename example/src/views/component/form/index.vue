@@ -9,7 +9,7 @@
         <z-input name="1"></z-input>
         <z-input name="2"></z-input>
       </z-form>
-      <z-input v-model="obj.cs"></z-input>
+      <z-input v-model="obj.cs1"></z-input>
     </z-form>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       disabled: false,
-      obj: { cs: '' }
+      obj: { cs1: '45' }
     }
   },
   mounted() {
