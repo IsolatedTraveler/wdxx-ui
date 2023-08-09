@@ -1,6 +1,6 @@
 import { computed, inject } from "vue";
-import { provideFormId } from "../use-provide/form";
 import { FormProps } from "@ui/components/form/src/form";
+import { provideFormId } from "@ui/vars/hooks";
 export const useInjectForm = (props: FormProps) => {
   let obj: any
   const {

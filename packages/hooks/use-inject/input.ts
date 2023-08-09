@@ -1,7 +1,7 @@
 import { InputProps } from "@ui/components/input/src/input";
 import { computed, inject } from "vue";
 import { provideFormItemsId } from "../use-provide/form-items";
-import { provideFormId } from "../use-provide/form";
+import { provideFormId } from "@ui/vars/hooks";
 export const useInjectInput = (props: InputProps) => {
   const { submit, clear, prop, value, changeVal } = inject(provideFormItemsId, inject(provideFormId, {}))
   return {

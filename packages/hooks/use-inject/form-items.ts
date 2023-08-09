@@ -1,20 +1,20 @@
 import { FormItemsProps } from "@ui/components/form-items/src/form-items";
+import { provideFormId } from "@ui/vars/hooks";
 import { computed, inject } from "vue";
-import { provideFormId } from "../use-provide/form";
 export const useInjectFormItems = (props: FormItemsProps) => {
-    const { submit,clear,prop} = inject(provideFormId, { })
+  const { submit, clear, prop } = inject(provideFormId, {})
   return {
     submit,
     clear,
-    prop: computed(()=>{
+    prop: computed(() => {
       const value = prop?.value || ({} as any)
-      const {disabled,readonly,size,validateFun,tabIndex} = value
+      const { disabled, readonly, size, validateFun, tabIndex } = value
       return {
-        disabled:props.disabled || disabled,
-        readonly:props.readonly || readonly,
+        disabled: props.disabled || disabled,
+        readonly: props.readonly || readonly,
         size,
         tabIndex,
-        validateFun: Object.assign({},validateFun, props.validateFun)
+        validateFun: Object.assign({}, validateFun, props.validateFun)
       }
     })
   }

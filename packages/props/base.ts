@@ -34,3 +34,6 @@ export const PropsBaseState = {
   values: propsBaseState,
   default: ''
 }
+export const PropsBaseArray_Object = {
+  type: Array<Object>
+}

@@ -1,7 +1,8 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
-import {  } from "@ui/props";
+import { PropsBaseArray_Object } from "@ui/props";
 export const treeProps = propsBuildS({
+  data: PropsBaseArray_Object
 })
 export const treeEmits = {
 }

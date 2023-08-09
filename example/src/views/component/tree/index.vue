@@ -1,12 +1,15 @@
 <template>
   <div class="component-tree">
+    <z-tree alias data></z-tree>
   </div>
 </template>
 <script>
 export default {
   name: 'component-tree',
   data() {
-    return {}
+    return {
+      data: []
+    }
   },
   methods: {
   }
