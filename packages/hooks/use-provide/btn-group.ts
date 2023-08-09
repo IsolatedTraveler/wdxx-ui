@@ -1,9 +1,6 @@
 import { BtnGroupProps } from "@ui/components/btn/src/btn-group";
-import { computed, ComputedRef, InjectionKey, provide } from "vue";
-export interface ProvideBtnGroup {
-  size: ComputedRef<string>
-}
-export const provideBtnGroupId: InjectionKey<ProvideBtnGroup> = Symbol('btn-group')
+import { provideBtnGroupId } from "@ui/vars/hooks";
+import { computed, provide } from "vue";
 export const useProvideBtnGroup = (props: BtnGroupProps) => {
   provide(provideBtnGroupId, {
     size: computed(() => props.size || '')

@@ -1,6 +1,6 @@
-import { INSTALLED_KEY } from "@ui/vars"
 import { App } from "vue"
 import components from "./component"
+const INSTALLED_KEY = Symbol('INSTALLED_KEY')
 import { version } from './version'
 interface AppE extends App {
   [INSTALLED_KEY]?: boolean
