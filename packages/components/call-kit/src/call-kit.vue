@@ -1,13 +1,13 @@
 <template>
   <z-flex ref="_ref" :class="_class">
     <z-media :class="{ 'z-call-kit--remote': _mainClassJudge, 'z-call-kit--main': !_mainClassJudge }" v-bind="main"
-      :key="main?.userId" @click.stop="click(main?.userId)"></z-media>
-    <z-media v-if="single" v-show="singleMedia"
-      :class="{ 'z-call-kit--remote': !_mainClassJudge, 'z-call-kit--main': _mainClassJudge }" v-bind="singleMedia"
-      @click.stop="click(singleMedia?.userId)"></z-media>
+      :key="main?.userId" @click.stop="click(main?.userId)" :isAudio="main?.userId != localId"></z-media>
+    <z-media :class="{ 'z-call-kit--remote': !_mainClassJudge, 'z-call-kit--main': _mainClassJudge }" v-bind="singleMedia"
+      v-if="single" v-show="singleMedia" @click.stop="click(singleMedia?.userId)" :key="singleMedia?.userId"
+      :isAudio="singleMedia?.userId != localId"></z-media>
     <z-flex class="z-call-kit--multi" wrap ref="_refMulti" v-else>
       <z-media v-for="(it) in medias" :key="it.userId" :auto="multiWidth" :order="it.userId == localId ? 1 : 2"
-        v-bind="it" @click.stop="click(it.userId)"></z-media>
+        v-bind="it" @click.stop="click(it.userId)" :isAudio="it.userId != localId && it.userId != mainId"></z-media>
     </z-flex>
   </z-flex>
 </template>
