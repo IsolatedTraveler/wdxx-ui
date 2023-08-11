@@ -14,6 +14,7 @@ export const useTree = (props: TreeProps, emit: SetupContext<TreeEmits>['emit'])
   console.log(childAlias, idAlias, pIdAlias, mcAlias)
   return {
     _ref,
-    _class
+    _class,
+    idAlias
   }
 }

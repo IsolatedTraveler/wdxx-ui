@@ -1,14 +1,27 @@
 <template>
-  <div class="component-tree">
-    <z-tree alias data></z-tree>
-  </div>
+  <z-flex class="component-tree">
+    <z-tree :data="data"></z-tree>
+    <z-tree :data="data" :alias="alias"></z-tree>
+  </z-flex>
 </template>
-<script>
+<script lang="ts">
 export default {
   name: 'component-tree',
   data() {
     return {
-      data: []
+      data: [
+        {
+          mc: '测试', id: 'cs', xm: '姓名', xb: '性别', child: [
+            { mc: '测试1', id: 'cs1', xm: '姓名1', xb: '性别1' }
+            , {
+              mc: '测试2', id: 'cs2', xm: '姓名2', xb: '性别2', child: [
+                { mc: '测试21', id: 'cs21', xm: '姓名21', xb: '性别21' }
+              ]
+            }
+          ]
+        }
+      ],
+      alias: {}
     }
   },
   methods: {
@@ -16,5 +29,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.component-tree {}
+.component-tree {
+  width: 100%;
+}
 </style>

@@ -63,6 +63,7 @@
     },
     "tree": {
       "prev": [
+        "tree-ceil",
         "tree-item"
       ],
       "inject": {

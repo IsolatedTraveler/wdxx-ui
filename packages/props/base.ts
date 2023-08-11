@@ -1,4 +1,5 @@
 import { isCssLength, isPositiveInteger } from "@ui/utils"
+import { ObjAny } from "@ui/vars"
 import { propsBaseRadius, propsBaseSize, propsBaseState } from "@ui/vars/props"
 
 export const PropsBaseBoolean = {
@@ -35,5 +36,5 @@ export const PropsBaseState = {
   default: ''
 }
 export const PropsBaseArray_Object = {
-  type: Array<Object>
+  type: Array<ObjAny>
 }

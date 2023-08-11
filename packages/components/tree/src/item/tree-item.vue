@@ -1,5 +1,9 @@
 <template>
-  <div ref="_ref" :class="_class"></div>
+  <li ref="_ref" :class="_class">
+    <ul class="tree-items" v-if="data?.child">
+      <z-tree-item v-for="it in data?.child" :data="it"></z-tree-item>
+    </ul>
+  </li>
 </template>
 <script lang="ts" setup>
 import { treeItemEmits, treeItemProps } from './tree-item'
@@ -9,7 +13,7 @@ defineOptions({
 })
 const props = defineProps(treeItemProps)
 const emit = defineEmits(treeItemEmits)
-const {_ref, _class} = useTreeItem(props, emit)
+const { _ref, _class } = useTreeItem(props, emit)
 defineExpose({
   ref: _ref
 })
