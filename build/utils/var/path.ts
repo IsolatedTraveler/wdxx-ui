@@ -1,6 +1,7 @@
 import { resolve } from "path";
 // 公共参数
 export const uiFileName = 'z-ui'
+export const PKG_NAME = "z-uis";
 // 项目位置
 export const projRoot = resolve(__dirname, "..", "..", "..");
 // 开发源位置
@@ -19,4 +20,4 @@ export const buildRoot = resolve(projRoot, "build/def");
 
 // 结果输出位置
 export const buildOutput = resolve(projRoot, "dist");
-export const epOutput = resolve(buildOutput, "ui");
+export const epOutput = resolve(buildOutput, PKG_NAME);
