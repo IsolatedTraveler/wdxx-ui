@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 import { btnEmits, btnProps } from './btn';
 import { useBtn } from './use-btn';
-import ZIcon from '@ui/components/icon/src/icon.vue'
+import ZIcon from '@ui/components/icon'
 defineOptions({
   name: 'z-btn'
 })

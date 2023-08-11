@@ -9,6 +9,7 @@
   </div>
 </template>
 <script lang="ts">
+
 export default {
   name: 'element-btn-mod',
   props: {
