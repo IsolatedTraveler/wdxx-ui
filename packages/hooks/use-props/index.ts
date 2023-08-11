@@ -1,9 +1,9 @@
 import { warn } from "vue";
 import { fromPairs } from 'lodash-unified'
-import { EpProp, IfPropFinally, PropFinalized, PropFinally, PropMergeType, PropSingle, epPropKey } from "./type";
+import { EpProp, PropFinalized, PropMergeType, PropSingle, PropKey, IfProp, PropConvert } from "./type";
 import { NativePropType } from "./base";
 import { isObject } from "@ui/utils";
-export const isEpProp = (val: unknown): val is EpProp<any, any, any> => isObject(val) && !!(val as any)[epPropKey]
+export const isEpProp = (val: unknown): val is EpProp<any, any, any> => isObject(val) && !!(val as any)[PropKey]
 export const propsBuild = <
   Type = never,
   Value = never,
@@ -14,7 +14,7 @@ export const propsBuild = <
   if (!isObject(prop) || isEpProp(prop)) return prop as any
   const { type, values, required, validator } = prop
   return {
-    [epPropKey]: true,
+    [PropKey]: true,
     type,
     validator: (values || validator) ? (val: any): boolean => {
       let err: string | undefined = ''
@@ -41,11 +41,11 @@ export const propsBuild = <
   } as any
 }
 export const propsBuildS = <
-  Props extends Record<string, PropSingle<any, any, any, any, any> | { [epPropKey]: true } | NativePropType>
+  Props extends Record<string, | { [PropKey]: true } | NativePropType | PropSingle<any, any, any, any, any>>
 >(
   props: Props, vals?: any
 ): {
-    [K in keyof Props]: IfPropFinally<Props[K], Props[K], PropFinally<Props[K]>>
+    [K in keyof Props]: IfProp<Props[K], Props[K], PropConvert<Props[K]>>
   } =>
   fromPairs(
     Object.entries(props).map(([key, option]) => [
