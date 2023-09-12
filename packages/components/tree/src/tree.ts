@@ -3,7 +3,8 @@ import { propsBuildS } from "@ui/hooks";
 import { PropsBaseArray_Object, PropsBaseObject, } from "@ui/props";
 export const treeProps = propsBuildS({
   data: PropsBaseArray_Object,
-  alias: PropsBaseObject
+  alias: PropsBaseObject,
+  cols: PropsBaseArray_Object
 })
 export const treeEmits = {
 }
