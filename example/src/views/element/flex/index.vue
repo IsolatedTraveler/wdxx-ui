@@ -6,7 +6,7 @@
       <z-flex col auto="3" align="center">3</z-flex>
     </z-flex>
     <z-flex>
-      <z-flex col auto="1" align="center" span="101">4</z-flex>
+      <z-flex col auto="1" align="center" span="5">4</z-flex>
       <z-flex col auto="1" align="center">5</z-flex>
       <z-flex col auto="1" align="center">6</z-flex>
     </z-flex>
