@@ -1,8 +1,8 @@
 <template>
   <li ref="_ref" :class="_class">
-    <div class="">{{ data?.[props.mcAlias || ''] }}</div>
-    <ul class="tree-items" v-if="data?.[props.childAlias || '']">
-      <z-tree-item v-for="it in data?.[props.childAlias || '']" :data="it"></z-tree-item>
+    <div class="">{{ mc }}</div>
+    <ul class="tree-items" v-if="child">
+      <z-tree-item v-for="it in child" :data="it" :key="it?.[idAlias]"></z-tree-item>
     </ul>
   </li>
 </template>
@@ -14,7 +14,7 @@ defineOptions({
 })
 const props = defineProps(treeItemProps)
 const emit = defineEmits(treeItemEmits)
-const { _ref, _class } = useTreeItem(props, emit)
+const { _ref, _class, mc, child, idAlias } = useTreeItem(props, emit)
 defineExpose({
   ref: _ref
 })

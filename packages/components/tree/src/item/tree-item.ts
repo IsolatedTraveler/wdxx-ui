@@ -1,12 +1,8 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
-import { PropsBaseObjectR, PropsBaseStringNR } from "@ui/props";
+import { PropsBaseObjectR } from "@ui/props";
 export const treeItemProps = propsBuildS({
-  data: PropsBaseObjectR,
-  childAlias: PropsBaseStringNR,
-  idAlias: PropsBaseStringNR,
-  pIdAlias: PropsBaseStringNR,
-  mcAlias: PropsBaseStringNR
+  data: PropsBaseObjectR
 })
 export const treeItemEmits = {
 }

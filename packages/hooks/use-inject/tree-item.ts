@@ -1,8 +1,13 @@
 import { TreeItemProps } from "@ui/components/tree/src/item/tree-item";
-import { inject } from "vue";
-import { provideTreeId } from "../use-provide/tree";
+import { computed, inject } from "vue";
+import { ProvideTree, provideTreeId } from "../use-provide/tree";
 export const useInjectTreeItem = (props: TreeItemProps) => {
-  const { } = inject(provideTreeId, {})
+  const { idAlias, mcAlias, childAlias } = inject(provideTreeId, {} as ProvideTree)
+    , mc = computed(() => props.data?.[mcAlias.value])
+    , child = computed(() => props.data?.[childAlias.value])
   return {
+    mc,
+    idAlias,
+    child
   }
 }
