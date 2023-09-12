@@ -12,4 +12,5 @@ export const useProvideTree = (props: TreeProps) => {
   provide(provideTreeId, {
     alias
   })
+  return alias
 }
