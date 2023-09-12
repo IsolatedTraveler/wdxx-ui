@@ -14,8 +14,18 @@ export const PropsBaseStringN = {
   type: [String, Number],
   default: ''
 }
+export const PropsBaseStringNR = {
+  type: [String, Number],
+  required: true,
+  default: ''
+}
 export const PropsBaseObject = {
   type: Object
+}
+export const PropsBaseObjectR = {
+  type: Object,
+  required: true,
+  default: {}
 }
 export const PropsBasePositiveInteger = {
   type: [String, Number],
