@@ -1,7 +1,6 @@
 <template>
   <ul ref="_ref" :class="_class">
     <z-tree-item v-for="it in data" :data="it" :key="it?.[idAlias]">
-      <slot></slot>
     </z-tree-item>
   </ul>
 </template>
