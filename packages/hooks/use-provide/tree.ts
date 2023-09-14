@@ -11,6 +11,7 @@ export interface ProvideTree {
   pIdAlias: ComputedRef<string | number>
   mcAlias: ComputedRef<string | number>
   cols: ComputedRef<Array<Col>>
+  typeCols: ComputedRef<Array<Col>>
 }
 export const provideTreeId: InjectionKey<ProvideTree> = Symbol('tree')
 export const useProvideTree = (props: TreeProps) => {
@@ -18,13 +19,15 @@ export const useProvideTree = (props: TreeProps) => {
     , childAlias = computed(() => props?.alias?.child || 'child')
     , pIdAlias = computed(() => props?.alias?.pId || 'pid')
     , mcAlias = computed(() => props?.alias?.mc || 'mc')
-    , cols = computed(() => props?.cols)
+    , cols = computed(() => props?.cols || [])
+    , typeCols = computed(() => (props.cols || []).filter(it => it.type == 'temp'))
   provide(provideTreeId, {
     idAlias,
     childAlias,
     pIdAlias,
     mcAlias,
-    cols
+    cols,
+    typeCols
   })
-  return { idAlias }
+  return { idAlias, typeCols }
 }

@@ -1,6 +1,6 @@
 <template>
   <z-flex class="component-tree">
-    <z-tree :data="data">
+    <z-tree :data="data" :cols="cols">
       <template #xm="{ data }">
         {{ data.xm }}
       </template>
@@ -26,7 +26,8 @@ export default {
         }
       ],
       cols: [
-        { id: 'xm', type: 'temp' }
+        { id: 'xm', type: 'temp' },
+        { id: 'xb', type: '' }
       ],
       alias: {}
     }

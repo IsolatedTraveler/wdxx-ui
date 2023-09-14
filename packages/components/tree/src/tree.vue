@@ -4,8 +4,8 @@
       <template #default="{ data }">
         <slot :data="data"></slot>
       </template>
-      <template v-for="it in cols" v-if="it.type == 'temp'" #[it.id]="{ data }">
-        <slot :name="it.id" :data="data"></slot>
+      <template v-for="col in typeCols" #[col.id]="{ data }" :key="col.id">
+        <slot :name="col.id" :data="data"></slot>
       </template>
     </z-tree-item>
   </ul>
@@ -19,7 +19,7 @@ defineOptions({
 })
 const props = defineProps(treeProps)
 const emit = defineEmits(treeEmits)
-const { _ref, _class, idAlias } = useTree(props, emit)
+const { _ref, _class, idAlias, typeCols } = useTree(props, emit)
 defineExpose({
   ref: _ref
 })

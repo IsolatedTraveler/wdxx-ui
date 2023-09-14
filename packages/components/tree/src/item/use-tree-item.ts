@@ -6,13 +6,14 @@ export const useTreeItem = (props: TreeItemProps, emit: SetupContext<TreeItemEmi
   const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
     name: 'tree-item'
   })), { _class } = useCss(classVal, _ref)
-    , { mc, child, idAlias, cols } = useInjectTreeItem(props)
+    , { mc, child, idAlias, typeCols, cols } = useInjectTreeItem(props)
   return {
     _ref,
     _class,
     mc,
     child,
     idAlias,
+    typeCols,
     cols
   }
 }
