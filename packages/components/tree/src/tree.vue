@@ -1,6 +1,12 @@
 <template>
   <ul ref="_ref" :class="_class">
     <z-tree-item v-for="it in data" :data="it" :key="it?.[idAlias]">
+      <template #default="{ data }">
+        <slot :data="data"></slot>
+      </template>
+      <template v-for="it in cols" v-if="it.type == 'temp'" #[it.id]="{ data }">
+        <slot :name="it.id" :data="data"></slot>
+      </template>
     </z-tree-item>
   </ul>
 </template>
