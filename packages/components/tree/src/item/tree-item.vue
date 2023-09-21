@@ -1,13 +1,13 @@
 <template>
   <li ref="_ref" :class="_class">
-    <div class="tree-ceils">
-      <div v-for="col in cols" :key="col.id">
+    <z-flex class="ceils">
+      <div class="ceil" v-for="col in cols" :key="col.id" :class="'ceil-' + col.id">
         <slot v-if="col.type == 'temp'" :name="col.id" :data="data"></slot>
-        <component v-else-if="col.type"></component>
-        <span v-else>{{ data?.[col.id] }}</span>
+        <component :is="col.type" v-else-if="col.type"></component>
+        <slot v-else>{{ data?.[col.id] }}</slot>
       </div>
-      <slot>{{ mc }}</slot>
-    </div>
+      <slot v-if="!cols.length">{{ mc }}</slot>
+    </z-flex>
     <ul class="tree-items" v-if="child">
       <z-tree-item v-for="it in child" :data="it" :key="it?.[idAlias]">
         <template #default="{ data }">
