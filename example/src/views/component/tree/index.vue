@@ -27,7 +27,8 @@ export default {
       ],
       cols: [
         { id: 'xm', type: 'temp' },
-        { id: 'xb', type: '' }
+        { id: 'mc', type: '' },
+        { id: 'xb', type: 'z-input' }
       ],
       alias: {}
     }
