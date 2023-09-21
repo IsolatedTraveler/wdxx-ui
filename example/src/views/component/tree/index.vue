@@ -40,5 +40,9 @@ export default {
 <style lang="scss">
 .component-tree {
   width: 100%;
+
+  .z-tree {
+    margin-left: 50px;
+  }
 }
 </style>
