@@ -10,6 +10,15 @@ export const PropsBaseString = {
   type: String,
   default: ''
 }
+export const PropsBaseNum = {
+  type: Number,
+  default: ''
+}
+export const PropsBaseNumR = {
+  type: Number,
+  required: true,
+  default: 0
+}
 export const PropsBaseStringN = {
   type: [String, Number],
   default: ''

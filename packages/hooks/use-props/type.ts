@@ -16,7 +16,8 @@ export type EpProp<Type, Default, Required> = {
   readonly type: PropType<Type>
   readonly required: [Required] extends [true] ? true : false
   readonly validator: ((val: unknown) => boolean) | undefined
-} & IfNever<Default, unknown, { readonly defalut: Default }>
+  readonly default: Default
+}
 export type PropFinalized<Type, Value, Validator, Default, Required> = EpProp<PropMergeType<Type, Value, Validator>, UnknownToNever<Default>, Required>
 
 

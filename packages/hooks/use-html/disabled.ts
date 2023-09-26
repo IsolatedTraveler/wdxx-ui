@@ -1,4 +1,4 @@
-import { computed, nextTick, ref } from "vue"
+import { computed, ref } from "vue"
 
 export const useHtmlDisabled = (props?: any, emit?: any) => {
   const disabled = ref(false)
@@ -7,10 +7,10 @@ export const useHtmlDisabled = (props?: any, emit?: any) => {
     if (!_disabled.value) {
       disabled.value = true
       emit(evt)
-      nextTick(() => {
+      setTimeout(() => {
         disabled.value = false
-      })
+      }, 500)
     }
   }
-  return {_disabled, _handleClick}
+  return { _disabled, _handleClick }
 }

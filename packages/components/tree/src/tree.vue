@@ -1,6 +1,6 @@
 <template>
   <ul ref="_ref" :class="_class">
-    <z-tree-item v-for="it in data" :data="it" :key="it?.[idAlias]">
+    <z-tree-item v-for="(it, i) in data" :data="it" :key="it?.[idAlias]" :index="i" :childIndex="0">
       <template #default="{ data }">
         <slot :data="data"></slot>
       </template>

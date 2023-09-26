@@ -1,6 +1,6 @@
-import { TreeProps } from "@ui/components/tree/src/tree";
-import { propsTreeColType } from "@ui/vars";
-import { ComputedRef, InjectionKey, computed, provide } from "vue";
+import { TreeProps, TreeEmits } from "@ui/components/tree/src/tree";
+import { EventSelect, ObjAny, propsTreeColType } from "@ui/vars";
+import { ComputedRef, InjectionKey, SetupContext, computed, provide } from "vue";
 export interface Col {
   id: string,
   type: propsTreeColType
@@ -10,24 +10,29 @@ export interface ProvideTree {
   childAlias: ComputedRef<string | number>
   pIdAlias: ComputedRef<string | number>
   mcAlias: ComputedRef<string | number>
-  cols: ComputedRef<Array<Col>>
-  typeCols: ComputedRef<Array<Col>>
+  cols: ComputedRef<Array<ObjAny>>
+  typeCols: ComputedRef<Array<ObjAny>>
+  click: Function
 }
 export const provideTreeId: InjectionKey<ProvideTree> = Symbol('tree')
-export const useProvideTree = (props: TreeProps) => {
+export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['emit']) => {
   const idAlias = computed(() => props?.alias?.id || 'id')
     , childAlias = computed(() => props?.alias?.child || 'child')
     , pIdAlias = computed(() => props?.alias?.pId || 'pid')
     , mcAlias = computed(() => props?.alias?.mc || 'mc')
     , cols = computed(() => props?.cols || [])
     , typeCols = computed(() => (props.cols || []).filter(it => it.type == 'temp'))
+    , click = (data: ObjAny) => {
+      emit(EventSelect, data)
+    }
   provide(provideTreeId, {
     idAlias,
     childAlias,
     pIdAlias,
     mcAlias,
     cols,
-    typeCols
+    typeCols,
+    click
   })
   return { idAlias, typeCols }
 }

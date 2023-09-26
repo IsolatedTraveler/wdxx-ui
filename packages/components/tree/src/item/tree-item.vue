@@ -1,16 +1,17 @@
 <template>
   <li ref="_ref" :class="_class">
-    <z-flex class="tree-row">
-      <tree-col v-if="cols.length" v-for="col in cols" :key="col.id" :class="'col-' + col.id">
+    <z-flex class="tree-row" :style="{ paddingLeft: childIndex + 'em' }" @click.stop="selected">
+      <div class="tree-col" v-if="cols.length" v-for="col in cols" :key="col.id" :class="'col-' + col.id">
         <slot v-if="col.type == 'temp'" :name="col.id" :data="data"></slot>
-        <slot v-else-if="!col.type" :data="data">{{ mc }}</slot>
-      </tree-col>
-      <tree-col v-else>
+        <tree-col v-else-if="col.type" :col="col" :data="data"></tree-col>
+        <slot v-else :data="data">{{ mc }}</slot>
+      </div>
+      <div class="tree-col" v-else>
         <slot :data="data">{{ mc }}</slot>
-      </tree-col>
+      </div>
     </z-flex>
     <ul class="tree-child" v-if="child">
-      <z-tree-item v-for="it in child" :data="it" :key="it?.[idAlias]">
+      <z-tree-item v-for="(it, i) in child" :data="it" :key="it?.[idAlias]" :index="i" :childIndex="childIndex + 1">
         <template #default="{ data }">
           <slot :data="data"></slot>
         </template>
@@ -22,14 +23,15 @@
   </li>
 </template>
 <script lang="ts" setup>
-import { treeItemEmits, treeItemProps } from './tree-item'
+import { treeItemProps } from './tree-item'
 import { useTreeItem } from './use-tree-item'
+import treeCol from "../col/tree-col.vue";
 defineOptions({
   name: 'z-tree-item'
 })
 const props = defineProps(treeItemProps)
-const emit = defineEmits(treeItemEmits)
-const { _ref, _class, child, idAlias, typeCols, mc, cols } = useTreeItem(props, emit)
+const { childIndex = 0 } = props
+const { _ref, _class, child, idAlias, typeCols, mc, cols, selected } = useTreeItem(props)
 defineExpose({
   ref: _ref
 })

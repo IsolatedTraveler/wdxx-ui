@@ -5,7 +5,8 @@
         {{ data.xm }}
       </template>
     </z-tree>
-    <z-tree :data="data" :alias="alias"></z-tree>
+    <z-tree :data="data" :alias="{ mc: 'xb' }">
+    </z-tree>
   </z-flex>
 </template>
 <script lang="ts">
