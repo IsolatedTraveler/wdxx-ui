@@ -1,6 +1,6 @@
 <template>
   <z-flex class="component-tree">
-    <z-tree :data="data" :cols="cols">
+    <z-tree :data="cdata" :cols="cols">
       <template #xm="{ data }">
         {{ data.xm }}
       </template>
@@ -25,6 +25,16 @@ export default {
             }
           ]
         }
+      ],
+      cdata: [
+        {
+          mc: '测试', id: 'cs', xm: '姓名', xb: '性别', pid: ''
+        },
+        { mc: '测试1', id: 'cs1', xm: '姓名1', xb: '性别1', pid: 'cs' }
+        , {
+          mc: '测试2', id: 'cs2', xm: '姓名2', xb: '性别2', pid: 'cs'
+        },
+        { mc: '测试21', id: 'cs21', xm: '姓名21', xb: '性别21', pid: 'cs2' }
       ],
       cols: [
         { id: 'xm', type: 'temp' },

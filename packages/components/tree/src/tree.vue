@@ -1,6 +1,6 @@
 <template>
   <ul ref="_ref" :class="_class">
-    <z-tree-item v-for="(it, i) in data" :data="it" :key="it?.[idAlias]" :index="i" :childIndex="0">
+    <z-tree-item v-for="(it, i) in Pdata" :data="it" :key="it?.[idAlias]" :index="i" :childIndex="0">
       <template #default="{ data }">
         <slot :data="data"></slot>
       </template>
@@ -19,7 +19,7 @@ defineOptions({
 })
 const props = defineProps(treeProps)
 const emit = defineEmits(treeEmits)
-const { _ref, _class, idAlias, typeCols } = useTree(props, emit)
+const { _ref, _class, idAlias, typeCols, Pdata } = useTree(props, emit)
 defineExpose({
   ref: _ref
 })

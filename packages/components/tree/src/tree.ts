@@ -1,7 +1,7 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
 import { EventSelect, ObjAny } from "@ui/vars";
-import { PropsBaseArray_Object, PropsBaseObject, } from "@ui/props";
+import { PropsBaseArray_Object, PropsBaseObject } from "@ui/props";
 export const treeProps = propsBuildS({
   data: PropsBaseArray_Object,
   alias: PropsBaseObject,

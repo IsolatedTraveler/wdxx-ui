@@ -7,12 +7,12 @@ export interface Col {
 }
 export interface ProvideTree {
   idAlias: ComputedRef<string | number>
-  childAlias: ComputedRef<string | number>
   pIdAlias: ComputedRef<string | number>
   mcAlias: ComputedRef<string | number>
   cols: ComputedRef<Array<ObjAny>>
   typeCols: ComputedRef<Array<ObjAny>>
   click: Function
+  filter: Function
 }
 export const provideTreeId: InjectionKey<ProvideTree> = Symbol('tree')
 export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['emit']) => {
@@ -25,14 +25,19 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
     , click = (data: ObjAny) => {
       emit(EventSelect, data)
     }
+    , filter = (id: string = '', data: ObjAny = {}) => {
+      return data[childAlias.value] || props.data?.filter(it => {
+        return (it[pIdAlias.value] || '') == id
+      })
+    }
   provide(provideTreeId, {
     idAlias,
-    childAlias,
     pIdAlias,
     mcAlias,
     cols,
     typeCols,
-    click
+    click,
+    filter
   })
-  return { idAlias, typeCols }
+  return { idAlias, typeCols, filter }
 }

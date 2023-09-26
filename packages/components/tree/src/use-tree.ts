@@ -5,11 +5,13 @@ export const useTree = (props: TreeProps, emit: SetupContext<TreeEmits>['emit'])
   const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
     name: 'tree'
   })), { _class } = useCss(classVal, _ref)
-    , { idAlias, typeCols } = useProvideTree(props, emit)
+    , { idAlias, typeCols, filter } = useProvideTree(props, emit)
+    , Pdata = computed(filter)
   return {
     _ref,
     _class,
     idAlias,
-    typeCols
+    typeCols,
+    Pdata
   }
 }
