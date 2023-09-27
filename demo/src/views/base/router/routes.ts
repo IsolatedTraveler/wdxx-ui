@@ -5,7 +5,7 @@ interface Routes {
 export default {
   baseLogin: {
     name: 'baseLogin',
-    path: 'login',
+    path: '/baseLogin',
     component: () => import('@base/login/index.vue')
   }
 } as Routes
