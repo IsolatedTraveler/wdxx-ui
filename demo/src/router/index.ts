@@ -18,7 +18,7 @@ router.beforeEach((to, _from, next) => {
         next()
       }
     } else {
-      next({ path: '/base/login' })
+      next({ path: '/baseLogin' })
     }
   } else {
     console.error('为保证系统兼容性，暂只支持name跳转，不支持其他模式跳转')

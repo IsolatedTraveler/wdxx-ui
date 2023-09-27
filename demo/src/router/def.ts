@@ -6,9 +6,9 @@ export default [
     path: '/',
     redirect() {
       if (checkLogin()) {
-        return { name: '/base/home' }
+        return { path: '/baseHome' }
       } else {
-        return { name: '/base/login' }
+        return { path: '/baseLogin' }
       }
     }
   },
