@@ -2,4 +2,3 @@ packages:
   - packages/*
   - build/*
   - example
-  - demo
