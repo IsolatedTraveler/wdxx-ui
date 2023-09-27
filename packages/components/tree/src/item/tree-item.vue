@@ -10,8 +10,9 @@
         <slot :data="data">{{ mc }}</slot>
       </div>
     </z-flex>
-    <ul class="tree-child" v-if="child">
-      <z-tree-item v-for="(it, i) in child" :data="it" :key="it?.[idAlias]" :index="i" :childIndex="childIndex + 1">
+    <ul class="tree-child" v-if="child" v-show="judgeExpand">
+      <z-tree-item v-for="(it, i) in child" :data="it" :key="it[idAlias]" :index="i" :childIndex="childIndex + 1"
+        :pid="pid?.concat(data[idAlias])">
         <template #default="{ data }">
           <slot :data="data"></slot>
         </template>
@@ -31,7 +32,7 @@ defineOptions({
 })
 const props = defineProps(treeItemProps)
 const { childIndex = 0 } = props
-const { _ref, _class, child, idAlias, typeCols, mc, cols, selected } = useTreeItem(props)
+const { _ref, _class, child, idAlias, typeCols, mc, cols, selected, judgeExpand } = useTreeItem(props)
 defineExpose({
   ref: _ref
 })

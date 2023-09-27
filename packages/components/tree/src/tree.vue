@@ -1,6 +1,6 @@
 <template>
   <ul ref="_ref" :class="_class">
-    <z-tree-item v-for="(it, i) in Pdata" :data="it" :key="it?.[idAlias]" :index="i" :childIndex="0">
+    <z-tree-item v-for="(it, i) in Pdata" :data="it" :key="it[idAlias]" :index="i" :childIndex="0" :pid="[]">
       <template #default="{ data }">
         <slot :data="data"></slot>
       </template>

@@ -1,4 +1,4 @@
-# my-project
+# his-web
 
 ## Project setup
 ```

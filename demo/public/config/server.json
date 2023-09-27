@@ -1,0 +1,36 @@
+{
+  "baseUrl": [],
+  "defaultUrl": "/api",
+  "print": {
+    "cLoodP": {
+      "url": "http://localhost:8000/CLodopfuncs.js",
+      "username": "万达信息股份有限公司",
+      "password": "F3EC44B7AB0D0B6264D8D05CD7C0C047"
+    }
+  },
+  "xtxx": {
+    "company": "精图无限",
+    "version": "1.0.0",
+    "mc": "核酸检测管理平台",
+    "bhh": ""
+  },
+  "magic": {
+    "token": "MjAyMjAwMjpyejBwbTJaSFJYR043d3hNc3FrOA==",
+    "token_zs": "MjAyMjk5OTo3a2lmaCYzNEtm",
+    "token_cs": "MjAyMjAwMjpyejBwbTJaSFJYR043d3hNc3FrOA==",
+    "zhxx": {
+      "username": "500107029",
+      "password": "XHncx0FK14esLDpTkPra",
+      "username_zs": "jtwx",
+      "password_zs": "jtwx@202211",
+      "username_cs": "500107029",
+      "password_cs": "XHncx0FK14esLDpTkPra"
+    }
+  },
+  "dqxx": {
+    "mc": "广元市",
+    "dm": "510800000000",
+    "jb": "3"
+  },
+  "bbUrl": "http://192.168.100.232:8085/jmreport/view/"
+}

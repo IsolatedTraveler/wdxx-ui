@@ -6,10 +6,15 @@ export const useTreeItem = (props: TreeItemProps) => {
   const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
     name: 'tree-item'
   })), { _class } = useCss(classVal, _ref)
-    , { mc, child, idAlias, typeCols, cols, click } = useInjectTreeItem(props)
+    , { mc, child, idAlias, typeCols, cols, click, judgeExpand } = useInjectTreeItem(props)
   function selected() {
-    click(props.data)
+    click(props.data[idAlias.value], props.data, props.pid)
   }
+  setTimeout(() => {
+    if (props.data[idAlias.value] === 'component') {
+      console.log(judgeExpand.value)
+    }
+  }, 5000);
   return {
     _ref,
     _class,
@@ -18,6 +23,7 @@ export const useTreeItem = (props: TreeItemProps) => {
     idAlias,
     typeCols,
     cols,
-    selected
+    selected,
+    judgeExpand
   }
 }

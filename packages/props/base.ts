@@ -57,3 +57,6 @@ export const PropsBaseState = {
 export const PropsBaseArray_Object = {
   type: Array<ObjAny>
 }
+export const PropsBaseArrayStringN = {
+  type: Array<string | number>
+}

@@ -1,17 +1,6 @@
 <template>
   <z-flex class="App">
-    <div class="left">
-      <ul>
-        <li v-for="(it) in menu" @click.stop="clickEvent(it)">
-          <p>{{ it.title }}</p>
-          <ul v-if="it.children && it.children.length" v-show="!showId[it.path]">
-            <li v-for="(v) in it.children" @click.stop="clickEvent(v)">
-              {{ v.title }}
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+    <z-tree class="left" :data="menu" :alias="alias" @selected="clickEvent" expand="elementFlex"></z-tree>
     <router-view class="right" />
   </z-flex>
 </template>
@@ -20,21 +9,19 @@ import menu from './router/def/index'
 export default {
   name: 'App',
   data() {
-    var showId: any = {}
     return {
       menu,
-      showId
+      alias: {
+        id: 'name',
+        mc: 'title',
+        child: 'children'
+      }
     }
   },
-  mounted() {
-    console.timeEnd()
-  },
   methods: {
-    clickEvent({ name, path }: any) {
+    clickEvent({ name }: any) {
       if (name) {
         this.$router.push({ name })
-      } else {
-        this.showId[path] = !this.showId[path]
       }
     }
   }
