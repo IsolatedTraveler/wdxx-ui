@@ -33,7 +33,7 @@
         "src/views/*"
       ],
       "@base/*": [
-        "src/views/base/*"
+        "src/views/base/view/*"
       ],
       "@dzph/*": [
         "src/views/dzph/view/*"

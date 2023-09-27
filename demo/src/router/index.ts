@@ -1,18 +1,22 @@
-import { getJsUrl } from "@/assets/js"
 import { createRouter, createWebHashHistory } from "vue-router"
-import routes from './default'
-import { useBaseStore } from "@/store"
+import { getJsUrl } from "@/assets/js"
+import routes from './def'
+import { checkLogin } from "./checkLogin"
+import { loadXt } from "./404"
+export { loadXt } from './404'
 export const router = createRouter({
   history: createWebHashHistory(getJsUrl()),
   routes
 })
-router.beforeEach((to, from, next) => {
-  let baseStore = useBaseStore(), back = baseStore.getBack
-  if (back && typeof back === 'function') {
-    back()
-    next(false)
+router.beforeEach((to, _from, next) => {
+  if (to.name) {
+    if (checkLogin(to)) {
+      Promise.all(Object.values(loadXt).filter(it => it).map(it => it.resolve))
+    } else {
+      next({ name: 'baseLogin' })
+    }
   } else {
-    baseStore.setFrom({ name: from.name, query: from.query, to: to.name })
-    next()
+    console.error('为保证系统兼容性，暂只支持name跳转，不支持其他模式跳转')
   }
 })
+export default router as typeof router
