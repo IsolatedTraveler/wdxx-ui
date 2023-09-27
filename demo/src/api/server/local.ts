@@ -19,6 +19,9 @@ export function getConfig(name?: string): Promise<any> {
     })
   }
 }
+export function syncGetConfig(name?: string): any {
+  return name ? config?.[name] : config
+}
 export function dealUrl(arr: any = '', def: string = ''): string {
   arr = arr.servers || arr
   if (typeof arr === 'object') {

@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia';
-import WdxxUi from '@/base/src/index'
-import '@/base/src/css/index.scss'
+import wdxx from '../../dist/z-uis/es'
+import '../../dist/z-uis/styles/index.css';
 import App from './App.vue'
 import { router } from "./router";
 import * as api from './api'
@@ -11,7 +11,8 @@ api.setConfig(util.zzjConfig())
 util.setFontSize(1200)
 app.config.globalProperties.$api = api;
 app.config.globalProperties.$util = util;
-app.use(WdxxUi)
+// app.use(wdxx)
+console.log(wdxx)
 app.use(router)
 app.use(createPinia())
 app.mount('#app')

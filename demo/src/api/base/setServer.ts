@@ -18,15 +18,15 @@ function dealRes({ status = 200, data = null, config: { checkLogin: judge = fals
     if (data.code == 1) {
       return data
     }
-    return Promise.reject({ code: -1, msg: data.message || data.msg })
+    return Promise.reject({ code: -1, message: data.message || data.msg })
   } else {
     if (!judge) {
       // 校验是否登录系统，并处理数据
     }
     if (data?.code == 1 && data?.data == 'unauthorized') {
-      return Promise.reject({ msg: errorCode[401] })
+      return Promise.reject({ message: errorCode[401] })
     } else {
-      return Promise.reject({ code: -1, msg: errorCode[status] || errorCode.default })
+      return Promise.reject({ code: -1, message: errorCode[status] || errorCode.default })
     }
   }
 }

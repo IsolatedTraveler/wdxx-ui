@@ -1,4 +1,4 @@
-import { magic, setServer } from '../base'
+import { dealData, magic, setServer } from '../base'
 import { getConfig, getServerUrl } from './local'
 let server: any, servering: Promise<any>
 // 设置magic基础服务
@@ -24,12 +24,13 @@ function setAuthorization() {
     return magicPost(jqurl, {}, zhxx).then(res => magic.headers.Authorization = res.Authorization)
   })
 }
-export function magicPost(url: string, data: any = {}, params: any = {}) {
+export function magicPost(url: string, data: any = {}, params: any = {}, headers = {}) {
   return getServer().then(() => {
     return server({
       method: 'post',
       url,
-      data,
+      headers,
+      data: dealData(data),
       params
     })
   })

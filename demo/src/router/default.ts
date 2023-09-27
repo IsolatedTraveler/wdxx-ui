@@ -1,4 +1,4 @@
-import home from '@view/home/index.vue'
+// import home from '@view/home/index.vue'
 import { RouteRecordRaw } from 'vue-router'
 // import notFound from '@view/notFound'
 // import drugsQuery from '@view/drugsQuery'
@@ -16,14 +16,15 @@ import { RouteRecordRaw } from 'vue-router'
 // import result from '@view/result'
 // import jianka from '@view/jianka'
 export default [
-  {
-    path: '',
-    redirect: '/home'
-  }, {
-    path: '/home',
-    name: 'home',
-    component: home
-  }/*, {
+  // {
+  //   path: '',
+  //   redirect: '/home'
+  // }, {
+  //   path: '/home',
+  //   name: 'home',
+  //   component: home
+  // }
+  /*, {
     path: '/registerPay',
     name: 'registerPay',
     component: registerPay
