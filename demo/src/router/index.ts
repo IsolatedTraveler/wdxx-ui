@@ -9,9 +9,15 @@ export const router = createRouter({
   routes
 })
 router.beforeEach((to, _from, next) => {
+  console.log(to)
   if (to.name) {
     if (checkLogin(to)) {
-      Promise.all(Object.values(loadXt).filter(it => it).map(it => it.resolve))
+      const pro = Object.values(loadXt).filter(it => it)
+      if (pro.length) {
+        Promise.all(pro.map(it => it.resolve)).then(() => next())
+      } else {
+        next()
+      }
     } else {
       next({ name: 'baseLogin' })
     }
