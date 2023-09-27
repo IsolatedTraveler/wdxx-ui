@@ -1,5 +1,6 @@
 import { RouteRecordRaw, RouteLocationNormalized } from 'vue-router'
 import router from './index'
+import { useBaseStore } from '@/store'
 interface XtMenu {
   resolve: any
   to?: RouteLocationNormalized
@@ -7,10 +8,13 @@ interface XtMenu {
 interface LoadXts {
   [key: string]: XtMenu
 }
+const xtmReg = /(^[a-z]+|[A-Z0-9][a-z0-9]+)/g
 function addRoute(routes, name) {
+  console.log(routes, name)
   name ? router.addRoute(name, routes) : router.addRoute(routes)
 }
-function addRoutes(routes, name?) {
+function addRoutes(routes) {
+  const name = useBaseStore().getRoot ? '' : 'menu'
   if (Array.isArray(routes)) {
     routes.forEach(it => {
       addRoute(it, name)
@@ -19,49 +23,50 @@ function addRoutes(routes, name?) {
     addRoute(routes, name)
   }
 }
-function xtxxLoad(xt) {
+function xtxxLoad(xt, to) {
   return Promise.all([
     import(`@view/${xt}/router/index.ts`).then(({ default: res }) => {
-      return res().then(addRoutes)
+      return res().then(addRoutes).then(() => {
+        to && router.replace(to)
+      })
     })
   ])
 }
-function getXtxx(xt) {
-  if (isLoadXt['base'] || xt == 'base') {
-    return xtxxLoad(xt)
+function getXtm(to) {
+  if (to.name) {
+    return (to.name as string).match(xtmReg)[0]
+  } else if (to.path) {
+    var path = (to.path as string).split('/'), first = (path[0] || path[1]).match(xtmReg)[0]
+    return first === 'base' ? (path[0] || first) : first
   } else {
-    return Promise.all([
-      xtxxLoad('base'),
-      xtxxLoad(xt)
-    ])
+    console.warn('路由解析出错，暂不支持该跳转模式')
   }
 }
-function loadXtxx(xt: string) {
-  if (isLoadXt[xt]) {
-    if (!loadXt[xt]) {
-      console.error('未获取到该菜单')
-      return { name: 'base404' }
-    }
-  } else {
-    isLoadXt[xt] = false
-    loadXt[xt] = {
-      resolve: getXtxx(xt)
-    }
+export function loadXtxx(xt: string, to?) {
+  isLoadXt[xt] = true
+  loadXt[xt] = {
+    resolve: xtxxLoad(xt, to),
+    to
   }
+  return loadXt[xt].resolve
 }
 export const loadXt: LoadXts = {}, isLoadXt = {}
 export default {
   path: '/:pathMatch(.*)*',
   redirect(to) {
-    const xt = (to.name as string).match(/(^[a-z]+|[A-Z][a-z]+)/g)[0]
-    if (xt) {
-      loadXtxx(xt)
-      loadXt[xt].to = to
+    console.log('404')
+    const xt = getXtm(to)
+    console.log('getXtm:', xt)
+    if (xt && isLoadXt) {
+      if (loadXt[xt]) {
+        loadXt[xt].to = to
+      } else {
+        console.warn('未找到该菜单')
+        return { path: 'base404' }
+      }
     } else {
-      console.error('系统信息获取失败')
+      loadXtxx(xt, to)
     }
-    if (xt && isLoadXt[xt]) {
-
-    }
+    return { path: 'baseLoad' }
   }
 } as RouteRecordRaw
