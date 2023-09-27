@@ -1,5 +1,5 @@
 <template>
-  <div style="text-align: center;font-size: .56rem;line-height: 2;">login开发中</div>
+  <div style="text-align: center;font-size: .56rem;line-height: 2;">qtxtlogin开发中</div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';

@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia';
-import wdxx from '../../dist/z-uis/es'
-import '../../dist/z-uis/styles/index.css';
+import wdxx from '../../packages/z-ui/index'
+import '../../packages/styles/dist/index.css';
 import App from './App.vue'
 import { router, loadXtxx } from "./router";
 import * as api from './api'
@@ -13,8 +13,7 @@ app.config.globalProperties.$api = api;
 app.config.globalProperties.$util = util;
 app.use(createPinia())
 loadXtxx('base').then(() => {
-  // app.use(wdxx)
-  console.log(wdxx)
+  app.use(wdxx)
   app.use(router)
   app.mount('#app')
 })

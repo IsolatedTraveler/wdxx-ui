@@ -10,10 +10,12 @@ interface LoadXts {
 }
 const xtmReg = /(^[a-z]+|[A-Z0-9][a-z0-9]+)/g
 function addRoute(routes, name) {
+  console.log(name, routes)
   name ? router.addRoute(name, routes) : router.addRoute(routes)
+  console.log(router.getRoutes())
 }
 function addRoutes(routes) {
-  const name = useBaseStore().getRoot ? '' : 'menu'
+  const name = useBaseStore().getRoot ? '' : 'baseMenu'
   if (Array.isArray(routes)) {
     routes.forEach(it => {
       addRoute(it, name)
@@ -25,18 +27,19 @@ function addRoutes(routes) {
 function xtxxLoad(xt, to) {
   return Promise.all([
     import(`@view/${xt}/router/index.ts`).then(({ default: res }) => {
-      return res().then(addRoutes).then(() => {
-        to && router.replace(to)
-      })
+      return res().then(addRoutes)
     })
-  ])
+  ]).then(() => {
+    to && router.replace(to)
+  })
 }
 function getXtm(to) {
   if (to.name) {
     return (to.name as string).match(xtmReg)[0]
   } else if (to.path) {
-    var path = (to.path as string).split('/'), first = (path[0] || path[1]).match(xtmReg)[0]
-    return first === 'base' ? (path[0] || first) : first
+    var path = (to.path as string).split('/'), first = (path.shift() || path.shift()).match(xtmReg)[0]
+    console.log(first, path, path[0])
+    return first === 'base' && path[0] ? path[0].match(xtmReg)[0] : first
   } else {
     console.warn('路由解析出错，暂不支持该跳转模式')
   }
@@ -56,16 +59,16 @@ export default {
     console.log('404')
     const xt = getXtm(to)
     console.log('getXtm:', xt)
-    if (xt && isLoadXt) {
+    if (xt && isLoadXt[xt]) {
       if (loadXt[xt]) {
         loadXt[xt].to = to
       } else {
         console.warn('未找到该菜单')
-        return { path: 'base404' }
+        return { path: '/base404' }
       }
     } else {
       loadXtxx(xt, to)
     }
-    return { path: 'baseLoad' }
+    return { path: '/baseLoad' }
   }
 } as RouteRecordRaw
