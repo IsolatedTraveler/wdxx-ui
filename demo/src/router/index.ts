@@ -9,7 +9,6 @@ export const router = createRouter({
   routes
 })
 router.beforeEach((to, _from, next) => {
-  console.log(to)
   if (to.name) {
     if (checkLogin(to)) {
       const pro = Object.values(loadXt).filter(it => it)
