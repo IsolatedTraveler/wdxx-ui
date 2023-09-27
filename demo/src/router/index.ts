@@ -9,7 +9,7 @@ export const router = createRouter({
   routes
 })
 router.beforeEach((to, _from, next) => {
-  if (to.name) {
+  if (to.path) {
     if (checkLogin(to)) {
       const pro = Object.values(loadXt).filter(it => it)
       if (pro.length) {
@@ -18,7 +18,7 @@ router.beforeEach((to, _from, next) => {
         next()
       }
     } else {
-      next({ name: 'baseLogin' })
+      next({ path: '/base/login' })
     }
   } else {
     console.error('为保证系统兼容性，暂只支持name跳转，不支持其他模式跳转')
