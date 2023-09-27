@@ -10,7 +10,6 @@ interface LoadXts {
 }
 const xtmReg = /(^[a-z]+|[A-Z0-9][a-z0-9]+)/g
 function addRoute(routes, name) {
-  console.log(routes, name)
   name ? router.addRoute(name, routes) : router.addRoute(routes)
 }
 function addRoutes(routes) {
