@@ -7,5 +7,10 @@ export default {
     name: 'baseLogin',
     path: '/baseLogin',
     component: () => import('@base/login/index.vue')
+  },
+  baseHome: {
+    name: 'baseHome',
+    path: '/baseHome',
+    component: () => import('@base/home/index.vue')
   }
 } as Routes
