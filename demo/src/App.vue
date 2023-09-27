@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="wd_flex">
-    <wd-mask v-show="load" class="maskzzj" shape="loading" />
+    <!-- <wd-mask v-show="load" class="maskzzj" shape="loading" /> -->
     <router-view class="wd_flex wd_abs" />
   </div>
 </template>
