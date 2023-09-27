@@ -13,6 +13,6 @@ app.config.globalProperties.$api = api;
 app.config.globalProperties.$util = util;
 // app.use(wdxx)
 console.log(wdxx)
-app.use(router)
 app.use(createPinia())
+app.use(router)
 app.mount('#app')
