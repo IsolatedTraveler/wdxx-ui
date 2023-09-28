@@ -1,5 +1,6 @@
 <template>
-  <z-flex>
+  <z-flex class="base-menu">
+    <z-tree></z-tree>
     <router-view v-slot="{ Component, route }">
       <keep-alive :include="tabUrl">
         <component :is="Component" v-show="!ifrUrl" :key="route.name" class="jt-auto" />
@@ -20,3 +21,9 @@ export default defineComponent({
   }
 })
 </script>
+<style lang="scss">
+.base-menu {
+  width: 100%;
+  height: 100%;
+}
+</style>

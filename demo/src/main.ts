@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia';
 import wdxx from 'z-uis'
-import 'z-uis/styles/index.css';
+import '../../dist/z-uis/styles/index.css';
 import App from './App.vue'
 import { router, loadXtxx } from "./router";
 import * as api from './api'
