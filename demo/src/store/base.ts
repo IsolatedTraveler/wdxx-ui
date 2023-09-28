@@ -6,7 +6,7 @@ export const useBaseStore = defineStore('load', {
   }),
   getters: {
     getLoad: (state) => !!state.load.length,
-    getRoot: () => ''
+    getRoot: () => window['wdphisJsObject'] ? '/' : ''
   },
   actions: {
     setLoad(v) {
