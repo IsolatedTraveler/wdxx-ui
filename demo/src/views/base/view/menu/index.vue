@@ -1,9 +1,12 @@
 <template>
   <z-flex class="base-menu">
     <z-tree @checked="changePage"></z-tree>
+    <span>24323</span>
+    <span>24323</span>
+    <span>24323</span>
     <router-view v-slot="{ Component, route }">
       <keep-alive :include="tabUrl">
-        <component :is="Component" v-show="!ifrUrl" :key="route.name" class="jt-auto" />
+        <component :is="Component" v-show="!ifrUrl" :key="route.name" class="router" />
       </keep-alive>
     </router-view>
   </z-flex>
@@ -30,5 +33,10 @@ export default defineComponent({
 .base-menu {
   width: 100%;
   height: 100%;
+
+  >.router {
+    flex-grow: 1;
+    height: 100%;
+  }
 }
 </style>

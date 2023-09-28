@@ -9,4 +9,5 @@ getRoute(routes, xtm, 'home')
 getRoute(routes, xtm, 'load')
 getRoute(routes, xtm, 'login')
 getRoute(routes, xtm, 'menu')
+getRoute(routes, xtm, 'dmgl')
 export default routes

@@ -1,9 +1,9 @@
 <template>
   <z-flex col class="element-flex">
     <z-flex justify="end" align="end" self="end" wrap>
-      <z-flex col auto="1" align="center">1</z-flex>
-      <z-flex col auto="2" align="center">2</z-flex>
-      <z-flex col auto="3" align="center">3</z-flex>
+      <z-flex auto="1" align="center">1</z-flex>
+      <z-flex auto="2" align="center">2</z-flex>
+      <z-flex auto="3" align="center">3</z-flex>
     </z-flex>
     <z-flex>
       <z-flex col auto="1" align="center" span="5">4</z-flex>
@@ -29,6 +29,16 @@ export default {
 
   .z-row {
     margin-top: 5px;
+
+    .z-row:nth-child(2) {
+      background-color: aqua;
+      color: white;
+    }
+
+    .z-row:nth-child(3) {
+      background-color: blue;
+      color: white;
+    }
   }
 
   .z-col:nth-child(2) {

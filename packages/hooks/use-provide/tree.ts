@@ -65,7 +65,6 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
       }
     }
     , { expandVal, isExpand } = judgeExpand(props, idAlias, click, clickVal)
-
     , filter = (id: string = '', data: ObjAny = {}) => {
       return data[childAlias.value] || props.data?.filter(it => {
         return (it[pIdAlias.value] || '') == id
