@@ -1,6 +1,6 @@
 <template>
   <z-flex class="base-menu">
-    <z-tree></z-tree>
+    <z-tree @checked="changePage"></z-tree>
     <router-view v-slot="{ Component, route }">
       <keep-alive :include="tabUrl">
         <component :is="Component" v-show="!ifrUrl" :key="route.name" class="jt-auto" />
@@ -17,6 +17,11 @@ export default defineComponent({
     return {
       tabUrl: [],
       ifrUrl: ''
+    }
+  },
+  methods: {
+    changePage() {
+
     }
   }
 })
