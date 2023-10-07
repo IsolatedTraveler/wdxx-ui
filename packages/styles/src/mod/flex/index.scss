@@ -25,4 +25,19 @@
   @include async($styleSelf, 'self', '');
 }
 
+#{getNames(('row'), '', '', '', '')} {
+
+  >* {
+    height: 100%;
+  }
+}
+
+#{getNames(('col'), '', '', '', '')} {
+  flex-direction: column;
+
+  >* {
+    width: 100%;
+  }
+}
+
 @include async($style, '', '');
