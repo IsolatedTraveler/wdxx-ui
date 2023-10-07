@@ -6,11 +6,7 @@ $flex-col--style: (
 $flex-wrap--style: (
   flex-wrap: wrap
 );
-$flex-row--style: (
-  width: 100%
-);
 $flex--class: (
-  row: (style: $flex-row--style),
   col: (style: $flex-col--style),
   wrap: (style: $flex-wrap--style)
 );
