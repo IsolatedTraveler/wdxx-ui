@@ -1,7 +1,7 @@
 import { syncGetConfig } from "../server/local"
 
 export function dealData(params) {
-  var config = syncGetConfig()
+  const config = syncGetConfig()
   params.datasource_sjly = '03'
   params.jgid = params.jgid || config.jgid
   params.czryid = params.czryid || config.ryid
