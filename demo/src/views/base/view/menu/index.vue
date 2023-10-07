@@ -1,11 +1,14 @@
 <template>
-  <z-flex class="base-menu">
-    <z-tree @checked="changePage"></z-tree>
-    <router-view v-slot="{ Component, route }">
-      <keep-alive :include="tabUrl">
-        <component :is="Component" v-show="!ifrUrl" :key="route.name" class="router" />
-      </keep-alive>
-    </router-view>
+  <z-flex class="base-menu" col>
+    <div class="xtxx"></div>
+    <z-flex auto="1" class="xtxq">
+      <z-tree @checked="changePage"></z-tree>
+      <router-view v-slot="{ Component, route }">
+        <keep-alive :include="tabUrl">
+          <component :is="Component" v-show="!ifrUrl" :key="route.name" class="router" />
+        </keep-alive>
+      </router-view>
+    </z-flex>
   </z-flex>
 </template>
 <script lang="ts">
@@ -31,9 +34,19 @@ export default defineComponent({
   width: 100%;
   height: 100%;
 
-  >.router {
-    flex-grow: 1;
-    height: 100%;
+  >.xtxx {
+    height: 200px;
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  >.xtxq {
+    width: 100%;
+
+    >.router {
+      flex-grow: 1;
+      height: 100%;
+    }
   }
 }
 </style>
