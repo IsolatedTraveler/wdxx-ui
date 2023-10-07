@@ -31,7 +31,7 @@ function dealRes({ status = 200, data = null, config: { checkLogin: judge = fals
   }
 }
 export function setServer(baseURL: string, headers: any = null) {
-  let server = axios.create({ baseURL })
+  const server = axios.create({ baseURL })
   setServerConfig(server, headers)
   return server
 }
