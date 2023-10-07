@@ -11,8 +11,7 @@ export const flexProps = propsBuildS({
   span: PropsFlexBase,
   left: PropsBasePositiveInteger,
   right: PropsBasePositiveInteger,
-  order: PropsBasePositiveInteger,
-  pFlex: PropsBaseBoolean
+  order: PropsBasePositiveInteger
 })
 export const flexEmits = {
 }
