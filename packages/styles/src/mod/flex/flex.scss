@@ -1,13 +1,12 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
-$flex-col--style: (
-  flex-direction: column
-);
+
 $flex-wrap--style: (
-  flex-wrap: wrap
+  flex-wrap: wrap,
+  height: auto,
+  width: auto
 );
 $flex--class: (
-  col: (style: $flex-col--style),
   wrap: (style: $flex-wrap--style)
 );
 $style: (
