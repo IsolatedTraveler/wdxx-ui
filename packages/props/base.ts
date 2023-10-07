@@ -45,6 +45,10 @@ export const PropsBaseRadius = {
   values: propsBaseRadius,
   validator: isCssLength
 }
+export const PropsBasePx = {
+  type: [String, Number],
+  validator: isCssLength
+}
 export const PropsBaseSize = {
   type: String,
   values: propsBaseSize
