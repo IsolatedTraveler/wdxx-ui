@@ -1,6 +1,6 @@
 module.exports = {
   port: 8081,
-  https: true,
+  // https: true,
   headers: {
     'Access-Control-Allow-Origin': '*'
   },
