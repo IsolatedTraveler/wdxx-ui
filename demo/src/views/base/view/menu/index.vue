@@ -35,9 +35,9 @@ export default defineComponent({
   height: 100%;
 
   >.xtxx {
-    height: 200px;
-    flex-basis: auto;
+    flex-basis: 3em;
     width: 100%;
+    border-bottom: 1px solid #dcdcdc;
   }
 
   >.xtxq {
