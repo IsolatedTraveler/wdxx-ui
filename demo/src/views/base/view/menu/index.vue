@@ -2,7 +2,9 @@
   <z-flex class="base-menu" col>
     <div class="xtxx"></div>
     <z-flex auto="1" class="xtxq">
-      <z-tree @checked="changePage" span="10em"></z-tree>
+      <z-flex span="10em" wrap class="left">
+        <z-tree @checked="changePage"></z-tree>
+      </z-flex>
       <router-view v-slot="{ Component, route }">
         <keep-alive :include="tabUrl">
           <component :is="Component" v-show="!ifrUrl" :key="route.name" class="router" />
