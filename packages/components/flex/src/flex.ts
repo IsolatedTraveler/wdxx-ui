@@ -1,6 +1,6 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
-import { PropsBaseBoolean, PropsBasePositiveInteger, PropsFlexAlign, PropsBaseRadius, PropsFlexJustify, PropsFlexSelf } from "@ui/props";
+import { PropsBaseBoolean, PropsBasePositiveInteger, PropsFlexAlign, PropsBasePx, PropsFlexJustify, PropsFlexSelf } from "@ui/props";
 export const flexProps = propsBuildS({
   col: PropsBaseBoolean,
   justify: PropsFlexJustify,
@@ -8,9 +8,9 @@ export const flexProps = propsBuildS({
   self: PropsFlexSelf,
   wrap: PropsBaseBoolean,
   auto: PropsBasePositiveInteger,
-  span: PropsBaseRadius,
-  left: PropsBaseRadius,
-  right: PropsBaseRadius,
+  span: PropsBasePx,
+  left: PropsBasePx,
+  right: PropsBasePx,
   order: PropsBasePositiveInteger
 })
 export const flexEmits = {
