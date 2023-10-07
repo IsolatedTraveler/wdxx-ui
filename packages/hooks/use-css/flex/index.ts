@@ -1,5 +1,16 @@
 import { ComponentColAlignT, ComponentSelfAlignT, ObjStr, ComponentRowAlignT, ObjTrue, PKG_PREFIX } from "@ui/vars"
 import { ComputedRef, watch } from "vue"
+function getFlexStylePx(v: any) {
+  if (v) {
+    if (isNaN(v)) {
+      return v
+    } else {
+      return v + '%'
+    }
+  } else {
+    return undefined
+  }
+}
 export interface flexProp {
   row?: ComponentRowAlignT
   col?: ComponentColAlignT
@@ -28,19 +39,16 @@ export const useFlexCss = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTr
   ['justify', 'align', 'self'].forEach(key => {
     useSingle(props, obj, classVal, key, key)
   })
-  watch(() => props?.value?.auto, (v) => {
-    styleVal.flexGrow = v ? v : undefined
-    styleVal.width = props?.value?.auto || props?.value?.span ? 'auto' : undefined
+  watch(() => ({ span: props?.value?.span, auto: props?.value?.span ? undefined : props?.value?.auto }), ({ span, auto }) => {
+    styleVal.flexBasis = auto ? 0 : getFlexStylePx(span)
+    styleVal.flexGrow = auto ? auto : undefined
+    styleVal.width = auto || span ? 'unset' : undefined
   }, { immediate: true })
   watch(() => props?.value?.left, (v) => {
-    styleVal.marginLeft = v ? (v + '%') : undefined
+    styleVal.marginLeft = getFlexStylePx(v)
   }, { immediate: true })
   watch(() => props?.value?.right, (v) => {
-    styleVal.marginRight = v ? (v + '%') : undefined
-  }, { immediate: true })
-  watch(() => props?.value?.span, (v) => {
-    styleVal.flexBasis = v ? (v + '%') : undefined
-    styleVal.width = props?.value?.auto || props?.value?.span ? 'auto' : undefined
+    styleVal.marginRight = getFlexStylePx(v)
   }, { immediate: true })
   watch(() => props?.value?.order, (v) => {
     styleVal.order = v || undefined

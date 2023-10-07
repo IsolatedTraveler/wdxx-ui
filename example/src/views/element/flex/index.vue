@@ -1,19 +1,24 @@
 <template>
   <z-flex col class="element-flex">
-    <z-flex justify="end" align="end" self="end" wrap>
-      <z-flex auto="1" align="center">1</z-flex>
-      <z-flex auto="2" align="center">2</z-flex>
-      <z-flex auto="3" align="center">3</z-flex>
+    <z-flex>
+      <z-flex col auto="1" align="center">auto:1</z-flex>
+      <z-flex col auto="2" align="center">auto:2</z-flex>
+      <z-flex col auto="3" align="center">auto:3</z-flex>
     </z-flex>
     <z-flex>
-      <z-flex col auto="1" align="center" span="5">4</z-flex>
-      <z-flex col auto="1" align="center">5</z-flex>
-      <z-flex col auto="1" align="center">6</z-flex>
+      <z-flex col auto="1" align="center">auto:1</z-flex>
+      <z-flex col auto="1" align="center">auto:1</z-flex>
+      <z-flex col auto="4" align="center">auto:4</z-flex>
     </z-flex>
     <z-flex>
-      <z-flex col auto="1" align="center">7</z-flex>
-      <z-flex col auto="2" align="center">8</z-flex>
-      <z-flex col auto="2" align="center">9</z-flex>
+      <z-flex col auto="1" align="center" span="5">span:4</z-flex>
+      <z-flex col auto="1" align="center">auto:5</z-flex>
+      <z-flex col auto="1" align="center">auto:6</z-flex>
+    </z-flex>
+    <z-flex>
+      <z-flex col auto="1" align="center">auto:7</z-flex>
+      <z-flex col auto="2" align="center">auto:8</z-flex>
+      <z-flex col auto="2" align="center">auto:9</z-flex>
     </z-flex>
   </z-flex>
 </template>
@@ -26,6 +31,7 @@ export default {
 .element-flex {
   width: 100%;
   height: 100%;
+  text-align: center;
 
   .z-row {
     margin-top: 5px;

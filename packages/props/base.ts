@@ -41,7 +41,7 @@ export const PropsBasePositiveInteger = {
   validator: isPositiveInteger
 }
 export const PropsBaseRadius = {
-  type: String,
+  type: [String, Number],
   values: propsBaseRadius,
   validator: isCssLength
 }
