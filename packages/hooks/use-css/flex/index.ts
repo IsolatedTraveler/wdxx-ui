@@ -42,7 +42,6 @@ export const useFlexCss = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTr
   watch(() => ({ span: props?.value?.span, auto: props?.value?.span ? undefined : props?.value?.auto }), ({ span, auto }) => {
     styleVal.flexBasis = auto ? 0 : getFlexStylePx(span)
     styleVal.flexGrow = auto ? auto : undefined
-    styleVal.width = auto || span ? 'unset' : undefined
   }, { immediate: true })
   watch(() => props?.value?.left, (v) => {
     styleVal.marginLeft = getFlexStylePx(v)
