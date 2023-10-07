@@ -8,17 +8,20 @@
     <z-flex>
       <z-flex col auto="1" align="center">auto:1</z-flex>
       <z-flex col auto="1" align="center">auto:1</z-flex>
-      <z-flex col auto="4" align="center">auto:4</z-flex>
+      <z-flex col auto="4" align="center" order="1">auto:4</z-flex>
     </z-flex>
     <z-flex>
-      <z-flex col auto="1" align="center" span="5">span:4</z-flex>
-      <z-flex col auto="1" align="center">auto:5</z-flex>
-      <z-flex col auto="1" align="center">auto:6</z-flex>
+      <z-flex col auto="1" align="center">auto:1</z-flex>
+      <z-flex col auto="2" align="center">auto:2</z-flex>
+      <z-flex col auto="2" align="center">auto:2</z-flex>
     </z-flex>
     <z-flex>
-      <z-flex col auto="1" align="center">auto:7</z-flex>
-      <z-flex col auto="2" align="center">auto:8</z-flex>
-      <z-flex col auto="2" align="center">auto:9</z-flex>
+      <z-flex v-for="i in 30" col auto="1" :key="i" align="center">auto:1</z-flex>
+    </z-flex>
+    <z-flex>
+      <z-flex col span="4" align="center">span:4</z-flex>
+      <z-flex col auto="1" align="center">auto:1</z-flex>
+      <z-flex col auto="1" align="center">auto:1</z-flex>
     </z-flex>
   </z-flex>
 </template>
@@ -34,27 +37,17 @@ export default {
   text-align: center;
 
   .z-row {
-    margin-top: 5px;
+    border-left: 1px solid #dcdcdc;
 
-    .z-row:nth-child(2) {
-      background-color: aqua;
-      color: white;
-    }
-
-    .z-row:nth-child(3) {
-      background-color: blue;
-      color: white;
+    &:first-child {
+      border-top: 1px solid #dcdcdc;
     }
   }
 
-  .z-col:nth-child(2) {
-    background-color: aqua;
-    color: white;
-  }
 
-  .z-col:nth-child(3) {
-    background-color: blue;
-    color: white;
+  .z-col {
+    border-right: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
   }
 }
 </style>
