@@ -2,9 +2,7 @@
 @use '../../vars/index.scss' as *;
 
 $flex-wrap--style: (
-  flex-wrap: wrap,
-  height: auto,
-  width: auto
+  flex-wrap: wrap
 );
 $flex--class: (
   wrap: (style: $flex-wrap--style)
