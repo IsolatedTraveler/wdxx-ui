@@ -5,11 +5,16 @@
       <z-flex span="10em" wrap class="left">
         <z-tree @checked="changePage"></z-tree>
       </z-flex>
-      <router-view v-slot="{ Component, route }">
-        <keep-alive :include="tabUrl">
-          <component :is="Component" v-show="!ifrUrl" :key="route.name" class="router" />
-        </keep-alive>
-      </router-view>
+      <z-flex col class="content" auto="1">
+        <div class="title"></div>
+        <router-view v-slot="{ Component, route }" v-if="lx === 'route'">
+          <keep-alive :include="tabUrl">
+            <component :is="Component" :key="route.name" class="router" />
+          </keep-alive>
+        </router-view>
+        <iframe :src="url" frameborder="0" v-else-if="lx === 'iframe'"></iframe>
+        <z-flex auto="1" class="router" v-else></z-flex>
+      </z-flex>
     </z-flex>
   </z-flex>
 </template>
@@ -21,7 +26,8 @@ export default defineComponent({
   data() {
     return {
       tabUrl: [],
-      ifrUrl: ''
+      lx: '',
+      url: ''
     }
   },
   methods: {
@@ -45,9 +51,18 @@ export default defineComponent({
   >.xtxq {
     width: 100%;
 
-    >.router {
-      flex-grow: 1;
-      height: 100%;
+    >.content {
+      border-left: 1px solid #dcdcdc;
+
+      >.title {
+        flex-basis: 2em;
+        border-bottom: 1px solid #dcdcdc;
+      }
+
+      >.router {
+        flex-grow: 1;
+        height: 100%;
+      }
     }
   }
 }
