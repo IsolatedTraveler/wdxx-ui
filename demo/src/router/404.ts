@@ -10,9 +10,7 @@ interface LoadXts {
 }
 const xtmReg = /(^[a-z]+|[A-Z0-9][a-z0-9]+)/g
 function addRoute(routes, name) {
-  console.log(name, routes)
   name ? router.addRoute(name, routes) : router.addRoute(routes)
-  console.log(router.getRoutes())
 }
 function addRoutes(routes) {
   const name = useBaseStore().getRoot ? '' : 'baseMenu'
@@ -56,9 +54,7 @@ export const loadXt: LoadXts = {}, isLoadXt = {}
 export default {
   path: '/:pathMatch(.*)*',
   redirect(to) {
-    console.log('404')
     const xt = getXtm(to)
-    console.log('getXtm:', xt)
     if (xt && isLoadXt[xt]) {
       if (loadXt[xt]) {
         loadXt[xt].to = to
