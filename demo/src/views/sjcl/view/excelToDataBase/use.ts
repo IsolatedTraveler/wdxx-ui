@@ -1,12 +1,12 @@
-import { SetupContext, ref } from "vue"
+import { Ref, SetupContext, ref } from "vue"
 import { SeEmits, SeProps } from "./prop"
 const xlsx = require("xlsx")
 const fileElem: HTMLInputElement = document.createElement('input')
 fileElem.type = 'file'
-export const seUse = (props: SeProps, emit: SetupContext<SeEmits>['emit']) => {
+export const seUse = (_props: SeProps, _emit: SetupContext<SeEmits>['emit']) => {
   const _ref = ref<HTMLButtonElement>(), excelImport = function () {
     fileElem.click()
-  }, excelData = ref([])
+  }, excelData: Ref<Array<any>> = ref([]), excelKeys = ref([])
   fileElem.onchange = function ({ target }) {
     const files = (target as HTMLInputElement).files
     if (files && files.length) {
@@ -16,13 +16,16 @@ export const seUse = (props: SeProps, emit: SetupContext<SeEmits>['emit']) => {
     }
   }
   function getFlieData({ target: { result } }) {
-    const excel = xlsx.read(result, { type: "binary", cellDates: true })
-    excelData.value = xlsx.utils.sheet_to_json(excel.Sheets[excel.SheetNames[0]])
+    const excel = xlsx.read(result, { type: "binary", cellDates: true }),
+      data = xlsx.utils.sheet_to_json(excel.Sheets[excel.SheetNames[0]])
+    data.splice(100)
+    excelData.value = data
+    excelKeys.value = Object.keys(data[0])
   }
-  console.log(props, emit)
   return {
     _ref,
     excelImport,
-    excelData
+    excelData,
+    excelKeys
   }
 }
