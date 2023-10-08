@@ -28,6 +28,7 @@ function xtxxLoad(xt, to) {
       return res().then(addRoutes)
     })
   ]).then(() => {
+    console.log(router.getRoutes(), to)
     to && router.replace(to)
   })
 }
@@ -36,7 +37,6 @@ function getXtm(to) {
     return (to.name as string).match(xtmReg)[0]
   } else if (to.path) {
     var path = (to.path as string).split('/'), first = (path.shift() || path.shift()).match(xtmReg)[0]
-    console.log(first, path, path[0])
     return first === 'base' && path[0] ? path[0].match(xtmReg)[0] : first
   } else {
     console.warn('路由解析出错，暂不支持该跳转模式')
@@ -59,7 +59,6 @@ export default {
       if (loadXt[xt]) {
         loadXt[xt].to = to
       } else {
-        console.warn('未找到该菜单')
         return { path: '/base404' }
       }
     } else {
