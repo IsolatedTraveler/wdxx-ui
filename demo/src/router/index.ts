@@ -3,12 +3,12 @@ import { getJsUrl } from "@/assets/js"
 import routes from './def'
 import { checkLogin } from "./checkLogin"
 import { loadXt } from "./404"
+export * from './util'
 export const router = createRouter({
   history: createWebHashHistory(getJsUrl()),
   routes
 })
 router.beforeEach((to, _from, next) => {
-  console.log('beforeEach')
   if (checkLogin(to)) {
     const pro = Object.values(loadXt).filter(it => it)
     if (pro.length) {

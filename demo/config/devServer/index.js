@@ -12,7 +12,7 @@ module.exports = {
     //   logLevel: "debug"
     // },
     "/api": {
-      target: "http://192.168.0.217:8089/api/",
+      target: "http://10.33.77.31:7080/cloudapi/",
       pathRewrite: { '^/api': '' },
       changeOrigin: true,
       logLevel: "debug"

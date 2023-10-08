@@ -8,7 +8,7 @@ import * as api from './api'
 import * as util from '@assets/index'
 const app = createApp(App)
 app.use(wdxx)
-api.setConfig(util.zzjConfig())
+// api.setConfig(util.zzjConfig())
 util.setFontSize(1200)
 app.config.globalProperties.$api = api;
 app.config.globalProperties.$util = util;
