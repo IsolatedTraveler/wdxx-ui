@@ -44,10 +44,7 @@ export default defineComponent({
   methods: {
     changePage() {
     },
-    change(e) {
-      const reader = new FileReader()
-      reader.readAsBinaryString(e.target.files[0])
-      reader.onload = this.getFlieData
+    change() {
     },
     getFlieData(ev) {
       const excel = xlsx.read(ev.target.result, { type: "binary", cellDates: true }),
