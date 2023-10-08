@@ -138,6 +138,7 @@ export default defineComponent({
       >.title {
         flex-basis: 2em;
         border-bottom: 1px solid #dcdcdc;
+        width: 100%;
       }
 
       >.router {

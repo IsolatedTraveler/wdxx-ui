@@ -27,7 +27,7 @@
 
 #{getNames(('row'), '', '', '', '')} {
 
-  >* {
+  #{getNames(('row', 'col'), '', '', '', '')} {
     height: 100%;
   }
 }
@@ -35,7 +35,7 @@
 #{getNames(('col'), '', '', '', '')} {
   flex-direction: column;
 
-  >* {
+  #{getNames(('row', 'col'), '', '', '', '')} {
     width: 100%;
   }
 }
