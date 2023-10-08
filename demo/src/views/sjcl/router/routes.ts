@@ -1,6 +1,6 @@
 import { Routes, getRoute } from "@/router"
 const routes: Routes = {}
-export const xtm = 'qtxt'
+export const xtm = 'sjcl'
 getRoute(routes, xtm, '404')
 getRoute(routes, xtm, 'home')
 getRoute(routes, xtm, 'load')
