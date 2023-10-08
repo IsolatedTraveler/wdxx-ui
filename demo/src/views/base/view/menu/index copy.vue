@@ -7,7 +7,15 @@
       </z-flex>
       <z-flex col class="content" auto="1">
         <div class="title"></div>
-        <seBaseRoute></seBaseRoute>
+        <router-view v-slot="{ Component, route }" v-if="lx === 'route'">
+          <keep-alive :include="tabUrl">
+            <component :is="Component" :key="route.name" class="router" />
+          </keep-alive>
+        </router-view>
+        <iframe :src="url" frameborder="0" v-else-if="lx === 'iframe'"></iframe>
+        <z-flex auto="1" class="router" v-else>
+          <input type="file" @change="change">
+        </z-flex>
       </z-flex>
     </z-flex>
   </z-flex>
@@ -15,12 +23,12 @@
 <script lang="ts">
 import { hisPost } from '@/api';
 import { defineComponent } from 'vue';
-import seBaseRoute from '@com/base/route/index.vue'
+import { useRoute } from 'vue-router';
+import { ZBtn } from 'z-uis';
 const xlsx = require("xlsx")
   , reg = /(非法身份证号!|已经在伊克布拉格村卫生室建档！)/
 let errData = [], cfData
   , judge = false, len = 0
-
 export default defineComponent({
   name: 'base-menu',
   data() {
@@ -29,6 +37,9 @@ export default defineComponent({
       lx: '',
       url: ''
     };
+  },
+  created() {
+    console.log(useRoute().name)
   },
   methods: {
     changePage() {
@@ -115,7 +126,7 @@ export default defineComponent({
       data.csrq = data.sfzh.substr(6, 8)
     }
   },
-  components: { seBaseRoute }
+  components: { ZBtn }
 })
 </script>
 <style lang="scss">

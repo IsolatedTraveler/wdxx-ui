@@ -1,27 +1,23 @@
 <template>
-  <z-flex auto="1" class="qtxt-dmgl">
-    <z-flex col span="30" class="xtcd">
-      <z-tree :data="xtcd"></z-tree>
-    </z-flex>
-    <div>
-      <z-flex col auto="1"></z-flex>
-    </div>
+  <z-flex auto="1" class="sjcl-excel-to-data-base">
+    数据处理
   </z-flex>
 </template>
 <script lang="ts" setup>
-import { useQtxtDmgl } from './use-dmgl';
+import { seUse } from './use';
+import { seEmits, seProps } from './prop'
 defineOptions({
-  name: 'qtxt-dmgl'
+  name: 'sjcl-excel-to-data-base'
 })
-const { _ref, xtcd } = useQtxtDmgl()
+const prop = defineProps(seProps)
+const emit = defineEmits(seEmits)
+const { _ref } = seUse(prop, emit)
 defineExpose({
   _ref
 })
 </script>
 <style lang="scss">
-.qtxt-dmgl {
-  >.xtcd {
-    max-width: 300px;
-  }
-}
+// .sjcl-excel-to-data-base {
+
+// }
 </style>
