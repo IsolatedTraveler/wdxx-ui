@@ -9,3 +9,4 @@ export * from './form-item';
 export * from './input';
 export * from './select';
 export * from './tree';
+export * from './table';
