@@ -7,6 +7,7 @@
 @use './self.scss' as *;
 
 #{getNames(('row', 'col'), '', '', '', '')} {
+  @include async($style, '', '');
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -39,5 +40,3 @@
     width: 100%;
   }
 }
-
-@include async($style, '', '');
