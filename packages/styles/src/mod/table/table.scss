@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+@use './tbody.scss' as *;
+@use './thead.scss' as *;
+@use './td.scss' as *;
+$-table-childEl: (
+  '>thead':$thead,
+  '>tbody':$tbody
+);
+$-table-child: (
+  childEl:$-table-childEl
+);
+$-table: (
+  style: (table-layout: fixed,
+    border-collapse: separate,
+    border-spacing: 0,
+  ),
+  child:$-table-child
+);
+$-childEl: (
+  table: $-table,
+  td: $td,
+  th:$th
+);
+$style: (
+  childEl: $-childEl
+);

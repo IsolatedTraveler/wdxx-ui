@@ -1,0 +1,11 @@
+@use 'sass:map';
+@use '../../mixins/index.scss' as *;
+@use '../../vars/index.scss' as *;
+@use './table-media.scss' as *;
+@use './table.scss' as *;
+
+@include createSingleClass(table, '', '') {
+  overflow: scroll;
+  @include async($style, '', '');
+  // @include asyncMedia($styleMedia, '');
+}

@@ -1,0 +1,53 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+// thead-tr-firstChild-th-style
+$thead-tr-firstChild-th: (
+  style: (border-top: 1px solid map-get($color, border, 2))
+);
+// tbody-tr-firstChild-td-style
+$tbody-tr-firstChild-td: (
+  style:(border-top: none)
+);
+// tbody-tr-lastChild-td-style
+$tbody-tr-lastChild-td: (
+  style: (position: sticky,
+    bottom: 0,
+    z-index: 2,
+  )
+);
+// td,th
+$-tdth-common: (
+  position: sticky,
+  z-index: 2
+);
+$-tdth-firstChild: (
+  style:map-merge($-tdth-common, (left: 0))
+);
+$-tdth-lastChild: (
+  style:map-merge($-tdth-common, (right: 0))
+);
+$-tdth-nth2: (
+  style:(border-left: none)
+);
+$-tdth--pseudo: (
+  'first-child': $-tdth-firstChild,
+  'nth-child(2)': $-tdth-nth2,
+  'last-child': $-tdth-lastChild
+);
+$-tdth--child: (
+  pseudo: $-tdth--pseudo
+);
+$-tdth--style: (
+  overflow: hidden,
+  border-left: 1px solid map-get($color, border, 2)
+);
+// td
+$td: (
+  style:map-merge($-tdth--style , (border-top: 1px solid map-get($color, border, 2))),
+  child:$-tdth--child
+);
+// th
+$th: (
+  style:map-merge($-tdth--style , (border-bottom: 1px solid map-get($color, border, 2))),
+  child:$-tdth--child
+);

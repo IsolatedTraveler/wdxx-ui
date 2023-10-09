@@ -1,0 +1,25 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$table-key--style: (
+  background-color: map.get($color, primary, 2)
+);
+$table-key--class: (
+);
+$table-key--attr: (
+);
+$table--class: (
+  key: (style: $table-key--style, child: (class: $table-key--class, attr: $table-key--attr))
+);
+$table--attr: (
+);
+$table--style: (
+);
+$hover-style: (
+  class:$table--class,
+  attr:$table--attr,
+  style:$table--style
+);
+
+$styleMedia: (
+  hover: $hover-style
+);

@@ -1,0 +1,12 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+@use './tr.scss' as *;
+$-childEl: (
+  tr: $tbody-tr
+);
+$-child: (
+  childEl: $-childEl
+);
+$tbody: (
+  child: $-child
+);

@@ -1,0 +1,52 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+@use './td.scss' as *;
+// thead
+$-thead-tr-firstChild--childEl: (
+  th:$thead-tr-firstChild-th
+);
+$-thead-tr-firstChild--child: (
+  childEl: $-thead-tr-firstChild--childEl
+);
+$-thead-tr-firstChild: (
+  child: $-thead-tr-firstChild--child
+);
+$-thead-tr--pseudo: (
+  'first-child':$-thead-tr-firstChild
+);
+$-thead-tr--child: (
+  pseudo:$-thead-tr--pseudo
+);
+$thead-tr: (
+  child: $-thead-tr--child
+);
+
+// tbody
+$-tbody-tr-firstChild--childEl: (
+  td:$tbody-tr-firstChild-td
+);
+$-tbody-tr-firstChild--child: (
+  childEl: $-tbody-tr-firstChild--childEl
+);
+$-tbody-tr-firstChild: (
+  child: $-tbody-tr-firstChild--child
+);
+$-tbody-tr-lastChild--childEl: (
+  td:$tbody-tr-lastChild-td
+);
+$-tbody-tr-lastChild--child: (
+  childEl: $-tbody-tr-lastChild--childEl
+);
+$-tbody-tr-lastChild: (
+  child: $-tbody-tr-lastChild--child
+);
+$-tbody-tr--pseudo: (
+  'first-child':$-tbody-tr-firstChild,
+  'last-child':$-tbody-tr-lastChild
+);
+$-tbody-tr--child: (
+  pseudo:$-tbody-tr--pseudo
+);
+$tbody-tr: (
+  child: $-tbody-tr--child
+);

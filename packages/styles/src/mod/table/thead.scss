@@ -1,0 +1,17 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+@use './tr.scss' as *;
+$-childEl: (
+  tr: $thead-tr
+);
+$-child: (
+  childEl: $-childEl
+);
+$thead: (
+  style: (position: sticky,
+    top: 0,
+    background-color: map-get($color, color, 4),
+    z-index: 2,
+  ),
+  child: $-child
+);
