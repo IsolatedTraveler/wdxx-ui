@@ -6,6 +6,7 @@
       <table>
         <thead>
           <tr>
+            <th></th>
             <th v-for="(it, i) in excelKeys" :key="it"
               :class="{ 'se-fixed': i < 3 || i > 10, 'se-fixed-right': i > 10, 'se-nomal': !(i < 3 || i > 10) }">
               {{ it }}</th>
@@ -14,6 +15,7 @@
         </thead>
         <tbody>
           <tr v-for="it in excelData" :key="it.sfzh">
+            <td></td>
             <td v-for="(key, i) in excelKeys" :key="key"
               :class="{ 'se-fixed': i < 3 || i > 10, 'se-fixed-right': i > 10, 'se-nomal': !(i < 3 || i > 10) }">
               {{ it[key] || '' }}
@@ -53,85 +55,59 @@ defineExpose({
   .z-scroll {
     overflow: scroll;
 
-    table {
-      table-layout: fixed;
-      border-collapse: separate;
-      border-spacing: 0;
+    // table {
 
-      thead {
-        position: sticky;
-        top: 0;
-        background-color: white;
-        z-index: 2;
+    //   thead {
+    //     .se-fixed {
+    //       z-index: 3;
+    //     }
+    //   }
 
-        .se-fixed {
-          z-index: 3;
-        }
+    //   .se-fixed {
+    //     &+.se-nomal {
+    //       border-left: none;
+    //     }
+    //   }
 
-        tr:last-child {
-          border-bottom: 1px solid #dcdcdc;
-        }
-      }
+    //   .se-fixed {
+    //     position: sticky;
+    //     background-color: white;
 
-      tbody {
-        tr:last-child {
-          position: sticky;
-          bottom: 0;
-        }
-      }
+    //     &:has(+.se-nomal) {
+    //       border-right: 5px solid red;
+    //     }
+    //   }
 
-      td,
-      th {
-        overflow: hidden;
-        border-left: 1px solid #dcdcdc;
-        border-top: 1px solid #dcdcdc;
-        padding: 0;
-      }
+    //   // 非通用
+    //   .se-fixed {
 
-      .se-fixed {
-        &+.se-nomal {
-          border-left: none;
-        }
-      }
+    //     &:nth-child(1) {
+    //       left: 0;
+    //     }
 
-      .se-fixed {
-        position: sticky;
-        background-color: white;
+    //     &:nth-child(2) {
+    //       left: 273.47px;
+    //     }
 
-        &:has(+.se-nomal) {
-          border-right: 1px solid #dcdcdc;
-        }
-      }
+    //     &:nth-child(3) {
+    //       left: 315.5px;
+    //     }
 
-      // 非通用
-      .se-fixed {
+    //     &:nth-child(12) {
+    //       width: 500px;
+    //       right: 89.82px;
+    //     }
 
-        &:nth-child(1) {
-          left: 0;
-        }
+    //     &:nth-child(13) {
+    //       right: 4.67px;
+    //     }
 
-        &:nth-child(2) {
-          left: 221.88px;
-        }
+    //     &:nth-child(14) {
+    //       right: 0;
+    //     }
+    //   }
 
-        &:nth-child(3) {
-          left: 256.74px;
-        }
-
-        &:nth-child(12) {
-          right: 74.37px;
-        }
-
-        &:nth-child(13) {
-          right: 4.67px;
-        }
-
-        &:nth-child(14) {
-          right: 0;
-        }
-      }
-
-    }
+    // }
   }
 }
 </style>
