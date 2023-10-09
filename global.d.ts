@@ -12,9 +12,10 @@ declare module "@vue/runtime-core" {
     ZInput: typeof import("z-uis")["ZInput"];
     ZSelect: typeof import("z-uis")["ZSelect"];
     ZTree: typeof import("z-uis")["ZTree"];
+    ZTable: typeof import("z-uis")["ZTable"];
   }
   interface ComponentCustomProperties {
-
+    
   }
 }
-export { }
+export {}
