@@ -1,7 +1,7 @@
 <template>
   <z-flex auto="1" col class="sjcl-excel-to-data-base">
     <z-btn @click.stop="excelImport">excel导入</z-btn>
-    <z-flex auto="1" class="z-scroll">
+    <z-flex auto="1" class="z-scroll z-table">
       <!-- <z-table></z-table> -->
       <table>
         <thead>
