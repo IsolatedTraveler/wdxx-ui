@@ -52,62 +52,61 @@ defineExpose({
     display: none;
   }
 
-  .z-scroll {
-    overflow: scroll;
+  // .z-scroll {
 
-    // table {
+  //   table {
 
-    //   thead {
-    //     .se-fixed {
-    //       z-index: 3;
-    //     }
-    //   }
+  //     thead {
+  //       .se-fixed {
+  //         z-index: 3;
+  //       }
+  //     }
 
-    //   .se-fixed {
-    //     &+.se-nomal {
-    //       border-left: none;
-    //     }
-    //   }
+  //     .se-fixed {
+  //       &+.se-nomal {
+  //         border-left: none;
+  //       }
+  //     }
 
-    //   .se-fixed {
-    //     position: sticky;
-    //     background-color: white;
+  //     .se-fixed {
+  //       position: sticky;
+  //       background-color: white;
 
-    //     &:has(+.se-nomal) {
-    //       border-right: 5px solid red;
-    //     }
-    //   }
+  //       &:has(+.se-nomal) {
+  //         border-right: 5px solid red;
+  //       }
+  //     }
 
-    //   // 非通用
-    //   .se-fixed {
+  //     // 非通用
+  //     .se-fixed {
 
-    //     &:nth-child(1) {
-    //       left: 0;
-    //     }
+  //       &:nth-child(1) {
+  //         left: 0;
+  //       }
 
-    //     &:nth-child(2) {
-    //       left: 273.47px;
-    //     }
+  //       &:nth-child(2) {
+  //         left: 273.47px;
+  //       }
 
-    //     &:nth-child(3) {
-    //       left: 315.5px;
-    //     }
+  //       &:nth-child(3) {
+  //         left: 315.5px;
+  //       }
 
-    //     &:nth-child(12) {
-    //       width: 500px;
-    //       right: 89.82px;
-    //     }
+  //       &:nth-child(12) {
+  //         width: 500px;
+  //         right: 89.82px;
+  //       }
 
-    //     &:nth-child(13) {
-    //       right: 4.67px;
-    //     }
+  //       &:nth-child(13) {
+  //         right: 4.67px;
+  //       }
 
-    //     &:nth-child(14) {
-    //       right: 0;
-    //     }
-    //   }
+  //       &:nth-child(14) {
+  //         right: 0;
+  //       }
+  //     }
 
-    // }
-  }
+  //   }
+  // }
 }
 </style>
