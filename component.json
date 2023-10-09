@@ -27,12 +27,11 @@
       }
     },
     "tree": {
-      "prev": [
-        "tree-ceil",
-        "tree-item"
-      ],
       "inject": {
         "tree-item": [
+          "tree"
+        ],
+        "tree-col": [
           "tree"
         ]
       },
