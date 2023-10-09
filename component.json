@@ -10,10 +10,36 @@
     "form-item",
     "input",
     "select",
-    "tree"
+    "tree",
+    "table"
   ],
   "ywc": {
-    "flex": true,
+    "flex": true
+  },
+  "wwc": {
+    "icon": true,
+    "select": {
+      "inject": {
+        "select": [
+          "form-items",
+          "form"
+        ]
+      }
+    },
+    "tree": {
+      "prev": [
+        "tree-ceil",
+        "tree-item"
+      ],
+      "inject": {
+        "tree-item": [
+          "tree"
+        ]
+      },
+      "provide": [
+        "tree"
+      ]
+    },
     "media": true,
     "btn": {
       "next": [
@@ -49,31 +75,7 @@
     "form": {
       "provide": true
     },
-    "call-kit": true
-  },
-  "wwc": {
-    "icon": true,
-    "select": {
-      "inject": {
-        "select": [
-          "form-items",
-          "form"
-        ]
-      }
-    },
-    "tree": {
-      "prev": [
-        "tree-ceil",
-        "tree-item"
-      ],
-      "inject": {
-        "tree-item": [
-          "tree"
-        ]
-      },
-      "provide": [
-        "tree"
-      ]
-    }
+    "call-kit": true,
+    "table": true
   }
 }
