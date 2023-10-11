@@ -22,15 +22,6 @@ $thead-tr: (
 );
 
 // tbody
-$-tbody-tr-firstChild--childEl: (
-  td:$tbody-tr-firstChild-td
-);
-$-tbody-tr-firstChild--child: (
-  childEl: $-tbody-tr-firstChild--childEl
-);
-$-tbody-tr-firstChild: (
-  child: $-tbody-tr-firstChild--child
-);
 $-tbody-tr-lastChild--childEl: (
   td:$tbody-tr-lastChild-td
 );
@@ -40,9 +31,18 @@ $-tbody-tr-lastChild--child: (
 $-tbody-tr-lastChild: (
   child: $-tbody-tr-lastChild--child
 );
+$-tbody-tr-lastChild2--childEl: (
+  td:$tbody-tr-lastChild2-td
+);
+$-tbody-tr-lastChild--child2: (
+  childEl: $-tbody-tr-lastChild2--childEl
+);
+$-tbody-tr-lastChild2: (
+  child: $-tbody-tr-lastChild--child2
+);
 $-tbody-tr--pseudo: (
-  'first-child':$-tbody-tr-firstChild,
-  'last-child':$-tbody-tr-lastChild
+  'last-child':$-tbody-tr-lastChild,
+  'nth-last-child(2)':$-tbody-tr-lastChild2
 );
 $-tbody-tr--child: (
   pseudo:$-tbody-tr--pseudo

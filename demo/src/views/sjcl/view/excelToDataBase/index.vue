@@ -1,36 +1,7 @@
 <template>
   <z-flex auto="1" col class="sjcl-excel-to-data-base">
     <z-btn @click.stop="excelImport">excel导入</z-btn>
-    <z-flex auto="1" class="z-scroll z-table">
-      <!-- <z-table></z-table> -->
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th v-for="(it, i) in excelKeys" :key="it"
-              :class="{ 'se-fixed': i < 3 || i > 10, 'se-fixed-right': i > 10, 'se-nomal': !(i < 3 || i > 10) }">
-              {{ it }}</th>
-            <th class="se-fixed"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="it in excelData" :key="it.sfzh">
-            <td></td>
-            <td v-for="(key, i) in excelKeys" :key="key"
-              :class="{ 'se-fixed': i < 3 || i > 10, 'se-fixed-right': i > 10, 'se-nomal': !(i < 3 || i > 10) }">
-              {{ it[key] || '' }}
-            </td>
-            <td class="se-fixed"></td>
-          </tr>
-          <tr>
-            <td v-for="(key, i) in excelKeys" :key="key"
-              :class="{ 'se-fixed': i < 3 || i > 10, 'se-fixed-right': i > 10, 'se-nomal': !(i < 3 || i > 10) }">
-            </td>
-            <td class="se-fixed"></td>
-          </tr>
-        </tbody>
-      </table>
-    </z-flex>
+    <z-table auto="1" :cols="excelKeys" :data="excelData"></z-table>
   </z-flex>
 </template>
 <script lang="ts" setup>

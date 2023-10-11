@@ -5,8 +5,8 @@ $thead-tr-firstChild-th: (
   style: (border-top: 5px solid map-get($color, border, 2))
 );
 // tbody-tr-firstChild-td-style
-$tbody-tr-firstChild-td: (
-  style:(border-top: none)
+$tbody-tr-lastChild2-td: (
+  style:(border-bottom: none)
 );
 // tbody-tr-lastChild-td-style
 $tbody-tr-lastChild-td: (

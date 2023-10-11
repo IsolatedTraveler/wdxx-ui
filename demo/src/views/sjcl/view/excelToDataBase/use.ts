@@ -20,7 +20,7 @@ export const seUse = (_props: SeProps, _emit: SetupContext<SeEmits>['emit']) => 
       data = xlsx.utils.sheet_to_json(excel.Sheets[excel.SheetNames[0]])
     data.splice(100)
     excelData.value = data
-    excelKeys.value = Object.keys(data[0])
+    excelKeys.value = Object.keys(data[0]).map(id => ({ id, title: id }))
   }
   return {
     _ref,
