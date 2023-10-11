@@ -14,11 +14,12 @@ $-table: (
   style: (table-layout: fixed,
     border-collapse: separate,
     border-spacing: 0,
+    min-height: 100%,
   ),
   child:$-table-child
 );
 $-childEl: (
-  table: $-table,
+  '.table-body table': $-table,
   td: $td,
   th:$th
 );

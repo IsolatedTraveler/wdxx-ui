@@ -29,7 +29,8 @@ export const PropsBaseStringNR = {
   default: ''
 }
 export const PropsBaseObject = {
-  type: Object
+  type: Object,
+  default: null
 }
 export const PropsBaseObjectR = {
   type: Object,
@@ -59,7 +60,8 @@ export const PropsBaseState = {
   default: ''
 }
 export const PropsBaseArray_Object = {
-  type: Array<ObjAny>
+  type: Array<ObjAny>,
+  default: []
 }
 export const PropsBaseArrayStringN = {
   type: Array<string | number>

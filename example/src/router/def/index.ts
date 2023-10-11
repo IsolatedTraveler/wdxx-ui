@@ -11,7 +11,7 @@ export default [
   }, {
     path: '/element',
     name: 'element',
-    redirect: '/element/btn',
+    redirect: '/element/table',
     title: '页面元素',
     children: element
   }, {

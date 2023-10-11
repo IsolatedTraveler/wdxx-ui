@@ -5,7 +5,10 @@
 @use './table.scss' as *;
 
 @include createSingleClass(table, '', '') {
-  overflow: scroll;
+  .table-body {
+    overflow: auto;
+  }
+
   @include async($style, '', '');
   // @include asyncMedia($styleMedia, '');
 }

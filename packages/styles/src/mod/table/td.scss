@@ -2,7 +2,7 @@
 @use '../../vars/index.scss' as *;
 // thead-tr-firstChild-th-style
 $thead-tr-firstChild-th: (
-  style: (border-top: 1px solid map-get($color, border, 2))
+  style: (border-top: 5px solid map-get($color, border, 2))
 );
 // tbody-tr-firstChild-td-style
 $tbody-tr-firstChild-td: (
@@ -27,7 +27,7 @@ $-tdth-lastChild: (
   style:map-merge($-tdth-common, (right: 0))
 );
 $-tdth-nth2: (
-  style:(border-left: none)
+  style:(border-left-width: 0)
 );
 $-tdth--pseudo: (
   'first-child': $-tdth-firstChild,
@@ -39,15 +39,16 @@ $-tdth--child: (
 );
 $-tdth--style: (
   overflow: hidden,
-  border-left: 1px solid map-get($color, border, 2)
+  border-left: 5px solid map-get($color, border, 2),
+  border-bottom: 5px solid map-get($color, border, 2)
 );
 // td
 $td: (
-  style:map-merge($-tdth--style , (border-top: 1px solid map-get($color, border, 2))),
+  style:$-tdth--style,
   child:$-tdth--child
 );
 // th
 $th: (
-  style:map-merge($-tdth--style , (border-bottom: 1px solid map-get($color, border, 2))),
+  style:$-tdth--style,
   child:$-tdth--child
 );

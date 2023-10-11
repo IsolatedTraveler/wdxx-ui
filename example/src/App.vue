@@ -1,6 +1,6 @@
 <template>
   <z-flex class="App">
-    <z-tree class="left" :data="menu" :alias="alias" @selected="clickEvent" expand="elementFlex"></z-tree>
+    <z-tree class="left" :data="menu" :alias="alias" @selected="clickEvent"></z-tree>
     <router-view class="right" />
   </z-flex>
 </template>
