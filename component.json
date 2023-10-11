@@ -30,9 +30,6 @@
       "inject": {
         "tree-item": [
           "tree"
-        ],
-        "tree-col": [
-          "tree"
         ]
       },
       "provide": [
