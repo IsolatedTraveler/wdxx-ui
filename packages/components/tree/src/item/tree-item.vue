@@ -26,7 +26,7 @@
 <script lang="ts" setup>
 import { treeItemProps } from './tree-item'
 import { useTreeItem } from './use-tree-item'
-import treeCol from "../col/tree-col.vue";
+import treeCol from "@ui/components/deply/ceil/ceil.vue";
 defineOptions({
   name: 'z-tree-item'
 })

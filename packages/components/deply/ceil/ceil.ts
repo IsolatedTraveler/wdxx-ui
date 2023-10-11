@@ -1,8 +1,8 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
 import { PropsBaseObjectR } from "@ui/props";
-export const treeColProps = propsBuildS({
+export const ceilProps = propsBuildS({
   data: PropsBaseObjectR,
   col: PropsBaseObjectR
 })
-export type TreeColProps = ExtractPropTypes<typeof treeColProps>
+export type CeilProps = ExtractPropTypes<typeof ceilProps>

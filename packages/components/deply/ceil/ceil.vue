@@ -4,13 +4,13 @@
   <component v-else :is="col.type" v-model="data[col.id]" :="col.props" @click=""></component>
 </template>
 <script lang="ts" setup>
-import { treeColProps } from './tree-col'
-import { useTreeCol } from './use-tree-col'
+import { ceilProps } from './ceil'
+import { useCeil } from './use-ceil'
 defineOptions({
-  name: 'z-tree-col'
+  name: 'z-ceil'
 })
-const props = defineProps(treeColProps)
-const { _ref } = useTreeCol(props)
+const props = defineProps(ceilProps)
+const { _ref } = useCeil(props)
 defineExpose({
   ref: _ref
 })
