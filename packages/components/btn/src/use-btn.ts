@@ -25,7 +25,7 @@ export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) =>
         full: props.full
       }
     }), { _class, _style } = useCss(classProp, _ref)
-  useFlexMixins(props, _class.value, _style.value)
+  useFlexMixins(props, _class.value, _style.value, _ref)
   return {
     _ref,
     _handleClick,

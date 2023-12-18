@@ -1,13 +1,5 @@
-@use 'sass:map';
-@use '../../mixins/index.scss' as *;
-@use '../../vars/index.scss' as *;
-@use './flex.scss' as *;
-@use './justify.scss' as *;
-@use './align.scss' as *;
-@use './self.scss' as *;
-
-#{getNames(('row', 'col'), '', '', '', '')} {
-  @include async($style, '', '');
+.z-row,
+.z-col {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -21,22 +13,85 @@
     flex-grow: 0;
   }
 
-  @include async($styleJustify, 'justify', '');
-  @include async($styleAlign, 'align', '');
-  @include async($styleSelf, 'self', '');
-}
+  &.z-justify--start {
+    justify-content: start;
+  }
 
-#{getNames(('row'), '', '', '', '')} {
+  &.z-justify--end {
+    justify-content: end;
+  }
 
-  #{getNames(('row', 'col'), '', '', '', '')} {
-    height: 100%;
+  &.z-justify--center {
+    justify-content: center;
+  }
+
+  &.z-justify--stretch {
+    justify-content: stretch;
+  }
+
+  &.z-justify--around {
+    justify-content: space-around;
+  }
+
+  &.z-justify--between {
+    justify-content: space-between;
+  }
+
+  &.z-justify--evenly {
+    justify-content: space-evenly;
+  }
+
+  &.z-align--start {
+    align-items: start;
+    align-content: start;
+  }
+
+  &.z-align--end {
+    align-items: end;
+    align-content: end;
+  }
+
+  &.z-align--center {
+    align-items: center;
+    align-content: center;
+  }
+
+  &.z-align--stretch {
+    align-items: stretch;
+    align-content: stretch;
+  }
+
+  &.z-align--around {
+    align-items: space-around;
+    align-content: space-around;
+  }
+
+  &.z-align--between {
+    align-items: space-between;
+    align-content: space-between;
+  }
+
+  &.z-self--start {
+    align-self: start;
+  }
+
+  &.z-self--end {
+    align-self: end;
+  }
+
+  &.z-self--center {
+    align-self: center;
+  }
+
+  &.z-self--stretch {
+    align-self: stretch;
+  }
+
+  &.z-flex--wrap {
+    flex-wrap: wrap;
   }
 }
 
-#{getNames(('col'), '', '', '', '')} {
+.z-col {
   flex-direction: column;
-
-  #{getNames(('row', 'col'), '', '', '', '')} {
-    width: 100%;
-  }
 }
