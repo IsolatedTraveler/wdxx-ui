@@ -1,23 +1,18 @@
-<template>
-  <z-table class="element-table" :cols="cols"></z-table>
-</template>
-<script lang="ts">
-export default {
+/* __placeholder__ */
+export default (await import('vue')).defineComponent({
   name: 'element-table',
   data() {
     return {
       cols: [
         {
-          title: '个人信息', fixed: true, child: [
+          title: '个人信息', child: [
             {
               title: '基本信息', child: [
-                { title: '基本姓名', width: '100px', id: 'xm' },
-                { title: '基本性别', id: 'xb', minWidth: '200px' }
+                { title: '姓名', id: 'xm' },
+                { title: '性别', id: 'xb' }
               ]
             },
-            { title: '姓名', id: 'xm' },
-            { title: '性别', id: 'xb' }
-            , {
+            {
               title: '学历情况', child: [
                 {
                   title: '小学', child: [
@@ -56,19 +51,13 @@ export default {
                   ]
                 }
               ]
-            }
-            , {
+            },
+            {
               title: '工作信息', child: [
                 { title: '单位名称' },
                 { title: '单位性质' },
                 { title: '单位地址' }
               ]
-            },
-            {
-              "title": "测试1"
-            },
-            {
-              "title": "测试2"
             }
           ]
         }, {
@@ -79,23 +68,11 @@ export default {
         },
         { title: '测试' }
       ]
-    }
+    };
   },
   created() {
-    // setTimeout(() => {
-    //   if (this.cols?.[0]?.child?.[0]?.title) {
-    //     this.cols[0].child[0].title += 1
-    //     this.cols[0].child.push({ title: '测试123', child: [] })
-    //     this.cols[0].child.push({ title: '测试456', child: [] })
-    //   }
-    // }, 2000);
+    setTimeout(() => {
+      this.cols[0].child[0].title += 1;
+    }, 4000);
   }
-}
-</script>
-<style lang="scss">
-.element-table {
-  .z-table {
-    flex: 1;
-  }
-}
-</style>
+});

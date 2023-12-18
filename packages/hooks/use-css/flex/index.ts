@@ -1,6 +1,6 @@
 import { ComponentColAlignT, ComponentSelfAlignT, ObjStr, ComponentRowAlignT, ObjTrue, PKG_PREFIX } from "@ui/vars"
 import { ComputedRef, watch } from "vue"
-function getFlexStylePx(v: any) {
+export function getFlexStylePx(v: any) {
   if (v) {
     if (isNaN(v)) {
       return v

@@ -1,19 +1,9 @@
-import { useCss } from "@ui/hooks"
-import { ref, SetupContext, computed } from "vue"
+import { ref, SetupContext } from "vue"
 import { FlexEmits, FlexProps } from "./flex"
+import { useFlexMixins } from "@ui/hooks"
 export const useFlex = (props: FlexProps, emit: SetupContext<FlexEmits>['emit']) => {
-  const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
-    flex: props.col ? 'col' : 'row',
-    justify: props.justify,
-    align: props.align,
-    self: props.self,
-    wrap: props.wrap,
-    auto: props.span ? undefined : props.auto,
-    span: props.span,
-    left: props.left,
-    right: props.right,
-    order: props.order
-  })), { _class, _style } = useCss(classVal, _ref, { order: false, justify: false, align: false, self: false, span: false, left: false, right: false, auto: false })
+  const _ref = ref<HTMLButtonElement>(), _class = ref<any>({}), _style = ref<any>({})
+  useFlexMixins(props, _class.value, _style.value)
   return {
     _ref,
     _class,

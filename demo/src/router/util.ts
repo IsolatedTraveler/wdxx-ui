@@ -2,12 +2,12 @@ import { RouteRecordRaw } from 'vue-router'
 export interface Routes {
   [key: string]: RouteRecordRaw
 }
-import { useBaseStore } from "@/store"
+import { useLoadStore } from "@/store"
 const xtmReg = /(^[a-z]+|[A-Z0-9][a-z0-9]+)/g
 let base
 export function getRoute(data: unknown, xtm: string, wjm: string, dq: string = 'index') {
   if (!base) {
-    base = useBaseStore()
+    base = useLoadStore()
   }
   const Wjm = wjm.slice(0, 1).toUpperCase() + wjm.slice(1), root = base.getRoot || '', name = xtm + Wjm
   data[wjm] = {

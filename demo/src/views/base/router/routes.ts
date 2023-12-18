@@ -6,6 +6,7 @@ export default {
   base404: {
     name: 'base404',
     path: '/base404',
+    meta: { login: true },
     component: () => import('@base/404/index.vue')
   },
   baseHome: {
@@ -21,6 +22,7 @@ export default {
   baseLogin: {
     name: 'baseLogin',
     path: '/baseLogin',
+    meta: { login: true },
     component: () => import('@base/login/index.vue')
   },
   baseMenu: {

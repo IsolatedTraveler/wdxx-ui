@@ -1,5 +1,8 @@
-export const uuid = (a = 'yxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx') => {
-  return a.replace(/[xy]/g, function (c) {
+import { ObjStrBool } from "@ui/vars"
+
+const uuids: ObjStrBool = {}
+export const uuid = (a = 'yxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx'): string => {
+  const v: string = a.replace(/[xy]/g, function (c) {
     const r = Math.random() * 36 | 0
     if (r > 9) {
       return String.fromCharCode(55 + r)
@@ -8,4 +11,9 @@ export const uuid = (a = 'yxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx') => {
     }
     return r.toString()
   })
+  if (uuids[v]) {
+    return uuid(a)
+  }
+  uuids[v] = true
+  return v
 }

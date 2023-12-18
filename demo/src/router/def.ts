@@ -8,6 +8,7 @@ export default [
   {
     path: '/',
     redirect() {
+      console.log(checkLogin())
       if (checkLogin()) {
         return { path: '/baseMenu' }
       } else {

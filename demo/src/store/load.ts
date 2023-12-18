@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useBaseStore = defineStore('load', {
+export const useLoadStore = defineStore('load', {
   state: () => ({
     load: []
   }),

@@ -1,5 +1,12 @@
 <template>
-  <div style="text-align: center;font-size: .56rem;line-height: 2;">login开发中</div>
+  <z-flex class="base-login" col justify="around">
+    <div class="main"></div>
+    <z-flex justify="around">
+      <img src="/img/login/dl_bj.png">
+      <div class="login"></div>
+    </z-flex>
+    <div class="main"></div>
+  </z-flex>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
@@ -8,3 +15,20 @@ export default defineComponent({
   name: 'base-login'
 })
 </script>
+<style lang="scss">
+.base-login {
+  background: #327add;
+  overflow: auto;
+
+  .login,
+  img {
+    height: 21em;
+    min-height: 252px;
+  }
+
+  .login {
+    min-width: 360px;
+    width: 3.5rem;
+  }
+}
+</style>

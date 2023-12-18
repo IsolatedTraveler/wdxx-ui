@@ -1,6 +1,6 @@
 import { RouteRecordRaw, RouteLocationNormalized } from 'vue-router'
 import router, { getXtm } from './index'
-import { useBaseStore } from '@/store'
+import { useLoadStore } from '@/store'
 interface XtMenu {
   resolve: any
   to?: RouteLocationNormalized
@@ -12,7 +12,7 @@ function addRoute(routes, name) {
   name ? router.addRoute(name, routes) : router.addRoute(routes)
 }
 function addRoutes(routes) {
-  const name = useBaseStore().getRoot ? '' : 'baseMenu'
+  const name = useLoadStore().getRoot ? '' : 'baseMenu'
   if (Array.isArray(routes)) {
     routes.forEach(it => {
       addRoute(it, name)

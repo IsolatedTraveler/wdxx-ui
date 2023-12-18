@@ -1,6 +1,6 @@
 import { propsFlex, propsFlexAlign, propsFlexJustify, propsFlexSelf } from '@ui/vars/props'
 export const PropsFlex = {
-  type: String,
+  type: [String, Boolean],
   values: propsFlex
 }
 export const PropsFlexJustify = {
