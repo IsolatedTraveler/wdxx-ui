@@ -1,0 +1,17 @@
+%flex-self {
+  &.z-self--start {
+    align-self: start;
+  }
+
+  &.z-self--end {
+    align-self: end;
+  }
+
+  &.z-self--center {
+    align-self: center;
+  }
+
+  &.z-self--stretch {
+    align-self: stretch;
+  }
+}

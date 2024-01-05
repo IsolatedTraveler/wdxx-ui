@@ -1,0 +1,31 @@
+%flex-align {
+  &.z-align--start {
+    align-items: start;
+    align-content: start;
+  }
+
+  &.z-align--end {
+    align-items: end;
+    align-content: end;
+  }
+
+  &.z-align--center {
+    align-items: center;
+    align-content: center;
+  }
+
+  &.z-align--stretch {
+    align-items: stretch;
+    align-content: stretch;
+  }
+
+  &.z-align--around {
+    align-items: space-around;
+    align-content: space-around;
+  }
+
+  &.z-align--between {
+    align-items: space-between;
+    align-content: space-between;
+  }
+}
