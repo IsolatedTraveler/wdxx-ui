@@ -1,13 +1,13 @@
 import * as evneted from "./evnet"
 import { event, config } from "./var"
-
-export function setFontSize(size: any, fontBaseSize?: number) {
+const eventFun = evneted[event]
+export function setFontSize(size: any, fontBaseSize: number = 12) {
   config.size = size
   config.fontBaseSize = fontBaseSize
   config.judge = true
-  window.removeEventListener(event, evneted[event], false)
-  window.addEventListener(event, evneted[event], false)
+  window.removeEventListener(event, eventFun, false)
+  window.addEventListener(event, eventFun, false)
   setTimeout(() => {
-    config.judge && evneted[event]()
+    config.judge && eventFun()
   }, 1);
 }
