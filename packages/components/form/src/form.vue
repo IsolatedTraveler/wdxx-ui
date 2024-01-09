@@ -11,7 +11,7 @@ defineOptions({
 })
 const props = defineProps(formProps)
 const emit = defineEmits(formEmits)
-const {_ref, _class} = useForm(props, emit)
+const { _ref, _class } = useForm(props, emit)
 defineExpose({
   ref: _ref
 })
