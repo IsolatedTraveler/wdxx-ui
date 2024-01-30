@@ -1,0 +1,1 @@
+export const jsUrlSplit = '/js/'

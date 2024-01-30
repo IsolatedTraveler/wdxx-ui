@@ -12,7 +12,9 @@
     "@ui/utils": "workspace:^1.0.0",
     "@ui/vars": "workspace:^1.0.0",
     "crypto-js": "^4.2.0",
+    "pinia": "^2.1.7",
     "vue": "^3.4.15",
+    "vue-router": "^4.2.5",
     "z-uis": "workspace:0.0.6",
     "zlib": "^1.0.5"
   },
@@ -49,7 +51,7 @@
     "dev": "pnpm run -C example dev",
     "watch": "pnpm run -C packages/styles watch",
     "css": "pnpm run -C packages/styles build",
-    "demo": "pnpm run -C demo dev",
+    "demo": "pnpm run -C viteDemo dev",
     "page": "pnpm run -C build/def creatComponent",
     "var": "pnpm run -C build/def creatVar",
     "build": "pnpm run -C build/def start",
