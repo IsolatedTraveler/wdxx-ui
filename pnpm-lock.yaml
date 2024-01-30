@@ -17,6 +17,7 @@ importers:
       '@ui/styles': workspace:^1.0.0
       '@ui/utils': workspace:^1.0.0
       '@ui/vars': workspace:^1.0.0
+      '@vitejs/plugin-vue': 4.0.0
       '@vitejs/plugin-vue-jsx': 3.1.0
       '@vue/shared': ^3.4.15
       '@vueuse/core': ^9.13.0
@@ -59,6 +60,7 @@ importers:
       '@types/node': 18.19.10
       '@ui/build': link:build/def
       '@ui/build-utils': link:build/utils
+      '@vitejs/plugin-vue': 4.0.0_vite@4.0.2+vue@3.4.15
       '@vitejs/plugin-vue-jsx': 3.1.0_vite@4.0.2+vue@3.4.15
       '@vue/shared': 3.4.15
       '@vueuse/core': 9.13.0_vue@3.4.15
@@ -2308,6 +2310,17 @@ packages:
     dependencies:
       vite: 4.0.2
       vue: 3.2.45
+    dev: true
+
+  /@vitejs/plugin-vue/4.0.0_vite@4.0.2+vue@3.4.15:
+    resolution: {integrity: sha512-e0X4jErIxAB5oLtDqbHvHpJe/uWNkdpYV83AOG2xo2tEVSzCzewgJMtREZM30wXnM5ls90hxiOtAuVU6H5JgbA==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      vite: ^4.0.0
+      vue: ^3.2.25
+    dependencies:
+      vite: 4.0.2_grl27uvkhgzsb7rkienz4fl3ki
+      vue: 3.4.15_typescript@4.9.5
     dev: true
 
   /@vue-macros/api/0.9.3_rollup@4.0.0+vue@3.4.15:

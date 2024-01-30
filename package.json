@@ -24,6 +24,7 @@
     "@types/node": "^18.19.10",
     "@ui/build": "workspace:^1.0.0",
     "@ui/build-utils": "workspace:^1.0.0",
+    "@vitejs/plugin-vue": "4.0.0",
     "@vitejs/plugin-vue-jsx": "3.1.0",
     "@vue/shared": "^3.4.15",
     "@vueuse/core": "^9.13.0",
