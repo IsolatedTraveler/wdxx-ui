@@ -37,7 +37,7 @@
     "gulp": "^4.0.2",
     "path": "^0.12.7",
     "rimraf": "^5.0.5",
-    "rollup": "4.0.0",
+    "rollup": "3.29.4",
     "rollup-plugin-esbuild": "6.1.1",
     "sass": "^1.70.0",
     "ts-morph": "^17.0.1",
