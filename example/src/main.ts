@@ -1,10 +1,9 @@
-console.time()
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import wdxx from '@ui/z-ui'
-import '@ui/styles/dist/index.css';
+import zUi from 'z-uis/index'
+import '@ui/styles/dist/index.css'
 const app = createApp(App)
-app.use(wdxx)
+app.use(zUi)
 app.use(router)
 app.mount('#app')

@@ -90,6 +90,7 @@ importers:
 
   example:
     specifiers:
+      '@ui/styles': workspace:^1.0.0
       '@vitejs/plugin-vue': ^3.2.0
       agora-rtc-sdk-ng: ^4.18.1
       crypto: ^1.0.1
@@ -102,6 +103,7 @@ importers:
       vue: ^3.2.13
       vue-buffer: ^0.0.1
       vue-router: ^4.1.6
+      z-uis: workspace:*
       zlib: ^1.0.5
     dependencies:
       agora-rtc-sdk-ng: 4.18.1
@@ -114,10 +116,12 @@ importers:
       vue-router: 4.1.6_vue@3.2.45
       zlib: 1.0.5
     devDependencies:
+      '@ui/styles': link:../packages/styles
       '@vitejs/plugin-vue': 3.2.0_vite@4.0.2+vue@3.2.45
       unplugin-vue-components: 0.22.9_vue@3.2.45
       vite-plugin-inspect: 0.7.8_vite@4.0.2
       vite-plugin-mkcert: 1.10.1_vite@4.0.2
+      z-uis: link:../packages/z-ui
 
   packages/components:
     specifiers: {}
