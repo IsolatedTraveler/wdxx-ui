@@ -1,18 +1,18 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia';
-import wdxx from 'z-uis'
-import 'z-uis/styles/index.css';
 import App from './App.vue'
 import { router, loadXtxx } from "./router";
 import * as api from './api'
 import * as util from '@assets/index'
+import zUi from 'z-uis/index'
+import '@ui/styles/dist/index.css'
 const app = createApp(App)
-app.use(wdxx)
 util.setFontSize(1200)
 app.config.globalProperties.$api = api;
 app.config.globalProperties.$util = util;
 app.use(createPinia())
+app.use(zUi)
 loadXtxx('base').then(() => {
-  app.use(router)
-  app.mount(document.body)
+  app.use(router as any)
+  app.mount('#app')
 })
