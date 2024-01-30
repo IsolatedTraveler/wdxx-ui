@@ -1,10 +1,10 @@
 import { TreeItemProps } from "@ui/components/tree/src/item/tree-item";
 import { TreeProps, TreeEmits } from "@ui/components/tree/src/tree";
-import { EventCheck, EventExpand, EventSelect, ObjAny, propsTreeColType } from "@ui/vars";
+import { EventCheck, EventExpand, EventSelect, ObjAny, PropsTreeColType } from "@ui/vars";
 import { ComputedRef, InjectionKey, Ref, SetupContext, computed, provide, ref, watch } from "vue";
 export interface Col {
   id: string,
-  type: propsTreeColType
+  type: PropsTreeColType
 }
 declare type ClickEvent = (id: string | number, data: ObjAny, pid?: Array<string | number>) => void
 export interface ProvideTree {
