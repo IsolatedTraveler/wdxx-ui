@@ -1,3 +1,4 @@
-export const dz = {
+
+export const dz: any = {
 
 }

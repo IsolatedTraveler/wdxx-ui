@@ -1,4 +1,4 @@
-import { RouteRecordRaw, RouteLocationNormalized } from 'vue-router'
+import { RouteRecordRaw, RouteLocationNormalized, RouteLocation } from 'vue-router'
 import router, { getXtm } from './index'
 import { useLoadStore } from '@/store'
 interface XtMenu {
@@ -8,10 +8,10 @@ interface XtMenu {
 interface LoadXts {
   [key: string]: XtMenu
 }
-function addRoute(routes, name) {
+function addRoute(routes: RouteRecordRaw, name: string = '') {
   name ? router.addRoute(name, routes) : router.addRoute(routes)
 }
-function addRoutes(routes) {
+function addRoutes(routes: RouteRecordRaw) {
   const name = useLoadStore().getRoot ? '' : 'baseMenu'
   if (Array.isArray(routes)) {
     routes.forEach(it => {
@@ -21,7 +21,7 @@ function addRoutes(routes) {
     addRoute(routes, name)
   }
 }
-function xtxxLoad(xt, to) {
+function xtxxLoad(xt: string, to: RouteLocation | undefined) {
   return Promise.all([
     import(`@view/${xt}/router/index.ts`).then(({ default: res }) => {
       return res().then(addRoutes)
@@ -31,7 +31,7 @@ function xtxxLoad(xt, to) {
   })
 }
 
-export function loadXtxx(xt: string, to?) {
+export function loadXtxx(xt: string, to?: RouteLocation) {
   isLoadXt[xt] = true
   loadXt[xt] = {
     resolve: xtxxLoad(xt, to),
@@ -39,7 +39,10 @@ export function loadXtxx(xt: string, to?) {
   }
   return loadXt[xt].resolve
 }
-export const loadXt: LoadXts = {}, isLoadXt = {}
+interface IsLoadXt {
+  [key: string]: boolean
+}
+export const loadXt: LoadXts = {}, isLoadXt: IsLoadXt = {}
 export default {
   path: '/:pathMatch(.*)*',
   redirect(to) {

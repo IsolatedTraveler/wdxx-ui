@@ -2,17 +2,17 @@ import { defineStore } from "pinia";
 
 export const useLoadStore = defineStore('load', {
   state: () => ({
-    load: []
+    load: [] as string[]
   }),
   getters: {
     getLoad: (state) => !!state.load.length,
-    getRoot: () => window['wdphisJsObject'] ? '/' : ''
+    getRoot: () => window.wdphisJsObject ? '/' : ''
   },
   actions: {
-    setLoad(v) {
+    setLoad(v: string) {
       this.load.push(v)
     },
-    closeLoad(v) {
+    closeLoad(v: string) {
       this.load = this.load.filter(it => it != v)
     }
   }

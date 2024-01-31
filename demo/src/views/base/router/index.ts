@@ -4,6 +4,6 @@ import { getConfig } from '@/api'
 import { RouteRecordRaw } from 'vue-router'
 export default function () {
   return getConfig('fbdq').then(v => {
-    return Object.values({ ...routes, ...(fbdq[v] || {}) }) as RouteRecordRaw[]
+    return Object.values({ ...routes, ...((fbdq as any)[v] || {}) }) as RouteRecordRaw[]
   })
 }

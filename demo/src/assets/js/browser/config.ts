@@ -1,4 +1,4 @@
-const system: any = (window as any)?.wdphisJsObject?.wdphis
+const system: any = window.wdphisJsObject?.wdphis
 export function zzjConfig() {
   let config = {
     jgid: "110", jgmc: "成都天府新区华阳社区卫生服务中心", jgjc: "华阳社区卫生服务中心", ryid: "1848",
