@@ -1,5 +1,5 @@
 <template>
-  <z-flex class="base-login" col justify="around">
+  <z-flex class="base-login" col justify="around" align="around" wrap>
     <div class="top"></div>
     <z-flex justify="around">
       <img src="/img/login/dl_bj.png">

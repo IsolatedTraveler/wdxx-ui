@@ -21,7 +21,7 @@
   @extend %flex-align;
   @extend %flex-self;
 
-  &.z-flex--wrap {
+  &.z-wrap {
     flex-wrap: wrap;
   }
 }

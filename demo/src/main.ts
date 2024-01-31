@@ -14,5 +14,5 @@ app.use(createPinia())
 app.use(zUi)
 loadXtxx('base').then(() => {
   app.use(router as any)
-  app.mount('#app')
+  app.mount(document.body)
 })
