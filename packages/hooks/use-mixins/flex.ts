@@ -31,7 +31,6 @@ function getWatchElemSizeChange(elem: HTMLElement, isWrap: FlexWatchElemSizeChan
     entries.forEach(() => {
       isWrap.widthWrap = elem.clientWidth < elem.scrollWidth
       isWrap.heigthWrap = elem.clientHeight < elem.scrollHeight
-      console.log(elem, isWrap)
     })
   })
   return resizeObserver

@@ -16,12 +16,12 @@ export interface ProvideTree {
   expandVal: Ref<Array<string | number>>
   click: ClickEvent
   filter: (id?: string, data?: ObjAny) => Array<ObjAny> | undefined
-  isExpand: (prop: TreeItemProps, pid?: Array<string | number>) => ComputedRef<boolean>
+  isExpand: (prop: TreeItemProps, pid?: Array<string | number> | undefined) => ComputedRef<boolean>
 }
 export const provideTreeId: InjectionKey<ProvideTree> = Symbol('tree')
 function judgeExpand(props: TreeProps, idAlias: ComputedRef<string | number>, click: ClickEvent, clickVal: Ref<string | number>) {
   const isIntExpand: Ref<boolean> = ref(true), expandVal: Ref<Array<string | number>> = ref([])
-    , isExpand = (prop: TreeItemProps, pid: Array<string | number>) => {
+    , isExpand = (prop: TreeItemProps, pid: Array<string | number> | undefined) => {
       return computed(() => {
         let data = prop.data, id = prop.data[idAlias.value]
         if (props.expand === false) {

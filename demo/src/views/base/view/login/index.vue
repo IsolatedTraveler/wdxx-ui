@@ -1,9 +1,22 @@
 <template>
-  <z-flex class="base-login" col justify="around" align="around" wrap>
+  <z-flex class="base-login" flex="col" justify="around" align="around" wrap>
     <div class="top"></div>
-    <z-flex justify="around">
+    <z-flex class="main">
       <img src="/img/login/dl_bj.png">
-      <div class="login"></div>
+      <z-form class="login" flex="col" self="stretch" justify="center" align="center">
+        <p>登录</p>
+        <z-form-item>
+          <z-input></z-input>
+        </z-form-item>
+        <z-form-item>
+          <z-input></z-input>
+        </z-form-item>
+        <z-form-item>
+          <z-check>记住用户</z-check>
+          <z-check>记住密码</z-check>
+        </z-form-item>
+        <z-btn state="primary" full>登录</z-btn>
+      </z-form>
     </z-flex>
     <div class="bottom"></div>
   </z-flex>
@@ -20,15 +33,25 @@ export default defineComponent({
   background: #327add;
   overflow: auto;
 
-  .login,
-  img {
-    height: 21em;
-    min-height: 252px;
+  .botton,
+  .top {
+    max-width: 92vw;
+    min-width: 660px;
+    width: 76em;
   }
 
-  .login {
-    min-width: 360px;
-    width: 3.5rem;
+  .main {
+
+    img,
+    .login {
+      max-width: 46vw;
+      min-width: 330px;
+      width: 38em;
+    }
+
+    .login {
+      padding: 1em;
+    }
   }
 }
 </style>

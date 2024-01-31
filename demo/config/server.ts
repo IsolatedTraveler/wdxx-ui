@@ -2,6 +2,7 @@ import { ServerOptions } from "vite";
 
 export const server: ServerOptions = {
   port: 8080,
+  host: '0.0.0.0',
   proxy: {
     '/api': {
       target: "http://10.33.77.31:7080/cloudapi/",
