@@ -1,0 +1,10 @@
+@use '../vars/index.scss' as *;
+
+
+:root {
+  @each $category, $values in $color {
+    @each $index, $hex in $values {
+      --color-#{$category}-#{$index}: #{$hex};
+    }
+  }
+}

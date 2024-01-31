@@ -1,7 +1,5 @@
 @use 'sass:map';
-@use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
-@use './btn.scss' as *;
 
 .z-btn {
   white-space: nowrap;
@@ -14,10 +12,13 @@
   cursor: pointer;
   user-select: none;
   border: 1px solid map.get($color, border, 2);
-  color: var(--z-color);
   padding: map-get($size, pd, 'md');
 
   &+& {
     margin-left: 8px;
+  }
+
+  &.z-full {
+    width: 100%;
   }
 }

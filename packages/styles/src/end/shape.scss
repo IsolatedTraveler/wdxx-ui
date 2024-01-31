@@ -2,7 +2,7 @@
 @use '../mixins/index.scss' as *;
 @use '../vars/index.scss' as *;
 $styleHover: (
-  hover: (class: (ghost: (style: (border-color: map.get($color, primary, 2), background-color: map.get($color, color, 3))),
+  hover: (class: (ghost: (style: (border-color: map.get($color, primary, 2), background-color: map.get($color, font, 3))),
       text: (style: (border-color: transparent, color: map.get($color, info, 2),
           background-color: transparent))))
 );

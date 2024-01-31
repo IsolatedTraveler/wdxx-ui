@@ -4,5 +4,5 @@
 [disabled] {
   cursor: not-allowed;
   border-color: map.get($color, border, 3);
-  color: map.get($color, color, 4);
+  color: map.get($color, font, 4);
 }

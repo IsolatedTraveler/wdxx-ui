@@ -3,7 +3,7 @@
 @use './disabled.scss' as *;
 @use '../../vars/index.scss' as *;
 $shape-style--def: (
-  background-color: map.get($color, color, 3)
+  background-color: map.get($color, font, 3)
 );
 $shape-success-style--def: (
   color: map.get($color, success, 2)

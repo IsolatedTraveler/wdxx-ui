@@ -10,7 +10,7 @@ $-child: (
 $thead: (
   style: (position: sticky,
     top: 0,
-    background-color: map-get($color, color, 4),
+    background-color: map-get($color, font, 4),
     z-index: 2,
   ),
   child: $-child

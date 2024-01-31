@@ -1,24 +1,24 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
 $shape-hover--primary: (
-  ghost: (style:(background-color: map.get($color, primary, 2), border-color: map.get($color, primary, 2), color: map.get($color, color, 3))),
-  text: (style:(background-color: map.get($color, color, 3), border-color: map.get($color, color, 3), color: map.get($color, primary, 4)))
+  ghost: (style:(background-color: map.get($color, primary, 2), border-color: map.get($color, primary, 2), color: map.get($color, font, 3))),
+  text: (style:(background-color: map.get($color, font, 3), border-color: map.get($color, font, 3), color: map.get($color, primary, 4)))
 );
 $shape-hover--success: (
-  ghost: (style:(background-color: map.get($color, success, 2), border-color: map.get($color, success, 2), color: map.get($color, color, 3))),
-  text: (style:(background-color: map.get($color, color, 3), border-color: map.get($color, color, 3), color: map.get($color, success, 4)))
+  ghost: (style:(background-color: map.get($color, success, 2), border-color: map.get($color, success, 2), color: map.get($color, font, 3))),
+  text: (style:(background-color: map.get($color, font, 3), border-color: map.get($color, font, 3), color: map.get($color, success, 4)))
 );
 $shape-hover--warning: (
-  ghost: (style:(background-color: map.get($color, warning, 2), border-color: map.get($color, warning, 2), color: map.get($color, color, 3))),
-  text: (style:(background-color: map.get($color, color, 3), border-color: map.get($color, color, 3), color: map.get($color, warning, 4)))
+  ghost: (style:(background-color: map.get($color, warning, 2), border-color: map.get($color, warning, 2), color: map.get($color, font, 3))),
+  text: (style:(background-color: map.get($color, font, 3), border-color: map.get($color, font, 3), color: map.get($color, warning, 4)))
 );
 $shape-hover--info: (
-  ghost: (style:(background-color: map.get($color, info, 2), border-color: map.get($color, info, 2), color: map.get($color, color, 3))),
-  text: (style:(background-color: map.get($color, color, 3), border-color: map.get($color, color, 3), color: map.get($color, info, 4)))
+  ghost: (style:(background-color: map.get($color, info, 2), border-color: map.get($color, info, 2), color: map.get($color, font, 3))),
+  text: (style:(background-color: map.get($color, font, 3), border-color: map.get($color, font, 3), color: map.get($color, info, 4)))
 );
 $shape-hover--danger: (
-  ghost: (style:(background-color: map.get($color, danger, 2), border-color: map.get($color, danger, 2), color: map.get($color, color, 3))),
-  text: (style:(background-color: map.get($color, color, 3), border-color: map.get($color, color, 3), color: map.get($color, danger, 4)))
+  ghost: (style:(background-color: map.get($color, danger, 2), border-color: map.get($color, danger, 2), color: map.get($color, font, 3))),
+  text: (style:(background-color: map.get($color, font, 3), border-color: map.get($color, font, 3), color: map.get($color, danger, 4)))
 );
 $shape-hover--primary-def: (
   background-color: map.get($color, primary, 4),
@@ -46,7 +46,7 @@ $hoverClass: (
   warning: (style: $shape-hover--warning-def, child: (class: $shape-hover--warning)),
   info: (style: $shape-hover--info-def, child: (class: $shape-hover--info)),
   danger: (style: $shape-hover--danger-def, child: (class: $shape-hover--danger)),
-  (primary, success, warning, info, danger): (style:(color: map.get($color, color, 3)))
+  (primary, success, warning, info, danger): (style:(color: map.get($color, font, 3)))
 );
 $styleHover: (
   hover: (class: $hoverClass)

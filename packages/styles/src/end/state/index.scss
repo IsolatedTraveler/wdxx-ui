@@ -4,7 +4,7 @@
 @use './shape.scss' as *;
 @use './hover.scss' as *;
 $state-style--def: (
-  color: map.get($color, color, 3)
+  color: map.get($color, font, 3)
 );
 $state-style--primary: (
   background-color: map.get($color, primary, 2),
