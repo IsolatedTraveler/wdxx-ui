@@ -1,12 +1,17 @@
 import { ref, Ref, ComputedRef } from "vue"
-import { useFlexCss, useSingle } from "./flex"
-import radius from "./radius"
+import { useSingle } from "./flex"
 import { ObjAny, ObjStrBool } from "@ui/vars"
-export { setCss } from './flex'
-export { getStylePx } from './radius'
+export { useCssName } from './name'
+import { isNumber } from "@ui/utils"
+export const getStylePx = (v: string | number): string => {
+  if (v === 'none') {
+    v = '0px'
+  } else if (isNumber(v)) {
+    v += 'px'
+  }
+  return v as string
+}
 const cssV: any = {
-  flex: useFlexCss,
-  radius,
   def: useSingle
 }
 export const useCss = (props: ComputedRef<any>, el: Ref<any>, judge?: ObjStrBool, keys: Array<string> = Object.keys(props.value)) => {

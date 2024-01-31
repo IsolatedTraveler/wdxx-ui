@@ -1,4 +1,4 @@
-import { useHtmlDisabled, useCss, useFlexMixins } from "@ui/hooks"
+import { useHtmlDisabled, useCss, useFlexMixins, useStateMixins, useRadiusMixins } from "@ui/hooks"
 import { useInjectBtn } from "@ui/hooks/use-inject/btn"
 import { computed, ref, SetupContext } from "vue"
 import type { BtnProps, BtnEmits } from "./btn"
@@ -18,14 +18,14 @@ export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) =>
     , classProp = computed(() => {
       return {
         name: 'btn',
-        state: props.state,
         size: size.value,
         shape: props.shape,
-        radius: props.radius,
         full: props.full
       }
-    }), { _class, _style } = useCss(classProp, _ref)
-  useFlexMixins(props, _class.value, _style.value, _ref)
+    }), { _class, _style } = useCss(classProp, _ref), judgeObjClassName = {}
+  useFlexMixins(props, _class.value, _style.value, _ref, judgeObjClassName)
+  useStateMixins(props, _class.value, judgeObjClassName)
+  useRadiusMixins(props, _class.value, _style.value, _ref)
   return {
     _ref,
     _handleClick,

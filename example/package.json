@@ -11,20 +11,20 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@vitejs/plugin-vue": "^3.2.0",
     "@ui/styles": "workspace:^1.0.0",
-    "unplugin-vue-components": "^0.22.9",
-    "vite-plugin-inspect": "^0.7.8",
-    "vite-plugin-mkcert": "^1.10.1",
-    "z-uis": "workspace:*"
+    "@vitejs/plugin-vue": "4.5.2",
+    "unplugin-vue-components": "^0.22.12",
+    "vite-plugin-inspect": "^0.7.42",
+    "vite-plugin-mkcert": "^1.17.3",
+    "z-uis": "workspace:0.0.6"
   },
   "dependencies": {
-    "agora-rtc-sdk-ng": "^4.18.1",
+    "agora-rtc-sdk-ng": "^4.20.0",
     "crypto": "^1.0.1",
-    "crypto-js": "^4.1.1",
-    "element-plus": "^2.2.27",
-    "vite": "^4.0.2",
-    "vue": "^3.2.13",
+    "crypto-js": "^4.2.0",
+    "element-plus": "^2.5.3",
+    "vite": "^4.5.2",
+    "vue": "^3.4.15",
     "vue-buffer": "^0.0.1",
     "vue-router": "^4.2.5",
     "zlib": "^1.0.5"
