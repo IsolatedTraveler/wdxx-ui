@@ -1,11 +1,11 @@
 <template>
   <z-flex class="base-login" col justify="around">
-    <div class="main"></div>
+    <div class="top"></div>
     <z-flex justify="around">
       <img src="/img/login/dl_bj.png">
       <div class="login"></div>
     </z-flex>
-    <div class="main"></div>
+    <div class="bottom"></div>
   </z-flex>
 </template>
 <script lang="ts">

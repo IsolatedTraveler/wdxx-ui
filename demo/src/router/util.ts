@@ -4,8 +4,11 @@ export interface Routes {
 }
 import { useLoadStore } from "@/store"
 const xtmReg = /(^[a-z]+|[A-Z0-9][a-z0-9]+)/g
-let base = useLoadStore()
+let base: any
 export function getRoute(data: Routes, xtm: string, wjm: string, dq: string = 'index') {
+  if (!base) {
+    base = useLoadStore()
+  }
   const Wjm = wjm.slice(0, 1).toUpperCase() + wjm.slice(1), root = base.getRoot || '', name = xtm + Wjm
   data[wjm] = {
     name,

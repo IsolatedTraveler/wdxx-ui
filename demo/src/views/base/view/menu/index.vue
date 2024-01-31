@@ -18,7 +18,7 @@ import { defineComponent } from 'vue';
 import seBaseRoute from '@com/base/route/index.vue'
 const xlsx = require("xlsx")
   , reg = /(非法身份证号!|已经在伊克布拉格村卫生室建档！)/
-let errData = [], cfData
+let errData: any[] = [], cfData
   , judge = false, len = 0
 
 export default defineComponent({
@@ -33,20 +33,20 @@ export default defineComponent({
   methods: {
     changePage() {
     },
-    change(e) {
+    change(e: any) {
       const reader = new FileReader()
       reader.readAsBinaryString(e.target.files[0])
       reader.onload = this.getFlieData
     },
-    getFlieData(ev) {
-      const excel = xlsx.read(ev.target.result, { type: "binary", cellDates: true }),
+    getFlieData(ev: ProgressEvent<FileReader>) {
+      const excel = xlsx.read(ev.target?.result, { type: "binary", cellDates: true }),
         data = xlsx.utils.sheet_to_json(excel.Sheets[excel.SheetNames[0]])
       this.dealData(data).finally(() => {
         cfData = errData.filter(({ bz }) => reg.test(bz))
         console.log(cfData)
       }).finally(this.dealErr)
     },
-    async dealData(data) {
+    async dealData(data: any[]) {
       const len = data.length
       for (let i = 0; i < len;) {
         const arr = []
