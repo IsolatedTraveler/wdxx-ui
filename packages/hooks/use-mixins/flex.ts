@@ -27,9 +27,12 @@ function getWatchElemSizeChange(elem: HTMLElement, isWrap: FlexWatchElemSizeChan
   })
   return resizeObserver
 }
-export const useFlexMixins = function (props: any, classVal: any, styleVal: any, _ref: Ref<any>, judgeObjClassName: ObjStr = { flex: '' }) {
+export const useFlexMixins = function (props: any, classVal: any, styleVal: any, _ref: Ref<any>, judgeObjClassName: ObjStr = { flex: '' }, ly?: string) {
   var isWrap = ref<FlexWatchElemSizeChange>({ widthWrap: false, heigthWrap: false })
     , resizeObserver: ResizeObserver | undefined, isInitResizeObserver: boolean
+  if (ly === 'input') {
+    console.log(props, props.flex)
+  }
   watch(() => props.flex, (v) => {
     var objKey = judgeObjClassName.flex, key = ''
     if (objKey) {
