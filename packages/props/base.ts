@@ -11,8 +11,13 @@ export const PropsBaseString = {
   default: ''
 }
 export const PropsBaseNum = {
-  type: Number,
-  default: ''
+  type: [Number, String],
+  default: '',
+  validator: (v: any): string | undefined => {
+    if (!isNaN(v)) {
+      return 'only numbers can be entered'
+    }
+  }
 }
 export const PropsBaseNumR = {
   type: Number,
