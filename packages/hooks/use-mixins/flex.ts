@@ -1,7 +1,7 @@
 import { PropsFlex, PropsBaseBoolean, PropsBasePositiveInteger, PropsBasePx, PropsFlexAlign, PropsFlexJustify, PropsFlexSelf } from "@ui/props";
 import { Ref, watch, ref } from "vue";
 import { FlexWatchElemSizeChange } from "@ui/vars/type/flex";
-import { useCssName } from "../use-css";
+import { useCssName } from "../use-css/cs";
 import { useCssStyle } from "../use-css/style";
 import { useCssClassAdd } from "../use-css/class";
 import { ObjStr } from "@ui/vars";
@@ -27,12 +27,13 @@ function getWatchElemSizeChange(elem: HTMLElement, isWrap: FlexWatchElemSizeChan
   })
   return resizeObserver
 }
-export const useFlexMixins = function (props: any, classVal: any, styleVal: any, _ref: Ref<any>, judgeObjClassName: ObjStr = { flex: '' }, ly?: string) {
+export const useFlexMixins = function (
+  props: any, classVal: any,
+  styleVal: any,
+  _ref: Ref<any>,
+  judgeObjClassName: ObjStr = { flex: '' }) {
   var isWrap = ref<FlexWatchElemSizeChange>({ widthWrap: false, heigthWrap: false })
     , resizeObserver: ResizeObserver | undefined, isInitResizeObserver: boolean
-  if (ly === 'input') {
-    console.log(props, props.flex)
-  }
   watch(() => props.flex, (v) => {
     var objKey = judgeObjClassName.flex, key = ''
     if (objKey) {

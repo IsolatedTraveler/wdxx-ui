@@ -10,7 +10,7 @@
             <z-input></z-input>
           </z-form-item>
           <z-form-item>
-            <z-input></z-input>
+            <z-input type="password"></z-input>
           </z-form-item>
           <z-form-item>
             <z-check>记住用户</z-check>

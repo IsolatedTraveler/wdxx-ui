@@ -1,4 +1,4 @@
-export * from './use-css'
+export * from './use-css/'
 export * from './use-event'
 export * from './use-html'
 export * from './use-inject'

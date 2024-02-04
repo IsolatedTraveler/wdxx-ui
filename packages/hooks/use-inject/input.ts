@@ -1,32 +1,31 @@
-import { InputProps } from "@ui/components/input/src/input";
-import { computed, inject } from "vue";
+import { InputEmits, InputProps } from "@ui/components/input/src/input";
+import { Ref, SetupContext, computed, inject, ref, watch } from "vue";
 import { provideFormItemsId } from "../use-provide/form-items";
 import { provideFormId } from "@ui/vars/hooks";
-export const useInjectInput = (props: InputProps) => {
-  const { submit, clear, prop, value, changeVal } = inject(provideFormItemsId, inject(provideFormId, {}))
+import { EventUpdate } from "@ui/vars";
+export const useInjectInput = (props: InputProps, emit: SetupContext<InputEmits>['emit']) => {
+  const { prop, value } = inject(provideFormItemsId, inject(provideFormId, {})),
+    _value: Ref<string | number> = ref('')
+  watch(() => _value.value, (v) => {
+    if (value && props.name) {
+      value.value[props.name] = v
+    }
+    emit(EventUpdate, v)
+  }, { immediate: true })
+  watch(() => props.name && value ? value.value[props.name] : '', (v) => {
+    _value.value = v
+  }, { immediate: true })
   return {
-    submit,
-    clear,
-    changeVal,
     prop: computed(() => {
       const val = prop?.value || ({} as any)
-      const { disabled, readonly, size, validateFun, tabIndex } = val
+      const { disabled, readonly, size, tabIndex } = val
       return {
-        disabled: props.disabled || disabled,
-        readonly: props.readonly || readonly,
-        size,
-        tabIndex: (tabIndex || 0) * 100 + ((props.tabIndex as number) || 0),
-        validateFun: Object.assign({}, validateFun, props.validateFun)
+        disabled: props.disabled === false ? false : (props.disabled || disabled),
+        readonly: props.readonly === false ? false : (props.readonly || readonly),
+        size: props.size || size,
+        tabIndex: (tabIndex || 0) * 100 + ((props.tabIndex as number) || 0)
       }
     }),
-    value: computed(() => {
-      if (props.name || props.name === 0) {
-        if (value?.value) {
-          return value.value[props.name] || ''
-        }
-      } else {
-        return props.modelValue || props.value || ''
-      }
-    })
+    _value
   }
 }

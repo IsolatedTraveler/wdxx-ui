@@ -1,39 +1,17 @@
-import { useCss } from "@ui/hooks"
-import { ref, SetupContext, computed } from "vue"
+import { useCssInit } from "@ui/hooks"
+import { ref, SetupContext } from "vue"
 import { InputEmits, InputProps } from "./input"
-import { useInjectInput, useInputMixins } from "@ui/hooks"
-import { EventUpdate } from "@ui/vars"
+import { useInputMixins } from "@ui/hooks"
 export const useInput = (props: InputProps, emit: SetupContext<InputEmits>['emit']) => {
-  const { prop, value, changeVal } = useInjectInput(props)
-  const _ref = ref<HTMLInputElement>(), classVal = computed(() => ({
-    name: 'input',
-    size: prop?.value?.size
-  })), { _class, _style } = useCss(classVal, _ref, { span: false, auto: false })
-  useInputMixins(props, _class.value, _style.value, _ref, {})
-  function submit(v: Event) {
-    const el = v.target as HTMLInputElement, val = el.value
-    if (props.name || props.name === 0) {
-      changeVal && changeVal(props.name, val)
-    } else {
-      emit(EventUpdate, val)
-    }
-  }
+  const _ref = ref<HTMLInputElement>(),
+    { _class, _style, classVal, styleVal } = useCssInit(props, 'input', { cssClass: ['size'] }),
+    { _value, prop } = useInputMixins(props, classVal, styleVal, _ref, emit, {})
+
   return {
     _ref,
     _class,
     _style,
-    prop: computed(() => {
-      const value = prop?.value || ({} as any)
-      const { disabled, readonly, tabIndex } = value
-      return {
-        disabled: props.disabled || disabled,
-        readonly: props.readonly || readonly,
-        tabIndex,
-        placeholder: props.placeholder,
-        type: props.type
-      }
-    }),
-    value,
-    submit
+    _value,
+    prop
   }
 }
