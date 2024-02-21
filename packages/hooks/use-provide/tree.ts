@@ -10,12 +10,12 @@ declare type ClickEvent = (id: string | number, data: ObjAny, pid?: Array<string
 export interface ProvideTree {
   idAlias: ComputedRef<string | number>
   pIdAlias: ComputedRef<string | number>
+  childAlias: ComputedRef<string | number>
   mcAlias: ComputedRef<string | number>
   cols: ComputedRef<Array<ObjAny>>
   typeCols: ComputedRef<Array<ObjAny>>
   expandVal: Ref<Array<string | number>>
   click: ClickEvent
-  filter: (id?: string, data?: ObjAny) => Array<ObjAny> | undefined
   isExpand: (prop: TreeItemProps, pid?: Array<string | number> | undefined) => ComputedRef<boolean>
 }
 export const provideTreeId: InjectionKey<ProvideTree> = Symbol('tree')
@@ -50,8 +50,8 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
     , childAlias = computed(() => props?.alias?.child || 'child')
     , pIdAlias = computed(() => props?.alias?.pId || 'pid')
     , mcAlias = computed(() => props?.alias?.mc || 'mc')
-    , cols = computed(() => props?.cols || [])
-    , typeCols = computed(() => (props.cols || []).filter(it => it.type == 'temp'))
+    , cols = computed(() => props?.cols || []) // 一行显示的列参数
+    , typeCols = computed(() => cols.value.filter(it => it.type == 'temp')) // 模板列
     , clickVal: Ref<string | number> = ref('')
     , click = (id: string | number, data: ObjAny, pid?: Array<string | number>) => {
       emit(EventSelect, data)
@@ -65,11 +65,6 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
       }
     }
     , { expandVal, isExpand } = judgeExpand(props, idAlias, click, clickVal)
-    , filter = (id: string = '', data: ObjAny = {}) => {
-      return data[childAlias.value] || props.data?.filter(it => {
-        return (it[pIdAlias.value] || '') == id
-      })
-    }
   provide(provideTreeId, {
     idAlias,
     pIdAlias,
@@ -77,9 +72,9 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
     cols,
     typeCols,
     click,
-    filter,
     expandVal,
-    isExpand
+    isExpand,
+    childAlias
   })
-  return { idAlias, typeCols, filter }
+  return { pIdAlias, idAlias, typeCols }
 }

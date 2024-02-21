@@ -32,7 +32,7 @@ defineOptions({
 })
 const props = defineProps(treeItemProps)
 const { childIndex = 0 } = props
-const { _ref, _class, child, idAlias, typeCols, mc, cols, selected, judgeExpand } = useTreeItem(props)
+const { _ref, _class, mc, cols, selected, child, judgeExpand, idAlias, typeCols } = useTreeItem(props)
 defineExpose({
   ref: _ref
 })
