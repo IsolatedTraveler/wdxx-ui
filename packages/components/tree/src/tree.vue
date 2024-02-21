@@ -1,7 +1,7 @@
 <template>
   <ul ref="_ref" :class="_class">
     <z-tree-item v-for="(it, i) in tData" :data="it" :key="it[idAlias]" :index="i" :childIndex="0" :pid="[]"
-      :isExpand="expandVal[0] === it[idAlias]">
+      :isExpand="expandVal[0] === it[idAlias]" :def="def">
       <template #default="{ data }">
         <slot :data="data"></slot>
       </template>

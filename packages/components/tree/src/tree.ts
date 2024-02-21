@@ -6,7 +6,7 @@ export const treeProps = propsBuildS({
   data: PropsBaseArray_Object,
   alias: PropsBaseObject,
   cols: PropsBaseArray_Object,
-  expand: PropsTreeExpand,
+  def: PropsTreeExpand,
   root: PropsBaseStringN
 })
 export const treeEmits = {

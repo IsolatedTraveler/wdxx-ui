@@ -12,7 +12,7 @@
     </z-flex>
     <ul class="tree-child" v-if="child" v-show="isExpand">
       <z-tree-item v-for="(it, i) in child" :data="it" :key="it[idAlias]" :index="i" :childIndex="cIndex"
-        :pid="pid?.concat(data[idAlias])">
+        :pid="pid?.concat(data[idAlias])" :def="def">
         <template #default="{ data }">
           <slot :data="data"></slot>
         </template>

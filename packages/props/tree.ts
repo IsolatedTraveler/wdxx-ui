@@ -1,5 +1,4 @@
 
 export const PropsTreeExpand = {
-  type: [String, Number, Boolean],
-  default: false
+  type: [String, Number]
 }
