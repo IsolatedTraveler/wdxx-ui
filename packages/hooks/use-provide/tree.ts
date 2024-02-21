@@ -14,7 +14,8 @@ export interface ProvideTree {
   mcAlias: ComputedRef<string | number>
   cols: ComputedRef<Array<ObjAny>>
   typeCols: ComputedRef<Array<ObjAny>>
-  click: ClickEvent
+  click: ClickEvent,
+  expandVal: Ref<Array<string | number>>
 }
 export const provideTreeId: InjectionKey<ProvideTree> = Symbol('tree')
 function formatTreeData(
@@ -77,7 +78,8 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
     cols,
     typeCols,
     click,
-    childAlias
+    childAlias,
+    expandVal
   })
   return { pIdAlias, idAlias, typeCols, tData, expandVal }
 }
