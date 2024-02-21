@@ -9,6 +9,7 @@ export const router = createRouter({
   routes
 })
 router.beforeEach((to, _from, next) => {
+  console.log(router.getRoutes())
   if (checkLogin(to)) {
     const pro = Object.values(loadXt).filter(it => it)
     if (pro.length) {

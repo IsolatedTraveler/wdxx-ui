@@ -3,15 +3,10 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { router } from '@/router';
 
 export default defineComponent({
   name: 'base-menu',
   created() {
-    setTimeout(() => {
-      console.log(123)
-      router.push({ path: 'baseMenu/qtxtHome' })
-    }, 3000);
   }
 })
 </script>

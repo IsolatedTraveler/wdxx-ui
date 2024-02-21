@@ -7,21 +7,39 @@
       </z-flex>
       <z-flex col class="content" auto="1">
         <div class="title"></div>
-        <!-- <seBaseRoute></seBaseRoute> -->
+        <router-view v-slot="{ Component, route }" v-if="item.lx === 'route'">
+          <keep-alive :include="item.path">
+            <component :is="Component" :key="route.name" class="router" />
+          </keep-alive>
+        </router-view>
+        <iframe :src="item.path" frameborder="0" v-else-if="item.lx === 'iframe'"></iframe>
+        <z-flex auto="1" class="router" v-else>
+          <!-- <input type="file" @change="change"> -->
+        </z-flex>
       </z-flex>
     </z-flex>
   </z-flex>
 </template>
 <script lang="ts" setup>
 import { useUserStore } from '@/store';
+import router from '@/router';
+import { ref } from 'vue';
+import { ObjAny } from '@ui/vars';
 const user = useUserStore(), alias = {
   id: 'name',
   mc: 'title',
   child: 'children'
-}
+}, item = ref({} as ObjAny), url = ref([] as string[])
 user.setMenu()
-function changePage(item: any) {
-  console.log(item)
+function changePage(it: any) {
+  if (it.path) {
+    console.log(it.lx === 'route')
+    if (it.lx === 'route') {
+      router.push({ path: it.path })
+      url.value.push(it.path)
+    }
+    item.value = it
+  }
 }
 </script>
 <style lang="scss">

@@ -5,6 +5,6 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'base-404'
+  name: 'gswd-publish'
 })
 </script>
