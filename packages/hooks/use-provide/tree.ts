@@ -45,6 +45,37 @@ function judgeExpand(props: TreeProps, idAlias: ComputedRef<string | number>, cl
     expandVal, isExpand
   }
 }
+function formatTreeData(
+  data: Array<any>,
+  id: string = 'id',
+  pId: string = 'pid',
+  child: string = 'children',
+  root: string | number = '') {
+  var tData: Array<ObjAny> = [], obj: ObjAny = {}
+  data.filter(it => {
+    var idVal = it[id] || ''
+    obj[idVal] = it
+    it[child] = it[child] || []
+    if (idVal === root) {
+      tData.push(it)
+    } else {
+      var pIdVal = it[pId] || '', pItem = obj[pIdVal]
+      if (pItem) {
+        pItem[child].push(it)
+      } else {
+        return true
+      }
+    }
+  }).forEach(it => {
+    var pIdVal = it[pId] || '', pItem = obj[pIdVal]
+    if (pItem) {
+      pItem[child].push(it)
+    } else {
+      tData.push(it)
+    }
+  })
+  return tData
+}
 export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['emit']) => {
   const idAlias = computed(() => props?.alias?.id || 'id')
     , childAlias = computed(() => props?.alias?.child || 'child')
@@ -65,6 +96,9 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
       }
     }
     , { expandVal, isExpand } = judgeExpand(props, idAlias, click, clickVal)
+    , tData = computed(() => {
+      return formatTreeData(props.data || [], idAlias.value, pIdAlias.value, childAlias.value, props.root || '')
+    })
   provide(provideTreeId, {
     idAlias,
     pIdAlias,
@@ -76,5 +110,5 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
     isExpand,
     childAlias
   })
-  return { pIdAlias, idAlias, typeCols }
+  return { pIdAlias, idAlias, typeCols, tData }
 }

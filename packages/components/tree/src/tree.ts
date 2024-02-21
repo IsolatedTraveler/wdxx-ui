@@ -7,7 +7,7 @@ export const treeProps = propsBuildS({
   alias: PropsBaseObject,
   cols: PropsBaseArray_Object,
   expand: PropsTreeExpand,
-  pId: PropsBaseStringN
+  root: PropsBaseStringN
 })
 export const treeEmits = {
   [EventSelect]: (data: ObjAny) => true,

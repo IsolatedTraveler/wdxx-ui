@@ -13,11 +13,6 @@ export const useTreeItem = (props: TreeItemProps) => {
   function selected() {
     click(props.data[idAlias.value], props.data, props.pid)
   }
-  setTimeout(() => {
-    if (props.data[idAlias.value] === 'component') {
-      console.log(judgeExpand.value)
-    }
-  }, 5000);
   return {
     _ref,
     _class,
