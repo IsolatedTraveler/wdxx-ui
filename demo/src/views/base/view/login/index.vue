@@ -16,19 +16,27 @@
             <z-check>记住用户</z-check>
             <z-check>记住密码</z-check>
           </z-form-item>
-          <z-btn state="primary" size="lg" full>登录</z-btn>
+          <z-btn state="primary" size="lg" full @click="submit">登录</z-btn>
         </z-form>
       </z-flex>
     </z-flex>
     <div class="bottom"></div>
   </z-flex>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import router from '@/router';
+import { useUserStore } from '@/store';
+import { defineOptions } from 'vue';
 
-export default defineComponent({
+defineOptions({
   name: 'base-login'
 })
+const submit = function () {
+  useUserStore().setUser({ jgid: '70' })
+  router.push({
+    path: '/baseMenu'
+  })
+}
 </script>
 <style lang="scss">
 .base-login {

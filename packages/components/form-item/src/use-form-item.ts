@@ -1,12 +1,13 @@
-import { useCss } from "@ui/hooks"
-import { ref, SetupContext, computed } from "vue"
+import { useCssInit, useFlexMixins } from "@ui/hooks"
+import { ref, SetupContext } from "vue"
 import { FormItemEmits, FormItemProps } from "./form-item"
 export const useFormItem = (props: FormItemProps, emit: SetupContext<FormItemEmits>['emit']) => {
-  const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
-    name: 'form-item'
-  })), {_class} = useCss(classVal, _ref)
+  const _ref = ref<HTMLButtonElement>()
+  const { _class, _style, classVal, styleVal, judgeObjClassName } = useCssInit(props, 'form-item')
+  useFlexMixins(props, classVal, styleVal, _ref, judgeObjClassName)
   return {
     _ref,
-    _class
+    _class,
+    _style
   }
 }

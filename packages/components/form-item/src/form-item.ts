@@ -1,9 +1,11 @@
 import { ExtractPropTypes } from "vue";
-import { propsBuildS } from "@ui/hooks";
-import { PropsBaseStringN } from "@ui/props";
+import { propsBuildS, propsFlexMixins } from "@ui/hooks";
+import { PropsBaseNum, PropsBaseStringN } from "@ui/props";
 export const formItemProps = propsBuildS({
-  label:PropsBaseStringN
-})
+  labelSize: PropsBaseNum,
+  label: PropsBaseStringN,
+  ...propsFlexMixins
+}, { flex: 'row' })
 export const formItemEmits = {
 }
 export type FormItemProps = ExtractPropTypes<typeof formItemProps>

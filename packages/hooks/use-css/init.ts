@@ -1,4 +1,4 @@
-import { ObjTrue } from "@ui/vars";
+import { ObjStr, ObjTrue } from "@ui/vars";
 import { CSSProperties, ref } from "vue"
 import { useCssName } from "./name";
 import { useCssClass, useCssClassAdd } from "./class";
@@ -13,7 +13,7 @@ export function useCssInit(props: any, module: string, {
   var classVal: ObjTrue = {
     [useCssName(module)]: true
   }, styleVal: CSSProperties = {}, _class = ref(classVal), _style = ref(styleVal),
-    judgeObjClassName: ObjTrue = {}
+    judgeObjClassName: ObjStr = {}
   cssClass.forEach(k => {
     useCssClass(props, k, classVal, judgeObjClassName)
   })

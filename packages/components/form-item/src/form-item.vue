@@ -1,11 +1,10 @@
 <template>
-  <z-flex ref="_ref" :class="_class">
+  <div ref="_ref" :class="_class" :style="_style">
     <label>{{ label }}</label>
     <slot></slot>
-  </z-flex>
+  </div>
 </template>
 <script lang="ts" setup>
-import { ZFlex } from '../../flex';
 import { formItemEmits, formItemProps } from './form-item'
 import { useFormItem } from './use-form-item'
 defineOptions({
@@ -13,7 +12,7 @@ defineOptions({
 })
 const props = defineProps(formItemProps)
 const emit = defineEmits(formItemEmits)
-const {_ref, _class} = useFormItem(props, emit)
+const { _ref, _class, _style } = useFormItem(props, emit)
 defineExpose({
   ref: _ref
 })
