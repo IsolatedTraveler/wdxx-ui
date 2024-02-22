@@ -33,7 +33,6 @@ const user = useUserStore(), alias = {
 user.setMenu()
 function changePage(it: any) {
   if (it.path) {
-    console.log(it.lx === 'route')
     if (it.lx === 'route') {
       router.push({ path: it.path })
       url.value.push(it.path)
@@ -58,6 +57,7 @@ function changePage(it: any) {
 
     >.content {
       border-left: 1px solid #dcdcdc;
+      height: 100%;
 
       >.title {
         flex-basis: 2em;

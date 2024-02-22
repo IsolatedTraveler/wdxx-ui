@@ -5,7 +5,7 @@ export default {
     {
       name: 'gswdPublsh',
       title: '发版流程',
-      path: '/baseMenu/gswdPublsh',
+      path: '/baseMenu/gswdPublish',
       lx: 'route'
     }
   ]

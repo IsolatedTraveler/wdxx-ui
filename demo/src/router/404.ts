@@ -13,7 +13,6 @@ function addRoute(routes: RouteRecordRaw, name: string = '') {
 }
 function addRoutes(routes: RouteRecordRaw) {
   const name = useLoadStore().getRoot ? '' : 'baseMenu'
-  console.log(name)
   if (Array.isArray(routes)) {
     routes.forEach(it => {
       addRoute(it, name)
