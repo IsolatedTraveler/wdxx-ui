@@ -1,6 +1,6 @@
 <template>
   <z-flex flex="row" class="use-publish">
-    <z-tree class="left"></z-tree>
+    <z-tree class="left" :data="menu"></z-tree>
     <z-flex class="content"></z-flex>
   </z-flex>
 </template>
@@ -10,7 +10,7 @@ import { usePublish } from './use-publish';
 defineOptions({
   name: 'gswd-publish'
 })
-const { } = usePublish()
+const { menu } = usePublish()
 </script>
 <style lang="scss">
 .use-publish {

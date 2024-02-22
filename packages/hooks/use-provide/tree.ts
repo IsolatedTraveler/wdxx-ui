@@ -1,7 +1,6 @@
-import { TreeItemProps } from "@ui/components/tree/src/item/tree-item";
 import { TreeProps, TreeEmits } from "@ui/components/tree/src/tree";
-import { EventCheck, EventExpand, EventSelect, ObjAny, PropsTreeColType } from "@ui/vars";
-import { ComputedRef, InjectionKey, Ref, SetupContext, computed, provide, ref, watch } from "vue";
+import { EventCheck, EventSelect, ObjAny, PropsTreeColType } from "@ui/vars";
+import { ComputedRef, InjectionKey, Ref, SetupContext, computed, provide, ref } from "vue";
 export interface Col {
   id: string,
   type: PropsTreeColType
@@ -9,13 +8,13 @@ export interface Col {
 declare type ClickEvent = (id: string | number, data: ObjAny, pid?: Array<string | number>) => void
 export interface ProvideTree {
   idAlias: ComputedRef<string | number>
-  pIdAlias: ComputedRef<string | number>
   childAlias: ComputedRef<string | number>
   mcAlias: ComputedRef<string | number>
   cols: ComputedRef<Array<ObjAny>>
   typeCols: ComputedRef<Array<ObjAny>>
   click: ClickEvent,
   expandVal: Ref<Array<string | number>>
+  clickVal: Ref<string | number>
 }
 export const provideTreeId: InjectionKey<ProvideTree> = Symbol('tree')
 function formatTreeData(
@@ -63,9 +62,9 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
       if (clickVal.value != id) {
         clickVal.value = id
         emit(EventCheck, data)
-      }
-      if (expandVal.value?.[0] !== (pid?.[0] || id)) {
-        expandVal.value = [...pid, id]
+        if (expandVal.value !== pid) {
+          expandVal.value = pid
+        }
       }
     }
     , tData = computed(() => {
@@ -73,13 +72,13 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
     })
   provide(provideTreeId, {
     idAlias,
-    pIdAlias,
     mcAlias,
     cols,
     typeCols,
     click,
     childAlias,
-    expandVal
+    expandVal,
+    clickVal
   })
-  return { pIdAlias, idAlias, typeCols, tData, expandVal }
+  return { idAlias, typeCols, tData }
 }
