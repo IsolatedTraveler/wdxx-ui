@@ -11,31 +11,16 @@
       <iframe class="content" :src="item.path" frameborder="0" v-else-if="item.lx === 'iframe'"></iframe>
       <div class="content" v-else>
         暂未添加该类型的解决方案${item.lx}
-        <!-- <input type="file" @change="change"> -->
       </div>
     </z-flex>
   </z-flex>
 </template>
 <script lang="ts" setup>
-import { useUserStore } from '@/store';
-import router from '@/router';
-import { ref } from 'vue';
-import { ObjAny } from '@ui/vars';
-const user = useUserStore(), alias = {
-  id: 'name',
-  mc: 'title',
-  child: 'children'
-}, item = ref({} as ObjAny), url = ref([] as string[])
-user.setMenu()
-function changePage(it: any) {
-  if (it.path) {
-    if (it.lx === 'route') {
-      router.push({ path: it.path })
-      url.value.push(it.path)
-    }
-    item.value = it
-  }
-}
+import { useMenu } from './use-menu'
+defineOptions({
+  name: 'base-menu'
+})
+const { user, alias, item, changePage } = useMenu()
 </script>
 <style lang="scss">
 .base-menu {
