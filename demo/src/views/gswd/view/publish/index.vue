@@ -1,7 +1,7 @@
 <template>
   <z-flex flex="row" class="use-publish">
     <z-tree class="left"></z-tree>
-    <z-flex></z-flex>
+    <z-flex class="content"></z-flex>
   </z-flex>
 </template>
 <script lang="ts" setup>
@@ -19,6 +19,11 @@ const { } = usePublish()
     height: 100%;
     overflow: auto;
     border-right: 1px solid var(--color-border-2);
+  }
+
+  >.content {
+    height: 100%;
+    overflow: auto;
   }
 }
 </style>
