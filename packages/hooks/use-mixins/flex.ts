@@ -49,8 +49,9 @@ export const useFlexMixins = function (
     classVal[useCssName('flex--wrap')] = v
   })
   watch(() => ({ basis: props?.basis, auto: props?.basis ? undefined : props?.auto }), ({ basis, auto }) => {
-    styleVal.flexBasis = auto ? 0 : useCssStyle(basis)
-    styleVal.flexGrow = auto ? auto : undefined
+    console.log(basis, auto)
+    styleVal.flexBasis = basis ? useCssStyle(basis) : 0
+    styleVal.flexGrow = basis ? undefined : (auto || 1)
   }, { immediate: true })
   watch(() => props?.left, (v) => {
     styleVal.marginLeft = useCssStyle(v)
