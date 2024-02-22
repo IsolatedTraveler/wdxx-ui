@@ -5,18 +5,16 @@
       <z-flex basis="10em" wrap class="left">
         <z-tree :data="user.getMenu" :alias="alias" @checked="changePage"></z-tree>
       </z-flex>
-      <z-flex col class="content" auto="1">
-        <router-view v-slot="{ Component, route }" v-if="item.lx === 'route'">
-          <keep-alive :include="item.path">
-            <component :is="Component" :key="route.name" class="router" />
-          </keep-alive>
-        </router-view>
-        <iframe :src="item.path" frameborder="0" v-else-if="item.lx === 'iframe'"></iframe>
-        <z-flex auto="1" class="router" v-else>
-          暂未添加该类型的解决方案${item.lx}
-          <!-- <input type="file" @change="change"> -->
-        </z-flex>
-      </z-flex>
+      <router-view class="content" v-slot="{ Component, route }" v-if="item.lx === 'route'">
+        <keep-alive :include="item.path">
+          <component :is="Component" :key="route.name" />
+        </keep-alive>
+      </router-view>
+      <iframe class="content" :src="item.path" frameborder="0" v-else-if="item.lx === 'iframe'"></iframe>
+      <div class="content" v-else>
+        暂未添加该类型的解决方案${item.lx}
+        <!-- <input type="file" @change="change"> -->
+      </div>
     </z-flex>
   </z-flex>
 </template>
@@ -58,16 +56,12 @@ function changePage(it: any) {
     >.content {
       border-left: 1px solid #dcdcdc;
       height: 100%;
+      flex: 1 0 0;
 
       >.title {
         flex-basis: 2em;
         border-bottom: 1px solid #dcdcdc;
         width: 100%;
-      }
-
-      >.router {
-        flex-grow: 1;
-        height: 100%;
       }
     }
   }
