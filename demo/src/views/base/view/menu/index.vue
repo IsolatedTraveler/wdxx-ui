@@ -6,7 +6,6 @@
         <z-tree :data="user.getMenu" :alias="alias" @checked="changePage"></z-tree>
       </z-flex>
       <z-flex col class="content" auto="1">
-        <div class="title"></div>
         <router-view v-slot="{ Component, route }" v-if="item.lx === 'route'">
           <keep-alive :include="item.path">
             <component :is="Component" :key="route.name" class="router" />
