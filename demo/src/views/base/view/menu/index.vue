@@ -2,9 +2,7 @@
   <z-flex class="base-menu" flex="col">
     <div class="xtxx"></div>
     <z-flex auto="1" class="xtxq" flex="row">
-      <z-flex basis="10em" wrap class="left">
-        <z-tree :data="user.getMenu" :alias="alias" @checked="changePage"></z-tree>
-      </z-flex>
+      <z-tree class="left" :data="user.getMenu" :alias="alias" @checked="changePage" scroll></z-tree>
       <router-view class="content" v-slot="{ Component, route }" v-if="item.lx === 'route'">
         <keep-alive :include="item.path">
           <component :is="Component" :key="route.name" />
@@ -52,6 +50,10 @@ function changePage(it: any) {
 
   >.xtxq {
     width: 100%;
+
+    >.left {
+      flex-basis: 10em;
+    }
 
     >.content {
       border-left: 1px solid #dcdcdc;
