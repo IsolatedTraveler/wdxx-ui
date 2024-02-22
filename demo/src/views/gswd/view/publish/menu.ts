@@ -10,5 +10,11 @@ export default [
         ]
       }
     ]
+  }, {
+    id: 'fbxt', mc: '发布系统', child: [
+      { id: 'jtphis', mc: 'jtphis', path: true }
+      , { id: 'his', mc: 'his', path: true }
+      , { id: 'ydgw', mc: '移动公卫', path: true }
+    ]
   }
 ]
