@@ -47,7 +47,7 @@ body,
     max-width: 18em;
     max-height: 100%;
     overflow-y: auto;
-    border-right: 1px solid #dcdcdc;
+    border-right: 1px solid var(--color-border-2);
     padding: .5em;
     box-sizing: border-box;
   }

@@ -30,7 +30,7 @@ const { user, alias, item, changePage } = useMenu()
   >.xtxx {
     flex-basis: 3em;
     width: 100%;
-    border-bottom: 1px solid #dcdcdc;
+    border-bottom: 1px solid var(--color-border-2);
   }
 
   >.xtxq {
@@ -41,13 +41,13 @@ const { user, alias, item, changePage } = useMenu()
     }
 
     >.content {
-      border-left: 1px solid #dcdcdc;
+      border-left: 1px solid var(--color-border-2);
       height: 100%;
       flex: 1 0 0;
 
       >.title {
         flex-basis: 2em;
-        border-bottom: 1px solid #dcdcdc;
+        border-bottom: 1px solid var(--color-border-2);
         width: 100%;
       }
     }

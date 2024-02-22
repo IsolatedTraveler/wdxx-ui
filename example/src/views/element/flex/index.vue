@@ -42,17 +42,17 @@ export default {
   }
 
   .z-row {
-    border-left: 1px solid #dcdcdc;
+    border-left: 1px solid var(--color-border-2);
 
     &:first-child {
-      border-top: 1px solid #dcdcdc;
+      border-top: 1px solid var(--color-border-2);
     }
   }
 
 
   .z-col {
-    border-right: 1px solid #dcdcdc;
-    border-bottom: 1px solid #dcdcdc;
+    border-right: 1px solid var(--color-border-2);
+    border-bottom: 1px solid var(--color-border-2);
   }
 }
 </style>
