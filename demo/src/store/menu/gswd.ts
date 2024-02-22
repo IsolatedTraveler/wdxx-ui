@@ -3,7 +3,7 @@ export default {
   title: '公司文档',
   children: [
     {
-      name: 'gswdPublsh',
+      name: 'gswdPublish',
       title: '发版流程',
       path: '/baseMenu/gswdPublish',
       lx: 'route'

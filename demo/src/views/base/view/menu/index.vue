@@ -2,7 +2,7 @@
   <z-flex class="base-menu" flex="col">
     <div class="xtxx"></div>
     <z-flex auto="1" class="xtxq" flex="row">
-      <z-tree class="left" :data="user.getMenu" :alias="alias" @checked="changePage" scroll></z-tree>
+      <z-tree class="left" :data="user.getMenu" :alias="alias" @checked="changePage" scroll :def="def"></z-tree>
       <router-view class="content" v-slot="{ Component, route }" v-if="item.lx === 'route'">
         <keep-alive :include="item.path">
           <component :is="Component" :key="route.name" />
@@ -20,7 +20,7 @@ import { useMenu } from './use-menu'
 defineOptions({
   name: 'base-menu'
 })
-const { user, alias, item, changePage } = useMenu()
+const { user, alias, item, changePage, def } = useMenu()
 </script>
 <style lang="scss">
 .base-menu {

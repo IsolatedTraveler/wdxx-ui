@@ -1,5 +1,5 @@
 import { useCss } from "@ui/hooks"
-import { ref, computed } from "vue"
+import { ref, computed, watch } from "vue"
 import { TreeItemProps } from "./tree-item"
 import { useInjectTreeItem } from "@ui/hooks/use-inject"
 export const useTreeItem = (props: TreeItemProps) => {
@@ -12,8 +12,13 @@ export const useTreeItem = (props: TreeItemProps) => {
     }), cIndex = computed(() => (props.childIndex || 0) + 1)
     , isExpand = computed(() => props.isExpand && (expandVal.value[props.childIndex || 0] || clickVal.value) == id.value)
   function selected() {
-    click(props.data[idAlias.value], props.data, props.pid)
+    click(id.value, props.data, props.pid)
   }
+  watch(() => ({ id: id.value, def: props.def || '' }), ({ id, def }) => {
+    if (id === def) {
+      selected()
+    }
+  }, { immediate: true })
   return {
     _ref,
     _class,

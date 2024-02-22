@@ -1,6 +1,6 @@
 <template>
   <z-flex flex="row" class="use-publish">
-    <z-tree class="left" :data="menu"></z-tree>
+    <z-tree class="left" :data="menu" def="java"></z-tree>
     <z-flex class="content"></z-flex>
   </z-flex>
 </template>

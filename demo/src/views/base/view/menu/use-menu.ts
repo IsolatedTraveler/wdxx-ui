@@ -1,5 +1,5 @@
 import { useUserStore } from "@/store"
-import { ref } from "vue"
+import { onMounted, ref } from "vue"
 import { ObjAny } from '@ui/vars';
 import router from '@/router';
 export const useMenu = () => {
@@ -8,6 +8,7 @@ export const useMenu = () => {
     mc: 'title',
     child: 'children'
   }, item = ref({} as ObjAny), url = ref([] as string[])
+    , def = ref('')
   user.setMenu()
   function changePage(it: any) {
     if (it.path) {
@@ -18,10 +19,14 @@ export const useMenu = () => {
       item.value = it
     }
   }
+  onMounted(() => {
+    def.value = (router.currentRoute.value.name) as string
+  })
   return {
     user,
     alias,
     item,
-    changePage
+    changePage,
+    def
   }
 }

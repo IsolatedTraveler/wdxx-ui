@@ -30,7 +30,7 @@ export const useUserStore = defineStore('user', {
       setTimeout(() => {
         temp('user-menu', menu)
         this.menu = menu
-      }, 3000)
+      }, 10000)
     }
   }
 })
