@@ -14,6 +14,7 @@
         </router-view>
         <iframe :src="item.path" frameborder="0" v-else-if="item.lx === 'iframe'"></iframe>
         <z-flex auto="1" class="router" v-else>
+          暂未添加该类型的解决方案${item.lx}
           <!-- <input type="file" @change="change"> -->
         </z-flex>
       </z-flex>
