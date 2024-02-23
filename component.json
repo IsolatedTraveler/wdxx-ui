@@ -11,7 +11,8 @@
     "input",
     "select",
     "tree",
-    "table"
+    "table",
+    "code"
   ],
   "ywc": {
     "flex": true
@@ -72,6 +73,7 @@
       "provide": true
     },
     "call-kit": true,
-    "table": true
+    "table": true,
+    "code": true
   }
 }

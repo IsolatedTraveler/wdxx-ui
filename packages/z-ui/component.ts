@@ -10,6 +10,7 @@ import {ZInput} from '@ui/components/input'
 import {ZSelect} from '@ui/components/select'
 import {ZTree} from '@ui/components/tree'
 import {ZTable} from '@ui/components/table'
+import {ZCode} from '@ui/components/code'
 export default[
   ZFlex,
   ZIcon,
@@ -23,5 +24,6 @@ export default[
   ZInput,
   ZSelect,
   ZTree,
-  ZTable
+  ZTable,
+  ZCode
 ]
