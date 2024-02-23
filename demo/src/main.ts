@@ -8,7 +8,7 @@ import zUi from 'z-uis/index'
 import '@ui/styles/dist/index.css'
 import 'highlight.js/styles/atom-one-dark.css';
 const app = createApp(App)
-util.setFontSize(1200)
+// util.setFontSize(1200)
 app.config.globalProperties.$api = api;
 app.config.globalProperties.$util = util;
 app.use(createPinia())

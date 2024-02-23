@@ -1,6 +1,7 @@
 export * from './base'
 export * from './btn'
 export * from './call-kit'
+export * from './code'
 export * from './flex'
 export * from './input'
 export * from './tree'
