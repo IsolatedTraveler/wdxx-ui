@@ -21,6 +21,9 @@ export const useMenu = () => {
   }
   onMounted(() => {
     def.value = (router.currentRoute.value.name) as string
+    if (def.value !== 'baseMenu') {
+      item.value.lx = 'route'
+    }
   })
   return {
     user,
