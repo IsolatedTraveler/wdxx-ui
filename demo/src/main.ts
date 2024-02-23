@@ -6,6 +6,7 @@ import * as api from './api'
 import * as util from '@assets/index'
 import zUi from 'z-uis/index'
 import '@ui/styles/dist/index.css'
+import 'highlight.js/styles/atom-one-dark.css';
 const app = createApp(App)
 util.setFontSize(1200)
 app.config.globalProperties.$api = api;

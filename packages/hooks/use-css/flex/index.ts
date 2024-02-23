@@ -9,7 +9,6 @@ export interface flexProp {
   wrap?: Boolean
 }
 export const useSingle = (props: ComputedRef<any>, obj: ObjStr, classVal: ObjTrue, key: string, name: string = '') => {
-  name == 'call-kit' && console.log(key, name, props.value)
   watch(() => props.value?.[key], (v, o) => {
     if (o) {
       classVal[obj[key]] = false

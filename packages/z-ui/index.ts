@@ -1,5 +1,4 @@
 export * from "@ui/components";
-
 import { Plugin } from "vue";
 import installer from './defaults'
 export const install = installer.install
