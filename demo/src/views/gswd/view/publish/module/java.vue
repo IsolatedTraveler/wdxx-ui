@@ -1,5 +1,6 @@
 <template>
   <div>
+    java安装
     <z-code v-for="(it, i) in code" :key="i" :data="it.code" :type="it.lx"></z-code>
   </div>
 </template>
@@ -8,7 +9,12 @@ const code = [
   {
     lx: 'bash',
     code: [
-      'cd /usr/local/src/',
+      'cd /usr/local/src/'
+    ].join('\n')
+  }, {
+    lx: 'bash',
+    code: [
+      '# 拷贝jdk-8u333-linux-x64.tar.gz到当前目录',
       'tar -zxvf jdk-8u333-linux-x64.tar.gz',
       'mv jdk1.8.0_333 /usr/lib/jvm/',
       'cd /etc/',
@@ -17,7 +23,7 @@ const code = [
   }, {
     lx: 'bash',
     code: [
-      '#拷贝以下代码到当前打开文件末尾',
+      '# 拷贝以下代码到当前打开文件末尾',
       'export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_333',
       'export JRE_HOME=$JAVA_HOME/jre',
       'export PATH=$PATH:$JAVA_HOME/bin',

@@ -1,14 +1,18 @@
 <template>
   <z-flex flex="row" class="use-publish">
     <z-tree class="left" :data="menu" def="java"></z-tree>
-    <z-flex class="content">
+    <z-flex class="content" flex="col" scroll>
       <Java></Java>
+      <tomcat></tomcat>
+      <nginx></nginx>
     </z-flex>
   </z-flex>
 </template>
 <script lang="ts" setup>
 import { usePublish } from './use-publish';
 import Java from './module/java.vue'
+import tomcat from './module/tomcat.vue'
+import nginx from './module/nginx.vue'
 defineOptions({
   name: 'gswd-publish'
 })
@@ -25,6 +29,10 @@ const { menu } = usePublish()
 
   >.content {
     height: 100%;
+    overflow: auto;
+  }
+
+  [scroll] {
     overflow: auto;
   }
 }
