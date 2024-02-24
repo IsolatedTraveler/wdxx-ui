@@ -5,6 +5,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+defineOptions({
+  name: 'publish-tomcat'
+})
 const code = [
   {
     lx: 'bash',

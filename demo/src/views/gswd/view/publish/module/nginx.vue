@@ -5,6 +5,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+defineOptions({
+  name: 'publish-nginx'
+})
 const code = [
   {
     lx: 'bash',

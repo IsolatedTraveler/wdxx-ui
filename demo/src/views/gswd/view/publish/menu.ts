@@ -17,4 +17,10 @@ export default [
       , { id: 'ydgw', mc: '移动公卫', path: true }
     ]
   }
-]
+] as Menu[]
+export interface Menu {
+  id: string
+  mc: string
+  path?: boolean
+  child?: Menu[]
+}

@@ -38,6 +38,9 @@ const code = [
     ].join('\n')
   }
 ]
+defineOptions({
+  name: 'publish-java'
+})
 </script>
 <style lang="scss">
 // .java {}
