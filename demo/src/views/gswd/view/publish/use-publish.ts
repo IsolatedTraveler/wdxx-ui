@@ -1,19 +1,21 @@
-import { ref, defineAsyncComponent } from "vue"
+import { defineAsyncComponent, ref } from "vue"
 import menu from "./menu"
 export const usePublish = () => {
-  const name = ref('java'), com = {} as any;
-  (function loadComponents(m = menu) {
-    m.forEach(it => {
-      if (it.child) {
-        loadComponents(it.child)
-      } else if (it.path) {
-        com[it.id] = defineAsyncComponent(() => import('./module/' + it.id + '.vue'))
-      }
-    })
-  })();
+  const name = ref('java'), com = import.meta.glob('./module/*.vue');
+  function loadComponent(id: string) {
+    var path = `./module/${id}.vue`, m = com[path] || com['./module/def.vue']
+    return defineAsyncComponent(() => m().then((c: any) => c.default));
+  }
+  function changePage(data: any) {
+    if (data.path) {
+      name.value = data.id
+    }
+  }
   return {
     menu,
     name,
-    com
+    loadComponent,
+    changePage
   }
 }
+
