@@ -12,7 +12,6 @@ export const usePublish = () => {
   function changePage(data: any) {
     if (data.path) {
       userStore.setTemp({ gswdPublish: data.id })
-      name.value = data.id
     }
   }
   return {

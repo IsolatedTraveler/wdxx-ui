@@ -1,11 +1,12 @@
 <template>
   <z-flex flex="row" class="use-publish">
-    <z-tree class="left" :data="menu" def="java" @checked="changePage"></z-tree>
+    <z-tree class="left" :data="menu" :def="name" @checked="changePage"></z-tree>
     <z-flex class="content" flex="col" scroll>
       <component :is="loadComponent(name)" />
     </z-flex>
   </z-flex>
 </template>
+
 <script lang="ts" setup>
 import { usePublish } from './use-publish';
 defineOptions({
@@ -13,6 +14,7 @@ defineOptions({
 });
 const { menu, name, loadComponent, changePage } = usePublish();
 </script>
+
 <style lang="scss">
 .use-publish {
   >.left {
