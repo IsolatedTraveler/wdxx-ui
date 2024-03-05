@@ -8,7 +8,8 @@ interface UserMenu { }
 export const useUserStore = defineStore('user', {
   state: () => ({
     user: (temp('user') || {}) as User,
-    menu: (temp('user-menu') || []) as UserMenu[]
+    menu: (temp('user-menu') || []) as UserMenu[],
+    temp: (temp('user-temp') || {})
   }),
   getters: {
     getUser: (state) => {
@@ -19,6 +20,9 @@ export const useUserStore = defineStore('user', {
     },
     getMenu: (state) => {
       return state.menu
+    },
+    getTemp: (state) => {
+      return state.temp
     }
   },
   actions: {
@@ -31,6 +35,10 @@ export const useUserStore = defineStore('user', {
         temp('user-menu', menu)
         this.menu = menu
       }, 1000)
+    },
+    setTemp(v: any) {
+      temp('user-temp', v)
+      this.user = v
     }
   }
 })
