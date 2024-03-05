@@ -6,7 +6,6 @@
     "btn",
     "call-kit",
     "form",
-    "form-items",
     "form-item",
     "input",
     "select",
@@ -22,7 +21,6 @@
     "select": {
       "inject": {
         "select": [
-          "form-items",
           "form"
         ]
       }
@@ -55,18 +53,9 @@
     "input": {
       "inject": {
         "input": [
-          "form-items",
           "form"
         ]
       }
-    },
-    "form-items": {
-      "inject": {
-        "form-items": [
-          "form"
-        ]
-      },
-      "provide": true
     },
     "form-item": true,
     "form": {

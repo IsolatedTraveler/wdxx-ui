@@ -7,7 +7,6 @@ declare module "@vue/runtime-core" {
     ZBtnGroup: typeof import("z-uis")["ZBtnGroup"];
     ZCallKit: typeof import("z-uis")["ZCallKit"];
     ZForm: typeof import("z-uis")["ZForm"];
-    ZFormItems: typeof import("z-uis")["ZFormItems"];
     ZFormItem: typeof import("z-uis")["ZFormItem"];
     ZInput: typeof import("z-uis")["ZInput"];
     ZSelect: typeof import("z-uis")["ZSelect"];
@@ -16,7 +15,7 @@ declare module "@vue/runtime-core" {
     ZCode: typeof import("z-uis")["ZCode"];
   }
   interface ComponentCustomProperties {
-    
+
   }
 }
-export {}
+export { }
