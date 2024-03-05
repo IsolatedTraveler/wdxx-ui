@@ -3,7 +3,7 @@ import menu from "./menu"
 import { useUserStore } from "@/store";
 export const usePublish = () => {
   const userStore = useUserStore(), com = import.meta.glob('./module/*.vue')
-    // , name = ref(userStore.getTemp.gswdPublish || 'nginx');
+    // , name = ref(userStore.temp.gswdPublish || 'nginx');
     , name = ref('nginx');
   function loadComponent(id: string) {
     var path = `./module/${id}.vue`, m = com[path] || com['./module/def.vue']
@@ -11,7 +11,6 @@ export const usePublish = () => {
   }
   function changePage(data: any) {
     if (data.path) {
-      console.log(data.id)
       userStore.setTemp({ gswdPublish: data.id })
       name.value = data.id
     }
