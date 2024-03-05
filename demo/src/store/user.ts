@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { temp } from "./temp";
+import { temp } from "./gnzj/temp";
 import menu from './menu'
 interface User {
   jgid?: string
