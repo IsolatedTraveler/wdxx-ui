@@ -1,5 +1,5 @@
 import { PropsBaseSizeV } from "../props"
-import { ComputedRef, InjectionKey } from "vue";
+import { ComputedRef, InjectionKey, Ref } from "vue";
 
 export interface ProvideFormProp {
   disabled: boolean | undefined
@@ -10,8 +10,7 @@ export interface ProvideFormProp {
 }
 export interface ProvideForm {
   prop?: ComputedRef<ProvideFormProp>
-  value?: ComputedRef<any>
-  changeVal?: ((key: string | number, v: any) => void) | undefined
+  value?: Ref<any>
   submit?: (() => void) | undefined
   clear?: (() => void) | undefined
 }

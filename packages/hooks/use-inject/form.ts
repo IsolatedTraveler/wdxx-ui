@@ -1,36 +1,33 @@
-import { computed, inject } from "vue";
-import { FormProps } from "@ui/components/form/src/form";
+import { computed, inject, watch, ref, SetupContext } from "vue";
+import { FormEmits, FormProps } from "@ui/components/form/src/form";
 import { provideFormId } from "@ui/vars/hooks";
-export const useInjectForm = (props: FormProps) => {
-  let obj: any
+import { EventUpdate } from "@ui/vars";
+// 自身存在值，使用自身存在的值，并将自身存在的值反写到父级form表单
+// 自身不存在值，
+export const useInjectForm = (props: FormProps, emit: SetupContext<FormEmits>['emit']) => {
   const {
     submit = () => { },
     clear = () => { },
-    changeVal,
     value,
     prop
   } = inject(provideFormId, {}),
-    val = computed(() => {
-      if (props.name || props.name === 0) {
-        if (value?.value) {
-          obj = value.value[props.name]
-          if (!obj && changeVal) {
-            obj = {}
-            changeVal(props.name || '', obj)
-          }
-        }
-      } else {
-        obj = props.modelValue || props.value || {}
-      }
-      return obj
-    })
+    val = ref<any>(props.def || {})
+  watch(() => ({ v: props.modelValue || props.value, key: props.name, obj: value?.value }), ({ v, key, obj }) => {
+    v = v || obj?.[key]
+    if (v) {
+      val.value = v
+    } else {
+      val.value = Object.assign({}, props.def)
+      emit(EventUpdate, val.value)
+    }
+    if ((key || key === 0) && obj) {
+      obj[key] = val.value
+    }
+  }, { immediate: true })
   return {
     submit,
     clear,
     value: val,
-    changeVal(key: string | number, v: any) {
-      obj[key] = v
-    },
     prop: computed(() => {
       const val = prop?.value || ({} as any)
       const { disabled, readonly, size, tabIndex, validateFun } = val

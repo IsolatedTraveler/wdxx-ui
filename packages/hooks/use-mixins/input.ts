@@ -6,13 +6,17 @@ import { Ref, SetupContext } from "vue";
 import { ObjStr } from "@ui/vars";
 import { InputEmits } from "@ui/components";
 import { useInjectInput } from "../use-inject";
-export const propsInputMixins = {
+export const propsFormItemMixins = {
   name: PropsInputName,
-  modelValue: PropsBaseStringN,
-  value: PropsBaseStringN,
-  placeholder: PropsBaseString,
   ...propsReadonlyMixins,
   ...propsFlexMixins
+}
+export const propsInputMixins = {
+  placeholder: PropsBaseString,
+  value: PropsBaseStringN,
+  modelValue: PropsBaseStringN,
+  def: PropsBaseStringN,
+  ...propsFormItemMixins
 }
 export const useInputMixins = function (
   props: any,
@@ -26,9 +30,9 @@ export const useInputMixins = function (
   useReadonlyMixins(props, classVal)
   useFlexMixins(props, classVal, styleVal, _ref, judgeObjClassName)
   // 值处理
-  const { _value, prop } = useInjectInput(props, emit)
+  const { val, prop } = useInjectInput(props, emit)
   return {
-    _value,
+    val,
     prop
   }
 }

@@ -1,9 +1,8 @@
-import { FormItemsProps } from "@ui/components/form-items/src/form-items";
-import { InjectionKey, provide } from "vue";
+import { provide, SetupContext } from "vue";
 import { useInjectFormItems } from "../use-inject/form-items";
-import { ProvideForm } from "@ui/vars/hooks";
+import { FormItemEmits, FormItemProps } from "@ui/components";
+import { provideFormId } from "@ui/vars";
 
-export const provideFormItemsId: InjectionKey<ProvideForm> = Symbol('form-items')
-export const useProvideFormItems = (props: FormItemsProps) => {
-  provide(provideFormItemsId, useInjectFormItems(props))
+export const useProvideFormItems = (props: FormItemProps, emit: SetupContext<FormItemEmits>['emit']) => {
+  provide(provideFormId, useInjectFormItems(props, emit))
 }

@@ -6,7 +6,7 @@ export const useForm = (props: FormProps, emit: SetupContext<FormEmits>['emit'])
     name: 'form'
   })), { _class, _style } = useCss(classVal, _ref)
   useFlexMixins(props, _class.value, _style.value, _ref)
-  useProvideForm(props)
+  useProvideForm(props, emit)
   return {
     _ref,
     _class
