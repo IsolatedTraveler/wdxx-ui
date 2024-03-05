@@ -2,6 +2,31 @@ import { useCssInit } from "@ui/hooks"
 import { watch, ref, SetupContext } from "vue"
 import { CodeEmits, CodeProps } from "./code"
 import hljs from "highlight.js";
+var input: HTMLTextAreaElement
+function copyIng(v: string): Promise<void> {
+  if (navigator.clipboard) {
+    return navigator.clipboard.writeText(v)
+  } else {
+    if (!input) {
+      input = document.createElement('textarea');
+      input.style.position = 'absolute';
+      input.style.opacity = '0';
+      document.body.appendChild(input)
+    }
+    input.value = v
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          input.select();
+          document.execCommand('copy');
+          resolve()
+        } catch (e) {
+          reject(e)
+        }
+      }, 0);
+    })
+  }
+}
 export const useCode = (props: CodeProps, _emit: SetupContext<CodeEmits>['emit']) => {
   const _ref = ref<HTMLButtonElement>(), { _class } = useCssInit(props, 'code')
     , _code = ref<HTMLElement>(), size = ref<number>(1), len = ref<number>(.5)
@@ -16,7 +41,7 @@ export const useCode = (props: CodeProps, _emit: SetupContext<CodeEmits>['emit']
     len.value = ((size.value + 1) + '').length / 2
   }, { immediate: true })
   function copy() {
-    navigator.clipboard.writeText(props.data + '\n').then(() => {
+    copyIng(props.data + '\n').then(() => {
       tip.value = '复制成功'
       setTimeout(() => {
         tip.value = '复制'

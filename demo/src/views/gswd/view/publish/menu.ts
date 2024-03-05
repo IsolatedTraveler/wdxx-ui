@@ -15,6 +15,7 @@ export default [
       { id: 'jtphis', mc: 'jtphis', path: true }
       , { id: 'his', mc: 'his', path: true }
       , { id: 'ydgw', mc: '移动公卫', path: true }
+      , { id: 'gzh', mc: '公众号', path: true }
     ]
   }
 ] as Menu[]

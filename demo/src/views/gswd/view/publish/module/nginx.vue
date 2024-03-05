@@ -4,6 +4,7 @@
     <z-code v-for="(it, i) in code" :key="i" :data="it.code" :type="it.lx"></z-code>
   </div>
 </template>
+
 <script lang="ts" setup>
 defineOptions({
   name: 'publish-nginx'
@@ -32,7 +33,46 @@ const code = [
     lx: 'bash',
     code: [
       '# 拷贝以下内容替换当前打开的文件',
-      ''
+      "#user  nobody;",
+      "worker_processes  1;",
+      "#error_log  logs/error.log;",
+      "#error_log  logs/error.log  notice;",
+      "#error_log  logs/error.log  info;",
+      "#pid        logs/nginx.pid;",
+      "events {",
+      "    worker_connections  1024;",
+      "}",
+      "http {",
+      "    include       mime.types;",
+      "    default_type  application/octet-stream;",
+      "    #log_format  main  '$remote_addr - $remote_user [$time_local] \"$request\" '",
+      "    #                  '$status $body_bytes_sent \"$http_referer\" '",
+      "    #                  '\"$http_user_agent\" \"$http_x_forwarded_for\"';",
+      "    #access_log  logs/access.log  main;",
+      "    sendfile        on;",
+      "    #tcp_nopush     on;",
+      "    #keepalive_timeout  0;",
+      "    keepalive_timeout  65;",
+      "    #gzip  on;",
+      "   ",
+      "  server {",
+      "    listen       8080;",
+      "    server_name  127.0.0.1;",
+      "    location / {",
+      "      proxy_pass  http://127.0.0.1:7080/;",
+      "    }",
+      "    location /jtphis/wxzf/{",
+      "      proxy_pass  http://wx.cdjtwx.com/smqapi/rest/;",
+      "    }",
+      "    location /jtphis/magic/{",
+      "      proxy_pass http://172.16.10.3:8089/api/;",
+      "    }",
+      "    error_page   500 502 503 504  /50x.html;",
+      "    location = /50x.html {",
+      "      root   html;",
+      "    }",
+      "  }",
+      "}"
     ].join('\n')
   }, {
     lx: 'bash',
@@ -43,6 +83,6 @@ const code = [
   }
 ]
 </script>
+
 <style lang="scss">
-// .java {}
-</style>
+// .java {}</style>
