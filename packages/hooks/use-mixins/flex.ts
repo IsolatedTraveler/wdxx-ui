@@ -16,8 +16,7 @@ export const propsFlexMixins = {
   align: PropsFlexAlign,
   self: PropsFlexSelf,
   wrap: PropsBaseBoolean,
-  flexWrap: PropsBaseBoolean,
-  scroll: PropsBaseBoolean
+  flexWrap: PropsBaseBoolean
 }
 function getWatchElemSizeChange(elem: HTMLElement, isWrap: FlexWatchElemSizeChange) {
   const resizeObserver = new ResizeObserver(entries => {
