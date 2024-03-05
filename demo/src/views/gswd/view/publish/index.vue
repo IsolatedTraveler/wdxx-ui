@@ -27,5 +27,8 @@ const { menu, name, loadComponent, changePage, def } = usePublish();
     overflow: auto;
   }
 
+  [scroll] {
+    overflow: auto;
+  }
 }
 </style>
