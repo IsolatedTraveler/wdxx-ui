@@ -2,7 +2,7 @@ import type { Plugin } from 'vue'
 import { ZFlex } from '@ui/components/flex'
 import { ZIcon } from '@ui/components/icon'
 import { ZMedia } from '@ui/components/media'
-import { ZBtn,ZBtnGroup } from '@ui/components/btn'
+import { ZBtn, ZBtnGroup } from '@ui/components/btn'
 import { ZCallKit } from '@ui/components/call-kit'
 import { ZForm } from '@ui/components/form'
 import { ZFormItem } from '@ui/components/form-item'
@@ -13,7 +13,7 @@ import { ZTable } from '@ui/components/table'
 import { ZCode } from '@ui/components/code'
 import { ZPop } from '@ui/components/pop'
 import { ZScroll } from '@ui/components/scroll'
-export default[
+export default [
   ZFlex,
   ZIcon,
   ZMedia,
