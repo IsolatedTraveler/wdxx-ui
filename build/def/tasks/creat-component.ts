@@ -5,16 +5,16 @@ function getExportStr(arr: string[], prev = `export * from './`, next = `';\n`) 
   return arr.map(it => `${prev}${it}${next}`).join('')
 }
 async function UiComponent() {
-  let component = getExportStr(comKey), str = '', cssI = '', provide = '', inject = '',
+  let component = getExportStr(comKey), str = `import type { Plugin } from 'vue'\n`, cssI = '', provide = '', inject = '',
     typeing = 'declare module "@vue/runtime-core" {\n  export interface GlobalComponents {\n    '
   comKey.map(key => {
     let obj = comObj[key] as ComObj
     provide += getExportStr(obj.provide ? obj.provide === true ? [key] : obj.provide : [])
     inject += getExportStr(obj.inject ? Object.keys(obj.inject) : [])
     cssI += getExportStr(obj.keys, `@forward '${CSS_PATH}`, `/index.scss';\n`)
-    str += `import {${obj.keys.map(dealNameStr).join(',')}} from '@ui/components/${key}'\n`
+    str += `import { ${obj.keys.map(dealNameStr).join(',')} } from '@ui/components/${key}'\n`
   })
-  str += `export default[\n  ${comKeys.map(dealNameStr).join(',\n  ')}\n]`
+  str += `export default[\n  ${comKeys.map(dealNameStr).join(',\n  ')}\n] as Plugin[]`
   typeing += comKeys.map(it => {
     let name = dealNameStr(it)
     return `${name}: typeof import("${PKG_NAME}")["${name}"];`

@@ -20,13 +20,7 @@
   },
   "wwc": {
     "icon": true,
-    "select": {
-      "inject": {
-        "select": [
-          "form"
-        ]
-      }
-    },
+    "select": true,
     "tree": {
       "inject": {
         "tree-item": [
@@ -70,7 +64,13 @@
         ]
       }
     },
-    "form-item": true,
+    "form-item": {
+      "inject": {
+        "form-item": true,
+        "form": true
+      },
+      "provide": true
+    },
     "form": {
       "provide": true
     },
