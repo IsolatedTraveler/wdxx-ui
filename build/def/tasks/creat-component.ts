@@ -12,9 +12,9 @@ async function UiComponent() {
     provide += getExportStr(obj.provide ? obj.provide === true ? [key] : obj.provide : [])
     inject += getExportStr(obj.inject ? Object.keys(obj.inject) : [])
     cssI += getExportStr(obj.keys, `@forward '${CSS_PATH}`, `/index.scss';\n`)
-    str += `import { ${obj.keys.map(dealNameStr).join(',')} } from '@ui/components/${key}'\n`
+    str += `import { ${obj.keys.map(dealNameStr).join(', ')} } from '@ui/components/${key}'\n`
   })
-  str += `export default[\n  ${comKeys.map(dealNameStr).join(',\n  ')}\n] as Plugin[]`
+  str += `export default [\n  ${comKeys.map(dealNameStr).join(',\n  ')}\n] as Plugin[]`
   typeing += comKeys.map(it => {
     let name = dealNameStr(it)
     return `${name}: typeof import("${PKG_NAME}")["${name}"];`
