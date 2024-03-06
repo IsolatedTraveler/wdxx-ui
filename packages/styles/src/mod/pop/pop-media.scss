@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$pop-key--style: (
+  background-color: map.get($color, primary, 2)
+);
+$pop-key--class: ();
+$pop-key--attr: ();
+$pop--class: (
+  key: (style: $pop-key--style, child: (class: $pop-key--class, attr: $pop-key--attr))
+);
+$pop--attr: ();
+$pop--style: ();
+$hover-style: (
+  class:$pop--class,
+  attr:$pop--attr,
+  style:$pop--style
+);
+  
+    $styleMedia: (
+      hover: $hover-style
+    );
+    

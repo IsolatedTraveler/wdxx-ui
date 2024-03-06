@@ -3,7 +3,7 @@ import { PublishCode, FormData } from "./type";
 import { formItem } from "./formItem";
 import { getNginxC, getPayParamSql, getPayPortSql, getSql } from "./fun";
 import { formdataDef } from "./def";
-import { fblxOption } from "./selectOption";
+import { fblxOption, zffsOption } from "./selectOption";
 export default function useGzh() {
   const lx = ref<number>(1), formData = ref<FormData>(formdataDef), wwdz1 = computed(() => {
     var data = formData.value, url = data.wwdz || ''
@@ -44,9 +44,10 @@ export default function useGzh() {
   }), formItems = computed(() => formItem[formData.value.zffs])
   return {
     lx,
-    fblxOption,
     code,
     formData,
-    formItems
+    formItems,
+    fblxOption,
+    zffsOption
   }
 }

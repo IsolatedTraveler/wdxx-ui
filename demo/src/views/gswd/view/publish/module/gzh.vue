@@ -6,7 +6,7 @@
         <z-input name="fbd"></z-input>
       </z-form-item>
       <z-form-item label="发版类型：" basis="25%">
-        <z-select v-model="lx" multi></z-select>
+        <z-select v-model="lx" :data="fblxOption"></z-select>
       </z-form-item>
       <z-form-item label="外网地址：" basis="25%" v-show="lx != 1">
         <z-input name="wwdz"></z-input>
@@ -15,7 +15,7 @@
         <z-input name="jgid"></z-input>
       </z-form-item>
       <z-form-item label="支付方式：" basis="25%">
-        <z-select name="zffs"></z-select>
+        <z-select name="zffs" :data="zffsOption"></z-select>
       </z-form-item>
       <z-form-item label="有效期：" basis="25%">
         <z-input name="yxq"></z-input>
@@ -40,7 +40,7 @@
 
 <script lang="ts" setup>
 import useGzh from '../data/gzh'
-const { code, lx, formData, formItems } = useGzh()
+const { code, lx, formData, formItems, zffsOption, fblxOption } = useGzh()
 defineOptions({
   name: 'publish-gzh'
 })

@@ -5,6 +5,7 @@
   "main": "index.ts",
   "sideEffects": false,
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@ui/components": "workspace:^",
     "@ui/hooks": "workspace:^",
     "@ui/props": "workspace:^",

@@ -1,0 +1,11 @@
+@use 'sass:map';
+@use '../../mixins/index.scss' as *;
+@use '../../vars/index.scss' as *;
+@use './pop-media.scss' as *;
+@use './pop.scss' as *;
+
+@include createSingleClass(pop, '', '') {
+
+  @include asyncMedia($styleMedia, '');
+}
+@include async($style, pop, '');

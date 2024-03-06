@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+$scroll-key--style: (
+  background-color: map.get($color, primary, 2)
+);
+$scroll-key--class: ();
+$scroll-key--attr: ();
+$scroll--class: (
+  key: (style: $scroll-key--style, child: (class: $scroll-key--class, attr: $scroll-key--attr))
+);
+$scroll--attr: ();
+$scroll--style: ();
+$hover-style: (
+  class:$scroll--class,
+  attr:$scroll--attr,
+  style:$scroll--style
+);
+  
+    $styleMedia: (
+      hover: $hover-style
+    );
+    

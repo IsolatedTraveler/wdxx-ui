@@ -11,7 +11,9 @@
     "select",
     "tree",
     "table",
-    "code"
+    "code",
+    "pop",
+    "scroll"
   ],
   "ywc": {
     "flex": true
@@ -34,6 +36,17 @@
       "provide": [
         "tree"
       ]
+    },
+    "scroll": {
+      "provide": true
+    },
+    "pop": {
+      "provide": true,
+      "inject": {
+        "pop": [
+          "scroll"
+        ]
+      }
     },
     "media": true,
     "btn": {
