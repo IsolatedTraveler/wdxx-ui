@@ -29,7 +29,7 @@
       <z-form-item label="商户号：" basis="25%">
         <z-input name="MCHID"></z-input>
       </z-form-item>
-      <z-form-item v-for="(it) in zfcsV" :key="it.name" :label="it.mc">
+      <z-form-item v-for="(it) in formItems" :key="it.name" :label="it.mc">
         <z-input :name="it.name"></z-input>
       </z-form-item>
     </z-form>
@@ -40,7 +40,7 @@
 
 <script lang="ts" setup>
 import useGzh from '../data/gzh'
-const { code, lx, formData, zfcsV } = useGzh()
+const { code, lx, formData, formItems } = useGzh()
 defineOptions({
   name: 'publish-gzh'
 })
