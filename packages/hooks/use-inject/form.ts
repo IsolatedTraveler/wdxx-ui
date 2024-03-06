@@ -30,13 +30,12 @@ export const useInjectForm = (props: FormProps, emit: SetupContext<FormEmits>['e
     value: val,
     prop: computed(() => {
       const val = prop?.value || ({} as any)
-      const { disabled, readonly, size, tabIndex, validateFun } = val
+      const { disabled, readonly, size, tabIndex } = val
       return {
         disabled: props.disabled || disabled,
         readonly: props.readonly || readonly,
         size,
         tabIndex: (tabIndex || 0) * 100 + ((props.tabIndex as number) || 0),
-        validateFun: Object.assign({}, validateFun, props.validateFun)
       }
     })
   }

@@ -1,8 +1,8 @@
-import { InputEmits, InputProps } from "@ui/components/input/src/input";
 import { SetupContext, inject, ref, watch } from "vue";
 import { provideFormId } from "@ui/vars/hooks";
 import { EventUpdate } from "@ui/vars";
-export const useInjectInput = (props: InputProps, emit: SetupContext<InputEmits>['emit']) => {
+import { InputEmits, InputProps, SelectProps } from "@ui/components";
+export const useInjectInput = (props: InputProps | SelectProps, emit: SetupContext<InputEmits>['emit']) => {
   const { value = { value: {} }, prop } = inject(provideFormId, {}),
     val = ref<any>('')
   watch(() => ({ v: props.modelValue || props.value, key: props.name, obj: value.value }), ({ v, key, obj }) => {

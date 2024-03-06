@@ -18,7 +18,7 @@ export function useCssInit(props: any, module: string, {
     useCssClass(props, k, classVal, judgeObjClassName)
   })
   classAdd.forEach(k => {
-    useCssClassAdd(props, k, classAdd, judgeObjClassName)
+    useCssClassAdd(props, k, classVal, judgeObjClassName, module)
   })
   return { _class, _style, classVal, styleVal, judgeObjClassName }
 }

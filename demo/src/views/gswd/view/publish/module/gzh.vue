@@ -6,7 +6,7 @@
         <z-input name="fbd"></z-input>
       </z-form-item>
       <z-form-item label="发版类型：" basis="25%">
-        <z-select v-model="lx"></z-select>
+        <z-select v-model="lx" multi></z-select>
       </z-form-item>
       <z-form-item label="外网地址：" basis="25%" v-show="lx != 1">
         <z-input name="wwdz"></z-input>
