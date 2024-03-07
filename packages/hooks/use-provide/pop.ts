@@ -17,7 +17,17 @@ export const useProvidePop = (props: PopProps) => {
     var e1 = unref(relativeElem), e2 = unref(popElem)
     destroyPopperInstance()
     if (e1 && e2) {
-      popperInstance = createPopper(e1, e2, {})
+      console.log(e1, e2)
+      popperInstance = createPopper(e1, e2, {
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: [0, 5]
+            }
+          }
+        ]
+      })
       nextTick(() => {
         popperInstance?.update()
       })
@@ -37,9 +47,6 @@ export const useProvidePop = (props: PopProps) => {
   onUnmounted(() => {
     destroyPopperInstance()
   })
-  watch(() => unref(popElem), (v) => {
-    console.log(v)
-  }, { immediate: true })
   return {
     init
   }

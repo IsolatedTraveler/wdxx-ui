@@ -6,7 +6,7 @@ export function isRegExp(obj: unknown): boolean {
 }
 export const isNumber = (v: any): boolean => !isNaN(v)
 export const isCssLength = (v: any): string | undefined => {
-  if (!isNumber(v.replace(regExpCssLen, ''))) {
+  if (!isNumber(v.replace(regExpCssLen, '')) && v !== 'auto') {
     return 'number or cssLength'
   }
 }
