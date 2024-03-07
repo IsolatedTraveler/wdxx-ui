@@ -1,7 +1,8 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
-import {  } from "@ui/props";
+import { PropsBaseBoolean } from "@ui/props";
 export const popProps = propsBuildS({
+  show: PropsBaseBoolean
 })
 export const popEmits = {
 }

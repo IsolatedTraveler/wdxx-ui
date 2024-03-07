@@ -1,8 +1,14 @@
-import { PopProps } from "@ui/components/pop/src/pop";
-import { inject } from "vue";
-import { provideScrollId } from "../use-provide/scroll";
-export const useInjectPop = (props: PopProps) => {
-    const {  } = inject(provideScrollId, { })
+import { inject, ref } from "vue";
+import { providePopId } from "../use-provide";
+export const useInjectPop = (e2: any, e1?: any) => {
+  const { relativeElem, popElem } = inject(providePopId, {
+    relativeElem: ref(document.body),
+    popElem: ref<any>()
+  })
+  if (e1) {
+    relativeElem.value = e1
+  }
+  popElem.value = e2
   return {
   }
 }

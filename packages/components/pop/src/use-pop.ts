@@ -1,12 +1,13 @@
-import { useCss } from "@ui/hooks"
-import { ref, SetupContext, computed } from "vue"
+import { useCss, useProvidePop } from "@ui/hooks"
+import { SetupContext, computed } from "vue"
 import { PopEmits, PopProps } from "./pop"
 export const usePop = (props: PopProps, emit: SetupContext<PopEmits>['emit']) => {
-  const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
+  const classVal = computed(() => ({
     name: 'pop'
-  })), {_class} = useCss(classVal, _ref)
+  })), { _class } = useCss(classVal)
+    , { init } = useProvidePop(props)
   return {
-    _ref,
-    _class
+    _class,
+    init
   }
 }

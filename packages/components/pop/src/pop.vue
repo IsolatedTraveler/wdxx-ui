@@ -1,6 +1,7 @@
 <template>
-  <div ref="_ref" :class="_class"></div>
+  <slot :class="_class"></slot>
 </template>
+
 <script lang="ts" setup>
 import { popEmits, popProps } from './pop'
 import { usePop } from './use-pop'
@@ -9,8 +10,8 @@ defineOptions({
 })
 const props = defineProps(popProps)
 const emit = defineEmits(popEmits)
-const {_ref, _class} = usePop(props, emit)
+const { _class, init } = usePop(props, emit)
 defineExpose({
-  ref: _ref
+  init
 })
 </script>

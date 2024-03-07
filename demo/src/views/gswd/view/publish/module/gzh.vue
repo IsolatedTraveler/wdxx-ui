@@ -1,6 +1,9 @@
 <template>
   <z-flex flex="col" class="publish-gzh">
     公众号首次发版
+    <z-pop ref="_pop" :show="show">
+      <div ref="_cs">cs</div>
+    </z-pop>
     <z-form flex="row" wrap v-model="formData">
       <z-form-item label="发版地区别名：" basis="25%">
         <z-input name="fbd"></z-input>
@@ -39,8 +42,16 @@
 </template>
 
 <script lang="ts" setup>
+import { nextTick, onMounted, ref } from 'vue';
 import useGzh from '../data/gzh'
-const { code, lx, formData, formItems, zffsOption, fblxOption } = useGzh()
+const { code, lx, formData, formItems, zffsOption, fblxOption } = useGzh(),
+  _cs = ref<HTMLElement>(), _pop = ref<any>(), show = ref(false)
+onMounted(() => {
+  _pop.value.init(_cs)
+  setInterval(() => {
+    show.value = !show.value
+  }, 3000)
+})
 defineOptions({
   name: 'publish-gzh'
 })

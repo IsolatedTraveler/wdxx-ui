@@ -14,7 +14,7 @@ export const getStylePx = (v: string | number): string => {
 const cssV: any = {
   def: useSingle
 }
-export const useCss = (props: ComputedRef<any>, el: Ref<any>, judge?: ObjStrBool, keys: Array<string> = Object.keys(props.value)) => {
+export const useCss = (props: ComputedRef<any>, el: Ref<any> | null = null, judge?: ObjStrBool, keys: Array<string> = Object.keys(props.value)) => {
   const _class = ref({}), _style = ref({} as ObjAny), obj = {}, classVal = _class.value, styleVal = _style.value
   keys.forEach(key => {
     var funKey = judge?.[key]
