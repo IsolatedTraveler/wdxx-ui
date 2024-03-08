@@ -1,7 +1,7 @@
 import { ref, computed } from "vue";
 import { PublishCode, FormData } from "./type";
 import { formItem } from "./formItem";
-import { getNginxC, getPayParamSql, getPayPortSql, getSql } from "./fun";
+import { getNginxC, getPayParamSql, getPayPortSql, getSql, getSqSql } from "./fun";
 import { formdataDef } from "./def";
 import { fblxOption, zffsOption } from "./selectOption";
 export default function useGzh() {
@@ -24,6 +24,7 @@ export default function useGzh() {
           getPayParamSql(jgid, zffs, 'APPID', data.APPID || ''),
           getPayParamSql(jgid, zffs, 'SECRETKEY', data.Appsecret || ''),
           getSql(jgid, zffs, data),
+          getSqSql(yxq, jgid),
           'commit;'
         ].join('\n')
       }, {

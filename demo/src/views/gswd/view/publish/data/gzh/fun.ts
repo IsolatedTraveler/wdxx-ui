@@ -33,6 +33,20 @@ export function getPayPortSql(jgid: string, zffs: string, yxq: number) {
     `   and orgid = '${jgid}';`
   ].join('\n')
 }
+export function getSqSql(yxq: number, jgid: string) {
+  return ['0004'].map((cslx) => {
+    return [
+      'insert into app_config_sq',
+      '  (cslx, jgid, sfsq, cjrxm, cjrid, cjsj)',
+      'values',
+      `  ('${cslx}', '${jgid}', sysdate + INTERVAL '${yxq}' YEAR, '管理员', '0', sysdate);`,
+      'update app_config_sq',
+      `   set sfsq = sysdate + INTERVAL '${yxq}' YEAR`,
+      ` where cslx = '${cslx}'`,
+      `   and jgid = '${jgid}';`
+    ].join('\n')
+  }).join('\n')
+}
 export function getNginxC(fbd: string, wwdz: string) {
   return [{
     lx: 'bash',
