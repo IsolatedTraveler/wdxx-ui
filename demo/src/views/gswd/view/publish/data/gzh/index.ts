@@ -33,6 +33,7 @@ export default function useGzh() {
           `公众号URL：https://wx.cdjtwx.com/${fbd}wx/jggzh/index.html?oid=#{jgid}`,
           `公众号支付页面URL：https://wx.cdjtwx.com/${fbd}wx/app/mobile/pay.html?jgid=#{jgid}&id=#{id}&zffs=#{zffs}`,
           `公众号支付接口URL：https://wx.cdjtwx.com/${fbd}api/rest/h5payall?jgid=#{14}&no=#{zfno}`,
+          `公众号刷新接口URL：https://wx.cdjtwx.com/${fbd}api/rest/h5payclearcache`
         ].join('\n')
       }, lx.value == 1 ? {
         lx: 'bash',

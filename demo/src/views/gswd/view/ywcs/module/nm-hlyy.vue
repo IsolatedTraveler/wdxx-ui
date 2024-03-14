@@ -82,12 +82,11 @@ function rxReview() {
   obj.rxReview({
     his_company_code,
     his_medical_org_code,
-    outpati_inpati_flag: 'op',
     his_time: Date.now(),
     is_formal_review: false,
+    outpati_inpati_flag: 'op',
     treat_type: 100,
     treat_code: '门诊号，医院内此次就诊唯一标识号，必填',
-    bed_number: '床位号',
     doctor_info: {},
     patient_info: {},
     diagnosis: getzdxx(),

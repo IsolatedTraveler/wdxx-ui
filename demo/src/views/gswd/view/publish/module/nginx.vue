@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <div class="scroll">
     nginx安装
     <z-code v-for="(it, i) in code" :key="i" :data="it.code" :type="it.lx"></z-code>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { zqd } from '../fun';
+
 defineOptions({
   name: 'publish-nginx'
 })
@@ -80,9 +82,14 @@ const code = [
       '/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf',
       '/usr/local/nginx/sbin/nginx -s reload # 重启'
     ].join('\n')
-  }
+  }, ...zqd('nginx', '')
 ]
 </script>
 
 <style lang="scss">
-// .java {}</style>
+.scroll {
+  overflow: auto;
+  height: 100%;
+  flex-grow: 1;
+}
+</style>
