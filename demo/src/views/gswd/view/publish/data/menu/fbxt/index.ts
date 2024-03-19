@@ -1,10 +1,11 @@
 import his from "./his";
+import ydgw from "./ydgw";
 
 export default {
   id: 'fbxt', mc: '发布系统', child: [
     { id: 'jtphis', mc: 'jtphis', path: true }
     , his
-    , { id: 'ydgw', mc: '移动公卫', path: true }
+    , ydgw
     , { id: 'gzh', mc: '公众号', path: true }
   ]
 }

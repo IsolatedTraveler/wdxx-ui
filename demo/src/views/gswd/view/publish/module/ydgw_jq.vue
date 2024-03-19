@@ -1,11 +1,10 @@
 <template>
-  <div class="his-ty-third">
-    123
+  <div class="ydgw_jq">
   </div>
 </template>
 <script>
 export default {
-  name: 'his-ty-third',
+  name: 'ydgw_jq',
   data() {
     return {}
   },
@@ -14,7 +13,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.his-ty-third {
+.ydgw_jq {
   width: 100%;
 }
 </style>
