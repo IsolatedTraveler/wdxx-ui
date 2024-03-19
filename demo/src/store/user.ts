@@ -38,7 +38,7 @@ export const useUserStore = defineStore('user', {
     },
     setTemp(v: any) {
       temp('user-temp', v)
-      this.user = v
+      this.temp = v
     }
   }
 })
