@@ -1,6 +1,10 @@
 .z-code {
   position: relative;
   margin: 0;
+  display: block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   >code {
     &:first-child {

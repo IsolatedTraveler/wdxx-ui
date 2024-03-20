@@ -11,8 +11,10 @@ export const selectProps = propsBuildS({
   multi: PropsBaseBoolean,
   shape: PropsInputShape,
   data: PropsBaseArray_Object,
+  showId: PropsBaseString,
+  valId: PropsBaseString,
   ...propsInputMixins
-}, { auto: 1, flex: 'row' })
+}, { auto: 1, flex: 'row', showId: 'mc', valId: 'id' })
 export const selectEmits = {
 }
 export type SelectProps = ExtractPropTypes<typeof selectProps>

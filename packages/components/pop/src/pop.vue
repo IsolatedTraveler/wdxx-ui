@@ -1,5 +1,7 @@
 <template>
-  <slot></slot>
+  <div ref="_ref" :class="_class" :style="_style" v-show="show">
+    <slot></slot>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -10,7 +12,7 @@ defineOptions({
 })
 const props = defineProps(popProps)
 const emit = defineEmits(popEmits)
-const { init } = usePop(props, emit)
+const { init, _ref, _class, _style } = usePop(props, emit)
 defineExpose({
   init
 })

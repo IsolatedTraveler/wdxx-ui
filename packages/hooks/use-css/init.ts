@@ -10,9 +10,9 @@ export function useCssInit(props: any, module: string, {
   cssClass = [],
   classAdd = []
 } = {} as UseCssInit) {
-  var classVal: ObjTrue = {
+  var _style = ref({} as CSSProperties), styleVal = _style.value, _class = ref({
     [useCssName(module)]: true
-  }, styleVal: CSSProperties = {}, _class = ref(classVal), _style = ref(styleVal),
+  } as ObjTrue), classVal = _class.value,
     judgeObjClassName: ObjStr = {}
   cssClass.forEach(k => {
     useCssClass(props, k, classVal, judgeObjClassName)
