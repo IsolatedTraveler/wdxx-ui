@@ -16,18 +16,20 @@ export function ydgwDb() {
   }), code = computed(() => {
     const obj = formData.value, fbdV = obj.fbd, bbhV = obj.bbh,
       npm = [
+        'X:',
+        `mkdir ${fbdV}`,
         'E:',
         'cd E:\\jtGit\\vue\\ydgw',
         bashRewriteFile(obj.configSite, 'import \{[a-z ]+\}', `import { ${fbdV} as obj }`),
         bashRewriteFile(obj.cordConfig, 'version=\\\"[0-9.]+\\\"', `version=\\"${bbhV}\\"`),
+        `copy /Y E:\\cordova\\ydgw\\res\\img\\icon_${fbdV}.png E:\\cordova\\ydgw\\res\\img\\icon.png`,
+        `copy /Y E:\\cordova\\ydgw\\res\\android\\screen_${fbdV}.png E:\\cordova\\ydgw\\res\\android\\screen.png`,
         'npm run build'
       ].join('\n'), cord = [
         'E:',
         'cd E:\\cordova\\ydgw',
         'cordova build --release'
       ], copy = [
-        'X:',
-        `mkdir ${fbdV}`,
         `copy /Y E:\\cordova\\ydgw\\platforms\\android\\app\\build\\outputs\\apk\\release\\ydgw.${bbhV}.apk X:\\${fbdV}\\ydgw.${bbhV}.apk`,
         `copy /Y E:\\cordova\\ydgw\\platforms\\android\\app\\build\\outputs\\apk\\release\\ydgw.${bbhV}.apk X:\\${fbdV}\\ydgw.apk`
       ]
