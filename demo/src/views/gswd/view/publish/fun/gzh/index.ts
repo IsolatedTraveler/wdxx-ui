@@ -4,6 +4,8 @@ import { formItem } from "./formItem";
 import { getNginxC, getPayParamSql, getPayPortSql, getSql, getSqSql } from "./fun";
 import { formdataDef } from "./def";
 import { fblxOption, zffsOption } from "./selectOption";
+import { fbdq } from "../../data";
+
 export default function useGzh() {
   const lx = ref<number>(1), formData = ref<FormData>(formdataDef), wwdz1 = computed(() => {
     var data = formData.value, url = data.wwdz || ''
@@ -50,6 +52,7 @@ export default function useGzh() {
     formData,
     formItems,
     fblxOption,
-    zffsOption
+    zffsOption,
+    fbdq
   }
 }

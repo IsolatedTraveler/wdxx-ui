@@ -10,7 +10,7 @@ interface FormData {
 export function ydgwDb() {
   var formData = ref<FormData>({
     fbd: 'kbs',
-    bbh: '1.1.1',
+    bbh: '1.1.',
     configSite: 'E:\\jtGit\\vue\\ydgw\\src\\api\\config.js',
     cordConfig: 'E:\\cordova\\ydgw\\config.xml'
   }), code = computed(() => {
