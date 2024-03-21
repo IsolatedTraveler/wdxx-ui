@@ -1,6 +1,6 @@
 <template>
   <li ref="_ref" :class="_class">
-    <z-flex class="tree-row" :style="{ paddingLeft: childIndex + 'em' }" @click.stop="selected">
+    <z-flex class="tree-row" :style="{ paddingLeft: childIndex + 'em' }" @click.stop="selected(2)">
       <div class="tree-col" v-if="cols.length" v-for="col in cols" :key="col.id" :class="'col-' + col.id">
         <slot v-if="col.type == 'temp'" :name="col.id" :data="data"></slot>
         <tree-col v-else-if="col.type" :col="col" :data="data"></tree-col>
@@ -12,7 +12,7 @@
     </z-flex>
     <ul class="tree-child" v-if="child" v-show="isExpand">
       <z-tree-item v-for="(it, i) in child" :data="it" :key="it[idAlias]" :index="i" :childIndex="cIndex"
-        :pid="pid?.concat(data[idAlias])" :def="def" :isExpand="isExpand">
+        :pid="pid?.concat(data[idAlias])" :isExpand="isExpand">
         <template #default="{ data }">
           <slot :data="data"></slot>
         </template>

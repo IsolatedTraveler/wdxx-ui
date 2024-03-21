@@ -7,7 +7,7 @@
       :value="showVal">
     <z-pop ref="_pop" :show="show">
       <div ref="_pop_content">
-        <component :is="com" :data="data" v-model:obj="valObj" v-model="val"></component>
+        <component :is="com" :data="data" v-model="val" @setVal="setVal"></component>
       </div>
     </z-pop>
   </div>
@@ -16,13 +16,13 @@
 <script lang="ts" setup>
 import { selectEmits, selectProps } from './select'
 import { useSelect } from './use-select'
-import { ZPop } from '@ui/components'
+import { ZPop } from '@ui/components/pop'
 defineOptions({
   name: 'z-select'
 })
 const props = defineProps(selectProps)
 const emit = defineEmits(selectEmits)
-const { _ref, _pop, _pop_content, _class, prop, _style, showVal, isShow, show, showPop, com, valObj, val } = useSelect(props, emit)
+const { _ref, _pop, _pop_content, _class, prop, _style, showVal, isShow, show, showPop, com, setVal, val } = useSelect(props, emit)
 defineExpose({
   ref: _ref
 })

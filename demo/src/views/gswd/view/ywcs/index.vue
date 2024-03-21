@@ -1,6 +1,6 @@
 <template>
   <z-flex flex="row" class="gswd-ywcs">
-    <z-tree class="left" :data="menu" :def="def" @checked="changePage"></z-tree>
+    <z-tree class="left" :data="menu" v-model="def" @checked="changePage"></z-tree>
     <component :is="loadComponent(name)" />
   </z-flex>
 </template>

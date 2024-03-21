@@ -16,22 +16,29 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
     , { _class, _style, classVal, styleVal } = useCssInit(props, 'select', { cssClass: ['size'], classAdd: ['multi'] })
     // 通用值处理方案
     , { val, prop } = useInjectInput(props, emit)
-  // 样式二次处理
-  useInputMixins(props, classVal, styleVal, _ref, {})
-
-  const valObj = ref<Array<any>>([]),
-    showVal = computed(() => {
-      const obj: Array<any> = valObj.value
+    , valObj = ref<Array<any>>([])
+    , showVal = computed(() => {
+      const obj: any = valObj.value
       if (obj) {
-        return props.multi ? obj.map((it: any) => it[props.showId]) : obj[0]?.[props.showId]
+        return props.multi ? obj.map((it: any) => it[props.showId]) : obj[props.showId]
       } else {
         return ''
       }
-    }),
-    isShow = computed(() => {
-      const v = val.value
-      return v && v.length && props.multi
     })
+  // 样式二次处理
+  useInputMixins(props, classVal, styleVal, _ref, {})
+  function setVal(v: any) {
+    valObj.value = v
+    if (props.multi) {
+
+    } else {
+      show.value = false
+    }
+  }
+  const isShow = computed(() => {
+    const v = val.value
+    return v && v.length && props.multi
+  })
   onMounted(() => {
     _pop.value.init(_ref.value)
   })
@@ -48,6 +55,6 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
     showVal,
     showPop,
     com,
-    valObj
+    setVal
   }
 }

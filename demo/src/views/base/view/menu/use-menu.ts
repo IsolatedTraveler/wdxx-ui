@@ -11,6 +11,7 @@ export const useMenu = () => {
     , def = ref('')
   user.setMenu()
   function changePage(it: any) {
+    def.value = it.name
     if (it.path) {
       if (it.lx === 'route') {
         router.push({ path: it.path })

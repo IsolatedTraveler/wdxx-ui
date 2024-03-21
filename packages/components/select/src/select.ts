@@ -1,6 +1,7 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS, propsInputMixins } from "@ui/hooks";
 import { PropsBaseObject, PropsBasePositiveInteger, PropsBaseSize, PropsBaseString, PropsInputShape, PropsBaseBoolean, PropsInputValidateEvent, PropsBaseArray_Object } from "@ui/props";
+import { EventUpdate } from "@ui/vars";
 export const selectProps = propsBuildS({
   unit: PropsBasePositiveInteger,
   size: PropsBaseSize,
@@ -16,6 +17,7 @@ export const selectProps = propsBuildS({
   ...propsInputMixins
 }, { auto: 1, flex: 'row', showId: 'mc', valId: 'id' })
 export const selectEmits = {
+  [EventUpdate]: (val: any) => true
 }
 export type SelectProps = ExtractPropTypes<typeof selectProps>
 export type SelectEmits = typeof selectEmits
