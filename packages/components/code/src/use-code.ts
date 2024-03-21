@@ -29,7 +29,7 @@ function copyIng(v: string): Promise<void> {
 }
 export const useCode = (props: CodeProps, _emit: SetupContext<CodeEmits>['emit']) => {
   const _ref = ref<HTMLButtonElement>(), { _class } = useCssInit(props, 'code')
-    , _code = ref<HTMLElement>(), size = ref<number>(1), len = ref<number>(.5)
+    , _code = ref<HTMLElement>(), size = ref<number>(1), len = ref<number>(1)
     , tip = ref<string>('复制'), showCopy = ref<boolean>(false)
   watch(() => _code.value, (el: any) => {
     if (el) {
@@ -38,7 +38,7 @@ export const useCode = (props: CodeProps, _emit: SetupContext<CodeEmits>['emit']
     } else {
       size.value = 1
     }
-    len.value = ((size.value + 1) + '').length / 2
+    len.value = ((size.value + 1) + '').length / 2 + .5
   }, { immediate: true })
   function copy() {
     copyIng(props.data + '\n').then(() => {

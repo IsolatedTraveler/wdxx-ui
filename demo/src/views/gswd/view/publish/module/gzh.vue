@@ -34,7 +34,6 @@
       </z-form-item>
     </z-form>
     <z-code v-for="(it, i) in code" :key="i" :data="it.code" :type="it.lx"></z-code>
-    公众号更新
   </z-flex>
 </template>
 
