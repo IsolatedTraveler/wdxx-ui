@@ -8,7 +8,7 @@ export interface ProvidePop {
 export const providePopId: InjectionKey<ProvidePop> = Symbol('pop')
 export const useProvidePop = (props: PopProps, _ref: Ref<HTMLElement>, styleVal: any) => {
   const relativeElem = ref<HTMLElement>(document.body)
-  var popperInstance: Instance | null
+  var popperInstance: Instance | null, elem: any
   function init(relative: HTMLElement | null = null) {
     relativeElem.value = relative || document.body
     if (relative) {
@@ -53,11 +53,12 @@ export const useProvidePop = (props: PopProps, _ref: Ref<HTMLElement>, styleVal:
     }
   }, { immediate: true })
   onUnmounted(() => {
-    document.body.removeChild(_ref.value!)
+    elem && document.body.removeChild(_ref.value || elem)
     destroyPopperInstance()
   })
   onMounted(() => {
-    document.body.appendChild(_ref.value!)
+    elem = _ref.value
+    elem && document.body.appendChild(elem)
   })
   return {
     init
