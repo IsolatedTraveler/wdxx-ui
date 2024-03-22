@@ -1,4 +1,4 @@
-.z-code {
+.z-code.hljs-container {
   position: relative;
   margin: 0;
   display: block;
@@ -6,26 +6,32 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
 
-  >code {
-    &:first-child {
-      padding-top: 2em;
+  >code.hljs {
+    padding-top: 2em;
+    padding-bottom: 1em;
+
+    .z-xh {
+      position: relative;
+      display: inline-block;
+      height: 1em;
+
+      i {
+        position: absolute;
+        top: 1px;
+        text-align: center;
+        color: var(--color-font-4);
+        height: 1em;
+      }
     }
 
-    &:last-child {
-      padding-bottom: 1em;
+    .z-fgx {
+      position: absolute;
+      top: 2em;
+      bottom: 1em;
+      border-right: 1px solid var(--color-border-2);
     }
   }
 
-  >.z-code-number {
-    position: absolute;
-    top: 2em;
-    left: 0;
-    bottom: 1em;
-    padding: 0 .5em;
-    text-align: center;
-    border-right: 1px solid var(--color-border-2);
-    color: var(--color-font-4);
-  }
 
   >.z-btn {
     position: absolute;

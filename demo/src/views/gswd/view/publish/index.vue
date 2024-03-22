@@ -1,7 +1,7 @@
 <template>
   <z-flex flex="row" class="use-publish">
     <z-tree class="left" :data="menu" v-model="def" @checked="changePage"></z-tree>
-    <component :is="loadComponent(name)" />
+    <component class="content" :is="loadComponent(name)" />
   </z-flex>
 </template>
 
@@ -23,11 +23,6 @@ const { menu, name, loadComponent, changePage, def } = usePublish();
   }
 
   >.content {
-    height: 100%;
-    overflow: auto;
-  }
-
-  [scroll] {
     overflow: auto;
   }
 }

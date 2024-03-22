@@ -1,21 +1,18 @@
 <template>
-  <div class="ydgw_jq">
-    sql发布<br>
-
+  <div class="ydgw-jq">
+    <z-code type="sql" :data="code"></z-code>
   </div>
 </template>
-<script>
-export default {
-  name: 'ydgw_jq',
-  data() {
-    return {}
-  },
-  methods: {
-  }
-}
+<script lang="ts" setup>
+import { ydgwJq } from '../fun';
+defineOptions({
+  name: 'ydgw-jq'
+})
+const { code } = ydgwJq()
 </script>
 <style lang="scss">
-.ydgw_jq {
-  width: 100%;
+.ydgw-jq {
+  flex-basis: 0;
+  flex-grow: 1;
 }
 </style>

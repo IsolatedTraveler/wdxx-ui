@@ -9,7 +9,7 @@ export const magic: ServerConfig = {
   headers: {
     contentType: 'application/json;charset=utf-8'
   },
-  jqurl: '/oauth/token'
+  jqurl: '/magic/oauth/token'
 }
 // his
 export const his: ServerConfig = {

@@ -19,9 +19,9 @@ function getServer(): Promise<any> {
 }
 // magic鉴权
 function setAuthorization() {
-  return getConfig('magicApi').then(({ Authorization, zhxx, jqurl = magic.jqurl }) => {
+  return getConfig('magic').then(({ Authorization, user, jqurl = magic.jqurl }) => {
     magic.headers.Authorization = Authorization
-    return magicPost(jqurl, {}, zhxx).then(res => magic.headers.Authorization = res.Authorization)
+    return magicPost(jqurl, {}, user).then(res => magic.headers.Authorization = res.Authorization)
   })
 }
 export function magicPost(url: string, data: any = {}, params: any = {}, headers = {}) {

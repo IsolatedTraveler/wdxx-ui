@@ -13,9 +13,6 @@
 </template>
 <script lang="ts" setup>
 import { ydgwDb } from '../fun';
-
-
-
 defineOptions({
   name: 'ydgw-db'
 })

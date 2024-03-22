@@ -5,7 +5,7 @@ export const server: ServerOptions = {
   host: '0.0.0.0',
   proxy: {
     '/api': {
-      target: "http://10.33.77.31:7080/cloudapi/",
+      target: "http://loc.frp.cdjtwx.com:81/233-7080/jtphis/",
       rewrite: (path) => path.replace(/^\/api/, ''),
       changeOrigin: true
     },
