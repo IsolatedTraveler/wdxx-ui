@@ -1,7 +1,9 @@
 import { TreeItemProps } from "@ui/components/tree/src/item/tree-item";
 import { computed, inject, ref, watch } from "vue";
 import { ProvideTree, provideTreeId, TreeItemSelectLx } from "../use-provide/tree";
-export const useInjectTreeItem = (props: TreeItemProps) => {
+import { ObjTrue } from "@ui/vars";
+import { useCssName } from "../use-css";
+export const useInjectTreeItem = (props: TreeItemProps, classVal: ObjTrue) => {
   // 获取tree上的通用数据
   const { idAlias, mcAlias, cols, typeCols, click, childAlias, expandVal, selectObj } = inject(provideTreeId, {} as ProvideTree)
     , mc = computed(() => props.data[mcAlias.value] || '')
@@ -27,6 +29,7 @@ export const useInjectTreeItem = (props: TreeItemProps) => {
     })
   watch(() => selectObj.value[id.value], (v) => {
     isSelected.value = !!v
+    classVal[useCssName('selected')] = isSelected.value
     if (v && v === true) {
       selected(1)
     }

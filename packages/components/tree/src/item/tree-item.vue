@@ -1,6 +1,6 @@
 <template>
   <li ref="_ref" :class="_class">
-    <z-flex class="tree-row" :style="{ paddingLeft: childIndex + 'em' }" @click.stop="selected(2)">
+    <z-flex class="tree-row" :style="{ paddingLeft: childIndex + .5 + 'em' }" @click.stop="selected(2)">
       <div class="tree-col" v-if="cols.length" v-for="col in cols" :key="col.id" :class="'col-' + col.id">
         <slot v-if="col.type == 'temp'" :name="col.id" :data="data"></slot>
         <tree-col v-else-if="col.type" :col="col" :data="data"></tree-col>

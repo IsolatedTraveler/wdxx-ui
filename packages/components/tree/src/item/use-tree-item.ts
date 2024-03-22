@@ -6,10 +6,9 @@ export const useTreeItem = (props: TreeItemProps) => {
   // 定义元素
   const _ref = ref<HTMLButtonElement>()
     // 定义样式
-    , { _class } = useCssInit(props, 'tree-item')
+    , { _class, classVal } = useCssInit(props, 'tree-item')
     // tree数据处理
-    , { mc, idAlias, typeCols, cols, child, selected, cIndex, isExpand } = useInjectTreeItem(props)
-
+    , { mc, idAlias, typeCols, cols, child, selected, cIndex, isExpand } = useInjectTreeItem(props, classVal)
   return {
     _ref,
     _class,

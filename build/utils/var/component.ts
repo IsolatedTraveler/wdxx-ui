@@ -6,6 +6,7 @@ export interface comObjInject {
 export interface ComObj {
   next?: string[],
   prev?: string[],
+  css?: string[]
   inject?: comObjInject,
   provide?: string[] | true,
   keys: string[]

@@ -29,6 +29,9 @@
       },
       "provide": [
         "tree"
+      ],
+      "css": [
+        "tree-item"
       ]
     },
     "scroll": {

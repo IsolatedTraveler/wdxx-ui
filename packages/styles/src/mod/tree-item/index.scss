@@ -1,11 +1,18 @@
 @use 'sass:map';
-@use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
-@use './tree-item-media.scss' as *;
-@use './tree-item.scss' as *;
 
-@include createSingleClass(tree-item, '', '') {
+.z-tree-item {
+  line-height: 2em;
 
-  @include asyncMedia($styleMedia, '');
+  &.z-selected {
+    >.tree-row {
+      background: map.get($color, primary, 2);
+      color: map.get($color, font, 3);
+    }
+  }
+
+  >.tree-row {
+    padding-right: .5em;
+    box-sizing: border-box;
+  }
 }
-@include async($style, tree-item, '');
