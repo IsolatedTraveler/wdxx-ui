@@ -7,7 +7,7 @@
       :value="showVal">
     <z-pop ref="_pop" :show="show">
       <div ref="_pop_content">
-        <component :is="com" :data="data" v-model="val" @setVal="setVal"></component>
+        <component :is="com" :data="data" v-model="val" @setVal="setVal" :alias="{ id: valId, mc: showId }"></component>
       </div>
     </z-pop>
   </div>
