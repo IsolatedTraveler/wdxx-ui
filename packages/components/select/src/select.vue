@@ -6,9 +6,7 @@
     <input v-else autocomplete="off" :="prop" :placeholder="$props.placeholder" @blur="" @click.stop="showPop"
       :value="showVal">
     <z-pop ref="_pop" :show="show">
-      <div ref="_pop_content">
-        <component :is="com" :data="data" v-model="val" @setVal="setVal" :alias="{ id: valId, mc: showId }"></component>
-      </div>
+      <component :is="com" :data="data" v-model="val" @setVal="setVal" :alias="{ id: valId, mc: showId }"></component>
     </z-pop>
   </div>
 </template>
@@ -22,7 +20,7 @@ defineOptions({
 })
 const props = defineProps(selectProps)
 const emit = defineEmits(selectEmits)
-const { _ref, _pop, _pop_content, _class, prop, _style, showVal, isShow, show, showPop, com, setVal, val } = useSelect(props, emit)
+const { _ref, _pop, _class, prop, _style, showVal, isShow, show, showPop, com, setVal, val } = useSelect(props, emit)
 defineExpose({
   ref: _ref
 })
