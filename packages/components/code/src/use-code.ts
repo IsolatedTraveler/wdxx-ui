@@ -34,8 +34,8 @@ export const useCode = (props: CodeProps, _emit: SetupContext<CodeEmits>['emit']
     , code = computed(() => {
       const v = hljs.highlight(props.type, props.data).value, arr = v.split('\n'), lenv = ((arr.length + 1) + '').length / 2 + .5
       len.value = lenv
-      return `<span class="z-fgx" style="left:${lenv + 0.8}em"></span>` + arr.map((it, i) => {
-        return `<span class="z-xh"><i style="width: ${lenv}em;left:-${lenv + 1.8}em;">${i + 1}</i></span>` + it
+      return `<span class="z-fgx" style="left:${lenv + 1}em"></span>` + arr.map((it, i) => {
+        return `<span class="z-xh"><i style="width: ${lenv}em;left:-${lenv + 1.6}em;">${i + 1}</i></span>` + it
       }).join('\n')
     })
   function copy() {
