@@ -3,4 +3,5 @@
 
 .z-pop {
   background-color: map.get($color, font, 3);
+  border: 1px solid map.get($color, border, 2);
 }
