@@ -11,7 +11,7 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
       show.value = true
     }
     // 相关元素定义
-    , _pop = ref<any>(), _pop_content = ref<any>(), _ref = ref<HTMLButtonElement>()
+    , _pop = ref<any>(), _ref = ref<HTMLButtonElement>()
     // css样式
     , { _class, _style, classVal, styleVal } = useCssInit(props, 'select', { cssClass: ['size'], classAdd: ['multi'] })
     // 通用值处理方案
@@ -45,7 +45,6 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
   return {
     _ref,
     _pop,
-    _pop_content,
     _class,
     _style,
     val,
