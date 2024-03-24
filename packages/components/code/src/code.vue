@@ -2,7 +2,7 @@
   <pre ref="_ref" :class="_class" class="hljs-container" :codetype="type" @mouseover="showCopy = true"
     @mouseout="showCopy = false"><code 
     class="hljs" :class="'language-' + type" 
-    :style="{ paddingLeft: 1.8 + len + 'em' }"
+    :style="{ paddingLeft: 2 + len + 'em' }"
     data-highlighted="yes"
     v-html="code"
     ></code><z-btn @click="copy" v-show="showCopy" state="primary" shape="ghost" size="sm">{{ tip }}</z-btn></pre>
