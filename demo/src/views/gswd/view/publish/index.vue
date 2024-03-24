@@ -24,6 +24,7 @@ const { menu, name, loadComponent, changePage, def } = usePublish();
 
   >.content {
     overflow: auto;
+    padding-bottom: 1em;
   }
 }
 </style>
