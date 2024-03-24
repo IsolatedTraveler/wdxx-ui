@@ -1,7 +1,40 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
-
+$popBg:  map.get($color, info, 7);
 .z-pop {
-  background-color: map.get($color, font, 3);
+  background-color:$popBg;
   border: 1px solid map.get($color, border, 2);
+  >.z-pop--arrow{
+    visibility: hidden;
+    &,&:before{
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: $popBg;
+    }
+    &::before{
+      visibility: visible;
+      content: '';
+      transform: rotate(45deg);
+    }
+  }
+  &[data-popper-placement^='top'] {
+    >.z-pop--arrow{
+    bottom: -4px}
+  }
+  &[data-popper-placement^='bottom'] {
+    >.z-pop--arrow{
+    top: -4px
+  }
+  }
+  &[data-popper-placement^='right'] {
+    >.z-pop--arrow{
+    left: -4px
+  }
+  }
+  &[data-popper-placement^='left'] {
+    >.z-pop--arrow{
+    right: -4px
+  }
+  }
 }

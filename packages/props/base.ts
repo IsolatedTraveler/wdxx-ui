@@ -3,8 +3,7 @@ import { ObjAny } from "@ui/vars"
 import { propsBaseRadius, propsBaseSize, propsBaseState } from "@ui/vars/props"
 
 export const PropsBaseBoolean = {
-  type: Boolean,
-  default: false
+  type: Boolean
 }
 export const PropsBaseString = {
   type: String,

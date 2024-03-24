@@ -8,10 +8,11 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
   }, com = computed(() => comObj[comName.value])
     // 是否显示弹出层
     , show = ref<boolean>(false), showPop = function () {
-      show.value = true
+      _input.value?.focus()
+      show.value = !show.value
     }
     // 相关元素定义
-    , _pop = ref<any>(), _ref = ref<HTMLButtonElement>()
+    , _pop = ref<any>(), _ref = ref<HTMLButtonElement>(),_input=ref<HTMLInputElement>()
     // css样式
     , { _class, _style, classVal, styleVal } = useCssInit(props, 'select', { cssClass: ['size'], classAdd: ['multi'] })
     // 通用值处理方案
@@ -45,6 +46,7 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
   return {
     _ref,
     _pop,
+    _input,
     _class,
     _style,
     val,

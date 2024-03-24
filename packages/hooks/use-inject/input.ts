@@ -19,6 +19,13 @@ export const useInjectInput = (props: InputProps | SelectProps, emit: SetupConte
   }, { immediate: true })
   return {
     val,
-    prop
+    prop:computed(()=> {
+      const v = prop?.value
+      return {
+        disabled: props.disabled === undefined ? v?.disabled : props.disabled,
+        readonly: props.readonly === undefined ? v?.readonly : props.readonly,
+        tabIndex:0
+      }
+    })
   }
 }

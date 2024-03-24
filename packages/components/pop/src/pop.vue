@@ -1,5 +1,6 @@
 <template>
   <div ref="_ref" :class="_class" :style="_style" v-show="show">
+  <div data-popper-arrow class="z-pop--arrow"></div>
     <slot></slot>
   </div>
 </template>

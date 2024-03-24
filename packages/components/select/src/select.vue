@@ -1,11 +1,11 @@
 <template>
   <div ref="_ref" :class="_class" :style="_style" @click.stop="showPop">
-    <div v-if="isShow" @click.stop="showPop">
+    <div v-if="multi" @click.stop="showPop">
       <span v-for="(it, i) in  showVal" :key="i" @click.stop="showPop">{{ it }}</span>
     </div>
-    <input v-else autocomplete="off" :="prop" :placeholder="$props.placeholder" @blur="" @click.stop="showPop"
+    <input ref="_input" v-show="showVal && showVal.length" autocomplete="off" :="prop" :placeholder="$props.placeholder"  @blur="show = false" @click.stop="showPop"
       :value="showVal">
-    <z-pop ref="_pop" :show="show">
+    <z-pop ref="_pop" :show="show" @hide="show=false" @mousedown.prevent="">
       <component :is="com" :data="data" v-model="val" @setVal="setVal" :alias="{ id: valId, mc: showId }"></component>
     </z-pop>
   </div>
@@ -20,7 +20,7 @@ defineOptions({
 })
 const props = defineProps(selectProps)
 const emit = defineEmits(selectEmits)
-const { _ref, _pop, _class, prop, _style, showVal, isShow, show, showPop, com, setVal, val } = useSelect(props, emit)
+const { _class, _style, _ref, _pop, _input, prop, showVal, show, showPop, com, setVal, val } = useSelect(props, emit)
 defineExpose({
   ref: _ref
 })

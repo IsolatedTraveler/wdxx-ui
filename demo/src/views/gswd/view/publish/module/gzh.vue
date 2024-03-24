@@ -3,7 +3,7 @@
     公众号首次发版
     <z-form flex="row" wrap v-model="formData">
       <z-form-item label="发版地区别名：" basis="25%">
-        <z-select name="fbd" :data="fbdq"></z-select>
+        <z-select name="fbd" :data="fbdq" readonly></z-select>
       </z-form-item>
       <z-form-item label="发版类型：" basis="25%">
         <z-select v-model="lx" :data="fblxOption"></z-select>
