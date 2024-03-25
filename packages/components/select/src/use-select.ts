@@ -26,6 +26,10 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
         return ''
       }
     })
+    ,inputShow = computed(() => {
+      const v = val.value
+      return props.multi ? !(v && v.length) : true
+    })
   // 样式二次处理
   useInputMixins(props, classVal, styleVal, _ref, {})
   function setVal(v: any) {
@@ -36,10 +40,6 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
       show.value = false
     }
   }
-  const isShow = computed(() => {
-    const v = val.value
-    return v && v.length && props.multi
-  })
   onMounted(() => {
     _pop.value.init(_ref.value)
   })
@@ -51,11 +51,11 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
     _style,
     val,
     prop,
-    isShow,
-    show,
     showVal,
     showPop,
+    show,
     com,
-    setVal
+    setVal,
+    inputShow
   }
 }
