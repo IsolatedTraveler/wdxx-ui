@@ -1,5 +1,5 @@
 import { computed, ref } from "vue"
-import { bashRewriteFile } from "../fun/bashRewriteFile"
+import { win } from "../code"
 import { fbdq } from "../data"
 interface FormData {
   fbd: string
@@ -20,8 +20,8 @@ export function ydgwDb() {
         `mkdir ${fbdV}`,
         'E:',
         'cd E:\\jtGit\\vue\\ydgw',
-        bashRewriteFile(obj.configSite, 'import \{[a-z ]+\}', `import { ${fbdV} as obj }`),
-        bashRewriteFile(obj.cordConfig, 'version=\\\"[0-9.]+\\\"', `version=\\"${bbhV}\\"`),
+        win.fileContentRepalce(obj.configSite, 'import \{[a-z ]+\}', `import { ${fbdV} as obj }`),
+        win.fileContentRepalce(obj.cordConfig, 'version=\\\"[0-9.]+\\\"', `version=\\"${bbhV}\\"`),
         `copy /Y E:\\cordova\\ydgw\\res\\img\\icon_${fbdV}.png E:\\cordova\\ydgw\\res\\img\\icon.png`,
         `copy /Y E:\\cordova\\ydgw\\res\\android\\screen_${fbdV}.png E:\\cordova\\ydgw\\res\\android\\screen.png`,
         'npm run build'
