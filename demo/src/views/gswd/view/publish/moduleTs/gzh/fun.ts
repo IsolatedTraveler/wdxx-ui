@@ -1,6 +1,6 @@
 import { uuid } from "@/assets/js"
 import { formItem } from "./formItem"
-import { linuxCopyDirectory, linuxFileContentRepalce } from "../../code"
+import { linux } from "../../code"
 
 export function getSql(jgid: string, zffs: string, data: any) {
   return (formItem[zffs] || []).map(({ name }) => {
@@ -54,13 +54,13 @@ export function getNginxC(fbd: string, wwdz: string) {
     lx: 'bash',
     code: [
       'cd /usr/share/nginx/wx',
-      linuxCopyDirectory('smqwx', fbd + 'wx'),
-      linuxFileContentRepalce(`${fileSite}app/mobile/static/lib/config.js`, 'smq', fbd),
-      linuxFileContentRepalce(`${fileSite}jggzh/static/lib/config.js`, 'smq', fbd),
-      linuxFileContentRepalce(`${fileSite}pay/static/lib/config.js`, 'smq', fbd),
+      linux.copyDirectory('smqwx', fbd + 'wx'),
+      linux.fileContentRepalce(`${fileSite}app/mobile/static/lib/config.js`, 'smq', fbd),
+      linux.fileContentRepalce(`${fileSite}jggzh/static/lib/config.js`, 'smq', fbd),
+      linux.fileContentRepalce(`${fileSite}pay/static/lib/config.js`, 'smq', fbd),
       'cd /home/tomcat-7/webapps',
-      linuxCopyDirectory('smqapi', fbd + 'api'),
-      linuxFileContentRepalce(`/home/tomcat-7/webapps/${fbd}api/WEB-INF/classes/system.properties`,'http:\\/\\/smq.frp.cdjtwx.com:81\\/',wwdz.replace(/\//g, '\\/'))
+      linux.copyDirectory('smqapi', fbd + 'api'),
+      linux.fileContentRepalce(`/home/tomcat-7/webapps/${fbd}api/WEB-INF/classes/system.properties`,'http:\\/\\/smq.frp.cdjtwx.com:81\\/',wwdz.replace(/\//g, '\\/'))
     ].join('\n')
   }, {
     lx: 'bash',

@@ -1,2 +1,1 @@
-export * from './copy'
-export * from './replace'
+export * as linux from './com'
