@@ -16,7 +16,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { hisTyThird } from '../fun';
+import { hisTyThird } from '../moduleTs';
 defineOptions({
   name: 'his-ty-third'
 })

@@ -1,5 +1,4 @@
 export * from './bashRewriteFile'
-export * from './his-ty-third'
 export * from './sql'
 export * from './ydgw-db'
 export * from './ydgw-jq'

@@ -38,7 +38,8 @@
 </template>
 
 <script lang="ts" setup>
-import useGzh from '../fun/gzh'
+import {useGzh} from '../moduleTs';
+
 const { code, lx, formData, formItems, zffsOption, fblxOption, fbdq } = useGzh()
 defineOptions({
   name: 'publish-gzh'
@@ -59,3 +60,4 @@ defineOptions({
   }
 }
 </style>../fun/gzh
+../moduleTs/gzh
