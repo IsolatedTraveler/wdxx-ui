@@ -5,6 +5,7 @@ import { getNginxC, getPayParamSql, getPayPortSql, getSql, getSqSql } from "./fu
 import { formdataDef } from "./def";
 import { fblxOption, zffsOption } from "./selectOption";
 import { fbdq } from "../../data";
+import {  linuxFileContentRepalceArr } from "../../code";
 
 export default function useGzh() {
   const lx = ref<number>(1), formData = ref<FormData>(formdataDef), wwdz1 = computed(() => {
@@ -39,10 +40,7 @@ export default function useGzh() {
         ].join('\n')
       }, lx.value == 1 ? {
         lx: 'bash',
-        code: [
-          `sed -i 's/172.16.10.3/127.0.0.1/g' /home/frp/frpc.ini`,
-          `sed -i 's/smq/${fbd}/g' /home/frp/frpc.ini`
-        ].join('\n')
+        code: linuxFileContentRepalceArr('/home/frp/frpc.ini', [{reg: '172.16.10.3', rep: '127.0.0.1'},{reg:'smq',rep:fbd}])
       } : ''
     ].filter(it => it) as Array<PublishCode>
   }), formItems = computed(() => formItem[formData.value.zffs])
