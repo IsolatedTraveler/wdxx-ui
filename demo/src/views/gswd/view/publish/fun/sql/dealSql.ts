@@ -1,21 +1,20 @@
 import { ObjAny } from "@ui/vars"
-import * as back from './back'
-import * as del from './delete'
-import * as deal from './deal'
+import {deal, del, back } from '../../code'
 import { magicPost } from "@/api"
 interface DealSqlParam {
   sum: number
   xhcs: number
 }
+export type SqlLx = 'oracle' | 'def'
 export interface TableCol {
   col: string
-  lx: string
+  lx: SqlLx
 }
 const conut = 5
-function dealSql(table: string, data: Array<any>, colObj: ObjAny, lx: string, colKey: Array<string>): string {
+function dealSql(table: string, data: Array<any>, colObj: ObjAny, lx: SqlLx, colKey: Array<string>) {
   return data.map((it) => {
     return `insert into ${table} (${colKey.join(', ')}) values (${colKey.map(key => {
-      var fun: any = (deal as any)[lx] || (deal as any).def, type = colObj[key]
+      var fun: any = deal[lx] || deal.def, type = colObj[key]
       fun = fun[type] || fun.def
       return fun(it[key])
     }).join(', ')});`
@@ -49,7 +48,7 @@ export function getCodes(tj: string, bm: string, page = 1, size = 10): Promise<A
     return getRollCode(tj, bm, res, size, param).then(() => res)
   })
 }
-export function dealSqlData(res: Array<ObjAny>, col: Array<TableCol>, bm: string, tj: string, primary: Array<string>, backTable: string = '', lx: string = 'oracle') {
+export function dealSqlData(res: Array<ObjAny>, col: Array<TableCol>, bm: string, tj: string, primary: Array<string>, backTable: string = '', lx: SqlLx = 'oracle') {
   const colObj: ObjAny = {}, colKey = col.map(it => {
     const key = it.col
     colObj[key] = it.lx

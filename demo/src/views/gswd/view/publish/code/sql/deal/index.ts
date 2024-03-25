@@ -1,0 +1,1 @@
+export * as deal from './com'

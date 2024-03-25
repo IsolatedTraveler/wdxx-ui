@@ -1,0 +1,1 @@
+export * as back from './com'

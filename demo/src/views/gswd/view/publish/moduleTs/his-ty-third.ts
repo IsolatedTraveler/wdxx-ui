@@ -44,7 +44,6 @@ export function hisTyThird() {
         const tj = `gnid='${gnid}' and jkid='${jkid}' and jgid= '${jgid}'`, primary = ['gnid', 'jkid', 'jgid']
           , pzObj = dealSqlData(pzArr.map((it) => { it.JGID = jgid; return it }), pz, 't_jk_pz', tj, primary)
           , jgmlObj = dealSqlData(jgmlArr.map((it) => { it.JGID = jgid; return it }), jgml, 't_jk_ml_jg', tj, primary)
-        console.log(pzObj, jgmlObj)
         code.value = [
           [gnSql.d, gnSql.i].join('\n'),
           [mlSql.d, mlSql.i].join('\n'),
