@@ -4,7 +4,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ydgwJq } from '../fun';
+import { ydgwJq } from '../moduleTs';
 defineOptions({
   name: 'ydgw-jq'
 })

@@ -12,7 +12,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ydgwDb } from '../fun';
+import { ydgwDb } from '../moduleTs';
 defineOptions({
   name: 'ydgw-db'
 })
