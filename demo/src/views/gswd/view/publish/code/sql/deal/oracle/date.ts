@@ -1,3 +1,6 @@
 export function DATE(v: string) {
-  return `std('${v}')`
+  if (v) {
+    return `std('${v}')`
+  }
+  return 'sysdate'
 }
