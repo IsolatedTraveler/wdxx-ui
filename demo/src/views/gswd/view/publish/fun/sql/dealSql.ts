@@ -1,23 +1,55 @@
 import { ObjAny } from "@ui/vars"
-import {deal, del, back } from '../../code'
+import { del, back, insert, deal, update } from '../../code'
 import { magicPost } from "@/api"
 interface DealSqlParam {
   sum: number
   xhcs: number
+}
+export interface TCol {
+  col: string
+  lx: string
+}
+export interface ColLx {
+  [key: string]: Array<string>
 }
 export type SqlLx = 'oracle' | 'def'
 export interface TableCol {
   col: string
   lx: SqlLx
 }
-const conut = 5
-function dealSql(table: string, data: Array<any>, colObj: ObjAny, lx: SqlLx, colKey: Array<string>) {
+function getColVal(type: string, v: string, sjklx: SqlLx, index: number) {
+  var fun: any = deal[sjklx] || deal.def
+  fun = fun[type] || fun.def
+  return fun(v, index)
+}
+function updateSql(table: string, col: string[], it: any, sjklx: SqlLx, colObj: ObjAny, primary: Array<string>, index: number = 1): string {
+  const obj: ObjAny = {}
+  col = col.filter(key => {
+    const v = getColVal(colObj[key], it[key], sjklx, index)
+    if (v) {
+      return obj[key] = v
+    }
+  })
+  if (col.length) {
+    return [
+      (update[sjklx] || update.def)(table, obj, it, primary, colObj, index),
+      updateSql(table, col, it, sjklx, colObj, primary, index + 1)
+    ].filter(it => it).join('\n')
+  } else {
+    return ''
+  }
+}
+const conut = 5, updateCol = ['CLOB']
+function dealSql(table: string, data: Array<any>, colObj: ObjAny, sjklx: SqlLx, colKey: Array<string>, colLx: ColLx, primary: Array<string>) {
+  const col: string[] = []
+  updateCol.forEach(lx => {
+    col.push(...(colLx[lx] || []))
+  })
   return data.map((it) => {
-    return `insert into ${table} (${colKey.join(', ')}) values (${colKey.map(key => {
-      var fun: any = deal[lx] || deal.def, type = colObj[key]
-      fun = fun[type] || fun.def
-      return fun(it[key])
-    }).join(', ')});`
+    return [
+      (insert[sjklx] || insert.def)(table, colKey, it, colObj),
+      updateSql(table, col, it, sjklx, colObj, primary)
+    ].filter(it => it).join('\n')
   }).join('\n')
 }
 function getCode(tj: string, bm: string, page: number, size = 10, param: DealSqlParam) {
@@ -48,12 +80,17 @@ export function getCodes(tj: string, bm: string, page = 1, size = 10): Promise<A
     return getRollCode(tj, bm, res, size, param).then(() => res)
   })
 }
-export function dealSqlData(res: Array<ObjAny>, col: Array<TableCol>, bm: string, tj: string, primary: Array<string>, backTable: string = '', lx: SqlLx = 'oracle') {
-  const colObj: ObjAny = {}, colKey = col.map(it => {
-    const key = it.col
+export function dealSqlData(res: Array<ObjAny>, col: Array<TCol>, bm: string, tj: string, primary: Array<string>, backTable: string = '', lx: SqlLx = 'oracle') {
+  const colObj: ObjAny = {}, colLx: ColLx = {}, colKey = col.map(it => {
+    const key = it.col, lxArr = colLx[it.lx]
     colObj[key] = it.lx
+    if (lxArr) {
+      lxArr.push(key)
+    } else {
+      colLx[it.lx] = [key]
+    }
     return key
-  }), b: string = backTable ? ((back as ObjAny)[lx] || (back as ObjAny).def)(backTable, bm, tj, primary, colKey) : ''
-    , d: string = ((del as ObjAny)[lx] || (del as ObjAny).def)(bm, tj)
-  return { i: dealSql(bm, res, colObj, lx, colKey), b, d }
+  }), b: string = backTable ? (back[lx] || back.def)(backTable, bm, tj, primary, colKey) : ''
+    , d: string = (del[lx] || del.def)(bm, tj)
+  return { i: dealSql(bm, res, colObj, lx, colKey, colLx, primary), b, d }
 }
