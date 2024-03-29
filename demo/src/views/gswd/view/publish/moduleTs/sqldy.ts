@@ -19,7 +19,7 @@ export function useSqldy() {
           it.SQL = (it.SQL || '').trim()
         })
         const { i, b, d } = dealSqlData(data, col, talbe, tj, primary, backTable)
-        code.value = [b, d, i].join('\n')
+        code.value = [b, d, i, 'commit;'].join('\n')
       })
     } else {
       code.value = '条件不能为空'
