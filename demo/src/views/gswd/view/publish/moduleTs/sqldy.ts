@@ -1,0 +1,29 @@
+import { ref } from "vue"
+import { dealSqlData, getCodes, getTableCol } from "../fun"
+
+export function useSqldy() {
+  const formData = ref({ bb: '', where: `mkbh='080901' and ywdm = 1` }), code = ref(''), talbe = 'sqldy', primary = ['MKBH', 'YWDM']
+  function getCode() {
+    var obj = formData.value, arr = obj.bb.split('.'), bb = '', tj = obj.where, backTable = ''
+    if (tj) {
+      if (arr[2]) {
+        bb = arr[2].substring(2) + arr[3]
+        backTable = talbe + '_' + bb
+      }
+      Promise.all([
+        getTableCol(talbe),
+        getCodes(tj, talbe)
+      ]).then(([col, data]) => {
+        col = col.filter(({ col }) => col != 'URL' && col != 'ROW_ID')
+        data.forEach(it => {
+          it.SQL = (it.SQL || '').trim()
+        })
+        const { i, b, d } = dealSqlData(data, col, talbe, tj, primary, backTable)
+        code.value = [b, d, i, 'commit;'].filter(it => it).join('\n')
+      })
+    } else {
+      code.value = '条件不能为空'
+    }
+  }
+  return { code, formData, getCode }
+}

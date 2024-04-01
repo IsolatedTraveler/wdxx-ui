@@ -1,4 +1,4 @@
-export  function oracle(backTable: string, table:string, where: string, primary:Array<string>,col: Array<string>) {
+export function oracle(backTable: string, table: string, where: string, primary: Array<string>, col: Array<string>) {
   where = where.replace(/'/g, "''")
   return `DECLARE
   v_table_exists NUMBER;
@@ -21,10 +21,9 @@ export  function oracle(backTable: string, table:string, where: string, primary:
       ON (${primary.map(key => `src.${key} = dst.${key}`).join(' AND ')})
       WHEN NOT MATCHED THEN
         INSERT (${col.join(', ')})
-        VALUES (${col.map(key=>`src.${key}`).join(', ')})';
+        VALUES (${col.map(key => `src.${key}`).join(', ')})';
     v_rows_inserted := SQL%ROWCOUNT;
   END IF;
   DBMS_OUTPUT.PUT_LINE('Inserted rows: ' || v_rows_inserted);
-  END;
-  `
+END;`
 }

@@ -6,11 +6,12 @@
 </template>
 
 <script lang="ts" setup>
+import { menu } from "./data"
 import { usePublish } from './use-publish';
 defineOptions({
   name: 'gswd-publish'
 });
-const { menu, name, loadComponent, changePage, def } = usePublish();
+const { name, loadComponent, changePage, def } = usePublish(import.meta.glob('./module/*.vue'));
 </script>
 
 <style lang="scss">
@@ -25,6 +26,7 @@ const { menu, name, loadComponent, changePage, def } = usePublish();
   >.content {
     overflow: auto;
     padding-bottom: 1em;
+    height: 100%;
   }
 }
 </style>

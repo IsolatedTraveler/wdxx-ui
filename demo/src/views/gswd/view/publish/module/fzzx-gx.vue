@@ -13,7 +13,7 @@ const code = [
   {
     lx: 'bash',
     code: [
-      'net use X: \\192.168.0.185\ydgw /user:jtkf '
+      'net use X: \\\\192.168.0.185\\ydgw /user:jtkf '
     ].join('\n')
   }
 ]

@@ -1,5 +1,7 @@
 export * from './gzh'
 export * from './jtphis'
 export * from './his-ty-third'
+export * from './prody'
+export * from './sqldy'
 export * from './ydgw-db'
 export * from './ydgw-jq'
