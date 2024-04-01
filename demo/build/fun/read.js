@@ -7,7 +7,6 @@ export async function read(dir) {
     const files = glob.sync(`${dir}/**/*.vue`, { ignore: ['**/index.vue'] });
     for (const filePath of files) {
       try {
-        readFile
         const content = await readF(filePath)
           , err = write(content, filePath)
         if (err) {
@@ -32,11 +31,11 @@ function write(data, filePath) {
     } catch (error) {
       return '创建目录时出错:', error.message
     }
-    try {
-      writeFileSync(filePath, data, 'utf8');
-    } catch (error) {
-      return '写入文件时出错:', error.message;
-    }
+  }
+  try {
+    writeFileSync(filePath, data, 'utf8');
+  } catch (error) {
+    return '写入文件时出错:', error.message;
   }
 }
 function readF(filePath) {

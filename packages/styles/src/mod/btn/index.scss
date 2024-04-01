@@ -15,10 +15,15 @@
   padding: map-get($size, pd, 'md');
 
   &+& {
-    margin-left: 8px;
+    margin-left: 0.08rem;
   }
 
   &.z-full {
     width: 100%;
+    margin-left: 0;
+  }
+  &+.z-full{
+    margin-left: 0;
+    margin-top: 0.08rem;
   }
 }

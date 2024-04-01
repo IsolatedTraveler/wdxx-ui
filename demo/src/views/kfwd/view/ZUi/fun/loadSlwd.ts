@@ -16,6 +16,7 @@ export function loadSlwd(coms:ObjAny, val: Array<LoadSlwdData>, zjName:string, m
   const data = ref(val)
    val = data.value
   function loadComponent(name:string,i:number) {
+    console.log(coms, name)
     const m = coms[`./${name}.vue`]
     if (m) {
       const v = val[i]

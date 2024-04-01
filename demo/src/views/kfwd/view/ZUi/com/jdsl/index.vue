@@ -1,7 +1,7 @@
 <template>
   <div class="jdsl">
     <div class="title">{{ title }}</div>
-    <div class="sm">{{ sm }}</div>
+    <div class="sm" v-html="sm"></div>
     <div class="slnr">
       <slot></slot>
       <show-dm :code="code"></show-dm>
