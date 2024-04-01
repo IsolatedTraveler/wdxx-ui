@@ -6,10 +6,11 @@
 </template>
 
 <script lang="ts" setup>
-import { menu } from "./data"
-import { usePublish } from './use-publish';
+import { menu } from "./data/menu"
+import { usePublish } from '@/views/gswd/view/publish/use-publish';
+
 defineOptions({
-  name: 'gswd-publish'
+  name: 'kfwd-ZUi'
 });
 const { name, loadComponent, changePage, def } = usePublish();
 </script>

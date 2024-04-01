@@ -1,21 +1,20 @@
 <template>
-  <z-flex flex="row" class="use-publish">
+  <z-flex flex="row" class="gswd-ywcs">
     <z-tree class="left" :data="menu" v-model="def" @checked="changePage"></z-tree>
-    <component class="content" :is="loadComponent(name)" />
+    <component :is="loadComponent(name)" />
   </z-flex>
 </template>
 
 <script lang="ts" setup>
-import { menu } from "./data"
-import { usePublish } from './use-publish';
+import { useYwcs } from './use-ywcs';
 defineOptions({
-  name: 'gswd-publish'
+  name: 'gswd-ywcs'
 });
-const { name, loadComponent, changePage, def } = usePublish();
+const { menu, name, loadComponent, changePage, def } = useYwcs();
 </script>
 
 <style lang="scss">
-.use-publish {
+.gswd-ywcs {
   >.left {
     flex-basis: 10em;
     height: 100%;
@@ -24,9 +23,12 @@ const { name, loadComponent, changePage, def } = usePublish();
   }
 
   >.content {
-    overflow: auto;
-    padding-bottom: 1em;
     height: 100%;
+    overflow: auto;
+  }
+
+  [scroll] {
+    overflow: auto;
   }
 }
 </style>

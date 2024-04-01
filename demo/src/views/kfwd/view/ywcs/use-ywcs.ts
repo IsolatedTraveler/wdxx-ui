@@ -1,8 +1,9 @@
 import { defineAsyncComponent, ref } from "vue"
+import menu from "./data/menu"
 import { useUserStore } from "@/store";
-export const usePublish = () => {
+export const useYwcs = () => {
   const userStore = useUserStore(), com = import.meta.glob('./module/*.vue')
-    , def = userStore.temp.gswd || 'nginx'
+    , def = userStore.temp.gswd || 'nm-hlyy'
     , name = ref(def);
   function loadComponent(id: string) {
     var path = `./module/${id}.vue`, m = com[path] || com['./module/def.vue']
@@ -15,6 +16,7 @@ export const usePublish = () => {
     }
   }
   return {
+    menu,
     name,
     def,
     loadComponent,

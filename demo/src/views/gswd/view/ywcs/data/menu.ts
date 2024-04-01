@@ -1,3 +1,5 @@
+import { Menu } from "../../publish/data";
+
 export default [
   {
     id: 'nm', mc: '内蒙五区', child: [
@@ -9,9 +11,3 @@ export default [
     ]
   }
 ] as Menu[]
-export interface Menu {
-  id: string
-  mc: string
-  path?: boolean
-  child?: Menu[]
-}
