@@ -3,18 +3,35 @@
     <div class="title">{{ title }}</div>
     <div class="sm">{{ sm }}</div>
     <div class="slnr">
-      <slot></slot>
+      <component :is="com" />
       <!-- 控制按钮 -->
-      <z-code type="html" :data="code"></z-code>
+      <!-- <z-code type="html" :data="1"></z-code> -->
     </div>
   </div>
 </template>
-<script lang="ts" setup>
-import { jdslProps } from './jdsl';
-defineOptions({
-  name: 'jdsl'
-})
-defineProps(jdslProps)
+<script>
+export default {
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    sm: {
+      type: String,
+      default: ''
+    },
+    com: {
+      type: Object,
+      required: true
+    }
+  },
+  async mounted() {
+    const { template, script, styles } = this.com;
+    console.log(template)
+    console.log(script)
+    console.log(styles)
+  }
+}
 </script>
 <style lang="scss">
 .jdsl {

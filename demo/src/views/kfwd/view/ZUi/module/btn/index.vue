@@ -1,6 +1,6 @@
 <template>
   <div class="ZUi-btn">
-    <jdsl title="基础用法" sm="使用shape、state和radius来定义按钮样式" code="">
+    <jdsl title="基础用法" sm="使用shape、state和radius来定义按钮样式" :com="basic">
       <basic></basic>
     </jdsl>
   </div>

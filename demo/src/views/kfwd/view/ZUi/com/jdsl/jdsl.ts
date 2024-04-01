@@ -9,9 +9,9 @@ export const jdslProps = {
     type: String,
     default: ''
   },
-  code: {
-    type: String,
-    default: ''
+  com: {
+    type: Object,
+    required: true
   }
 }
 export const jdslEmits = {
