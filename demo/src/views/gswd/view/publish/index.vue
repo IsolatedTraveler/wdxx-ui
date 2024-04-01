@@ -11,7 +11,7 @@ import { usePublish } from './use-publish';
 defineOptions({
   name: 'gswd-publish'
 });
-const { name, loadComponent, changePage, def } = usePublish();
+const { name, loadComponent, changePage, def } = usePublish(import.meta.glob('./module/*.vue'));
 </script>
 
 <style lang="scss">

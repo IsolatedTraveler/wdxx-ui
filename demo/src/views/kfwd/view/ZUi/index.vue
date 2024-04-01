@@ -12,7 +12,7 @@ import { usePublish } from '@/views/gswd/view/publish/use-publish';
 defineOptions({
   name: 'kfwd-ZUi'
 });
-const { name, loadComponent, changePage, def } = usePublish();
+const { name, loadComponent, changePage, def } = usePublish(import.meta.glob('./module/*/index.vue'), 'kfwd', 'btn');
 </script>
 
 <style lang="scss">
@@ -26,7 +26,7 @@ const { name, loadComponent, changePage, def } = usePublish();
 
   >.content {
     overflow: auto;
-    padding-bottom: 1em;
+    padding: .5em;
     height: 100%;
   }
 }
