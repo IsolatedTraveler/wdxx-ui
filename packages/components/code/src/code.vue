@@ -17,6 +17,7 @@ const props = defineProps(codeProps)
 const emit = defineEmits(codeEmits)
 const { _ref, _class, code, len, copy, tip, showCopy } = useCode(props, emit)
 defineExpose({
-  ref: _ref
+  ref: _ref,
+  copy
 })
 </script>

@@ -9,13 +9,12 @@ export const jdslProps = {
     type: String,
     default: ''
   },
-  com: {
-    type: Object,
-    required: true
+  code: {
+    type: String
   }
 }
 export const jdslEmits = {
   // []: (evt: MouseEvent) => evt instanceof MouseEvent
 }
-export type BtnProps = ExtractPropTypes<typeof jdslProps>
-export type BtnEmits = typeof jdslEmits
+export type JdslProps = ExtractPropTypes<typeof jdslProps>
+export type JdslEmits = typeof jdslEmits

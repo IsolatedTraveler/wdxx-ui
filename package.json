@@ -16,7 +16,7 @@
     "highlight.js": "^11.9.0",
     "js-base64": "^3.7.7",
     "pinia": "^2.1.7",
-    "vue": "^3.4.15",
+    "vue": "^3.4.21",
     "vue-router": "^4.2.5",
     "z-uis": "workspace:*",
     "zlib": "^1.0.5"

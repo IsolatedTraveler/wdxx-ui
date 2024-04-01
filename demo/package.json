@@ -10,7 +10,7 @@
     "test": "node wdjb.js && vitest"
   },
   "dependencies": {
-    "vue": "^3.3.11"
+    "vue": "^3.4.21"
   },
   "devDependencies": {
     "@testing-library/vue": "^8.0.3",

@@ -6,7 +6,7 @@ export function localGet(url: string, data = {}): Promise<any> {
     return response.data
   })
 }
-function getConfigV(name): any {
+function getConfigV(name?:string): any {
   return name ? config[name] : config
 }
 export function getConfig(name?: string): Promise<any> {
@@ -34,6 +34,6 @@ export function getServerUrl(id = 'baseUrl'): Promise<string> {
     return dealUrl(res[id], res.defaultUrl).trim()
   })
 }
-export function setConfig(data) {
+export function setConfig(data:any) {
   config = data
 }

@@ -2,6 +2,9 @@
   "name": "@ui/hooks",
   "version": "1.0.0",
   "description": "All hook function are included here",
-  "main": "index.ts", 
-  "sideEffects": false
+  "main": "index.ts",
+  "sideEffects": false,
+  "devDependencies": {
+    "lodash-unified": "^1.0.3"
+  }
 }

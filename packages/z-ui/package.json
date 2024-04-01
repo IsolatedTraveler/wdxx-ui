@@ -57,13 +57,13 @@
     "component library"
   ],
   "peerDependencies": {
-    "vue": "^3.2.45"
+    "vue": "^3.4.21"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8"
   },
   "devDependencies": {
-    "vue": "^3.2.45"
+    "vue": "^3.4.21"
   },
   "sideEffects": [
     "dist/*",

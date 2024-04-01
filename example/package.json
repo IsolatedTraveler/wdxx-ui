@@ -22,9 +22,8 @@
     "agora-rtc-sdk-ng": "^4.20.0",
     "crypto": "^1.0.1",
     "crypto-js": "^4.2.0",
-    "element-plus": "^2.5.3",
     "vite": "^4.5.2",
-    "vue": "^3.4.15",
+    "vue": "^3.4.21",
     "vue-buffer": "^0.0.1",
     "vue-router": "^4.2.5",
     "zlib": "^1.0.5"

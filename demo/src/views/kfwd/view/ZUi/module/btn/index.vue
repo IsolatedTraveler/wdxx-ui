@@ -1,16 +1,17 @@
 <template>
   <div class="ZUi-btn">
-    <jdsl title="基础用法" sm="使用shape、state和radius来定义按钮样式" :com="basic">
-      <basic></basic>
+    <jdsl v-for="({name, prop},i) in data" :key="i" v-bind="prop">
+      <component :is="loadComponent(name,i)"/>
     </jdsl>
   </div>
 </template>
 <script lang="ts" setup>
-import basic from './basic.vue';
+import { useBtn } from './use-btn'
 import jdsl from '../../com/jdsl/index.vue'
 defineOptions({
   name: 'ZUi-btn'
 })
+const {data, loadComponent} = useBtn()
 </script>
 <style lang="scss">
 .ZUi-btn {
