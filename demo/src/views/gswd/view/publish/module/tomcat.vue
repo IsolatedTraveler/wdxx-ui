@@ -1,42 +1,28 @@
 <template>
-  <div>
-    tomcat安装
+  <div class="publish-tomcat">
+    <z-form flex="row" wrap v-model="formData">
+      <z-form-item label="别名：" basis="25%">
+        <z-input name="lx"></z-input>
+      </z-form-item>
+      <z-form-item label="位置：" basis="25%">
+        <z-input name="lj"></z-input>
+      </z-form-item>
+    </z-form>
     <z-code v-for="(it, i) in code" :key="i" :data="it.code" :type="it.lx"></z-code>
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
-import { zqd } from '../fun';
-
-const fileName = ref('tomcat8')
+import { useTomcat } from '../moduleTs'
 defineOptions({
   name: 'publish-tomcat'
 })
-const code = computed(() => {
-  return [
-    {
-      lx: 'bash',
-      code: [
-        'cd /home'
-      ].join('\n')
-    }, {
-      lx: 'bash',
-      code: [
-        '# 拷贝apache-tomcat-8.5.64.tar.gz到当前目录',
-        'tar -xvf apache-tomcat-8.5.64.tar.gz',
-        `mv apache-tomcat-8.5.64 ${fileName.value}`,
-        `rm -rf ./${fileName.value}/webapps/*`
-      ].join('\n')
-    }, {
-      lx: 'bash',
-      code: [
-        `# 拷贝发版代码至/home/${fileName.value}/webapps目录`,
-        `./${fileName.value}/bin/startup.sh `
-      ].join('\n')
-    },
-    ...zqd('tomcat', fileName.value)
-  ]
-}) 
+const { code, formData } = useTomcat()
 </script>
 <style lang="scss">
-// .java {}</style>
+.publish-tomcat {
+  overflow: auto;
+  height: 100%;
+  flex-grow: 1;
+  padding: 1em;
+}
+</style>
