@@ -30,27 +30,28 @@ function dscq(lx: string) {
     }
   ]
 }
-export function zqd(lx: string, fileName: string) {
+export function zqd(lx: string, fileName: string, bm: string = lx) {
+
   return [
     {
       lx: 'bash',
       code: [
         '# 自启动',
         'cd /etc/systemd/system',
-        `vi ${lx}.service`,
+        `vi ${bm}.service`,
         `# 拷贝以下代码`,
       ].join('\n')
     }, {
       lx: 'bash',
       code: [
         '[Unit]',
-        `Description=${lx} service`,
+        `Description=${bm} service`,
         'After=network.target',
         '[Service]',
         'Type=forking',
         getQdml[lx]?.(fileName) || '',
         'PrivateTmp=true',
-        'Restart=on-failure[3]',
+        'Restart=on-failure:3',
         'RestartSec=10',
         'TimeoutStartSec=60s',
         'TimeoutStopSec=60s',
@@ -60,9 +61,12 @@ export function zqd(lx: string, fileName: string) {
     }, {
       lx: 'bash',
       code: [
-        `chmod 644 /etc/systemd/system/${lx}.service`,
-        `systemctl enable ${lx}.service`
+        `chmod 644 /etc/systemd/system/${bm}.service`,
+        `systemctl enable ${bm}.service`,
+        `systemctl stop ${bm}.service`,
+        `systemctl start ${bm}.service`,
+        `systemctl status ${bm}.service`
       ].join('\n')
-    }, ...dscq(lx)
+    }, ...dscq(bm)
   ]
 }
