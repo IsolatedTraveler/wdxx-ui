@@ -3,6 +3,6 @@ import kfwd from './kfwd'
 import qtxt from './qtxt'
 export default [
   gswd,
-  qtxt,
-  kfwd
+  kfwd,
+  qtxt
 ]
