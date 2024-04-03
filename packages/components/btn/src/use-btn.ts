@@ -1,6 +1,6 @@
-import { useHtmlDisabled, useCss, useFlexMixins, useStateMixins, useRadiusMixins } from "@ui/hooks"
+import { useHtmlDisabled, useFlexMixins, useRadiusMixins, useCssInit, useCoputedClass } from "@ui/hooks"
 import { useInjectBtn } from "@ui/hooks/use-inject/btn"
-import { computed, ref, SetupContext } from "vue"
+import { ref, SetupContext } from "vue"
 import type { BtnProps, BtnEmits } from "./btn"
 import { EventClick } from "@ui/vars"
 export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) => {
@@ -15,17 +15,10 @@ export const useBtn = (props: BtnProps, emit: SetupContext<BtnEmits>['emit']) =>
     }
   }
   const _ref = ref<HTMLButtonElement>(), { _disabled, _handleClick } = useHtmlDisabled(props, handleClick)
-    , classProp = computed(() => {
-      return {
-        name: 'btn',
-        size: size.value,
-        shape: props.shape,
-        full: props.full
-      }
-    }), { _class, _style } = useCss(classProp, _ref), judgeObjClassName = {}
-  useFlexMixins(props, _class.value, _style.value, _ref, judgeObjClassName)
-  useStateMixins(props, _class.value, judgeObjClassName)
+    , { _class, _style, classVal, styleVal } = useCssInit(props, 'btn', { cssClass: ['state', 'shape', 'full'] })
   useRadiusMixins(props, _class.value, _style.value, _ref)
+  useCoputedClass(size, 'size', classVal)
+  useFlexMixins(props, classVal, styleVal, _ref)
   return {
     _ref,
     _handleClick,

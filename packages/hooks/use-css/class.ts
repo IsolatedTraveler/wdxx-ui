@@ -1,4 +1,4 @@
-import { watch } from "vue"
+import { ComputedRef, Ref, watch } from "vue"
 import { useCssName } from "./name"
 
 export function useCssClassAdd(props: any, key: string, classVal: any, obj: any, module = key, def: string = key) {
@@ -12,8 +12,19 @@ export function useCssClassAdd(props: any, key: string, classVal: any, obj: any,
     }
   }, { immediate: true })
 }
-export function useCssClass(props: any, key: string, classVal: any, obj: any, def: string = '') {
+export function useCssClass(props: any, key: string, classVal: any, obj: any, def: string = key) {
   watch(() => props?.[key], (v, o) => {
+    if (o) {
+      classVal[obj[key]] = false
+    }
+    if (v) {
+      obj[key] = useCssName(v == true ? def : v)
+      classVal[obj[key]] = true
+    }
+  }, { immediate: true })
+}
+export function useCoputedClass(refV: Ref<any> | ComputedRef<any>, key: string, classVal: any, obj: any = {}, def: string = '') {
+  watch(() => refV.value, (v, o) => {
     if (o) {
       classVal[obj[key]] = false
     }
