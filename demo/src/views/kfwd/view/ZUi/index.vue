@@ -1,7 +1,7 @@
 <template>
   <z-flex flex="row" class="use-publish">
     <z-tree class="left" :data="menu" v-model="def" @checked="changePage"></z-tree>
-    <component class="content" :is="loadComponent(name)" />
+    <component class="content" :name="name" :is="loadComponent(name)" />
   </z-flex>
 </template>
 

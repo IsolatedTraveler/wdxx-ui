@@ -7,7 +7,7 @@ const title = 'z-btn state'
 export const state = function () {
   describe(title, () => {
     propsBaseState.forEach((key) => {
-      key && it(title + ' ' + key, async () => btnClass({ state: key }, 'z-' + key))
+      key && it(title + ' ' + key, () => btnClass({ state: key }, 'z-' + key))
     })
   })
 }

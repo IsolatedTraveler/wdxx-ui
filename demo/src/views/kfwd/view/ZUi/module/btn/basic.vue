@@ -34,6 +34,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+defineOptions({
+  name: 'basic'
+})
 </script>
 <style lang="scss" scoped>
 .row {

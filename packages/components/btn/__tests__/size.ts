@@ -7,7 +7,7 @@ const title = 'z-btn size'
 export const size = function () {
   describe(title, () => {
     propsBaseSize.forEach((key) => {
-      key && it(title + ' ' + key, async () => btnClass({ size: key }, 'z-' + key))
+      key && it(title + ' ' + key, () => btnClass({ size: key }, 'z-' + key))
     })
   })
 }

@@ -13,7 +13,7 @@ export const btnProps = propsBuildS({
   ...propsStateMixins,
   ...propsRadiusMixins,
   ...propsFlexMixins
-} as const, { basis: 'auto' })
+} as const)
 export const btnEmits = {
   [EventClick]: (evt: MouseEvent) => evt instanceof MouseEvent
 }

@@ -9,11 +9,12 @@
   </div>
 </template>
 <script lang="ts" setup>
-import {ref} from 'vue'
-import {jdslProps} from './jdsl'
-import showDm from '../showDm'
-const props = defineProps(jdslProps)
-const show = ref(false)
+import { jdslProps } from './jdsl'
+import showDm from '../showDm/index.vue'
+defineOptions({
+  name: 'jdsl'
+})
+defineProps(jdslProps)
 </script>
 <style lang="scss">
 .jdsl {

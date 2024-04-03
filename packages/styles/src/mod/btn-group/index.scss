@@ -1,11 +1,20 @@
 @use 'sass:map';
-@use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
-@use './btn-group-media.scss' as *;
-@use './btn-group.scss' as *;
 
-@include createSingleClass(btn-group, '', '') {
+.z-btn-group {
+  >.z-btn {
 
-  @include asyncMedia($styleMedia, '');
+    &:nth-child(n+2) {
+      margin-left: 0;
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+      border-left-color: transparent;
+    }
+
+    &:nth-last-child(n+2) {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+      border-right-color: transparent;
+    }
+  }
 }
-@include async($style, btn-group, '');

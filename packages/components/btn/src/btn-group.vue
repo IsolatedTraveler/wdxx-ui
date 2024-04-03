@@ -1,6 +1,7 @@
 <template>
   <div ref="_ref" :class="_class">
-    <slot></slot>
+    <slot>
+    </slot>
   </div>
 </template>
 <script lang="ts" setup>
@@ -10,9 +11,8 @@ defineOptions({
   name: 'z-btn-group'
 })
 const props = defineProps(btnGroupProps)
-const {_ref, _class} = useBtnGroup(props)
+const { _ref, _class } = useBtnGroup(props)
 defineExpose({
-  ref: _ref,
-  _class
+  ref: _ref
 })
 </script>

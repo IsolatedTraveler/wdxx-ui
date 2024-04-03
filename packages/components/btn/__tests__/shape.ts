@@ -7,7 +7,7 @@ const title = 'z-btn shape'
 export const shape = function () {
   describe(title, () => {
     propsShape.forEach((key) => {
-      key && it(title + ' ' + key, async () => btnClass({ shape: key }, 'z-' + key))
+      key && it(title + ' ' + key, () => btnClass({ shape: key }, 'z-' + key))
     })
   })
 }

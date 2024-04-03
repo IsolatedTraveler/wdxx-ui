@@ -52,7 +52,7 @@ export const useFlexMixins = function (
     v = v === true ? 'auto' : (v || 'hidden')
     styleVal.overflow = v
   }, { immediate: true })
-  watch(() => ({ basis: props?.basis, auto: props?.basis ? undefined : props?.auto }), ({ basis, auto }) => {
+  watch(() => ({ basis: props?.auto ? undefined : props?.basis, auto: props?.auto }), ({ basis, auto }) => {
     styleVal.flexBasis = basis ? useCssStyle(basis) : 0
     styleVal.flexGrow = basis ? undefined : (auto || 1)
   }, { immediate: true })

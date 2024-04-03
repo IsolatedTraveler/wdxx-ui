@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "node wdjb.js && vite",
     "build": "node wdjb.js && vite build",
-    "preview": "node wdjb.js && vite preview",
-    "test": "node wdjb.js && vitest"
+    "preview": "node wdjb.js && vite preview"
   },
   "dependencies": {
     "vue": "^3.4.21"

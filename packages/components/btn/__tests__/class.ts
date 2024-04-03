@@ -1,7 +1,8 @@
-import { ZBtn } from '@ui/components';
+import { ZBtn } from '../';
 import { mount } from '@vue/test-utils';
+import { expect } from 'vitest'
 export const defSlot = '按钮'
-export async function btnClass(prop?: any, classes: string = 'z-btn') {
+export function btnClass(prop?: any, classes: string = 'z-btn') {
   const wrapper = mount(ZBtn, {
     propsData: prop,
     slots: {

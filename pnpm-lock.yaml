@@ -35,6 +35,7 @@ importers:
       lodash-es: ^4.17.21
       path: ^0.12.7
       pinia: ^2.1.7
+      resize-observer-polyfill: ^1.5.1
       rimraf: ^5.0.5
       rollup: 3.29.4
       rollup-plugin-esbuild: 6.1.1
@@ -86,6 +87,7 @@ importers:
       lodash: 4.17.21
       lodash-es: 4.17.21
       path: 0.12.7
+      resize-observer-polyfill: 1.5.1
       rimraf: 5.0.5
       rollup: 3.29.4
       rollup-plugin-esbuild: 6.1.1_fsfedxm3wlufhdod2jvsovrd7u
@@ -6064,6 +6066,10 @@ packages:
 
   /require-main-filename/1.0.1:
     resolution: {integrity: sha512-IqSUtOVP4ksd1C/ej5zeEh/BIP2ajqpn8c5x+q99gvcIG/Qf0cud5raVnE/Dwd0ua9TXYDoDc0RE5hBSdz22Ug==}
+    dev: true
+
+  /resize-observer-polyfill/1.5.1:
+    resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
     dev: true
 
   /resolve-dir/1.0.1:

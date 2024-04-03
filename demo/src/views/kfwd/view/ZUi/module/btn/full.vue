@@ -9,6 +9,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+defineOptions({
+  name: 'full'
+})
 </script>
 <style lang="scss" scoped>
 .row {
