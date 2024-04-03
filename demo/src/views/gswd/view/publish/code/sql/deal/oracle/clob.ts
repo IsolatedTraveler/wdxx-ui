@@ -1,5 +1,5 @@
 import { Base64 } from "js-base64"
-const max = 100
+const max = 1250
 export function CLOB(v: string, i: number = 0) {
   if (v) {
     const start = max * i

@@ -39,7 +39,10 @@ function updateSql(table: string, col: string[], it: any, sjklx: SqlLx, colObj: 
     return ''
   }
 }
-const conut = 5, updateCol = ['CLOB']
+// 每次查询条数
+const conut = 5
+  // 需要特殊处理(字段超长需要更新)的字段类型
+  , updateCol = ['CLOB']
 function dealSql(table: string, data: Array<any>, colObj: ObjAny, sjklx: SqlLx, colKey: Array<string>, colLx: ColLx, primary: Array<string>) {
   const col: string[] = []
   updateCol.forEach(lx => {
