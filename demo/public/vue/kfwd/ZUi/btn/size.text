@@ -25,6 +25,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+defineOptions({
+  name: 'size'
+})
 </script>
 <style lang="scss" scoped>
 .row {

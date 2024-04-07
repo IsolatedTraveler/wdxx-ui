@@ -29,7 +29,7 @@ const data: LoadSlwdData[] = [
     name: 'group',
     prop: {
       title: '按钮组',
-      sm: '以按钮组的方式出现，常用于多项类似操作。<br/>使用 <z-btn-group>对多个按钮分组。<br>使用 radius 结合 FLEX 布局来定义按钮组样式，使用size来统一按钮组中按钮大小。'
+      sm: '以按钮组的方式出现，常用于多项类似操作。<br/>使用 <z-btn-group>对多个按钮分组。<br>使用 radius 结合 Flex 布局来定义按钮组样式，使用size来统一按钮组中按钮大小。'
     }
   }
 ]

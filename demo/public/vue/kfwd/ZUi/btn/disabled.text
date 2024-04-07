@@ -34,6 +34,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+defineOptions({
+  name: 'disabled'
+})
 </script>
 <style lang="scss" scoped>
 .row {

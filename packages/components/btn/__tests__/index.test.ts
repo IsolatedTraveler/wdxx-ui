@@ -6,7 +6,7 @@ import { state } from './state';
 import { shape } from './shape';
 import { radius } from './radius';
 import { size } from './size';
-import { groupShape } from './groupShape';
+import { groupRadius } from './groupRadius';
 describe('z-btn', () => {
   it('默认props', () => btnClass())
   state()
@@ -25,5 +25,5 @@ describe('z-btn', () => {
   })
 })
 describe('z-btn-group', () => {
-  groupShape()
+  groupRadius()
 })
