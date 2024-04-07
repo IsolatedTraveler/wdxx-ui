@@ -9,6 +9,7 @@ export interface ProvideFormProp {
 }
 export interface ProvideForm {
   prop?: ComputedRef<ProvideFormProp>
+  labelSize?: ComputedRef<string | number | undefined>
   value?: Ref<any>
   submit?: (() => void) | undefined
   clear?: (() => void) | undefined

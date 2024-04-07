@@ -1,3 +1,5 @@
+import { vim } from "../code/linux/vim"
+
 interface GetQdml {
   [k: string]: Function
 }
@@ -31,42 +33,32 @@ function dscq(lx: string) {
   ]
 }
 export function zqd(lx: string, fileName: string, bm: string = lx) {
-
-  return [
-    {
-      lx: 'bash',
-      code: [
-        '# 自启动',
-        'cd /etc/systemd/system',
-        `vi ${bm}.service`,
-        `# 拷贝以下代码`,
-      ].join('\n')
-    }, {
-      lx: 'bash',
-      code: [
-        '[Unit]',
-        `Description=${bm} service`,
-        'After=network.target',
-        '[Service]',
-        'Type=forking',
-        getQdml[lx]?.(fileName) || '',
-        'PrivateTmp=true',
-        'Restart=on-failure:3',
-        'RestartSec=10',
-        'TimeoutStartSec=60s',
-        'TimeoutStopSec=60s',
-        '[Install]',
-        'WantedBy=multi-user.target'
-      ].join('\n')
-    }, {
-      lx: 'bash',
-      code: [
-        `chmod 644 /etc/systemd/system/${bm}.service`,
-        `systemctl enable ${bm}.service`,
-        `systemctl stop ${bm}.service`,
-        `systemctl start ${bm}.service`,
-        `systemctl status ${bm}.service`
-      ].join('\n')
-    }, ...dscq(bm)
+  const zqdml = vim([
+    '[Unit]',
+    `Description=${bm} service`,
+    'After=network.target',
+    '[Service]',
+    'Type=forking',
+    getQdml[lx]?.(fileName) || '',
+    'PrivateTmp=true',
+    'Restart=on-failure:3',
+    'RestartSec=10',
+    'TimeoutStartSec=60s',
+    'TimeoutStopSec=60s',
+    '[Install]',
+    'WantedBy=multi-user.target'
+  ].join('\n'), `/etc/systemd/system/${bm}.service`)
+  return [{
+    lx: 'bash',
+    code: [
+      '# 自启动',
+      zqdml,
+      `chmod 644 /etc/systemd/system/${bm}.service`,
+      `systemctl enable ${bm}.service`,
+      `systemctl stop ${bm}.service`,
+      `systemctl start ${bm}.service`,
+      `systemctl status ${bm}.service`
+    ].join('\n')
+  }, ...dscq(bm)
   ]
 }

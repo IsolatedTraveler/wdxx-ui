@@ -9,7 +9,8 @@ export const useInjectForm = (props: FormProps, emit: SetupContext<FormEmits>['e
     submit = () => { },
     clear = () => { },
     value,
-    prop
+    prop,
+    labelSize
   } = inject(provideFormId, {}),
     val = ref<any>(props.def || {})
   watch(() => ({ v: props.modelValue || props.value, key: props.name, obj: value?.value }), ({ v, key, obj }) => {
@@ -37,6 +38,7 @@ export const useInjectForm = (props: FormProps, emit: SetupContext<FormEmits>['e
         size,
         tabIndex: (tabIndex || 0) * 100 + ((props.tabIndex as number) || 0),
       }
-    })
+    }),
+    labelSize: computed(() => props.labelSize || labelSize?.value)
   }
 }

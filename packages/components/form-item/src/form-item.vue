@@ -1,6 +1,6 @@
 <template>
   <div ref="_ref" :class="_class" :style="_style">
-    <label>{{ label }}</label>
+    <label :style="{ flexBasis: labelSize ? (labelSize + 'em') : undefined }">{{ label }}</label>
     <slot></slot>
   </div>
 </template>
@@ -12,7 +12,7 @@ defineOptions({
 })
 const props = defineProps(formItemProps)
 const emit = defineEmits(formItemEmits)
-const { _ref, _class, _style } = useFormItem(props, emit)
+const { _ref, _class, _style, labelSize } = useFormItem(props, emit)
 defineExpose({
   ref: _ref
 })

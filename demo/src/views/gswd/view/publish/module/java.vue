@@ -5,6 +5,8 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { vim } from '../code/linux/vim';
+
 const code = [
   {
     lx: 'bash',
@@ -17,21 +19,13 @@ const code = [
       '# 拷贝jdk-8u333-linux-x64.tar.gz到当前目录',
       'tar -zxvf jdk-8u333-linux-x64.tar.gz',
       'mv jdk1.8.0_333 /usr/lib/jvm/',
-      'cd /etc/',
-      'vi /etc/profile'
-    ].join('\n')
-  }, {
-    lx: 'bash',
-    code: [
       '# 拷贝以下代码到当前打开文件末尾',
-      'export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_333',
-      'export JRE_HOME=$JAVA_HOME/jre',
-      'export PATH=$PATH:$JAVA_HOME/bin',
-      'export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib'
-    ].join('\n')
-  }, {
-    lx: 'bash',
-    code: [
+      vim([
+        'export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_333',
+        'export JRE_HOME=$JAVA_HOME/jre',
+        'export PATH=$PATH:$JAVA_HOME/bin',
+        'export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib'
+      ].join('\n'), '/etc/profile', true),
       'source /etc/profile',
       'java -version',
       'javac -version'
@@ -43,5 +37,4 @@ defineOptions({
 })
 </script>
 <style lang="scss">
-// .java {}
-</style>
+// .java {}</style>

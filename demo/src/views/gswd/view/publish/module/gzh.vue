@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import {useGzh} from '../moduleTs';
+import { useGzh } from '../moduleTs';
 
 const { code, lx, formData, formItems, zffsOption, fblxOption, fbdq } = useGzh()
 defineOptions({
