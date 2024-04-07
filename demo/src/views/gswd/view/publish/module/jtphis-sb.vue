@@ -10,6 +10,9 @@
       <z-form-item label="数据库密码：" basis="25%">
         <z-input name="dbPwd"></z-input>
       </z-form-item>
+      <z-form-item label="访问路径：" basis="25%">
+        <z-input name="fwlj"></z-input>
+      </z-form-item>
     </z-form>
     <z-code v-for="(it, i) in code" :key="i" :data="it.code" :type="it.lx"></z-code>
   </div>

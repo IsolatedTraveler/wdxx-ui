@@ -6,7 +6,8 @@ export function useJtphisSb() {
     formData = ref({
       dbUrl: '127.0.0.1/orcl',
       dbName: 'healthcloud',
-      dbPwd: 'healthcloud'
+      dbPwd: 'healthcloud',
+      fwlj: 'http://192.168.0.242:7080/jtphis/'
     }), code = computed(() => {
       var obj = formData.value
       return [
@@ -17,6 +18,13 @@ export function useJtphisSb() {
             , { reg: 'db.username=healthcloud', rep: 'db.username=' + obj.dbName }
             , { reg: 'db.password=healthcloud#2023', rep: 'db.password=' + obj.dbPwd }
           ])
+        }, {
+          lx: 'bash',
+          code: [
+            `sql刷新路径：${obj.fwlj}rest/refreshSql/#{mkbh}`,
+            `存储过程刷新路径：${obj.fwlj}rest/reloadPrody`,
+            `浏览器发版刷新路径：${obj.fwlj}rest/refreshFileList`
+          ].join('\n')
         }
       ]
     })
