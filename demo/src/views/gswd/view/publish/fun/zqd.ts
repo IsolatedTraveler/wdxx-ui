@@ -59,6 +59,12 @@ export function zqd(lx: string, fileName: string, bm: string = lx) {
       `systemctl start ${bm}.service`,
       `systemctl status ${bm}.service`
     ].join('\n')
+  }, {
+    lx: 'bash', code: [
+      '# 测试',
+      `systemctl restart ${bm}.service`,
+      `systemctl status ${bm}.service`
+    ].join('\n')
   }, ...dscq(bm)
   ]
 }

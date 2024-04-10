@@ -27,6 +27,11 @@ const code = [
         'export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib'
       ].join('\n'), '/etc/profile', true),
       'source /etc/profile',
+    ].join('\n')
+  }, {
+    lx: 'bash',
+    code: [
+      '# 测试',
       'java -version',
       'javac -version'
     ].join('\n')
