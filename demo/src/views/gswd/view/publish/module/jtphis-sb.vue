@@ -13,6 +13,12 @@
       <z-form-item label="访问路径：" basis="25%">
         <z-input name="fwlj"></z-input>
       </z-form-item>
+      <z-form-item label="服务ip：" basis="25%">
+        <z-input name="bjip"></z-input>
+      </z-form-item>
+      <z-form-item label="redis-ip：" basis="25%">
+        <z-input name="redis"></z-input>
+      </z-form-item>
     </z-form>
     <z-code v-for="(it, i) in code" :key="i" :data="it.code" :type="it.lx"></z-code>
   </div>

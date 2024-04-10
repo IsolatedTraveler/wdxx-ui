@@ -60,7 +60,7 @@ export function getNginxC(fbd: string, wwdz: string) {
       linux.fileContentRepalce(`${fileSite}pay/static/lib/config.js`, 'smq', fbd),
       'cd /home/tomcat-7/webapps',
       linux.copyDirectory('smqapi', fbd + 'api'),
-      linux.fileContentRepalce(`/home/tomcat-7/webapps/${fbd}api/WEB-INF/classes/system.properties`,'http:\\/\\/smq.frp.cdjtwx.com:81\\/',wwdz.replace(/\//g, '\\/'))
+      linux.fileContentRepalce(`/home/tomcat-7/webapps/${fbd}api/WEB-INF/classes/system.properties`, 'http://smq.frp.cdjtwx.com:81/', wwdz)
     ].join('\n')
   }, {
     lx: 'bash',

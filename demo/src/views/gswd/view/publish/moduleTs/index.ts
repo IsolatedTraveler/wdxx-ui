@@ -1,5 +1,4 @@
 export * from './gzh'
-export * from './jtphis'
 export * from './his-ty-third'
 export * from './his-sb'
 export * from './jtphis-sb'
