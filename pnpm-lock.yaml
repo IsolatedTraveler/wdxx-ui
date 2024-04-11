@@ -26,6 +26,10 @@ importers:
   build/utils: {}
 
   demo:
+    dependencies:
+      z-uis:
+        specifier: workspace:*
+        version: link:../packages/z-uis
     devDependencies:
       axios:
         specifier: ^1.6.8
@@ -57,11 +61,7 @@ importers:
 
   packages/vars: {}
 
-  packages/z-ui:
-    devDependencies:
-      vue:
-        specifier: ^3.4.21
-        version: 3.4.21
+  packages/z-uis: {}
 
 packages:
 
