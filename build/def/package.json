@@ -12,6 +12,5 @@
     "pub": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts publish"
   },
   "devDependencies": {
-    "shelljs": "^0.8.5"
   }
 }
