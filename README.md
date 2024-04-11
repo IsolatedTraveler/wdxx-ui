@@ -12,7 +12,7 @@ npm run build
 
 # 发版说明
 
-修改 packages/z-ui 目录下 version.js 和 package.json 中的 version 值。设为 npm 包当前允许上传的版本号。使用以下命令打包：
+修改 packages/z-uis 目录下 version.js 和 package.json 中的 version 值。设为 npm 包当前允许上传的版本号。使用以下命令打包：
 
 ```
 npm run publish
