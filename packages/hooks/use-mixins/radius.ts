@@ -1,9 +1,8 @@
 import { PropsBaseRadius } from "@ui/props";
-import { Ref, watch } from "vue";
+import { Ref, watch, nextTick } from "vue";
 import { useCssName } from "../use-css/cs";
 import { ComponentRadius } from "@ui/vars";
 import { getStylePx } from "../use-css/cs";
-import { nextTick } from "process";
 export const propsRadiusMixins = {
   radius: PropsBaseRadius
 }
