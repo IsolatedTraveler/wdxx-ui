@@ -12,6 +12,11 @@ export default {
       title: '业务测试',
       path: '/baseMenu/gswdYwcs',
       lx: 'route'
+    }, {
+      name: 'gswdKfgj',
+      title: '开发工具',
+      path: '/baseMenu/gswdKfgj',
+      lx: 'route'
     }
   ]
 }
