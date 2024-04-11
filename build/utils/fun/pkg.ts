@@ -8,21 +8,20 @@ export const excludeFiles = (files: string[]) => {
   );
 };
 
-export const getPackageManifest = (pkgPath: string) => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  return require(pkgPath) as ProjectManifest;
+export const getPackageManifest = (pkgPath: string):Promise<ProjectManifest> => {
+  return import(pkgPath);
 };
 
 export const getPackageDependencies = (
   pkgPath: string
-): Record<"dependencies" | "peerDependencies", string[]> => {
-  const manifest = getPackageManifest(pkgPath);
-  const { dependencies = {}, peerDependencies = {} } = manifest;
-
-  return {
-    dependencies: Object.keys(dependencies),
-    peerDependencies: Object.keys(peerDependencies),
-  };
+): Promise<Record<"dependencies" | "peerDependencies", string[]>> => {
+  return getPackageManifest(pkgPath).then(manifest => {
+    const { dependencies = {}, peerDependencies = {} } = manifest;
+    return {
+      dependencies: Object.keys(dependencies),
+      peerDependencies: Object.keys(peerDependencies),
+    };
+  });
 };
 export const pathRewriter = (module: Module) => {
   const config = buildConfig[module]

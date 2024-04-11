@@ -2,9 +2,8 @@ import { parallel } from "gulp";
 import path from "path";
 import { minify as minifyPlugin } from "rollup-plugin-esbuild";
 
-import { epRoot, target, epOutput, PKG_CAMELCASE_NAME, PKG_BRAND_NAME, formatBundleFilename, creatRollup, epPackage } from "@ui/build-utils";
+import { epRoot, target, epOutput, PKG_CAMELCASE_NAME, PKG_BRAND_NAME, formatBundleFilename, creatRollup, version } from "@ui/build-utils";
 import { withTaskName } from "../../utils";
-const { version } = require(epPackage);
 
 const banner = `/*! ${PKG_BRAND_NAME} v${version} */\n`;
 function buildFullEntry(minify: boolean) {

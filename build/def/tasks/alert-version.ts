@@ -1,7 +1,6 @@
-import { epPackage, epRoot, projRoot, write } from "@ui/build-utils"
+import {  epRoot, projRoot, write,version } from "@ui/build-utils"
 import { resolve } from "path"
-const {version} = require(epPackage)
-const shell = require('shelljs')
+import shell from 'shelljs';
 const setVersion = (arr: Array<number>, i:number): Array<number> => {
   if (i > 0) {
     if (arr[i] > 98) {

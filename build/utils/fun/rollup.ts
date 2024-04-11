@@ -12,19 +12,18 @@ import {target} from "../var";
 import { epPackage } from "../var";
 import { getPackageDependencies } from "./pkg";
 
-export const generateExternal = async (options: { full: boolean }) => {
-  const { dependencies, peerDependencies } = getPackageDependencies(epPackage);
-
-  return (id: string) => {
-    const packages: string[] = peerDependencies;
-    if (!options.full) {
-      packages.push("@vue", ...dependencies);
-    }
-
-    return [...new Set(packages)].some(
-      (pkg) => id === pkg || id.startsWith(`${pkg}/`)
-    );
-  };
+export const generateExternal =  (options: { full: boolean }) => {
+  return getPackageDependencies(epPackage).then(({ dependencies, peerDependencies })=> {
+    return (id: string) => {
+      const packages: string[] = peerDependencies;
+      if (!options.full) {
+        packages.push("@vue", ...dependencies);
+      }
+      return [...new Set(packages)].some(
+        (pkg) => id === pkg || id.startsWith(`${pkg}/`)
+      );
+    };
+  })
 };
 
 export function writeBundles(bundle: RollupBuild, options: OutputOptions[]) {

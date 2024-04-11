@@ -2,6 +2,7 @@ import path from "path";
 import type { ModuleFormat } from "rollup";
 import { epOutput, PKG_NAME } from "./path";
 import { compilerOptions } from '../../../tsconfig.base.json'
+export {version} from '../../../packages/z-uis/package.json'
 export { PKG_PREFIX } from "@ui/vars";
 export const target = compilerOptions.target;
 export const PKG_GROUP = "@ui";
@@ -54,3 +55,4 @@ export const buildConfig: Record<Module, BuildInfo> = {
 
 export type Module = typeof modules[number];
 export type BuildConfig = typeof buildConfig;
+

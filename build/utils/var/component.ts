@@ -1,24 +1,22 @@
-import path from 'path'
-import { projRoot } from './path'
+import obj from '../../../component.json'
 export interface comObjInject {
-  [index: string]: string[]
+  [index: string]: string[] | boolean
 }
 export interface ComObj {
   next?: string[],
   prev?: string[],
   css?: string[]
   inject?: comObjInject,
-  provide?: string[] | true,
-  keys: string[]
+  provide?: string[] | boolean,
+  keys?: string[]
 }
 export interface ComsObj {
-  [index: string]: ComObj | true
+  [index: string]: ComObj | boolean
 }
 export interface filesObj {
   name: string,
   fileName: string
 }
-const obj: any = require(path.resolve(projRoot, 'component.json'))
 const comObj: ComsObj = Object.assign(obj.ywc, obj.wwc)
 const comKey: string[] = obj.keys
 const comKeys: string[] = []
@@ -37,7 +35,7 @@ comKey.map(key => {
     }
   }
   comObj[key] = obj
-  comKeys.push(...obj.keys)
+  comKeys.push(...obj.keys || [])
 })
 export {
   comObj,
