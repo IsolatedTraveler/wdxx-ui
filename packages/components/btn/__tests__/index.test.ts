@@ -1,7 +1,5 @@
-import { it, describe, expect } from 'vitest'
-import { mount } from '@vue/test-utils';
-import { ZBtn } from '../';
-import { comBaseClass, defSlot } from './base';
+import { it, describe } from 'vitest'
+import { comBaseClass, comBaseAttr } from './base';
 import { state } from './state';
 import { shape } from './shape';
 import { radius } from './radius';
@@ -13,13 +11,5 @@ describe('z-btn', () => {
   radius()
   size()
   it('z-btn full', () => comBaseClass({ full: true }, 'z-full'))
-  it('z-btn disabled', () => {
-    const wrapper = mount(ZBtn, {
-      propsData: { disabled: true },
-      slots: {
-        default: defSlot
-      }
-    })
-    expect(wrapper.vm.ref?.disabled).toBeTruthy()
-  })
+  it('z-btn disabled', () => comBaseAttr({ name: 'disabled', val: true }, { disabled: true }))
 })

@@ -1,13 +1,16 @@
-import { ZBtn } from '..';
-import { mount } from '@vue/test-utils';
-import { expect } from 'vitest'
+import { comClass, comMount, comAttr, ComAttrParam, comStyle } from "../../../__test__/com"
+import ZBtn from ".."
+
 export const defSlot = '按钮'
 export function comBaseClass(prop?: any, classes: string = 'z-btn') {
-  const wrapper = mount(ZBtn, {
-    propsData: prop,
-    slots: {
-      default: defSlot
-    }
-  })
-  expect(wrapper.vm.ref?.classList).toContain(classes)
+  comClass(ZBtn, classes, { prop, defSlot })
+}
+export function comBaseMount(prop?: any) {
+  return comMount(ZBtn, { prop, defSlot })
+}
+export function comBaseAttr(Attr: ComAttrParam, prop?: any) {
+  comAttr(ZBtn, Attr, { prop, defSlot })
+}
+export function comBaseStyle(prop?: any, style: string = 'z-btn') {
+  comStyle(ZBtn, style, { prop, defSlot })
 }
