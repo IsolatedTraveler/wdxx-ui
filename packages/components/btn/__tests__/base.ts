@@ -11,7 +11,7 @@ export function comBaseMount(prop?: any) {
 export function comBaseAttr(Attr: ComAttrParam, prop?: any) {
   comAttr(ZBtn, Attr, { prop, defSlot })
 }
-export function comBaseStyle(prop?: any, style: string = 'z-btn') {
+export function comBaseStyle(prop?: any, style: string = 'overflow: hidden; flex-grow: 1; flex-basis: auto;') {
   comStyle(ZBtn, style, { prop, defSlot })
 }
 export function comBaseSonStyle(prop?: any, style: string = 'z-btn') {

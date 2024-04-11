@@ -1,11 +1,16 @@
 import { it, describe } from 'vitest'
-import { comBaseClass, comBaseAttr } from './base';
+import { comBaseClass, comBaseAttr, comBaseStyle } from './base';
 import { state } from './state';
 import { shape } from './shape';
 import { radius } from './radius';
 import { size } from './size';
 describe('z-btn', () => {
-  it('默认props', () => comBaseClass())
+  describe('z-btn test', () => {
+    it('z-btn test class', () => comBaseClass())
+    it('z-btn test overflow', () => comBaseStyle({},'overflow: hidden;'))
+    it('z-btn test flex-basis', () => comBaseStyle({},'flex-basis: auto;'))
+    it('z-btn test flex-grow', () => comBaseStyle({}, 'flex-grow: 1;'))
+  })
   state()
   shape()
   radius()

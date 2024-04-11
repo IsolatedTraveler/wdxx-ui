@@ -33,12 +33,14 @@
     "@vitejs/plugin-vue": "4.5.2",
     "@vitejs/plugin-vue-jsx": "3.1.0",
     "@vue/shared": "^3.4.21",
+    "@vue/test-utils": "^2.4.5",
     "@vueuse/core": "^9.13.0",
     "consola": "^3.2.3",
     "esbuild": "0.18.0",
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
     "gulp": "^4.0.2",
+    "jsdom": "^24.0.0",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "path": "^0.12.7",
@@ -52,7 +54,8 @@
     "unbuild": "^1.2.1",
     "unplugin-vue-define-options": "^0.12.8",
     "unplugin-vue-macros": "2.7.10",
-    "vite": "4.0.2"
+    "vite": "4.0.2",
+    "vitest": "^1.4.0"
   },
   "scripts": {
     "dev": "pnpm run -C example dev",

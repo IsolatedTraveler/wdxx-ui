@@ -52,9 +52,9 @@ export const useFlexMixins = function (
     v = v === true ? 'auto' : (v || 'hidden')
     styleVal.overflow = v
   }, { immediate: true })
-  watch(() => ({ basis: props?.auto ? undefined : props?.basis, auto: props?.auto }), ({ basis, auto }) => {
-    styleVal.flexBasis = basis ? useCssStyle(basis) : 0
-    styleVal.flexGrow = basis ? undefined : (auto || 1)
+  watch(() => ({ basis: props?.basis, auto: props?.auto }), ({ basis, auto }) => {
+    styleVal.flexGrow = auto ? auto : basis ? 0 : 1
+    styleVal.flexBasis = auto ? 0 : useCssStyle(basis || 'auto')
   }, { immediate: true })
   watch(() => props?.left, (v) => {
     styleVal.marginLeft = useCssStyle(v)

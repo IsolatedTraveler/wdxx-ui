@@ -15,18 +15,15 @@
     "@testing-library/vue": "^8.0.3",
     "@ui/styles": "workspace:^1.0.0",
     "@vitejs/plugin-vue": "^4.6.2",
-    "@vue/test-utils": "^2.4.5",
     "esbuild": ">=0.18.0",
     "fast-glob": "^3.3.2",
     "glob": "^10.3.12",
     "happy-dom": "^14.3.9",
-    "jsdom": "^24.0.0",
     "rollup": ">=1.20.0 <5.0.0",
     "rollup-plugin-esbuild": "^6.1.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vite-plugin-inspect": "^0.8.3",
-    "vitest": "^1.4.0",
     "vue-tsc": "^1.8.25",
     "z-uis": "workspace:*"
   }
