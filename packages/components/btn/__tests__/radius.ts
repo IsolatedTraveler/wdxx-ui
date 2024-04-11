@@ -1,6 +1,6 @@
 import { it, describe } from 'vitest'
 import { propsBaseRadius } from '@ui/vars';
-import { btnClass } from './class';
+import { comBaseClass } from './base';
 import { btnStyle } from './style';
 export const defSlot = '按钮'
 const title = 'z-btn radius'
@@ -8,7 +8,7 @@ const title = 'z-btn radius'
 export const radius = function () {
   describe(title, () => {
     propsBaseRadius.forEach((key) => {
-      key && it(title + ' ' + key, () => btnClass({ radius: key }, 'z-' + key))
+      key && it(title + ' ' + key, () => comBaseClass({ radius: key }, 'z-' + key))
     })
     it(title + ' 5px', () => btnStyle({ radius: '5px' }, 'border-radius: 5px'))
     it(title + ' 8', () => btnStyle({ radius: '8' }, 'border-radius: 8px'))
