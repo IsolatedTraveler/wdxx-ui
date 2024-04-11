@@ -2,7 +2,7 @@ import { ref } from "vue"
 import { dealSqlData, getCodes, getTableCol } from "../fun"
 
 export function useSqldy() {
-  const formData = ref({ bb: '', where: `mkbh='080901' and ywdm = 1` }), code = ref(''), talbe = 'sqldy', primary = ['MKBH', 'YWDM']
+  const formData = ref({ bb: 'v1.0.20240329.01', where: `(mkbh='000212' and ywdm ='7') or (mkbh='080113' and ywdm ='9') or (mkbh='000226' and ywdm in (1,'11')) or (mkbh='080114' and ywdm = 3)` }), code = ref(''), talbe = 'sqldy', primary = ['MKBH', 'YWDM']
   function getCode() {
     var obj = formData.value, arr = obj.bb.split('.'), bb = '', tj = obj.where, backTable = ''
     if (tj) {

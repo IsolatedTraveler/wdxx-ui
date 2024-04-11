@@ -3,25 +3,22 @@ import { linux } from "../code";
 import { fbdq } from "../data";
 export function useHisSb() {
   const fileSite = '/home/jt-mis/static-resource/app/public/data/config.json'
+    , fileSite1 = '/home/jt-mis/static-resource/appnew/webs/common/printUrl.json'
+    , fileSite2 = '/home/jt-mis/static-resource/appnew/webs/common/serviceUrl.json'
     , formData = ref({
+      old: 'http://10.33.77.29:7080/cloudapi',
       fbdq: 'kbs',
       title: '通川区朝阳社区卫生服务中心',
-      magic: 'http://10.33.77.29:7080/cloudapi/',
-      nw: 'http://10.33.77.29:7080/cloudapi/',
-      ww: 'http://10.33.77.29:7080/cloudapi/'
+      nw: 'http://10.33.77.29:7080/cloudapi'
     }), code = computed(() => {
-      var obj = formData.value
+      var obj = formData.value, old = obj.old, nw = obj.nw
       return [{
         lx: 'bash',
-        code: linux.fileContentRepalceArr(fileSite, [
-          { reg: '"inURL": "http:\\/\\/10.33.77.29:7080\\/cloudapi\\/"', rep: `"inURL": "${obj.nw}"` }
-          , { reg: '"outURL": "http:\\/\\/10.33.77.29:7080\\/cloudapi\\/"', rep: `"outURL": "${obj.ww || obj.nw}"` }
-          , { reg: '"serverurl": ["http:\\/\\/10.33.77.29:7080\\/cloudapi\\/"]', rep: `"serverurl": ${JSON.stringify([obj.nw, obj.ww].filter(it => it))}` }
-          , { reg: '"defaulturl": "http:\\/\\/10.33.77.29:7080\\/cloudapi\\/"', rep: `"defaulturl": "${obj.ww}"` }
-          , { reg: '"magicServer": "http:\\/\\/10.33.77.29:7080\\/cloudapi\\/"', rep: `"magicServer": "${obj.magic}"` }
-          , obj.title ? { reg: '"title": "通川区朝阳社区卫生服务中心"', rep: `"title": "${obj.title}"` } : false
-          , { reg: '"fbdq": "nm"', rep: `"fbdq": "${obj.fbdq}"` }
-        ].filter(it => it) as any)
+        code: [
+          linux.fileContentRepalce(fileSite, old, nw)
+          , linux.fileContentRepalce(fileSite1, old, nw)
+          , linux.fileContentRepalce(fileSite2, old, nw)
+        ].join('\n')
       }]
     })
   return { code, formData, fbdq }
