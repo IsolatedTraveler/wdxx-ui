@@ -18,6 +18,7 @@ export function useTomcat() {
           'tar -xvf apache-tomcat-8.5.64.tar.gz',
           `mv apache-tomcat-8.5.64 ${lj}`,
           `rm -rf ./${lj}/webapps/*`,
+          `rm -rf ./apache-tomcat-8.5.64.tar.gzs`,
           linux.fileContentRepalce('/home/tomcat8/conf/server.xml', '7080', '7890'),
           linux.fileContentRepalce('/home/tomcat8/conf/server.xml', '8080', '7890')
         ].join('\n')

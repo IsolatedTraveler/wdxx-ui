@@ -3,5 +3,6 @@ export default {
     { id: 'java', mc: 'java', path: true }
     , { id: 'tomcat', mc: 'tomcat', path: true }
     , { id: 'nginx', mc: 'nginx', path: true }
+    , { id: 'sfyl-linux', mc: 'linux', path: true }
   ]
 }

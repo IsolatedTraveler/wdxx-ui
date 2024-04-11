@@ -25,101 +25,12 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
-import { vim } from '../code/linux/vim';
-import { zqd } from '../fun';
+import { userNginx } from '../moduleTs';
 import { fbdq } from "../data"
-
 defineOptions({
   name: 'publish-nginx'
 })
-const formData = ref({
-  jbjk: 'http://127.0.0.1:7890/jtphis/',
-  fbd: 'smq',
-  magic: 'http://127.0.0.1:7901/mgapi/',
-  urpt: 'http://127.0.0.1:7801/ureport/',
-  minioWeb: 'http://127.0.0.1:9001/browser/',
-  minio: 'http://127.0.0.1:9000/'
-})
-const code = computed(() => {
-  const { jbjk, fbd, magic, urpt, minioWeb, minio } = formData.value
-  return [{
-    lx: 'bash',
-    code: [
-      'yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel pcre-devel',
-      'cd /usr/local/',
-      'mkdir nginx/',
-      'cd nginx'
-    ].join('\n')
-  }, {
-    lx: 'bash',
-    code: [
-      '# 拷贝nginx-1.22.1.tar.gz到当前目录',
-      'tar -xvf nginx-1.22.1.tar.gz',
-      'cd nginx-1.22.1',
-      './configure --with-http_stub_status_module --with-http_ssl_module',
-      'make',
-      'make install',
-      vim([
-        "#user  nobody",
-        "worker_processes  2;",
-        "#error_log  logs/error.log;",
-        "#error_log  logs/error.log  notice;",
-        "#error_log  logs/error.log  info;",
-        "#pid        logs/nginx.pid;",
-        "events {",
-        "    worker_connections  1024;",
-        "}",
-        "http {",
-        "  include       mime.types;",
-        "  default_type  application/octet-stream;",
-        "  #log_format  main  '$remote_addr - $remote_user [$time_local] \"$request\" '",
-        "  #                  '$status $body_bytes_sent \"$http_referer\" '",
-        "  #                  '\"$http_user_agent\" \"$http_x_forwarded_for\"';",
-        "  #access_log  logs/access.log  main;",
-        "  sendfile        on;",
-        "  #tcp_nopush     on;",
-        "  #keepalive_timeout  0;",
-        "  keepalive_timeout  65;",
-        "  #gzip  on;",
-        "  server {",
-        "    listen       8080;",
-        "    server_name  127.0.0.1;",
-        "    location / {",
-        "      root  /home/jt-mis/static-resource/;",
-        "    }",
-        "    location /jtphis/ {",
-        `      proxy_pass  ${jbjk};`,
-        "    }",
-        "    location /jtphis/wxzf/{",
-        `      proxy_pass  http://wx.cdjtwx.com/${fbd}api/rest/;`,
-        "    }",
-        "    location /jtphis/magic/{",
-        `      proxy_pass ${magic};`,
-        "    }",
-        "    location /jtphis/urpt/{",
-        `      proxy_pass ${urpt};`,
-        "    }",
-        "    location /jtphis/minio-web/{",
-        `      proxy_pass ${minioWeb};`,
-        "    }",
-        "    location /jtphis/minio/{",
-        `      proxy_pass ${minio};`,
-        "    }",
-        "    location /jtmis/{",
-        "      proxy_pass http://127.0.0.1:8080/jtphis/;",
-        "    }",
-        "    error_page   500 502 503 504  /50x.html;",
-        "    location = /50x.html {",
-        "      root   html;",
-        "    }",
-        "  }",
-        "}"
-      ].join('\n'), '/usr/local/nginx/conf/nginx.conf')
-    ].join('\n')
-  }, ...zqd('nginx', '')
-  ]
-})
+const { code, formData } = userNginx()
 </script>
 
 <style lang="scss">

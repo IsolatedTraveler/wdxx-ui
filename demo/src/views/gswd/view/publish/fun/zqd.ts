@@ -6,6 +6,8 @@ interface GetQdml {
 const getQdml: GetQdml = {
   tomcat: function (fileName: string) {
     return [
+      `Environment="JAVA_HOME=/usr/lib/jvm/jdk1.8.0_333"`,
+      'Environment="JRE_HOME=/usr/lib/jvm/jdk1.8.0_333/jre"',
       `ExecStart=/home/${fileName}/bin/startup.sh`,
       `ExecStop=/home/${fileName}/bin/shutdown.sh`,
     ].join('\n')
