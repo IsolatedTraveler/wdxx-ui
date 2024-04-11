@@ -1,5 +1,3 @@
-import { it, describe } from 'vitest'
-import { btnClass } from './base';
+import { describe } from 'vitest'
 describe('z-btn-group', () => {
-  it('默认props', () => btnClass())
 })

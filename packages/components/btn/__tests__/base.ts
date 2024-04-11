@@ -1,5 +1,5 @@
 import { comClass, comMount, comAttr, ComAttrParam, comStyle } from "../../../__test__/com"
-import ZBtn from ".."
+import { ZBtn } from ".."
 
 export const defSlot = '按钮'
 export function comBaseClass(prop?: any, classes: string = 'z-btn') {

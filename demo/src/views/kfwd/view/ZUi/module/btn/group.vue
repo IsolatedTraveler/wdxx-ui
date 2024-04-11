@@ -1,8 +1,20 @@
 <template>
   <div class="group">
+    <z-btn-group radius="none">
+      <z-btn size="lg" auto="1" state="primary">默认1</z-btn>
+      <z-btn size="sm" auto="1" state="success">默认2</z-btn>
+    </z-btn-group>
+    <z-btn-group>
+      <z-btn size="lg" auto="1" state="primary">默认1</z-btn>
+      <z-btn size="sm" auto="1" state="success">默认2</z-btn>
+    </z-btn-group>
     <z-btn-group radius="2em">
       <z-btn size="lg" auto="1" state="primary">默认1</z-btn>
       <z-btn size="sm" auto="1" state="success">默认2</z-btn>
+    </z-btn-group>
+    <z-btn-group flex="row" radius="none">
+      <z-btn size="lg" auto="1" state="primary">默认1</z-btn>
+      <z-btn size="sm" auto="1" state="">默认2</z-btn>
     </z-btn-group>
     <z-btn-group flex="row">
       <z-btn size="lg" auto="1" state="primary">默认1</z-btn>

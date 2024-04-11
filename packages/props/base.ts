@@ -1,6 +1,6 @@
 import { isCssLength, isPositiveInteger } from "@ui/utils"
 import { ObjAny } from "@ui/vars"
-import { propsBaseRadius, propsBaseSize, propsBaseState } from "@ui/vars/props"
+import { propsBaseGroupRadius, propsBaseRadius, propsBaseSize, propsBaseState } from "@ui/vars/props"
 
 export const PropsBaseBoolean = {
   type: Boolean
@@ -48,6 +48,11 @@ export const PropsBasePositiveInteger = {
 export const PropsBaseRadius = {
   type: [String, Number],
   values: propsBaseRadius,
+  validator: isCssLength
+}
+export const PropsBaseGroupRadius = {
+  type: [String, Number],
+  values: propsBaseGroupRadius,
   validator: isCssLength
 }
 export const PropsBasePx = {

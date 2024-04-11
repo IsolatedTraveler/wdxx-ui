@@ -6,6 +6,7 @@ $radius--class: (
   round:(style:(border-radius: $radius-round)),
   ('btn'): (style:(border-radius: $radius-btn)),
   ('circle', 'ellipse'): (style:(border-radius: $radius-circle)),
+  none: (style:(border-radius: unset)),
   ('btn', 'btn-group', 'square', 'circle', 'ellipse', 'round'):(style:(overflow:hidden))
 );
 $radiusStyle: (
