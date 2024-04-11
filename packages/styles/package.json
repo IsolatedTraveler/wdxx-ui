@@ -13,6 +13,7 @@
     "watch": "sass --watch ./src/index.scss:index.css"
   },
   "sideEffects": false,
-  "devDependencies": {
+  "dependencies": {
+    "highlight.js": "^11.9.0"
   }
 }
