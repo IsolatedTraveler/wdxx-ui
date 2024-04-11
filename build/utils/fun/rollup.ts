@@ -9,23 +9,6 @@ import VueMacros from "unplugin-vue-macros/rollup";
 import { UiPlusAlias } from "./plugin";
 import {target} from "../var";
 
-import { epPackage } from "../var";
-import { getPackageDependencies } from "./pkg";
-
-export const generateExternal =  (options: { full: boolean }) => {
-  return getPackageDependencies(epPackage).then(({ dependencies, peerDependencies })=> {
-    return (id: string) => {
-      const packages: string[] = peerDependencies;
-      if (!options.full) {
-        packages.push("@vue", ...dependencies);
-      }
-      return [...new Set(packages)].some(
-        (pkg) => id === pkg || id.startsWith(`${pkg}/`)
-      );
-    };
-  })
-};
-
 export function writeBundles(bundle: RollupBuild, options: OutputOptions[]) {
   return Promise.all(options.map((option) => bundle.write(option)));
 }
@@ -71,7 +54,7 @@ export const creatRollup = async (input:any, plugin:any, buildConfig:any) => {
   const bundle = await rollup({
     input,
     plugins,
-    external: await generateExternal({ full: false }),
+    external: ['vue'],
     treeshake: true
   });
   // rollup打包内容输出
