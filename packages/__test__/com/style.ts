@@ -5,3 +5,7 @@ export function comStyle(com: any, style: string, param?: ComParam) {
   const wrapper = comMount(com, param)
   expect(wrapper.vm.ref?.getAttribute('style')).toContain(style)
 }
+export async function comSonStyle(com: any, elem: string, style: string, param?: ComParam) {
+  const wrapper = comMount(com, param)
+  expect(wrapper.find(elem).element.getAttribute('style')).toContain(style);
+}

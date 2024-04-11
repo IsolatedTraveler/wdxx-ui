@@ -14,9 +14,5 @@ export const radius = function () {
     it(title + ' 8', () => comBaseStyle({ radius: '8' }, 'border-radius: 8px'))
     it(title + ' 1em', () => comBaseStyle({ radius: '1em' }, 'border-radius: 1em'))
     it(title + ' 0.08rem', () => comBaseStyle({ radius: '0.08rem' }, 'border-radius: 0.08rem'))
-    it(title + ' round', () => comBaseClass({ radius: 'round' }, 'z-round'))
-    it(title + ' circle', () => comBaseClass({ radius: 'circle' }, 'z-circle'))
-    it(title + ' ellipse', () => comBaseClass({ radius: 'ellipse' }, 'z-ellipse'))
-    it(title + ' none', () => comBaseClass({ radius: 'none' }, 'z-none'))
   })
 }

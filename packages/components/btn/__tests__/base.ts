@@ -1,7 +1,7 @@
-import { comClass, comMount, comAttr, ComAttrParam, comStyle } from "../../../__test__/com"
-import { ZBtn } from ".."
+import { comClass, comMount, comAttr, ComAttrParam, comStyle, comSonStyle, comSonClass } from "../../../__test__/com"
+import ZBtn from "../src/btn.vue"
 
-export const defSlot = '按钮'
+const defSlot = '按钮'
 export function comBaseClass(prop?: any, classes: string = 'z-btn') {
   comClass(ZBtn, classes, { prop, defSlot })
 }
@@ -13,4 +13,10 @@ export function comBaseAttr(Attr: ComAttrParam, prop?: any) {
 }
 export function comBaseStyle(prop?: any, style: string = 'z-btn') {
   comStyle(ZBtn, style, { prop, defSlot })
+}
+export function comBaseSonStyle(prop?: any, style: string = 'z-btn') {
+  comSonStyle(ZBtn, style, '.z-btn', { prop, defSlot })
+}
+export function comBaseSonClass(prop?: any, classes: string = 'z-btn-group') {
+  comSonClass(ZBtn, '.z-btn', classes, { prop, defSlot })
 }
