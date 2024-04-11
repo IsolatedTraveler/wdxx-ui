@@ -2,8 +2,11 @@
   "name": "@ui/hooks",
   "version": "1.0.0",
   "description": "All hook function are included here",
+  "type": "module",
   "main": "index.ts",
   "sideEffects": false,
-  "devDependencies": {
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "lodash-unified": "^1.0.3"
   }
 }

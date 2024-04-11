@@ -2,6 +2,7 @@
   "name": "@ui/styles",
   "version": "1.0.0",
   "description": "All style sheet are included here",
+  "type": "module",
   "main": "index.css",
   "unpkg": "index.css",
   "jsdelivr": "index.css",

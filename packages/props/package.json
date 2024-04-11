@@ -2,6 +2,7 @@
   "name": "@ui/props",
   "version": "1.0.0",
   "description": "All prop variable are included here",
+  "type": "module",
   "main": "index.ts",
   "sideEffects": false
 }

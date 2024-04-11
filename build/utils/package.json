@@ -2,6 +2,7 @@
   "name": "@ui/build-utils",
   "version": "1.0.0",
   "description": "All view components are included here",
+  "type": "module",
   "main": "./index",
   "sideEffects": false,
   "scripts": {

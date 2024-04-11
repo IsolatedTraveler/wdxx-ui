@@ -2,6 +2,7 @@
   "name": "@ui/utils",
   "version": "1.0.0",
   "description": "All common method are included here",
+  "type": "module",
   "main": "index.ts", 
   "sideEffects": false
 }

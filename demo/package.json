@@ -8,8 +8,12 @@
     "build": "node wdjb.js && vite build",
     "preview": "node wdjb.js && vite preview"
   },
-  "dependencies": {
-  },
   "devDependencies": {
+    "axios": "^1.6.8",
+    "glob": "^10.3.12",
+    "js-base64": "^3.7.7",
+    "pinia": "^2.1.7",
+    "vite-plugin-inspect": "^0.8.3",
+    "vue-router": "^4.3.0"
   }
 }
