@@ -29,7 +29,7 @@ function create(ml: string) {
   return getPage(ml, page).then((files) => {
     return Promise.all(files.map(({ file, name }) => {
       page.push(name)
-      return import(file).then(data => {
+      return import('file://'+file).then(data => {
         var keys = Object.keys(data)
         keys = keys.map(key => {
           let val = data[key], Key = firstMax(key) + 'V'

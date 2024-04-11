@@ -58,8 +58,11 @@
     "component library"
   ],
   "peerDependencies": {
+    "vue": "^3.4.21"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.182",
+    "@vueuse/core": "^9.1.0"
   },
   "devDependencies": {
   },

@@ -1,5 +1,6 @@
 import type { ProjectManifest } from "@pnpm/types";
 import { PKG_NAME, PKG_GROUP, buildConfig, Module, themeChalk } from "../var";
+import fs from 'fs/promises';
 
 export const excludeFiles = (files: string[]) => {
   const excludes = ["node_modules", "test", "mock", "gulpfile", "dist"];
@@ -9,7 +10,7 @@ export const excludeFiles = (files: string[]) => {
 };
 
 export const getPackageManifest = (pkgPath: string):Promise<ProjectManifest> => {
-  return import(pkgPath);
+  return fs.readFile(pkgPath, 'utf-8').then(contents => JSON.parse(contents))
 };
 
 export const getPackageDependencies = (

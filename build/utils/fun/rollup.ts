@@ -43,7 +43,9 @@ export const creatRollup = async (input:any, plugin:any, buildConfig:any) => {
     VueMacros({
       version: 3,
       plugins: {
-        vue: vue(),
+        vue: vue({
+          isProduction:false
+        }),
         vueJsx: vueJsx()
       },
       setupComponent: false,
