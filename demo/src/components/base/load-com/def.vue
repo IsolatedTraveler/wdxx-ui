@@ -1,6 +1,6 @@
 <template>
   <div class="def">
-    未找到该方案
+    <slot></slot>
   </div>
 </template>
 <script lang="ts" setup>

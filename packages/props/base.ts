@@ -76,4 +76,5 @@ export const PropsBaseArrayStringN = {
   type: Array<string | number>
 }
 export const PropsBaseAny = {
+  type: Object
 }

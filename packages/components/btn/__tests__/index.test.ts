@@ -7,9 +7,9 @@ import { size } from './size';
 describe('z-btn', () => {
   describe('z-btn test', () => {
     it('z-btn test class', () => comBaseClass())
-    it('z-btn test overflow', () => comBaseStyle({},'overflow: hidden;'))
-    it('z-btn test flex-basis', () => comBaseStyle({},'flex-basis: auto;'))
-    it('z-btn test flex-grow', () => comBaseStyle({}, 'flex-grow: 1;'))
+    it('z-btn test overflow', () => comBaseStyle({}, 'overflow: hidden;'))
+    it('z-btn test flex-basis', () => comBaseStyle({}, 'flex-basis: auto;'))
+    it('z-btn test flex-grow', () => comBaseStyle({}, 'flex-grow: 0;'))
   })
   state()
   shape()

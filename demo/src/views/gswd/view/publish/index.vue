@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import { seBaseLoadCom } from "@/components/base";
 import { menu } from "./data"
-const com = import.meta.glob('./module/*.vue')
+const com = import.meta.glob('./module/**/*.vue')
 defineOptions({
   name: 'gswd-publish'
 });

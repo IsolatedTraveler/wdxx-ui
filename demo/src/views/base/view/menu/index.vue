@@ -43,7 +43,8 @@ const { user, alias, item, changePage, def } = useMenu()
     >.content {
       border-left: 1px solid var(--color-border-2);
       height: 100%;
-      flex: 1 0 0;
+      flex-basis: 0;
+      flex-grow: 1;
 
       >.title {
         flex-basis: 2em;

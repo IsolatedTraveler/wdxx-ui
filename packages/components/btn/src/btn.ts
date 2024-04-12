@@ -1,9 +1,9 @@
-import { propsFlexMixins, propsRadiusMixins, propsStateMixins } from "@ui/hooks";
+import { propsBuildS, propsFlexMixins, propsRadiusMixins, propsStateMixins } from "@ui/hooks";
 import { PropsBtnType, PropsBaseBoolean, PropsBaseString, PropsBtnShape, PropsBaseSize } from "@ui/props";
 import { EventClick } from "@ui/vars";
 import { ExtractPropTypes } from "vue";
 
-export const btnProps = {
+export const btnProps = propsBuildS({
   disabled: PropsBaseBoolean,
   icon: PropsBaseString,
   full: PropsBaseBoolean,
@@ -13,7 +13,7 @@ export const btnProps = {
   ...propsStateMixins,
   ...propsRadiusMixins,
   ...propsFlexMixins
-}
+}, { auto: '0', basis: 'auto' })
 export const btnEmits = {
   [EventClick]: (evt: MouseEvent) => evt instanceof MouseEvent
 }

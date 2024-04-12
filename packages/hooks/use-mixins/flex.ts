@@ -53,8 +53,8 @@ export const useFlexMixins = function (
     styleVal.overflow = v
   }, { immediate: true })
   watch(() => ({ basis: props?.basis, auto: props?.auto }), ({ basis, auto }) => {
-    styleVal.flexGrow = auto ? auto : basis ? 0 : 1
-    styleVal.flexBasis = auto ? 0 : useCssStyle(basis || 'auto')
+    styleVal.flexGrow = auto
+    styleVal.flexBasis = useCssStyle(basis || 'auto')
   }, { immediate: true })
   watch(() => props?.left, (v) => {
     styleVal.marginLeft = useCssStyle(v)

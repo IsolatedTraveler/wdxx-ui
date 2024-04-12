@@ -1,6 +1,10 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
 
-.z-input--box{
+.z-input--box {
   border: 1px solid map.get($color, border, 2);
+
+  input {
+    flex-grow: 1;
+  }
 }
