@@ -1,7 +1,7 @@
 import { TreeProps, TreeEmits } from "@ui/components/tree/src/tree";
 import { TreeVal } from "@ui/props";
 import { EventCheck, EventSelect, EventSetVal, EventUpdate, ObjAny, PropsTreeColType } from "@ui/vars";
-import { ComputedRef, InjectionKey, Ref, SetupContext, computed, provide, ref, watch } from "vue";
+import { ComputedRef, InjectionKey, Ref, SetupContext, computed, nextTick, provide, ref, watch } from "vue";
 export interface Col {
   id: string,
   type: PropsTreeColType
@@ -94,7 +94,9 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
       } else {
         clickVal.value = getVal(lx, obj, id, data, clickVal.value)
         if (!judge && clickVal.value) {
-          emit(EventCheck, data)
+          nextTick(() => {
+            emit(EventCheck, data)
+          })
         }
       }
       if (expandVal.value !== pid) {
