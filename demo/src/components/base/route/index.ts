@@ -1,4 +1,4 @@
 import seBaseRoute from './index.vue'
-export default {
+export {
   seBaseRoute
 }

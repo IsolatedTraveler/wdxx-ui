@@ -1,6 +1,6 @@
 <template>
   <z-flex flex="row" class="load-com">
-    <z-tree class="left" :data="data" v-model="modelValue"></z-tree>
+    <z-tree class="left" :data="data" v-model="val"></z-tree>
     <component class="content" :is="loadComponent()" />
   </z-flex>
 </template>
@@ -12,11 +12,24 @@ defineOptions({
 })
 const props = defineProps(loadProps)
 const emit = defineEmits(loadEmits)
-const { loadComponent } = useLoad(props, emit)
+const { loadComponent, val } = useLoad(props, emit)
 </script>
 <style lang="scss">
 .load-com {
   flex-basis: 0;
   flex-grow: 1;
+
+  >.left {
+    flex-basis: 10em;
+    height: 100%;
+    overflow: auto;
+    border-right: 1px solid var(--color-border-2);
+  }
+
+  >.content {
+    overflow: auto;
+    padding-bottom: 1em;
+    height: 100%;
+  }
 }
 </style>

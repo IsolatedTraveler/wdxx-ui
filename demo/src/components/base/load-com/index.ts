@@ -1,4 +1,4 @@
 import seBaseLoadCom from './index.vue'
-export default {
+export {
   seBaseLoadCom
 }

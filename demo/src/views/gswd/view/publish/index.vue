@@ -1,32 +1,12 @@
 <template>
-  <z-flex flex="row" class="use-publish">
-    <z-tree class="left" :data="menu" v-model="def" @checked="changePage"></z-tree>
-    <component class="content" :is="loadComponent(name)" />
-  </z-flex>
+  <se-base-load-com :data="menu" :com="com" ly="gswdPublish" />
 </template>
 
 <script lang="ts" setup>
+import { seBaseLoadCom } from "@/components/base";
 import { menu } from "./data"
-import { usePublish } from './use-publish';
+const com = import.meta.glob('./module/*.vue')
 defineOptions({
   name: 'gswd-publish'
 });
-const { name, loadComponent, changePage, def } = usePublish(import.meta.glob('./module/*.vue'));
 </script>
-
-<style lang="scss">
-.use-publish {
-  >.left {
-    flex-basis: 10em;
-    height: 100%;
-    overflow: auto;
-    border-right: 1px solid var(--color-border-2);
-  }
-
-  >.content {
-    overflow: auto;
-    padding-bottom: 1em;
-    height: 100%;
-  }
-}
-</style>
