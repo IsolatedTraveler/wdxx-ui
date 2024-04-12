@@ -6,14 +6,17 @@
       </z-form-item>
       <z-btn @click="getTabCol">获取表结构</z-btn>
     </z-form>
+    <col-table ref="_table"></col-table>
+    <z-flex auto="1"></z-flex>
   </z-flex>
 </template>
 <script lang="ts" setup>
+import colTable from './col-table.vue'
 import { useSjksjcl } from './use-sjksjcl'
 defineOptions({
   name: 'gswd-kfgj-sjksjcl'
 })
-const { formData, getTabCol, tablCol } = useSjksjcl()
+const { formData, getTabCol, _table } = useSjksjcl()
 </script>
 <style lang="scss">
 .gswd-kfgj-sjksjcl {

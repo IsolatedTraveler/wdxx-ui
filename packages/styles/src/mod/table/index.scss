@@ -1,14 +1,83 @@
 @use 'sass:map';
-@use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
-@use './table-media.scss' as *;
-@use './table.scss' as *;
 
-@include createSingleClass(table, '', '') {
-  .table-body {
-    overflow: auto;
+.z-table {
+  overflow: auto !important;
+
+  >table {
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-height: 100%;
+
+    >thead {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+
+      tr {
+        &:first-child th {
+          border-top: 5px solid #dcdfe6;
+        }
+      }
+    }
+
+    >tbody {
+      tr {
+        &:last-child td {
+          position: sticky;
+          bottom: 0;
+          z-index: 2;
+        }
+
+        &:nth-last-child(2) td {
+          border-bottom: none;
+        }
+      }
+    }
+
+    td {
+      overflow: hidden;
+      border-left: 5px solid #dcdfe6;
+      border-bottom: 5px solid #dcdfe6;
+    }
+
+    td:first-child {
+      position: sticky;
+      z-index: 2;
+      left: 0;
+    }
+
+    td:nth-child(2) {
+      border-left-width: 0;
+    }
+
+    th {
+      overflow: hidden;
+      border-left: 5px solid #dcdfe6;
+      border-bottom: 5px solid #dcdfe6;
+    }
+
+    th:first-child {
+      position: sticky;
+      z-index: 2;
+      left: 0;
+    }
+
+    td:last-child {
+      position: sticky;
+      z-index: 2;
+      right: 0;
+    }
+
+    th:nth-child(2) {
+      border-left-width: 0;
+    }
+
+    th:last-child {
+      position: sticky;
+      z-index: 2;
+      right: 0;
+    }
   }
-
-  @include async($style, '', '');
-  // @include asyncMedia($styleMedia, '');
 }

@@ -1,21 +1,12 @@
 import { ref } from "vue";
-import { TCol, getTableCol } from "../../../publish/fun";
 interface UseSjksjclFormData {
   bm?: string
 }
-interface Col extends TCol {
-  bz?: string
-}
 export function useSjksjcl() {
-  const formData = ref<UseSjksjclFormData>({ bm: 'xtyh' }), tablCol = ref<Array<Col>>()
+  const formData = ref<UseSjksjclFormData>({ bm: 'z_xtyh' })
+    , _table = ref()
   function getTabCol() {
-    const bm = formData.value.bm
-    if (bm) {
-      getTableCol(bm).then(res => {
-        tablCol.value = res
-      })
-    }
-    getTableCol(formData.value.bm || '').then()
+    _table.value.getData(formData.value.bm || '')
   }
-  return { formData, getTabCol, tablCol }
+  return { formData, getTabCol, _table }
 }
