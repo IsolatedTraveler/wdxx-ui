@@ -1,6 +1,7 @@
 import { isCssLength, isPositiveInteger } from "@ui/utils"
 import { ObjAny } from "@ui/vars"
 import { propsBaseGroupRadius, propsBaseRadius, propsBaseSize, propsBaseState } from "@ui/vars/props"
+import { PropType } from "vue"
 
 export const PropsBaseBoolean = {
   type: Boolean
@@ -76,5 +77,5 @@ export const PropsBaseArrayStringN = {
   type: Array<string | number>
 }
 export const PropsBaseAny = {
-  type: [Object, String, Number, Boolean, Array, Object]
+  type: [Object, String, Number, Boolean, Array, Object] as PropType<any>
 }
