@@ -1,7 +1,7 @@
 <template>
   <z-flex flex="row" class="load-com">
-    <z-tree class="left" :data="data" v-model="val"></z-tree>
-    <component class="content" :is="loadComponent()" />
+    <z-tree class="left" :data="data" v-model="val" @checked="checked"></z-tree>
+    <component class="content" :is="com" />
   </z-flex>
 </template>
 <script lang="ts" setup>
@@ -12,7 +12,7 @@ defineOptions({
 })
 const props = defineProps(loadProps)
 const emit = defineEmits(loadEmits)
-const { loadComponent, val } = useLoad(props, emit)
+const { com, val, checked } = useLoad(props, emit)
 </script>
 <style lang="scss">
 .load-com {

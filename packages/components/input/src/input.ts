@@ -15,7 +15,7 @@ export const inputProps = propsBuildS({
   ...propsInputMixins
 }, { auto: 1, flex: 'row' })
 export const inputEmits = {
-  [EventUpdate]: (val: any) => true
+  [EventUpdate]: (_v: any) => true
 }
 export type InputProps = ExtractPropTypes<typeof inputProps>
 export type InputEmits = typeof inputEmits
