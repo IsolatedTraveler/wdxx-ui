@@ -4,7 +4,9 @@
       <thead>
         <tr v-for="(tr, i) in trs" :key="i">
           <th></th>
-          <th v-for="td in tr" :colspan="td._colspan" :rowspan="td._rowspan" :style="[td.ceilStyle, td.thStyle,td._colStyle, td._thTdStyle, td._thStyle]" :class="td._colClass" :ref="td.id || undefined">
+          <th v-for="td in tr" :colspan="td._colspan" :rowspan="td._rowspan"
+            :style="[td.ceilStyle, td.thStyle, td._thTdStyle, td._thStyle]" :class="td._colClass"
+            :ref="td.id || undefined">
             <div :class="td.class">{{
     td.title }}</div>
           </th>
@@ -14,7 +16,7 @@
       <tbody>
         <tr v-for=" (item) in data">
           <td></td>
-          <td v-for="td in keys" :style="[td.ceilStyle, td.tdStyle,td._colStyle, td._thTdStyle, td._tdStyle]" :class="td._colClass">
+          <td v-for="td in keys" :style="[td.ceilStyle, td.tdStyle, td._thTdStyle, td._tdStyle]" :class="td._colClass">
             <div :class="td.class">
               <slot v-if="td.type == 'temp'" :name="td.id" :data="item"></slot>
               <td-ceil v-else-if="td.type" :col="td" :data="item"></td-ceil>

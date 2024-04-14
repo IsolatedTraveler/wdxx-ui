@@ -54,7 +54,7 @@ export const useFlexMixins = function (
   }, { immediate: true })
   watch(() => ({ basis: props?.basis, auto: props?.auto }), ({ basis, auto }) => {
     styleVal.flexGrow = auto
-    styleVal.flexBasis = useCssStyle(basis)
+    styleVal.flexBasis = useCssStyle(basis || '0')
   }, { immediate: true })
   watch(() => props?.left, (v) => {
     styleVal.marginLeft = useCssStyle(v)

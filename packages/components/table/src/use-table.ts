@@ -1,48 +1,39 @@
 import { useCss } from "@ui/hooks"
 import { ref, SetupContext, computed, watch, Ref, nextTick, ComponentInternalInstance } from "vue"
 import { TableEmits, TableProps } from "./table"
-import { getCols,ThCol,claerFixed } from "./fun"
+import { getCols, claerFixed, getStyle, JudgeExeSuccBack } from "./fun"
+import { ThCol } from "@ui/vars"
 export const useTable = (props: TableProps, emit: SetupContext<TableEmits>['emit'], instance: ComponentInternalInstance | null) => {
+  var left: number = 0, top: number = 0
   const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
     name: 'table'
   })), { _class } = useCss(classVal, _ref), keys: Ref<Array<ThCol>> = ref([]),
     trs: Ref<Array<Array<ThCol>>> = ref([])
-    function getStyle(left: number, top: number) {
-      nextTick(() => {
-        const ref = instance?.refs
+  function judgeExePro(): Promise<JudgeExeSuccBack> {
+    return new Promise((resolve, reject) => {
+      return judgeExe(resolve)
+    })
+  }
+  function judgeExe(succBack: (_v: JudgeExeSuccBack) => void) {
+    nextTick(() => {
+      const ref = instance?.refs
       if (ref && _ref.value) {
-        const tableRect = _ref.value.getBoundingClientRect();
-        keys.value.forEach((it,i) => {
-          const id = it.id, fixed = it.fixed
-          if (fixed) {
-            const el:HTMLTableCellElement = (ref[id] as Array<HTMLTableCellElement>)?.[0],
-               thRect = el.getBoundingClientRect()
-              if (fixed === 'left') {
-                it._thTdStyle.left = (thRect.left - tableRect.left) + 'px'
-              } else {
-                console.log(it.title, tableRect.right - thRect.right)
-               it._thTdStyle.right  = (tableRect.right  - thRect.right) + 'px'
-              }
-          }
-        })
-        _ref.value.scrollLeft = left
-        _ref.value.scrollTop = top
+        succBack({ ref, el: _ref.value, keys: keys.value })
       } else {
-        getStyle(left, top)
+        judgeExe(succBack)
       }
     })
-    }
+  }
   function setStyle() {
-    nextTick(() => {
-      if (_ref.value) {
-        const el:HTMLElement = _ref.value.parentElement as HTMLElement, left = el.scrollLeft, top = el.scrollTop
-        el.scrollLeft = 0
-        el.scrollTop =0 
-        claerFixed(keys.value)
-        getStyle(left, top)
-      } else {
-        setStyle()
-      }
+    console.time()
+    judgeExePro().then(({ ref, el, keys }) => {
+      console.timeEnd()
+      left = el.scrollLeft, top = el.scrollTop
+      claerFixed(keys, el, ref)
+      return judgeExePro()
+    }).then(getStyle).then((el) => {
+      el.scrollLeft = left
+      el.scrollTop = top
     })
   }
   watch(() => props.cols, (v) => {
@@ -50,7 +41,7 @@ export const useTable = (props: TableProps, emit: SetupContext<TableEmits>['emit
     keys.value = tds
     trs.value = cols
   }, { immediate: true, deep: true })
-  watch(()=> props.data, setStyle, {immediate: true})
+  watch(() => props.data, setStyle, { immediate: true })
   return {
     _ref,
     _class,

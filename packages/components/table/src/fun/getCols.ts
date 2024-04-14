@@ -1,33 +1,6 @@
 import { uuid } from "@ui/utils"
-import { ObjAny, ObjTrue } from "@ui/vars"
-type ThColFixed = 'left' | 'right' | boolean
-type ThColFixedV = 'left' | 'right'
-export interface ThCol {
-  id: string
-  title: string
-  type?:string
-  child?: Array<ThCol>
-  fixed?: ThColFixed
-  width?: any,
-  minWidth?: any
-  class?: string
-  ceilStyle?:any // 作用于th,td
-  thStyle?:any
-  tdStyle?:any
-  _childLen: number
-  _colClass?: ObjTrue // 作用于th,td
-  _colStyle: {
-    width: string
-    minWidth: string
-  } // 作用于col
-  _thStyle?: any 
-  _tdStyle?:any
-  _thTdStyle?:any
-  _maxRowLen: number
-  _rowspan: number
-  _colspan: number
-  _keys: ObjAny[]
-}
+import { ObjAny, ThCol, ThColFixedV } from "@ui/vars"
+
 let tds: Array<ThCol> = [], cols: Array<Array<ThCol>> = [], thLen = 0
 function setCols(arr: Array<ThCol>, row: number = 0) {
   const data: Array<ObjAny> = cols[row] = cols[row] || [], keys: Array<ObjAny> = []
@@ -39,7 +12,6 @@ function setCols(arr: Array<ThCol>, row: number = 0) {
     if (it._childLen) {
       const v = setCols(it.child || [], jtSite)
       childLen += it._colspan = v.childLen
-      it._keys = v.keys
       keys.push(...v.keys)
       if (i == 0) {
         firstColRowSpan = it._rowspan
@@ -57,7 +29,7 @@ function setCols(arr: Array<ThCol>, row: number = 0) {
 type GetLenType = 1 | 2 | 3
 // 1 left 2 空白  3 right
 function getLen(arr: Array<ThCol>, row: number = 0, fixed: ThColFixedV | undefined = undefined): number {
-  var type :GetLenType = 1
+  var type: GetLenType = 1
   const data = arr.map(it => {
     var lastRowIndex = row, fixedV: ThColFixedV | undefined = fixed || it.fixed === 'right' ? 'right' : it.fixed ? 'left' : undefined
     if (type === 2) {
@@ -82,12 +54,12 @@ function getLen(arr: Array<ThCol>, row: number = 0, fixed: ThColFixedV | undefin
       lastRowIndex = getLen(it.child, row + 1, fixedV)
     } else {
       it.id = it.id || uuid()
-      it._colStyle = { width: it.width, minWidth: it.minWidth}
+      it._thTdStyle = { width: it.width, minWidth: it.minWidth }
+      it._thStyle = {}
       if (fixedV) {
         it._colClass = {
           'z-pos--sticky': true
         }
-        it._thTdStyle = {}
       } else {
         it._colClass = {
           'z-pos--none': true
