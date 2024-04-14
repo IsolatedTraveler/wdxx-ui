@@ -88,6 +88,10 @@ function getLen(arr: Array<ThCol>, row: number = 0, fixed: ThColFixedV | undefin
           'z-pos--sticky': true
         }
         it._thTdStyle = {}
+      } else {
+        it._colClass = {
+          'z-pos--none': true
+        }
       }
       tds.push(it)
     }
