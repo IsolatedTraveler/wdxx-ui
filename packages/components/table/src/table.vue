@@ -3,13 +3,13 @@
     <table ref="_ref" v-show="keys.length">
       <colgroup>
         <col />
-        <col v-for="td in keys" :style="td._colStyle" :ref="td.id" />
+        <col v-for="td in keys" :style="td._colStyle" />
         <col />
       </colgroup>
       <thead>
         <tr v-for="(tr, i) in trs" :key="i">
           <th></th>
-          <th v-for="td in tr" :colspan="td._colspan" :rowspan="td._rowspan" :style="td._plugStyle">
+          <th v-for="td in tr" :colspan="td._colspan" :rowspan="td._rowspan" :style="[td.ceilStyle, td.thStyle, td._thTdStyle, td._thStyle]" :class="td._colClass" :ref="td.id || undefined">
             <div :class="td.class">{{
     td.title }}</div>
           </th>
@@ -17,9 +17,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for=" item in data">
+        <tr v-for=" (item) in data">
           <td></td>
-          <td v-for="td in keys" :style="td.colStyle">
+          <td v-for="td in keys" :style="[td.ceilStyle, td.tdStyle, td._thTdStyle, td._tdStyle]" :class="td._colClass">
             <div :class="td.class">
               <slot v-if="td.type == 'temp'" :name="td.id" :data="item"></slot>
               <td-ceil v-else-if="td.type" :col="td" :data="item"></td-ceil>

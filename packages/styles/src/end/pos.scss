@@ -1,0 +1,6 @@
+@use 'sass:map';
+@use '../vars/index.scss' as *;
+.z-pos--sticky{
+  position: sticky;
+  background-color: map.get($color, font, 3);
+}

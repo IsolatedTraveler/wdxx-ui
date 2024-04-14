@@ -1,26 +1,34 @@
 import { uuid } from "@ui/utils"
-import { ObjAny } from "@ui/vars"
+import { ObjAny, ObjTrue } from "@ui/vars"
 type ThColFixed = 'left' | 'right' | boolean
 type ThColFixedV = 'left' | 'right'
-interface ThCol {
-  child?: Array<ThCol>
-  id?: string
-  fixed?: ThColFixed
-  width: any,
-  minWidth: any
+export interface ThCol {
+  id: string
   title: string
+  type?:string
+  child?: Array<ThCol>
+  fixed?: ThColFixed
+  width?: any,
+  minWidth?: any
   class?: string
+  ceilStyle?:any // 作用于th,td
+  thStyle?:any
+  tdStyle?:any
   _childLen: number
+  _colClass?: ObjTrue // 作用于th,td
   _colStyle: {
     width: string
     minWidth: string
-  }
+  } // 作用于col
+  _thStyle?: any 
+  _tdStyle?:any
+  _thTdStyle?:any
   _maxRowLen: number
   _rowspan: number
   _colspan: number
   _keys: ObjAny[]
 }
-let tds: Array<ObjAny> = [], cols: Array<Array<ObjAny>> = [], thLen = 0
+let tds: Array<ThCol> = [], cols: Array<Array<ThCol>> = [], thLen = 0
 function setCols(arr: Array<ThCol>, row: number = 0) {
   const data: Array<ObjAny> = cols[row] = cols[row] || [], keys: Array<ObjAny> = []
   let childLen = 0, firstColRowSpan = 0
@@ -42,7 +50,7 @@ function setCols(arr: Array<ThCol>, row: number = 0) {
     }
   })
   if (firstColRowSpan > 1) {
-    cols[row + 1][0]._plugStyle = { borderLeftWidth: '5px' }
+    cols[row + 1][0]._thStyle = { borderLeftWidth: '5px' }
   }
   return { childLen, keys }
 }
@@ -74,7 +82,13 @@ function getLen(arr: Array<ThCol>, row: number = 0, fixed: ThColFixedV | undefin
       lastRowIndex = getLen(it.child, row + 1, fixedV)
     } else {
       it.id = it.id || uuid()
-      it._colStyle = { width: it.width, minWidth: it.minWidth }
+      it._colStyle = { width: it.width, minWidth: it.minWidth}
+      if (fixedV) {
+        it._colClass = {
+          'z-pos--sticky': true
+        }
+        it._thTdStyle = {}
+      }
       tds.push(it)
     }
     it._maxRowLen = lastRowIndex - row

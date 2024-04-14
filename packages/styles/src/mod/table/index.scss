@@ -40,6 +40,9 @@
           overflow: hidden;
           border-left: 5px solid #dcdfe6;
           border-bottom: 5px solid #dcdfe6;
+          &.z-pos-sticky{
+            z-index: 2;
+          }
           &:first-child {
             position: sticky;
             z-index: 2;
