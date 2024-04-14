@@ -1,8 +1,12 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
-$border: 1px solid #dcdfe6;
+$border-width: 1px;
+$border-color: #dcdfe6;
+$border: $border-width solid $border-color;
+
 .z-table {
   overflow: auto !important;
+
   >table {
     table-layout: fixed;
     border-collapse: separate;
@@ -14,8 +18,9 @@ $border: 1px solid #dcdfe6;
       top: 0;
       z-index: 2;
       background-color: map.get($color, font, 3);
+
       >tr {
-        &:first-child >th {
+        &:first-child>th {
           border-top: $border;
         }
       }
@@ -23,52 +28,68 @@ $border: 1px solid #dcdfe6;
 
     >tbody {
       >tr {
-        &:last-child >td {
+        &:last-child>td {
           position: sticky;
           bottom: 0;
           z-index: 2;
         }
 
-        &:nth-last-child(2) >td {
+        &:nth-last-child(2)>td {
           border-bottom: none;
         }
       }
     }
-    >thead,>tbody{
-      >tr{
-        td,th {
+
+    >thead,
+    >tbody {
+      >tr {
+
+        td,
+        th {
           overflow: hidden;
           border-left: $border;
           border-bottom: $border;
           padding: 0 .5em;
-          &.z-pos--sticky{
+
+          &.z-pos--sticky {
             z-index: 2;
             border-left: none;
             border-right: $border;
-            &+.z-pos--none{
+
+            &+.z-pos--none {
               border-left: none;
             }
+
             &:nth-last-child(2) {
               border-right: none;
             }
           }
-          &.z-pos--none{
-            &+.z-pos--sticky{
+
+          &.z-pos--none {
+            &+.z-pos--sticky {
               border-left: $border;
             }
           }
+
           &:nth-child(2) {
             border-left-width: 0;
           }
-          &:last-child,&:first-child {
+
+          &:last-child,
+          &:first-child {
             position: sticky;
             z-index: 2;
             padding: unset;
+            border: none;
+            width: $border-width;
+            background-color: $border-color;
           }
-          &:last-child{
+
+          &:last-child {
             right: 0;
           }
-          &:first-child{
+
+          &:first-child {
             left: 0;
           }
         }

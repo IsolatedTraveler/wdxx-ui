@@ -1,5 +1,5 @@
 <template>
-  <z-flex flex="col" class="gswd-kfgj-sjksjcl">
+  <z-flex flex="col" class="gswd-kfgj-sjksjcl" auto="1">
     <z-form flex="row" wrap v-model="formData">
       <z-form-item label="表名：" basis="25%">
         <z-input name="bm"></z-input>
@@ -23,6 +23,7 @@ const { formData, getTabCol, _table } = useSjksjcl()
   flex-basis: 0;
   flex-grow: 1;
   padding: .5em;
+
   .z-form {
     width: 100%;
   }
