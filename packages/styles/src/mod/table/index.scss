@@ -3,7 +3,6 @@
 
 .z-table {
   overflow: auto !important;
-
   >table {
     table-layout: fixed;
     border-collapse: separate;
@@ -36,12 +35,11 @@
       }
     }
 
-    td {
+    td,th {
       overflow: hidden;
       border-left: 5px solid #dcdfe6;
       border-bottom: 5px solid #dcdfe6;
     }
-
     td:first-child {
       position: sticky;
       z-index: 2;
@@ -52,11 +50,7 @@
       border-left-width: 0;
     }
 
-    th {
-      overflow: hidden;
-      border-left: 5px solid #dcdfe6;
-      border-bottom: 5px solid #dcdfe6;
-    }
+    
 
     th:first-child {
       position: sticky;
