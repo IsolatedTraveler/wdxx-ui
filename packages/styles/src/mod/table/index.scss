@@ -13,65 +13,48 @@
       position: sticky;
       top: 0;
       z-index: 2;
-
-      tr {
-        &:first-child th {
+      background-color: map.get($color, font, 3);
+      >tr {
+        &:first-child >th {
           border-top: 5px solid #dcdfe6;
         }
       }
     }
 
     >tbody {
-      tr {
-        &:last-child td {
+      >tr {
+        &:last-child >td {
           position: sticky;
           bottom: 0;
           z-index: 2;
         }
 
-        &:nth-last-child(2) td {
+        &:nth-last-child(2) >td {
           border-bottom: none;
         }
       }
     }
-
-    td,th {
-      overflow: hidden;
-      border-left: 5px solid #dcdfe6;
-      border-bottom: 5px solid #dcdfe6;
-    }
-    td:first-child {
-      position: sticky;
-      z-index: 2;
-      left: 0;
-    }
-
-    td:nth-child(2) {
-      border-left-width: 0;
-    }
-
-    
-
-    th:first-child {
-      position: sticky;
-      z-index: 2;
-      left: 0;
-    }
-
-    td:last-child {
-      position: sticky;
-      z-index: 2;
-      right: 0;
-    }
-
-    th:nth-child(2) {
-      border-left-width: 0;
-    }
-
-    th:last-child {
-      position: sticky;
-      z-index: 2;
-      right: 0;
+    >thead,>tbody{
+      >tr{
+        td,th {
+          overflow: hidden;
+          border-left: 5px solid #dcdfe6;
+          border-bottom: 5px solid #dcdfe6;
+          &:first-child {
+            position: sticky;
+            z-index: 2;
+            left: 0;
+          }
+          &:nth-child(2) {
+            border-left-width: 0;
+          }
+          &:last-child {
+            position: sticky;
+            z-index: 2;
+            right: 0;
+          }
+        }
+      }
     }
   }
 }
