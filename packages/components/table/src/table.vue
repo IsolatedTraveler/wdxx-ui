@@ -1,6 +1,6 @@
 <template>
-  <z-flex col ref="_ref" :class="_class">
-    <table v-show="keys.length">
+  <z-flex col :class="_class">
+    <table ref="_ref" v-show="keys.length">
       <colgroup>
         <col />
         <col v-for="td in keys" :style="td._colStyle" :ref="td.id" />
