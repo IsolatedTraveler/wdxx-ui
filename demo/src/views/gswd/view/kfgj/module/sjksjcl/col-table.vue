@@ -13,6 +13,12 @@ const cols = [
   { id: 'col', title: '列名', fixed: true },
   { id: 'bz', title: '备注' },
   { id: 'cs', title: '测试' },
+  { id: 'cs1', title: '测试1' },
+  { id: 'cs2', title: '测试2' },
+  { id: 'cs3', title: '测试3' },
+  { id: 'cs4', title: '测试4' },
+  { id: 'cs5', title: '测试5' },
+  { id: 'cs6', title: '测试6' },
   { id: 'lx', title: '类型'}
 ],
   data = ref<any[]>([{col: 'cs',lx: 'varchar', bz: '测试'}])
