@@ -14,7 +14,7 @@ const cols = [
   { id: 'lx', title: '类型' },
   { id: 'bz', title: '备注' }
 ],
-  data = ref<any[]>([])
+  data = ref<any[]>([{col: 'cs',lx: 'varchar', bz: '测试'}])
 function getData(bm: string) {
   if (bm) {
     getTableCol(bm).then(res => {
