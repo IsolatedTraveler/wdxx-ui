@@ -11,8 +11,8 @@ defineOptions({
 })
 const cols = [
   { id: 'col', title: '列名', fixed: true },
-  { id: 'lx', title: '类型' },
-  { id: 'bz', title: '备注' }
+  { id: 'bz', title: '备注' },
+  { id: 'lx', title: '类型' , fixed: 'right'}
 ],
   data = ref<any[]>([{col: 'cs',lx: 'varchar', bz: '测试'}])
 function getData(bm: string) {
