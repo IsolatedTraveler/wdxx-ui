@@ -1,6 +1,6 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
-
+$border: 1px solid #dcdfe6;
 .z-table {
   overflow: auto !important;
   >table {
@@ -16,7 +16,7 @@
       background-color: map.get($color, font, 3);
       >tr {
         &:first-child >th {
-          border-top: 5px solid #dcdfe6;
+          border-top: $border;
         }
       }
     }
@@ -38,23 +38,38 @@
       >tr{
         td,th {
           overflow: hidden;
-          border-left: 5px solid #dcdfe6;
-          border-bottom: 5px solid #dcdfe6;
-          &.z-pos-sticky{
+          border-left: $border;
+          border-bottom: $border;
+          padding: 0 .5em;
+          &.z-pos--sticky{
             z-index: 2;
+            border-left: none;
+            border-right: $border;
+            &+.z-pos--none{
+              border-left: none;
+            }
+            &:nth-last-child(2) {
+              border-right: none;
+            }
           }
-          &:first-child {
-            position: sticky;
-            z-index: 2;
-            left: 0;
+          &.z-pos--none{
+            &+.z-pos--sticky{
+              border-left: $border;
+            }
           }
           &:nth-child(2) {
             border-left-width: 0;
           }
-          &:last-child {
+          &:last-child,&:first-child {
             position: sticky;
             z-index: 2;
+            padding: unset;
+          }
+          &:last-child{
             right: 0;
+          }
+          &:first-child{
+            left: 0;
           }
         }
       }

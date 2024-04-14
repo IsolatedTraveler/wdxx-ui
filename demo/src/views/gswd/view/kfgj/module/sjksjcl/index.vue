@@ -22,7 +22,7 @@ const { formData, getTabCol, _table } = useSjksjcl()
 .gswd-kfgj-sjksjcl {
   flex-basis: 0;
   flex-grow: 1;
-
+  padding: .5em;
   .z-form {
     width: 100%;
   }
