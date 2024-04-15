@@ -39,6 +39,7 @@ export const useTable = (props: TableProps, emit: SetupContext<TableEmits>['emit
     const { cols, tds } = getCols(v as any)
     keys.value = tds
     trs.value = cols
+    console.log(cols)
   }, { immediate: true, deep: true })
   watch(() => props.data, setStyle, { immediate: true })
   return {
