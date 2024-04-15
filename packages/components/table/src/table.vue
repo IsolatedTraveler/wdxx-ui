@@ -1,5 +1,5 @@
 <template>
-  <z-flex col :class="_class">
+  <div col :class="_class">
     <table ref="_ref" v-show="keys.length">
       <thead>
         <tr v-for="(tr, i) in trs" :key="i">
@@ -32,7 +32,7 @@
         </tr>
       </tbody>
     </table>
-  </z-flex>
+  </div>
 </template>
 <script lang="ts" setup>
 import { getCurrentInstance } from 'vue';

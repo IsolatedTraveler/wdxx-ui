@@ -1,10 +1,46 @@
 <template>
-  <div style="text-align: center;font-size: .56rem;line-height: 2;">qtxthome开发中</div>
+  <div>
+    <z-table class="col-table" basis="auto" :cols="cols" :data="data">
+    </z-table>
+  </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import { getTableCol } from '@/views/gswd/view/publish/fun';
+import { ref } from 'vue';
 
-export default defineComponent({
-  name: 'base-menu'
+defineOptions({
+  name: 'col-table'
+})
+const cols = [
+  {
+    title: '测试1', fixed: true, child: [
+      {
+        title: '测试1-1', fixed: true, child: [
+          { id: 'col', title: '列名' },
+          { id: 'lx', title: '类型' }
+        ]
+      },
+      { title: '测试2' }
+    ]
+  },
+  { id: 'bz', title: '备注3' }
+],
+  data = ref<any[]>([{ col: 'cs', lx: 'varchar', bz: '测试' }])
+function getData(bm: string) {
+  if (bm) {
+    getTableCol(bm).then(res => {
+      data.value = res
+    })
+  }
+}
+getData('z_xtyh')
+defineExpose({
+  getData
 })
 </script>
+<style lang="scss">
+.col-table {
+  width: 500px;
+  max-height: 600px;
+}
+</style>

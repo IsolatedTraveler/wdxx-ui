@@ -1,5 +1,5 @@
 <template>
-  <z-flex class="base-menu" flex="col">
+  <div class="base-menu z-col">
     <div class="xtxx"></div>
     <z-flex auto="1" class="xtxq" flex="row">
       <z-tree class="left" :data="user.getMenu" :alias="alias" @checked="changePage" scroll v-model="def"></z-tree>
@@ -13,7 +13,7 @@
         暂未添加该类型的解决方案${item.lx}
       </div>
     </z-flex>
-  </z-flex>
+  </div>
 </template>
 <script lang="ts" setup>
 import { useMenu } from './use-menu'
