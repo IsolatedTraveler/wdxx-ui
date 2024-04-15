@@ -2,7 +2,7 @@ import { ThCol, ThColFixedV } from "@ui/vars";
 import { uuid } from "@ui/utils"
 type GetLenType = 1 | 2 | 3
 export function getThMaxRow(arr: Array<ThCol>) {
-  var tds: Array<ThCol> = [], type: GetLenType = 1
+  var tds: Array<ThCol> = [], type: GetLenType = 1, fixedTh: Array<ThCol> = []
     , data = arr.map(it => {
       var fixedV: ThColFixedV | undefined = it.fixed === 'right' ? 'right' : it.fixed ? 'left' : undefined
       if (type === 2) {
@@ -16,37 +16,38 @@ export function getThMaxRow(arr: Array<ThCol>) {
           console.warn(it.title + '之前已存在右侧固定列，此处只能为右侧固定列')
         }
       }
-      return setItVal(it, tds, 0, fixedV)
+      return setItVal(it, tds, fixedTh, 0, fixedV)
     })
-  return { tds, len: Math.max(...data) }
+  return { tds, len: Math.max(...data), fixedTh }
 }
-function setItVal(it: ThCol, tds: Array<ThCol>, row: number, fixed?: ThColFixedV) {
+function setItVal(it: ThCol, tds: Array<ThCol>, fixedTh: Array<ThCol>, row: number, fixed?: ThColFixedV) {
   var lastRowIndex = row
   it.fixed = fixed
   it.id = it.id || uuid()
   it._thTdStyle = { width: it.width, minWidth: it.minWidth }
   it._thStyle = {}
+  if (it.child && it.child.length) {
+    it._childLen = it.child.length
+    lastRowIndex = getMaxRow(it.child, tds, fixedTh, row + 1, fixed)
+  } else {
+    tds.push(it)
+  }
   if (fixed) {
     it._colClass = {
       'z-pos--sticky': true
     }
+    fixedTh.push(it)
   } else {
     it._colClass = {
       'z-pos--none': true
     }
   }
-  if (it.child && it.child.length) {
-    it._childLen = it.child.length
-    lastRowIndex = getMaxRow(it.child, tds, row + 1, fixed)
-  } else {
-    tds.push(it)
-  }
   it._maxRowLen = lastRowIndex - row
   return lastRowIndex
 }
-function getMaxRow(arr: Array<ThCol>, tds: Array<ThCol>, row: number = 0, fixed: ThColFixedV | undefined = undefined): number {
+function getMaxRow(arr: Array<ThCol>, tds: Array<ThCol>, fixedTh: Array<ThCol>, row: number = 0, fixed: ThColFixedV | undefined = undefined): number {
   const data = arr.map(it => {
-    return setItVal(it, tds, row, fixed)
+    return setItVal(it, tds, fixedTh, row, fixed)
   })
   return Math.max(...data)
 }
