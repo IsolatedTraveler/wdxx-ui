@@ -23,7 +23,8 @@ const cols = [
       { title: '测试2' }
     ]
   },
-  { id: 'bz', title: '备注3' }
+  { id: 'bz', title: '备注3' },
+  { id: 'cs', title: '测试', fixed: 'right' },
 ],
   data = ref<any[]>([{ col: 'cs', lx: 'varchar', bz: '测试' }])
 function getData(bm: string) {
