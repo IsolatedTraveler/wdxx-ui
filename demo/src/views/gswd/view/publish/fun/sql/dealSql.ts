@@ -8,6 +8,7 @@ interface DealSqlParam {
 export interface TCol {
   col: string
   lx: string
+  bz?: string
 }
 export interface ColLx {
   [key: string]: Array<string>

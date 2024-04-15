@@ -1,5 +1,6 @@
 export * from './back'
 export * from './deal'
 export * from './del'
+export * from './fun'
 export * from './insert'
 export * from './update'
