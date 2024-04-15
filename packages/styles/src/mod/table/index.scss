@@ -12,6 +12,7 @@ $border: $border-width solid $border-color;
     border-collapse: separate;
     border-spacing: 0;
     max-height: 100%;
+    min-width: 100%;
 
     >thead {
       position: sticky;

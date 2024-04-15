@@ -7,8 +7,10 @@
           <th v-for="td in tr" :colspan="td._colspan" :rowspan="td._rowspan"
             :style="[td.ceilStyle, td.thStyle, td._thTdStyle, td._thStyle]" :class="td._colClass"
             :ref="td.id || undefined">
-            <div :class="td.class">{{
-    td.title }}</div>
+            <div :class="td.class">
+              <th-ceil v-if="td.type" :col="td">{{ td.title }}</th-ceil>
+              <slot v-else :name="'th-' + td.id">{{ td.title }}</slot>
+            </div>
           </th>
           <th></th>
         </tr>
@@ -38,6 +40,7 @@
 import { getCurrentInstance } from 'vue';
 import { tableEmits, tableProps } from './table'
 import { useTable } from './use-table'
+import thCeil from './th.vue';
 import tdCeil from "@ui/components/deply/ceil/ceil.vue";
 defineOptions({
   name: 'z-table'

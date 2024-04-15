@@ -10,20 +10,12 @@ defineOptions({
   name: 'col-table'
 })
 const cols = [
-  {
-    title: '测试3', fixed: true, child: [
-      {
-        title: '测2', fixed: true, child: [
-          { id: 'col', title: '列名' },
-          { id: 'lx', title: '类型' }
-        ]
-      },
-      { title: '测试1' }
-    ]
-  },
+  { type: 'check' },
+  { id: 'col', title: '列名' },
+  { id: 'lx', title: '类型' },
   { id: 'bz', title: '备注' }
 ],
-  data = ref<any[]>([{ col: 'cs', lx: 'varchar', bz: '测试' }])
+  data = ref<any[]>([])
 function getData(bm: string) {
   if (bm) {
     getTableCol(bm).then(res => {
@@ -37,7 +29,7 @@ defineExpose({
 </script>
 <style lang="scss">
 .col-table {
-  width: 40%;
+  width: 100%;
   max-height: 30%;
 }
 </style>
