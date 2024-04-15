@@ -16,6 +16,11 @@ export function getThMaxRow(arr: Array<ThCol>) {
           console.warn(it.title + '之前已存在右侧固定列，此处只能为右侧固定列')
         }
       }
+      if (!fixedV) {
+        type = 2
+      } else if (fixedV === 'right') {
+        type = 3
+      }
       return setItVal(it, tds, fixedTh, 0, fixedV)
     })
   return { tds, len: Math.max(...data), fixedTh }
@@ -36,11 +41,11 @@ function setItVal(it: ThCol, tds: Array<ThCol>, fixedTh: Array<ThCol>, row: numb
     it._colClass = {
       'z-pos--sticky': true
     }
-    fixedTh.push(it)
-  } else {
-    it._colClass = {
-      'z-pos--none': true
+    if (fixed === 'left') {
+      it._thTdStyle.borderLeft = 'none'
+      it._colClass['z-border--right'] = true
     }
+    fixedTh.push(it)
   }
   it._maxRowLen = lastRowIndex - row
   return lastRowIndex

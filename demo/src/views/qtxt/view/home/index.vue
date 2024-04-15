@@ -15,12 +15,19 @@ const cols = [
   {
     title: '测试1', fixed: true, child: [
       {
-        title: '测试1-1', fixed: true, child: [
+        title: '测试1-1', child: [
           { id: 'col', title: '列名' },
           { id: 'lx', title: '类型' }
         ]
       },
       { title: '测试2' }
+    ]
+  },
+  {
+    title: '测试3', child: [
+      { title: '测试3-1' },
+      { title: '测试3-2' },
+      { title: '测试3-3' }
     ]
   },
   { id: 'bz', title: '备注3' },

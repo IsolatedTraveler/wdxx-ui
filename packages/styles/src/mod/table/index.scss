@@ -31,7 +31,6 @@ $border: $border-width solid $border-color;
         &:last-child>td {
           position: sticky;
           bottom: 0;
-          z-index: 2;
         }
 
         &:nth-last-child(2)>td {
@@ -52,38 +51,12 @@ $border: $border-width solid $border-color;
           padding: 0 .5em;
           white-space: nowrap;
 
-          &.z-pos--sticky {
-            z-index: 2;
-            border-left: none;
-            border-right: $border;
-
-            &+.z-pos--none {
-              border-left: none;
-            }
-
-            &:nth-last-child(2) {
-              border-right: none;
-            }
-          }
-
-          &.z-pos--none {
-            &+.z-pos--sticky {
-              border-left: $border;
-            }
-          }
-
-          &:nth-child(2) {
-            border-left-width: 0;
-          }
-
           &:last-child,
           &:first-child {
             position: sticky;
-            z-index: 2;
             padding: unset;
-            border: none;
-            width: $border-width;
-            background-color: $border-color;
+            width: 0;
+            border-left: $border !important;
           }
 
           &:last-child {
@@ -92,6 +65,19 @@ $border: $border-width solid $border-color;
 
           &:first-child {
             left: 0;
+          }
+
+          &:nth-child(2) {
+            border-left: none;
+          }
+
+          &.z-border--right {
+            border-right: $border;
+
+            &+td,
+            &+th {
+              border-left: none;
+            }
           }
         }
       }
