@@ -1,6 +1,6 @@
 
 import { computed, ref } from 'vue';
-import { vim } from '../code/linux/vim';
+import { clearRz, vim } from '../code/linux/vim';
 import { zqd } from '../fun';
 function getLocation(name: string, dz: string) {
   if (dz) {
@@ -95,6 +95,16 @@ export function userNginx() {
         "  }",
         "}"
       ].filter(it => it).join('\n'), '/usr/local/nginx/conf/nginx.conf')
+    }, {
+      lx: 'bash',
+      code: [
+        `# 日志清理`,
+        clearRz([
+          'cd /usr/local/nginx/logs/'
+          , 'true > access.log'
+          , 'true > error.log'
+        ].join('\n'))
+      ].join('\n')
     }, ...zqd('nginx', '')
     ]
   })

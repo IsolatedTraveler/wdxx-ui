@@ -1,6 +1,7 @@
 import { computed, ref } from "vue"
 import { zqd } from "../fun"
 import { linux } from "../code"
+import { clearRz } from "../code/linux/vim"
 
 export function useTomcat() {
   const formData = ref({ lx: 'tomcat', lj: 'tomcat8' }), code = computed(() => {
@@ -26,6 +27,16 @@ export function useTomcat() {
         lx: 'bash',
         code: [
           `# 拷贝发版代码至/home/${lj}/webapps目录`,
+        ].join('\n')
+      }, {
+        lx: 'bash',
+        code: [
+          `# 日志清理`,
+          clearRz([
+            `cd /home/${lj}/logs/`
+            , 'true > catalina.out'
+            , 'ls |grep -v catalina.out | xargs rm'
+          ].join('\n'))
         ].join('\n')
       },
       ...zqd('tomcat', lj, lx)

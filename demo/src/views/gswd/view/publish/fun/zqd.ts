@@ -31,6 +31,11 @@ function dscq(lx: string) {
       code: [
         `0 3 * * * systemctl restart ${lx}.service`
       ].join('\n')
+    }, {
+      lx: 'bash',
+      code: [
+        `0 3 * * * /etc/systemd/system/clear.log.sh`
+      ].join('\n')
     }
   ]
 }
