@@ -1,0 +1,8 @@
+@use 'sass:map';
+@use '../../vars/index.scss' as *;
+
+.z-upload {
+  >input {
+    display: none;
+  }
+}

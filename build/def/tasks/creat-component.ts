@@ -12,8 +12,8 @@ async function UiComponent() {
     provide += getExportStr(obj.provide ? obj.provide === true ? [key] : obj.provide : [])
     inject += getExportStr(obj.inject ? Object.keys(obj.inject) : [])
     cssI += getExportStr(obj.keys, `@forward '${CSS_PATH}`, `/index.scss';\n`)
-    obj.css && (cssI += getExportStr(obj.css, `@forward '${CSS_PATH}`, `/index.scss';\n`))
-    str += `import { ${(obj.keys ||[]).map(dealNameStr).join(', ')} } from '@ui/components/${key}'\n`
+    // obj.css && (cssI += getExportStr(obj.css, `@forward '${CSS_PATH}`, `/index.scss';\n`))
+    str += `import { ${(obj.keys || []).map(dealNameStr).join(', ')} } from '@ui/components/${key}'\n`
   })
   str += `export default [\n  ${comKeys.map(dealNameStr).join(',\n  ')}\n] as Plugin[]`
   typeing += comKeys.map(it => {
@@ -112,7 +112,7 @@ function createCom(arr: Array<filesObj>) {
       mkdir(keyComUrl, { recursive: true }),
       mkdir(comUrl, { recursive: true })
     ]).then(() => {
-      return Promise.all((obj.keys||[]).map(it => creatComponentMod(it, comUrl)))
+      return Promise.all((obj.keys || []).map(it => creatComponentMod(it, comUrl)))
     }).then(() => {
       const arr: Array<Promise<any>> = []
       // 创建hooks/use-provide/${key}.ts

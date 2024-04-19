@@ -13,6 +13,7 @@ import { ZTable } from '@ui/components/table'
 import { ZCode } from '@ui/components/code'
 import { ZPop } from '@ui/components/pop'
 import { ZScroll } from '@ui/components/scroll'
+import { ZUpload } from '@ui/components/upload'
 export default [
   ZFlex,
   ZIcon,
@@ -28,5 +29,6 @@ export default [
   ZTable,
   ZCode,
   ZPop,
-  ZScroll
+  ZScroll,
+  ZUpload
 ] as Plugin[]

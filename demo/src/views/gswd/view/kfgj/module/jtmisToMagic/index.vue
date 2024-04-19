@@ -10,6 +10,7 @@
       <z-form-item label="Js文件名：" basis="25%">
         <z-input name="js"></z-input>
       </z-form-item>
+      <z-upload>上传</z-upload>
     </z-form>
     <div class="z-auto">
       <z-code v-for="(it, i) in code" :key="i" :data="it.code" :type="it.lx"></z-code>

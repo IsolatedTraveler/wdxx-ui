@@ -12,3 +12,4 @@ export * from './table';
 export * from './code';
 export * from './pop';
 export * from './scroll';
+export * from './upload';

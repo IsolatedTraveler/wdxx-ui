@@ -15,6 +15,7 @@ declare module "@vue/runtime-core" {
     ZCode: typeof import("z-uis")["ZCode"];
     ZPop: typeof import("z-uis")["ZPop"];
     ZScroll: typeof import("z-uis")["ZScroll"];
+    ZUpload: typeof import("z-uis")["ZUpload"];
   }
   interface ComponentCustomProperties {
     
