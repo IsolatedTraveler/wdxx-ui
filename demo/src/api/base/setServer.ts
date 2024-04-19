@@ -13,10 +13,27 @@ const errorCode = {
   479: '演示环境，没有权限操作',
   default: '系统未知错误,请反馈给管理员'
 }
-function dealRes({ status = 200, data = null, config: { checkLogin: judge = false } = {} } = {}) {
+type ErrorCodeKey = keyof typeof errorCode | 200
+type AjaxCode = 1 | -1 | 0
+interface AjaxRes extends AjaxReturn {
+  msg: string
+}
+interface DealRes {
+  status: ErrorCodeKey
+  data: AjaxRes
+  config: {
+    checkLogin: boolean
+  }
+}
+export interface AjaxReturn {
+  code: AjaxCode,
+  data: any
+  message: string
+}
+function dealRes({ status = 200, data, config: { checkLogin: judge = false } = {} } = {} as DealRes): Promise<AjaxReturn> {
   if (status == 200) {
     if (data.code == 1) {
-      return data
+      return Promise.resolve(data)
     }
     return Promise.reject({ code: -1, message: data.message || data.msg })
   } else {
@@ -24,7 +41,7 @@ function dealRes({ status = 200, data = null, config: { checkLogin: judge = fals
       // 校验是否登录系统，并处理数据
     }
     if (data?.code == 1 && data?.data == 'unauthorized') {
-      return Promise.reject({ message: errorCode[401] })
+      return Promise.reject({ code: 0, message: errorCode[401] })
     } else {
       return Promise.reject({ code: -1, message: errorCode[status] || errorCode.default })
     }
@@ -42,6 +59,6 @@ export function setServerConfig(server: any, headers: any = null) {
   })
   server.interceptors.response.use(
     dealRes,
-    ({ response }) => dealRes(response)
+    ({ response }: any) => dealRes(response)
   )
 }

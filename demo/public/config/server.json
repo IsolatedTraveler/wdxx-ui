@@ -1,6 +1,6 @@
 {
   "hisApi": [],
-  "defaultUrl": "/api",
+  "defaultUrl": "/jtmis",
   "print": {
     "cLoodP": {
       "url": "http://localhost:8000/CLodopfuncs.js",

@@ -29,13 +29,13 @@ function write(data, filePath) {
     try {
       mkdirSync(directoryPath, { recursive: true });
     } catch (error) {
-      return '创建目录时出错:', error.message
+      return '创建目录时出错:' + error.message
     }
   }
   try {
     writeFileSync(filePath, data, 'utf8');
   } catch (error) {
-    return '写入文件时出错:', error.message;
+    return '写入文件时出错:' + error.message;
   }
 }
 function readF(filePath) {

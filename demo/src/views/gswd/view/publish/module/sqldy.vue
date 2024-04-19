@@ -1,6 +1,9 @@
 <template>
   <div class="jtphis">
     <z-form flex="row" wrap v-model="formData">
+      <z-form-item label="服务器：" basis="25%">
+        <z-select name="fwq" :data="fwq"></z-select>
+      </z-form-item>
       <z-form-item label="版本：" basis="25%">
         <z-input name="bb"></z-input>
       </z-form-item>
@@ -14,9 +17,11 @@
 </template>
 <script lang="ts" setup>
 import { useSqldy } from '../moduleTs';
+import { fwq } from "../data"
 defineOptions({
   name: 'sqldy'
 })
+
 
 const { code, formData, getCode } = useSqldy()
 </script>
