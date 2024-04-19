@@ -1,19 +1,15 @@
 <template>
-  <div class="jtmisToMagic">
+  <div class="jtmisToMagic z-col">
     <z-form flex="row" wrap v-model="formData">
-      <z-form-item label="根路径：" basis="25%">
-        <z-input name="root"></z-input>
+      <z-form-item label="来源：" basis="25%">
+        <z-select name="ly" :data="ly"></z-select>
       </z-form-item>
-      <z-form-item label="文件名：" basis="25%">
-        <z-input name="html"></z-input>
-      </z-form-item>
-      <z-form-item label="Js文件名：" basis="25%">
-        <z-input name="js"></z-input>
-      </z-form-item>
-      <z-upload>上传</z-upload>
+      <z-upload v-model:obj="code" multi type="content">上传</z-upload>
     </z-form>
-    <div class="z-auto">
-      <z-code v-for="(it, i) in code" :key="i" :data="it.code" :type="it.lx"></z-code>
+    <div class="z-auto z-col">
+      <div class="z-auto z-code-auto" v-for="(it, i) in codeV">
+        <z-code :key="i" :data="it.code" :type="it.lx"></z-code>
+      </div>
     </div>
   </div>
 </template>
@@ -22,7 +18,7 @@ import use from './use'
 defineOptions({
   name: 'jtmisToMagic'
 })
-const { code, formData } = use()
+const { code, formData, codeV, ly } = use()
 </script>
 <style lang="scss">
 .jtmisToMagic {
@@ -38,7 +34,12 @@ const { code, formData } = use()
     flex-basis: 0;
     flex-grow: 1;
     overflow: auto;
-    padding-top: 1em;
+  }
+
+  .z-code-auto {
+    +.z-code-auto {
+      margin-top: .5em;
+    }
   }
 }
 </style>

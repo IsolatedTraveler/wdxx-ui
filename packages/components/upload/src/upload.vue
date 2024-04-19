@@ -1,7 +1,9 @@
 <template>
   <div ref="_ref" :class="_class">
-    <input type="file">
-    <slot></slot>
+    <input type="file" ref="_input" @change="fileChange" :multiple="multi">
+    <div @click="triggerFileInputClick">
+      <slot></slot>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -12,7 +14,7 @@ defineOptions({
 })
 const props = defineProps(uploadProps)
 const emit = defineEmits(uploadEmits)
-const { _ref, _class } = useUpload(props, emit)
+const { _ref, _class, _input, triggerFileInputClick, fileChange } = useUpload(props, emit)
 defineExpose({
   ref: _ref
 })

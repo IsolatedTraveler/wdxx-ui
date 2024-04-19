@@ -1,4 +1,5 @@
 export const EventUpdate = 'update:modelValue'
+export const EventUpdateObj = 'update:obj'
 export const EventUpdateMc = 'update:mc'
 export const EventChange = 'change'
 export const EventSearch = 'search'

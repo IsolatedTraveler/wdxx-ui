@@ -80,7 +80,7 @@ export const componentUse = (key: string) => {
 import { ref, SetupContext } from "vue"
 import { ${name}Emits, ${name}Props } from "./${key}"
 export const use${name} = (props: ${name}Props, _emit: SetupContext<${name}Emits>['emit']) => {
-  const _ref = ref<HTMLButtonElement>(), { _class, _style, classVal, styleVal } = useCssInit(props, '${key}', { cssClass: [], classAdd: [] })
+  const _ref = ref<HTMLDivElement>(), { _class, _style, classVal, styleVal } = useCssInit(props, '${key}', { cssClass: [], classAdd: [] })
   return {
     _ref,
     _class
