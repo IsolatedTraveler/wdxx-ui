@@ -70,19 +70,17 @@ export const componentIndex = (key: string, group: Array<string> = []) => {
       return `export const ${firstMax(PKG_PREFIX)}${getName(it.split('-'))} = withNoopInstall(${getName(it.split('-'))})`
     }),
     `export * from './src/${key}'`,
-    `export type {${[key, ...(group||[])].map(it=>getName(it.split('-'))+'Instance').join(', ')}} from './src/instance'`,
+    `export type {${[key, ...(group || [])].map(it => getName(it.split('-')) + 'Instance').join(', ')}} from './src/instance'`,
     `export default ${firstMax(PKG_PREFIX)}${getName(key.split('-'))}`
   ].join('\n')
 }
 export const componentUse = (key: string) => {
   const name = getName(key.split('-'))
-  return `import { useCss } from "@ui/hooks"
-import { ref, SetupContext, computed } from "vue"
+  return `import { useCssInit } from "@ui/hooks"
+import { ref, SetupContext } from "vue"
 import { ${name}Emits, ${name}Props } from "./${key}"
-export const use${name} = (props: ${name}Props, emit: SetupContext<${name}Emits>['emit']) => {
-  const _ref = ref<HTMLButtonElement>(), classVal = computed(() => ({
-    name: '${key}'
-  })), {_class} = useCss(classVal, _ref)
+export const use${name} = (props: ${name}Props, _emit: SetupContext<${name}Emits>['emit']) => {
+  const _ref = ref<HTMLButtonElement>(), { _class, _style, classVal, styleVal } = useCssInit(props, '${key}', { cssClass: [], classAdd: [] })
   return {
     _ref,
     _class

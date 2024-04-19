@@ -12,7 +12,7 @@ async function UiComponent() {
     provide += getExportStr(obj.provide ? obj.provide === true ? [key] : obj.provide : [])
     inject += getExportStr(obj.inject ? Object.keys(obj.inject) : [])
     cssI += getExportStr(obj.keys, `@forward '${CSS_PATH}`, `/index.scss';\n`)
-    // obj.css && (cssI += getExportStr(obj.css, `@forward '${CSS_PATH}`, `/index.scss';\n`))
+    obj.css && (cssI += getExportStr(obj.css, `@forward '${CSS_PATH}`, `/index.scss';\n`))
     str += `import { ${(obj.keys || []).map(dealNameStr).join(', ')} } from '@ui/components/${key}'\n`
   })
   str += `export default [\n  ${comKeys.map(dealNameStr).join(',\n  ')}\n] as Plugin[]`
@@ -55,53 +55,16 @@ function creatComponentMod(key: string, comUrl: any) {
     // 创建components/${key}/style/css.ts
     write(resolve(styleUrl, 'css.ts'), `import '@ui/styles/base.css'\nimport '@ui/styles/${key}.css'\nimport '@ui/styles/end.css'`),
     // 创建styles/src/mod/${key}/index.scss
-    write(resolve(styleMod, 'index.scss'), getIndexCss(key)),
-    // 创建styles/src/mod/${key}/index.scss
-    write(resolve(styleMod, key + '.scss'), getComponentCss(key)),
-    // 创建styles/src/mod/${key}/${key}Media.scss
-    write(resolve(styleMod, key + '-media.scss'), getComponentCss(key, 'hover-'))
+    write(resolve(styleMod, 'index.scss'), getIndexCss(key))
   ]))
-}
-function getComponentCss(key: string, add: string = '') {
-  let val = `@use 'sass:map';
-@use '../../vars/index.scss' as *;
-$${key}-key--style: (
-  background-color: map.get($color, primary, 2)
-);
-$${key}-key--class: ();
-$${key}-key--attr: ();
-$${key}--class: (
-  key: (style: $${key}-key--style, child: (class: $${key}-key--class, attr: $${key}-key--attr))
-);
-$${key}--attr: ();
-$${key}--style: ();
-$${add}style: (
-  class:$${key}--class,
-  attr:$${key}--attr,
-  style:$${key}--style
-);
-  `
-  if (add === 'hover-') {
-    val += `
-    $styleMedia: (
-      hover: $hover-style
-    );
-    `
-  }
-  return val
 }
 function getIndexCss(key: string) {
   return `@use 'sass:map';
-@use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
-@use './${key}-media.scss' as *;
-@use './${key}.scss' as *;
 
-@include createSingleClass(${key}, '', '') {
+.z-${key} {
 
-  @include asyncMedia($styleMedia, '');
-}
-@include async($style, ${key}, '');`
+}`
 }
 function createCom(arr: Array<filesObj>) {
   excludeCom(arr)
