@@ -2,11 +2,37 @@ import { computed, ref } from "vue"
 const ly = [
   { id: 1, mc: '/public/js/commonUtil.js' }
 ]
+const zysx = [
+  [],
+  [
+    'commonHttppost方法需要在末尾添加.data.list',
+    'convertKeysToLowerCase去掉该方法，注意是否影响逻辑',
+    'initTreedata方法第三个参数需删除'
+  ]
+]
 const alertFa = [
-  ['jtUtil.', 'commonUtil.',],
-  ['jtUtil.errorTrace', 'JsErrorTrace',]
+  ['jtUtil.', 'commonUtil.',]
+  , ['jtUtil.errorTrace', 'JsErrorTrace',]
   , ['.initShortcutKey', '.initShortcutKey']
   , ['.setShortcutKeys', '.setShortcutKeys']
+  , ['.initBaseBar', '.initBaseBar']
+  , ['.commonHttppost', '.commonQueryHttppost']
+  , ['.commonHttppost', '.commonCommitHttppost']
+  , ['.getCommonDic', '.getCommonDic']
+  , ['.filterDicData', '.filterDicData']
+  , ['.filterComboboxData', '.filterComboboxData']
+  , ['.initDadaGrid_tab', '.initDadaGrid_tab']
+  , ['.initTreedata', '.initTreedata']
+  , ['.getCommonCombobox', '.getCommonCombobox']
+  , ['.dataGridPageChange', '.dataGridPageChange']
+  , ['.loadDataGrigPageData', '.loadDataGrigPageData']
+  , ['jtUtil.dicget', 'jthisJsObject.jthis.dicget']
+  , ['jtUtil.possessMkqx', 'jthisJsObject.jthis.mkqxhas']
+]
+const HtmlFa = [
+  ['"bodydiv"', '"bodydiv"']
+  , ['"topmenu"', '"topmenu"']
+  , ['"topbutton"', '"topbutton"']
 ]
 function dealHtml(code: string, ly: number) {
   code = code.replace(/\/public\/js\/commonUtil.js/g, '/lib23/js/jtUtil.js')
@@ -39,6 +65,13 @@ export default function () {
       , '替换html中lib/jquery-easyui为lib23/js/jquery-easyui相关的路径'
       , '替换html中public/css为public23/css相关的路径'
       , '替换html中public/js为public23/js相关的路径'
+      , HtmlFa.map(it => {
+        const key = it[formData.value.ly], v = it[0]
+        if (key !== v) {
+          return `替换js中${key}为${v}`
+        }
+        return null
+      }).filter(it => it).join('\n')
       , alertFa.map(it => {
         const key = it[formData.value.ly], v = it[0]
         if (key !== v) {
@@ -50,15 +83,18 @@ export default function () {
   }])
     , codeV = computed(() => {
       const { ly } = formData.value, v: Array<{ lx: string, code: any }> = JSON.parse(JSON.stringify(code.value))
-      return v.map(it => {
+      return [{
+        lx: 'markdown',
+        code: zysx[ly].join('\n'),
+      }, ...v.map(it => {
         it.lx = it.lx.replace(/(text)\//, '')
         if (it.lx === 'javascript') {
-          it.code = dealJs(it.code, ly)
+          it.code = dealJs(it.code, ly).trim()
         } else if (it.lx === 'html') {
-          it.code = dealHtml(it.code, ly)
+          it.code = dealHtml(it.code, ly).trim()
         }
         return it
-      })
+      })]
     })
   return {
     formData,
