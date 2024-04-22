@@ -5,10 +5,13 @@ const ly = [
 const zysx = [
   [],
   [
+    'jthisJsObject.jthis.varget先处理(去掉JSON.parse)，后替换',
+    'jthisJsObject.jthis.varpost先处理(去掉JSON.stringify)，后替换',
     'commonHttppost方法需要在末尾添加.data.list需要注意考虑实际情况',
     'convertKeysToLowerCase去掉该方法，注意是否影响逻辑',
     'initTreedata方法第三个参数需删除',
-    'openMsgBox方法改为Promise模式'
+    'openMsgBox方法改为Promise模式',
+    'openDialog方法改为Promise模式，第二个参数后加一个参数button(如：["确定","取消"])'
   ]
 ]
 const alertFa = [
@@ -28,6 +31,9 @@ const alertFa = [
   , ['jtUtil.dataGridPageChange', 'jtUtil.dataGridPageChange']
   , ['jtUtil.loadDataGrigPageData', 'jtUtil.loadDataGrigPageData']
   , ['jtUtil.setVar', 'jtUtil.setVar']
+  , ['jtUtil.setVar', 'jthisJsObject.jthis.varpost']
+  , ['jtUtil.setVar', 'jtUtil.getVar']
+  , ['jtUtil.setVar', 'jthisJsObject.jthis.varget']
   , ['jtUtil.openDialog', 'jtUtil.openDialog']
   , ['jtUtil.openMsgBox', 'jtUtil.openMsgBox']
   , ['jtUtil.openMsgBox', 'jthisJsObject.jthis.showmsgbox']
