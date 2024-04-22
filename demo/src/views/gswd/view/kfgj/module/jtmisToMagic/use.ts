@@ -7,6 +7,7 @@ const zysx = [
   [
     'jthisJsObject.jthis.varget先处理(去掉JSON.parse)，后替换',
     'jthisJsObject.jthis.varpost先处理(去掉JSON.stringify)，后替换',
+    'jthisJsObject.jthis.dicget先处理(去掉JSON.stringify)，后替换',
     'commonHttppost方法需要在末尾添加.data.list需要注意考虑实际情况',
     'convertKeysToLowerCase去掉该方法，注意是否影响逻辑',
     'initTreedata方法第三个参数需删除',
