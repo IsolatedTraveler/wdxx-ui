@@ -12,7 +12,7 @@ const zysx = [
     'convertKeysToLowerCase去掉该方法，注意是否影响逻辑',
     'initTreedata方法第三个参数需删除',
     'openMsgBox方法改为Promise模式',
-    'openDialog方法改为Promise模式，第二个参数后加一个参数button(如：["确定","取消"])'
+    'openDialog方法改为Promise模式，第五个参数为button(如：["确定","取消"])，打开的子页面隐藏原有的按钮，并添加id="layerBtn" .btn参考ypmlgl_edit.html'
   ]
 ]
 const alertFa = [
@@ -35,11 +35,18 @@ const alertFa = [
   , ['jtUtil.setVar', 'jtUtil.getVar']
   , ['jtUtil.openDialog', 'jtUtil.openDialog']
   , ['jtUtil.openMsgBox', 'jtUtil.openMsgBox']
+  , ['jtUtil.nvl', 'jtUtil.nvl']
+  , ['jtUtil.getCommonCombogrid', 'jtUtil.getCommonCombogrid']
+  , ['jtUtil.initNextInputFocus', 'jtUtil.initNextInputFocus']
+  , ['jtUtil.toDecimalNumber', 'jtUtil.toDecimalNumber']
+  , ['jtUtil.comboGridPageChange', 'jtUtil.comboGridPageChange']
+  , ['jtUtil.loadComboGrigPageData', 'jtUtil.loadComboGrigPageData']
   , ['.serializeOriginObject', '.serializeOriginObject']
   , ['jtUtil.openMsgBox', 'jthisJsObject.jthis.showmsgbox']
   , ['jtUtil.setVar', 'jthisJsObject.jthis.varpost']
   , ['jtUtil.setVar', 'jthisJsObject.jthis.varget']
   , ['jtUtil.dicget', 'jthisJsObject.jthis.dicget']
+  , ['jtUtil.closeParentPop()', 'jthisJsObject.jthis.close(0)']
   , ['jtUtil.possessMkqx', 'jthisJsObject.jthis.mkqxhas']
 ]
 const HtmlFa = [
@@ -62,7 +69,9 @@ function dealJs(code: string, ly: number) {
     const key = it[ly], v = it[0]
     arr = arr.filter(it => it !== key && it !== v)
     if (key !== v) {
-      const k = key.replace(/\./, '\\.'), reg = new RegExp(k, 'g')
+      console.log(key, v)
+      const k = key.replace(/([.()])/g, '\\$1'), reg = new RegExp(k, 'g')
+      console.log(reg)
       code = code.replace(reg, v)
     }
   })
