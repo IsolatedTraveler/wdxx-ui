@@ -6,7 +6,7 @@
       </z-form-item>
       <z-upload v-model:obj="code" multi type="content">上传</z-upload>
     </z-form>
-    <div class="z-auto z-col">
+    <div class="z-auto z-col content">
       <div class="z-auto z-code-auto" v-for="(it, i) in codeV">
         <z-code :key="i" :data="it.code" :type="it.lx"></z-code>
       </div>
@@ -30,15 +30,26 @@ const { code, formData, codeV, ly } = use()
     width: 100%;
   }
 
-  .z-auto {
-    flex-basis: 0;
+  .z-auto.content {
     flex-grow: 1;
-    overflow: auto;
+    flex-basis: 0;
+    overflow: hidden;
   }
 
   .z-code-auto {
+    overflow: auto;
+    flex: unset;
+    max-height: 33%;
+
     +.z-code-auto {
       margin-top: .5em;
+    }
+
+    &:last-child {
+      flex-basis: 0;
+      flex-shrink: 0;
+      flex-grow: 1;
+      max-height: unset;
     }
   }
 }

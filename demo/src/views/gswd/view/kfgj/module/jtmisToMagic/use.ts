@@ -5,27 +5,32 @@ const ly = [
 const zysx = [
   [],
   [
-    'commonHttppost方法需要在末尾添加.data.list',
+    'commonHttppost方法需要在末尾添加.data.list需要注意考虑实际情况',
     'convertKeysToLowerCase去掉该方法，注意是否影响逻辑',
-    'initTreedata方法第三个参数需删除'
+    'initTreedata方法第三个参数需删除',
+    'openMsgBox方法改为Promise模式'
   ]
 ]
 const alertFa = [
   ['jtUtil.', 'commonUtil.',]
   , ['jtUtil.errorTrace', 'JsErrorTrace',]
-  , ['.initShortcutKey', '.initShortcutKey']
-  , ['.setShortcutKeys', '.setShortcutKeys']
-  , ['.initBaseBar', '.initBaseBar']
-  , ['.commonHttppost', '.commonQueryHttppost']
-  , ['.commonHttppost', '.commonCommitHttppost']
-  , ['.getCommonDic', '.getCommonDic']
-  , ['.filterDicData', '.filterDicData']
-  , ['.filterComboboxData', '.filterComboboxData']
-  , ['.initDadaGrid_tab', '.initDadaGrid_tab']
-  , ['.initTreedata', '.initTreedata']
-  , ['.getCommonCombobox', '.getCommonCombobox']
-  , ['.dataGridPageChange', '.dataGridPageChange']
-  , ['.loadDataGrigPageData', '.loadDataGrigPageData']
+  , ['jtUtil.initShortcutKey', 'jtUtil.initShortcutKey']
+  , ['jtUtil.setShortcutKeys', 'jtUtil.setShortcutKeys']
+  , ['jtUtil.initBaseBar', 'jtUtil.initBaseBar']
+  , ['jtUtil.commonHttppost', 'jtUtil.commonQueryHttppost']
+  , ['jtUtil.commonHttppost', 'jtUtil.commonCommitHttppost']
+  , ['jtUtil.getCommonDic', 'jtUtil.getCommonDic']
+  , ['jtUtil.filterDicData', 'jtUtil.filterDicData']
+  , ['jtUtil.filterComboboxData', 'jtUtil.filterComboboxData']
+  , ['jtUtil.initDadaGrid_tab', 'jtUtil.initDadaGrid_tab']
+  , ['jtUtil.initTreedata', 'jtUtil.initTreedata']
+  , ['jtUtil.getCommonCombobox', 'jtUtil.getCommonCombobox']
+  , ['jtUtil.dataGridPageChange', 'jtUtil.dataGridPageChange']
+  , ['jtUtil.loadDataGrigPageData', 'jtUtil.loadDataGrigPageData']
+  , ['jtUtil.setVar', 'jtUtil.setVar']
+  , ['jtUtil.openDialog', 'jtUtil.openDialog']
+  , ['jtUtil.openMsgBox', 'jtUtil.openMsgBox']
+  , ['jtUtil.openMsgBox', 'jthisJsObject.jthis.showmsgbox']
   , ['jtUtil.dicget', 'jthisJsObject.jthis.dicget']
   , ['jtUtil.possessMkqx', 'jthisJsObject.jthis.mkqxhas']
 ]
@@ -34,6 +39,7 @@ const HtmlFa = [
   , ['"topmenu"', '"topmenu"']
   , ['"topbutton"', '"topbutton"']
 ]
+const reg = /jtUtil\.([a-zA-Z0-9-_]+)/g
 function dealHtml(code: string, ly: number) {
   code = code.replace(/\/public\/js\/commonUtil.js/g, '/lib23/js/jtUtil.js')
   code = code.replace(/\/public\/js\/jquery.zclip.min.js/g, '/lib23/js/jquery/jquery.zclip.min.js')
@@ -43,14 +49,16 @@ function dealHtml(code: string, ly: number) {
   return dealJs(code, ly)
 }
 function dealJs(code: string, ly: number) {
+  var arr = [...new Set(code.match(reg))]
   alertFa.forEach((it) => {
     const key = it[ly], v = it[0]
+    arr = arr.filter(it => it !== key && it !== v)
     if (key !== v) {
       const k = key.replace(/\./, '\\.'), reg = new RegExp(k, 'g')
-      console.log(reg)
       code = code.replace(reg, v)
     }
   })
+  console.log(arr)
   code = code.replace(/JsErrorTrace/g, 'jtUtil.errorTrace')
   return code
 }
