@@ -31,20 +31,20 @@ export function useCommit() {
       lx: 'bash'
     }, {
       code: [
-        '# 仅修改提交信息',
+        '# 仅修改提交信息，已推送或已合并后的数据不能修改',
         'git commit --amend -m ' + code
       ].join('\n'),
       lx: 'bash'
     }, {
       code: [
-        '# 保持原提交信息不变，仅添加文件',
+        '# 保持原提交信息不变，仅添加文件，已推送或已合并后的数据不能修改',
         'git add .',
         'git commit --amend'
       ].join('\n'),
       lx: 'bash'
     }, {
       code: [
-        '# 修改信息并添加文件',
+        '# 修改信息并添加文件，已推送或已合并后的数据不能修改',
         'git add .',
         'git commit --amend -m ' + code
       ].join('\n'),
