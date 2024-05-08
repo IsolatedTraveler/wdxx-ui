@@ -5,11 +5,11 @@ function getCode(type: string, gn: string, desc: string, detail: string) {
     [
       jyms,
       detail
-    ].filter(it => it).join('\\n\\n'),
+    ].filter(it => it).join('\n\n'),
     [
       jyms + '[WIP]',
       detail
-    ].filter(it => it).join('\\n\\n')
+    ].filter(it => it).join('\n\n')
   ].map(it => `"${it}"`)
 }
 export function useCommit() {
