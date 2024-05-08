@@ -4,7 +4,10 @@
       <z-form-item label="类型：" basis="25%">
         <z-select name="type" :data="Lx"></z-select>
       </z-form-item>
-      <z-form-item label="描述：" basis="75%">
+      <z-form-item label="功能：" basis="25%">
+        <z-input name="gn"></z-input>
+      </z-form-item>
+      <z-form-item label="描述：" basis="50%">
         <z-input name="desc"></z-input>
       </z-form-item>
       <z-form-item label="详细描述：" basis="100%">

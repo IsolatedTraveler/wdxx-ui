@@ -3,8 +3,8 @@ import { dealSqlData, getCodes, getTableCol } from "../fun"
 
 export function useSqldy(talbe: string = 'sqldy', primary: string[] = ['MKBH', 'YWDM']) {
   const formData = ref({
-    bb: 'v1.0.20240329.01',
-    where: `(mkbh='000212' and ywdm ='7') or (mkbh='080113' and ywdm ='9') or (mkbh='000226' and ywdm in (1,'11')) or (mkbh='080114' and ywdm = 3)`,
+    bb: 'v1.0.20240314.01',
+    where: `mkbh = '010411' and ywdm in ('8', '14')`,
     fwq: '242'
   })
     , code = ref('')

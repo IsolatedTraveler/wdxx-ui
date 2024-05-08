@@ -11,7 +11,7 @@ export function useLoad(props: LoadProps, _emit: SetupContext<LoadEmits>['emit']
   const val = ref(''), com = shallowRef<any>(null)
   watch(() => props.ly, (v) => {
     if (v) {
-      val.value = userStore.temp[v]
+      val.value = userStore.temp[v] || props.def
       loadComponent()
     }
   }, { immediate: true })

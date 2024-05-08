@@ -1,6 +1,7 @@
 import { computed, ref } from "vue"
 const ly = [
-  { id: 1, mc: '/public/js/commonUtil.js' }
+  { id: 1, mc: '/public/js/commonUtil.js' },
+  { id: 2, mc: '/lib23/js/commonUtil.js' }
 ]
 const zysx = [
   [],
@@ -20,13 +21,15 @@ const zysx = [
   ]
 ]
 const alertFa = [
-  ['jtUtil.', 'commonUtil.',]
+  ['jtUtil.', 'commonUtil.', 'commonUtil.',]
   , ['jtUtil.errorTrace', 'JsErrorTrace',]
+  , ['jtUtil.alertMsg', 'jtUtil.errorTrace',]
   , ['jtUtil.initShortcutKey', 'jtUtil.initShortcutKey']
   , ['jtUtil.setShortcutKeys', 'jtUtil.setShortcutKeys']
   , ['jtUtil.initBaseBar', 'jtUtil.initBaseBar']
   , ['jtUtil.commonHttppost', 'jtUtil.commonQueryHttppost']
   , ['jtUtil.commonHttppost', 'jtUtil.commonCommitHttppost']
+  , ['jtUtil.asyncQueryPost', 'jtUtil.commonQueryAsyncHttppost_callback']
   , ['jtUtil.getCommonDic', 'jtUtil.getCommonDic']
   , ['jtUtil.filterDicData', 'jtUtil.filterDicData']
   , ['jtUtil.filterComboboxData', 'jtUtil.filterComboboxData']
@@ -84,8 +87,6 @@ function dealJs(code: string, ly: number) {
       code = code.replace(reg, v)
     }
   })
-  console.log(arr)
-  code = code.replace(/JsErrorTrace/g, 'jtUtil.errorTrace')
   return code
 }
 export default function () {

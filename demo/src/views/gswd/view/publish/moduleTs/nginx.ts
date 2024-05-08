@@ -2,15 +2,42 @@
 import { computed, ref } from 'vue';
 import { clearRz, vim } from '../code/linux/vim';
 import { zqd } from '../fun';
-function getLocation(name: string, dz: string) {
+interface GetLocationParam {
+  lx?: 'http' | 'magic'
+  root?: string
+}
+var locationName = 'wdphis'
+function getLocation(name: string = '', dz: string, { root = locationName, lx = 'http' } = {} as GetLocationParam) {
   if (dz) {
+    if (name) {
+      name = `${name}/`
+    }
+    if (root) {
+      root = `${root}/`
+    }
     return [
-      `    location /jtphis/${name}/ {`,
+      `    location /${root}${name} {`,
       `      proxy_pass  ${dz};`,
+      lx === 'magic' ? magic() : http(),
       '    }'
     ].join('\n')
   }
   return ''
+}
+function magic() {
+  return [
+    '      proxy_http_version 1.1;',
+    '      proxy_set_header Upgrade $http_upgrade;',
+    '      proxy_set_header Connection "upgrade";',
+    '      proxy_set_header Host $host;'].join('\n')
+}
+function http() {
+  return [
+    '      proxy_set_header Host $host;',
+    '      proxy_set_header X-Real-IP $remote_addr;',
+    '      proxy_set_header REMOTE-HOST $remote_addr;',
+    '      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;',
+    '      proxy_redirect default;'].join('\n')
 }
 export function userNginx() {
   const formData = ref({
@@ -77,17 +104,14 @@ export function userNginx() {
         "    location / {",
         "      root  /home/jt-mis/static-resource/;",
         "    }",
-        "    location /jtphis/ {",
-        `      proxy_pass  ${jbjk};`,
-        "    }",
+        getLocation('', jbjk),
         getLocation('wxzf', fbd ? `http://wx.cdjtwx.com/${fbd}api/rest/` : ''),
-        getLocation('magic', magic),
+        getLocation('magic', magic, { lx: 'magic' }),
         getLocation('urpt', urpt),
         getLocation('minio-web', minioWeb),
         getLocation('minio', minio),
-        "    location /jtmis/{",
-        "      proxy_pass http://127.0.0.1:8080/jtphis/;",
-        "    }",
+        locationName != 'jtphis' ? getLocation('', `http://127.0.0.1:8080/${locationName}/`, { root: 'jtphis' }) : '',
+        locationName != 'jtmis' ? getLocation('', `http://127.0.0.1:8080/${locationName}/`, { root: 'jtmis' }) : '',
         "    error_page   500 502 503 504  /50x.html;",
         "    location = /50x.html {",
         "      root   html;",

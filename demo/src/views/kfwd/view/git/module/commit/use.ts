@@ -1,6 +1,6 @@
 import { computed, ref } from "vue"
-function getCode(type: string, desc: string, detail: string) {
-  let jyms = `${type}():${desc}`
+function getCode(type: string, gn: string, desc: string, detail: string) {
+  let jyms = `${type}(${gn}):${desc}`.replace('()', '')
   return [
     [
       jyms,
@@ -13,8 +13,8 @@ function getCode(type: string, desc: string, detail: string) {
   ].map(it => `"${it}"`)
 }
 export function useCommit() {
-  const formData = ref({ type: '', desc: '', detail: '' }), code = computed(() => {
-    const { type, desc, detail } = formData.value, [code, codeJxz] = getCode(type, desc, detail)
+  const formData = ref({ type: '', desc: '', detail: '', gn: '' }), code = computed(() => {
+    const { type, desc, detail, gn } = formData.value, [code, codeJxz] = getCode(type, gn, desc, detail)
     return [{
       code: [
         '# 进行中',
@@ -32,13 +32,13 @@ export function useCommit() {
     }, {
       code: [
         '# 仅修改提交信息',
-        'git add .',
         'git commit --amend -m ' + code
       ].join('\n'),
       lx: 'bash'
     }, {
       code: [
         '# 保持原提交信息不变，仅添加文件',
+        'git add .',
         'git commit --amend'
       ].join('\n'),
       lx: 'bash'

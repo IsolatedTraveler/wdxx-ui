@@ -5,7 +5,8 @@ import { ExtractPropTypes } from "vue";
 export const loadProps = propsBuildS({
   data: PropsBaseArray_Object,
   com: PropsBaseAny,
-  ly: PropsBaseString
+  ly: PropsBaseString,
+  def: PropsBaseString
 })
 export const loadEmits = {
 }

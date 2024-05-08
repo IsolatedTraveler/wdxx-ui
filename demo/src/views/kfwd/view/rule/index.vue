@@ -7,7 +7,7 @@ import { menu, menuDef } from "./data/menu"
 import { seBaseLoadCom } from "@/components/base";
 const com = import.meta.glob('./module/**/*.vue')
 defineOptions({
-  name: 'kfwd-ZUi'
+  name: 'kfwd-rule'
 });
 </script>
 
