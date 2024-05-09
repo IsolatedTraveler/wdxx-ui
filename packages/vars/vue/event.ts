@@ -10,3 +10,9 @@ export const EventExpand = 'expand'
 export const EventLeave = 'leave'
 export const EventSetVal = 'setVal'
 export const EventHide = 'hide'
+
+export interface EventSelectData {
+  data: any
+  selected: Boolean
+  val: any
+}

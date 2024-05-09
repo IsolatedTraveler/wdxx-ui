@@ -1,6 +1,6 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
-import { EventUpdate, EventCheck, EventExpand, EventSelect, ObjAny, EventSetVal } from "@ui/vars";
+import { EventUpdate, EventCheck, EventExpand, EventSelect, ObjAny, EventSelectData } from "@ui/vars";
 import { PropsBaseArray_Object, PropsBaseObject, PropsBaseStringN, PropsBaseBoolean, PropsTreeVal } from "@ui/props";
 export const treeProps = propsBuildS({
   data: PropsBaseArray_Object,
@@ -12,11 +12,10 @@ export const treeProps = propsBuildS({
   root: PropsBaseStringN
 })
 export const treeEmits = {
-  [EventSelect]: (data: ObjAny) => true,
+  [EventSelect]: (data: EventSelectData) => true,
   [EventExpand]: (data: ObjAny) => true,
   [EventCheck]: (data: ObjAny) => true,
-  [EventUpdate]: (data: any) => true,
-  [EventSetVal]: (data: any) => true
+  [EventUpdate]: (data: any) => true
 }
 export type TreeProps = ExtractPropTypes<typeof treeProps>
 export type TreeEmits = typeof treeEmits

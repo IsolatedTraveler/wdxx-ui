@@ -1,6 +1,6 @@
 import { TreeProps, TreeEmits } from "@ui/components/tree/src/tree";
 import { TreeVal } from "@ui/props";
-import { EventCheck, EventSelect, EventSetVal, EventUpdate, ObjAny, PropsTreeColType } from "@ui/vars";
+import { EventCheck, EventSelect, EventSelectData, EventUpdate, ObjAny, PropsTreeColType } from "@ui/vars";
 import { ComputedRef, InjectionKey, Ref, SetupContext, computed, nextTick, provide, ref, watch } from "vue";
 export interface Col {
   id: string,
@@ -81,15 +81,18 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
     , expandVal: Ref<Array<string | number>> = ref([])
     // 点击事件
     , click = (id: string | number, data: ObjAny, lx: TreeItemSelectLx, pid: Array<string | number> = []) => {
-      const obj = selectObj.value, judge = obj[id]
-      emit(EventSelect, data)
+      const obj = selectObj.value, judge = obj[id], selectEmitObj: EventSelectData = {
+        data, val: null, selected: false
+      }
       // 选中选项赋值 和选中值赋值
       if (props.multi) {
         const val = clickVal.value as Array<string | number>
         if (getVal(lx, obj, id, data)) {
           val.push(id)
+          selectEmitObj.selected = true
         } else {
           clickVal.value = val.filter(it => it != id)
+          selectEmitObj.selected = false
         }
       } else {
         clickVal.value = getVal(lx, obj, id, data, clickVal.value)
@@ -102,8 +105,15 @@ export const useProvideTree = (props: TreeProps, emit: SetupContext<TreeEmits>['
       if (expandVal.value !== pid) {
         expandVal.value = pid
       }
+      if (props.multi) {
+        selectEmitObj.val = (clickVal.value as Array<string | number>).map((id: any) => selectObj.value[id])
+      } else {
+        const v = clickVal.value as string
+        selectEmitObj.val = v ? selectObj.value[v] : null
+        selectEmitObj.selected = !!v
+      }
+      emit(EventSelect, selectEmitObj)
       emit(EventUpdate, clickVal.value)
-      emit(EventSetVal, props.multi ? (clickVal.value as Array<string | number>).map((id: any) => selectObj.value[id]) : selectObj.value[clickVal.value as any])
     }
   // 根据值初始化表格信息
   watch(() => props.modelValue || props.value, (v: any) => {

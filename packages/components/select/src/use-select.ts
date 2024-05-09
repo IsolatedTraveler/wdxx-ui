@@ -1,6 +1,7 @@
 import { useCssInit, useInjectInput, useInputMixins } from "@ui/hooks"
 import { ref, SetupContext, computed, onMounted, defineAsyncComponent } from "vue"
 import { SelectEmits, SelectProps } from "./select"
+import { EventSelect, EventSelectData } from "@ui/vars"
 export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['emit']) => {
   // 弹出层组件异步加载
   const comName = ref('zTree'), comObj: any = {
@@ -12,7 +13,7 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
       show.value = !show.value
     }
     // 相关元素定义
-    , _pop = ref<any>(), _ref = ref<HTMLButtonElement>(),_input=ref<HTMLInputElement>()
+    , _pop = ref<any>(), _ref = ref<HTMLButtonElement>(), _input = ref<HTMLInputElement>()
     // css样式
     , { _class, _style, classVal, styleVal } = useCssInit(props, 'select', { cssClass: ['size'], classAdd: ['multi'] })
     // 通用值处理方案
@@ -26,19 +27,19 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
         return ''
       }
     })
-    ,inputShow = computed(() => {
+    , inputShow = computed(() => {
       const v = val.value
       return props.multi ? !(v && v.length) : true
     })
   // 样式二次处理
   useInputMixins(props, classVal, styleVal, _ref, {})
-  function setVal(v: any) {
-    valObj.value = v
-    if (props.multi) {
-
-    } else {
+  function setVal({ data, val, selected }: EventSelectData) {
+    valObj.value = val
+    console.log(val)
+    if (!props.multi) {
       show.value = false
     }
+    emit(EventSelect, { data, selected, val })
   }
   onMounted(() => {
     _pop.value.init(_ref.value)
