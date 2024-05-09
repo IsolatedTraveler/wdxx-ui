@@ -1,7 +1,9 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
-import {  } from "@ui/props";
+import { PropsBaseAny, PropsBaseArray_Object } from "@ui/props";
 export const articleProps = propsBuildS({
+  data: PropsBaseArray_Object,
+  coms: PropsBaseAny
 })
 export const articleEmits = {
 }

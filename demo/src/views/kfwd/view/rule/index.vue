@@ -1,10 +1,9 @@
 <template>
-  <se-base-load-com :data="menu" :com="com" ly="kfwdZui" :def="menuDef" />
+  <z-article :data="menu" :coms="com"></z-article>
 </template>
 
 <script lang="ts" setup>
-import { menu, menuDef } from "./data/menu"
-import { seBaseLoadCom } from "@/components/base";
+import { menu } from "./data/menu"
 const com = import.meta.glob('./module/**/*.vue')
 defineOptions({
   name: 'kfwd-rule'

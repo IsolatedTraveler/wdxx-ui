@@ -2,5 +2,13 @@
 @use '../../vars/index.scss' as *;
 
 .z-article {
-
+  .z-article-content{
+    flex-basis: 0;
+    flex-grow: 1;
+    overflow: auto;
+    height: 100%;
+    .z-article-item{
+      min-height: 20px;
+    }
+  }
 }
