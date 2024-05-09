@@ -14,7 +14,8 @@
     "code",
     "pop",
     "scroll",
-    "upload"
+    "upload",
+    "article"
   ],
   "ywc": {
     "flex": true
@@ -81,6 +82,7 @@
     "call-kit": true,
     "table": true,
     "code": true,
-    "upload": true
+    "upload": true,
+    "article": true
   }
 }

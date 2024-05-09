@@ -13,3 +13,4 @@ export * from './code';
 export * from './pop';
 export * from './scroll';
 export * from './upload';
+export * from './article';
