@@ -2,12 +2,19 @@
 @use '../../vars/index.scss' as *;
 
 .z-article {
-  .z-article-content{
+  >.z-tree {
+    min-width: 2rem;
+  }
+
+  .z-article-content {
     flex-basis: 0;
     flex-grow: 1;
     overflow: auto;
     height: 100%;
-    .z-article-item{
+    border-left: 1px solid var(--color-border-2);
+    padding: 0 .5em;
+
+    .z-article-item {
       min-height: 20px;
     }
   }

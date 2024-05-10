@@ -1,6 +1,5 @@
 <template>
   <div ref="_ref" :class="_class" v-if="judge">
-    <h1>{{ data.mc }}</h1>
     <component class="content" v-if="comV" :is="comV"></component>
   </div>
   <div ref="_ref" :class="_class" v-else></div>
@@ -13,7 +12,7 @@ defineOptions({
 })
 const props = defineProps(articleItemProps)
 const emit = defineEmits(articleItemEmits)
-const {_ref, _class, comV, judge ,scroll,show} = useArticleItem(props, emit)
+const { _ref, _class, comV, judge, scroll, show } = useArticleItem(props, emit)
 defineExpose({
   ref: _ref,
   scroll,

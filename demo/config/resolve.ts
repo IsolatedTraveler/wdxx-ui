@@ -11,9 +11,9 @@ export const resolve = {
     '@com': path.resolve('src/components'),
     '@extend': path.resolve('src/extend'),
     '@view': path.resolve('src/views'),
-    '@base': path.resolve('src/views/base/view'),
-    '@dzph': path.resolve('src/views/dzph/view'),
-    '@demo': path.resolve('src/views/demo/view'),
-    '@yyhsglxt': path.resolve('src/views/yyhsglxt/view')
+    '@base': path.resolve('src/views/base/views'),
+    '@dzph': path.resolve('src/views/dzph/views'),
+    '@demo': path.resolve('src/views/demo/views'),
+    '@yyhsglxt': path.resolve('src/views/yyhsglxt/views')
   }
 }

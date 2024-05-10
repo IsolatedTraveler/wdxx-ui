@@ -13,7 +13,7 @@ export function getRoute(data: Routes, xtm: string, wjm: string, dq: string = 'i
   data[wjm] = {
     name,
     path: root + name,
-    component: () => import(`@view/${xtm}/view/${wjm}/${dq}.vue`)
+    component: () => import(`@view/${xtm}/views/${wjm}/${dq}.vue`)
   }
 }
 export function getXtm(to: RouteLocation): string {

@@ -15,5 +15,8 @@
     "pinia": "^2.1.7",
     "vite-plugin-inspect": "^0.8.3",
     "vue-router": "^4.3.0"
+  },
+  "dependencies": {
+    "md-editor-v3": "^4.13.5"
   }
 }

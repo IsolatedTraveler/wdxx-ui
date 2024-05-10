@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import { menu } from "./data/menu"
+import menu from "./data"
 const com = import.meta.glob('./module/**/*.vue')
 defineOptions({
   name: 'kfwd-rule'

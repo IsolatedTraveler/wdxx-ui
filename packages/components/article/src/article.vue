@@ -2,7 +2,7 @@
   <div ref="_ref" :class="_class">
     <z-tree class="left" :data="data" v-model="val" @checked="selected"></z-tree>
     <div class="z-article-content">
-      <article-item v-for="(it, i) in data" :data="it" :com="coms[it.id]" v-model="val" v-model:index="index"
+      <article-item v-for="(it, i) in data" :data="it" :com="coms[it.src]" v-model="val" v-model:index="index"
         :ref="(el) => setRef(el, i)" :disabled="judge" />
     </div>
   </div>

@@ -3,4 +3,5 @@ export interface Menu {
   mc: string
   path?: boolean
   child?: Menu[]
+  [key: string]: any
 }
