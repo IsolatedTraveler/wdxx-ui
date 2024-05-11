@@ -1,9 +1,9 @@
 <template>
   <div ref="_ref" :class="_class">
-    <z-tree class="left" :data="data" v-model="val" @checked="selected"></z-tree>
-    <div class="z-article-content">
-      <article-item v-for="(it, i) in data" :data="it" :com="coms[it.src]" v-model="val" v-model:index="index"
-        :ref="(el) => setRef(el, i)" :disabled="judge" />
+    <z-tree class="left" :data="data" :model-value="val" @checked="selected"></z-tree>
+    <div class="z-article-content" ref="_content">
+      <article-item v-for="(it, i) in data" :data="it" :com="coms[it.src]" v-model:index="index"
+        :ref="(el) => setRef(el, i)" @scroll="scroll" :disabled="diabledScroll" />
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ defineOptions({
 })
 const props = defineProps(articleProps)
 const emit = defineEmits(articleEmits)
-const { _ref, _class, val, index, data, selected, setRef, judge } = useArticle(props, emit)
+const { _ref, _class, val, index, data, selected, setRef, scroll, _content, diabledScroll } = useArticle(props, emit)
 defineExpose({
   ref: _ref
 })

@@ -1,8 +1,7 @@
 <template>
-  <div ref="_ref" :class="_class" v-if="judge">
+  <div ref="_ref" :class="_class">
     <component class="content" v-if="comV" :is="comV"></component>
   </div>
-  <div ref="_ref" :class="_class" v-else></div>
 </template>
 <script lang="ts" setup>
 import { articleItemEmits, articleItemProps } from './item'
@@ -12,11 +11,10 @@ defineOptions({
 })
 const props = defineProps(articleItemProps)
 const emit = defineEmits(articleItemEmits)
-const { _ref, _class, comV, judge, scroll, show } = useArticleItem(props, emit)
+const { _ref, _class, comV, scroll, show } = useArticleItem(props, emit)
 defineExpose({
   ref: _ref,
   scroll,
-  judge,
   show
 })
 
