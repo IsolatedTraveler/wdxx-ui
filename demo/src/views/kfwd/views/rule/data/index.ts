@@ -1,5 +1,9 @@
-import mmgz from "./mmgz";
+import naming_convention from "./naming_convention";
+import annotation from "./annotation";
+import tool from "./tool";
 
 export default [
-  ...mmgz
+  ...naming_convention,
+  ...annotation,
+  ...tool
 ]
