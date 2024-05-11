@@ -1,18 +1,18 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS } from "@ui/hooks";
 import { PropsBaseAny, PropsBaseBoolean, PropsBaseNum, PropsBaseObject, PropsBaseString } from "@ui/props";
-import { EventChange, EventUpdate, EventUpdateIndex } from "@ui/vars";
+import {  EventUpdateIndex } from "@ui/vars";
 export const articleItemProps = propsBuildS({
   data: PropsBaseObject,
   com: PropsBaseAny,
   index: PropsBaseNum,
   modelValue: PropsBaseString,
-  disabled: PropsBaseBoolean
+  disabled: PropsBaseBoolean,
+  next: PropsBaseAny,
+  height: PropsBaseNum
 })
 export const articleItemEmits = {
-  [EventUpdate]: (v: string) => true,
-  [EventUpdateIndex]: (v: number) => true,
-  [EventChange]: () => true,
+  [EventUpdateIndex]: (v: number) => true
 }
 export type ArticleItemProps = ExtractPropTypes<typeof articleItemProps>
 export type ArticleItemEmits = typeof articleItemEmits

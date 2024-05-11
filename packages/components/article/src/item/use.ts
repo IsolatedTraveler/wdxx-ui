@@ -1,49 +1,51 @@
 import { useCssInit } from "@ui/hooks"
 import { DefineComponent, onUnmounted, ref, SetupContext, shallowRef, watch } from "vue"
 import { ArticleItemEmits, ArticleItemProps } from "./item"
-import { EventUpdate, EventUpdateIndex } from "@ui/vars"
+import {  EventUpdateIndex } from "@ui/vars"
+const height = window.innerHeight
 export const useArticleItem = (props: ArticleItemProps, emit: SetupContext<ArticleItemEmits>['emit']) => {
   // 借用该参数判断当前页面是向上滚动还是向下滚动
-  var lastTop: number | undefined = undefined
+  var lastTop: number | undefined
+  // 通过该参数判断是否触发滚动改变左侧菜单
+  ,lastHeight: number | undefined
     // 该参数用来表示当前异步组件是否加载完成
     , showPromise: Promise<void>
     // 判断是否加载下一个组件 默认未加载
-    , judge = true
+    ,observer: IntersectionObserver | undefined
   const _ref = ref<HTMLDivElement>()
     , { _class } = useCssInit(props, 'article-item', { cssClass: [], classAdd: [] })
     // 异步组件加载完成后的组件值
     , comV = shallowRef()
     // 观察组件是否进入视图的扩展参数
-    , options: IntersectionObserverInit = { rootMargin: '300px 0px 300px 0px', threshold: [0, 0.3, 0.8, 1] }
-
-    , setVal = (add: number = 1) => {
+    , options: IntersectionObserverInit = { rootMargin: `0px 0px ${height}px 0px` }
+    , setVal = ({height, lastHeight, judge, add}:any) => {
       if (props.disabled) return
-      emit(EventUpdate, props.data.id)
+      if (judge) {
+        if (props.index + add == props.data._i) {
+          emit(EventUpdateIndex, props.index + add)
+        }
+      } else if(props.index === props.data._i && lastHeight) {
+        if (lastHeight > height) {
+          emit(EventUpdateIndex, props.index + add)
+        }
+      }
     }
     // 观察组件是否进入视图的回调函数
     , callback: IntersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach(entry => {
-        const { intersectionRatio, intersectionRect: { top } } = entry
-        if (intersectionRatio) {
-          if (lastTop === undefined) {
-            judge && emit(EventUpdateIndex, Number(props.data._i) + 1)
-            judge = false
-          } else if (lastTop > top) {
-            // 向下滚动
-            props.data.mc == '命名规范' && console.log(props.data.mc, intersectionRatio)
-            judge && emit(EventUpdateIndex, Number(props.data._i) + 1)
-            judge = false
-            if (intersectionRatio > 0.8) {
-              setVal(1)
-            }
-          } else if (lastTop < top) {
-            // 向上滚动
-            if (intersectionRatio == 1) {
-              setVal(-1)
-            }
+        const { intersectionRatio, boundingClientRect: { top }, intersectionRect:{height} } = entry
+        if (intersectionRatio && lastTop === undefined) {
+          props.next(props.data._i)
+        } else if (lastTop !== undefined) {
+          if (lastTop > top) {
+            props.next(props.data._i)
+            setVal({height, lastHeight, add: 1, judge: intersectionRatio==1})
+          } else {
+            setVal({height, lastHeight, add: -1, judge: intersectionRatio==1})
           }
-          lastTop = top
         }
+        lastTop = top
+        lastHeight = height
       })
     },
     // 加载异步组件
@@ -60,13 +62,15 @@ export const useArticleItem = (props: ArticleItemProps, emit: SetupContext<Artic
           reject()
         }
       })
-    },
-    observer: IntersectionObserver = new IntersectionObserver(callback, options)
+    }
     , show = (judge = true) => {
       if (!judge) return
       if (showPromise) return showPromise
       return showPromise = loadComponent().then(() => {
-        observer.observe(_ref.value as HTMLElement)
+        const el = _ref.value as HTMLDivElement, bl = Math.min(props.height / el.scrollHeight,0.25)
+        options.threshold=[0, bl, bl*2, bl*3,1]
+        observer = new IntersectionObserver(callback, options)
+        observer.observe(el)
       })
     },
     stopWatch = watch(() => props.index == props.data._i, show, { immediate: true })
@@ -77,7 +81,7 @@ export const useArticleItem = (props: ArticleItemProps, emit: SetupContext<Artic
       })
     }
   onUnmounted(() => {
-    observer.disconnect()
+    observer && observer.disconnect()
   })
   return {
     _ref,

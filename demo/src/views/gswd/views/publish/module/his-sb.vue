@@ -1,6 +1,6 @@
 <template>
   <div class="his-sb">
-    <z-form v-model="formData" flex="row" wrap labelSize="6">
+    <z-form v-model="formData" flex="row" wrap :labelSize="6">
       <z-form-item label="发版地区：" basis="25%">
         <z-select name="fbdq" :data="fbdq" readonly></z-select>
       </z-form-item>

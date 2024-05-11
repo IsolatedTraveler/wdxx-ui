@@ -1,6 +1,6 @@
 <template>
   <div class="git-commit">
-    <z-form v-model="formData" flex="row" wrap labelSize="5">
+    <z-form v-model="formData" flex="row" wrap :labelSize="5">
       <z-form-item label="类型：" basis="25%">
         <z-select name="type" :data="Lx"></z-select>
       </z-form-item>

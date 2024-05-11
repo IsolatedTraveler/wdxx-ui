@@ -19,7 +19,7 @@
       <z-btn state="success" @click="getText">生成代码</z-btn>
     </z-form>
     <seMarkdown data="**参数注释**"></seMarkdown>
-    <z-form v-model="annotationData" flex="col" label-size="8">
+    <z-form v-model="annotationData" flex="col" :label-size="8">
       <z-form-item label="return：" name="return">
         <z-input name="type" placeholder="返回结果类型"></z-input>
         <z-input name="desc" placeholder="返回结果描述"></z-input>

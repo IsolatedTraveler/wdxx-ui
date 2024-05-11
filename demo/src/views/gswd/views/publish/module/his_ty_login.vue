@@ -1,6 +1,6 @@
 <template>
   <div class="his_ty_login">
-    <z-form v-model="formData" flex="row" wrap labelSize="6">
+    <z-form v-model="formData" flex="row" wrap :labelSize="6">
       <z-form-item label="重试次数" basis="25%">
         <z-input name="cwsx"></z-input>
         分钟

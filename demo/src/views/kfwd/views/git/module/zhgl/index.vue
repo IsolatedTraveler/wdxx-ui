@@ -1,6 +1,6 @@
 <template>
   <div class="git-zhgl">
-    <z-form v-model="formData" flex="row" wrap labelSize="5">
+    <z-form v-model="formData" flex="row" wrap :labelSize="5">
       <z-form-item label="来源：" basis="25%">
         <z-select name="type" :data="Lx" @selected="selectType"></z-select>
       </z-form-item>
