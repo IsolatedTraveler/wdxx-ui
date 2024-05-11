@@ -2,4 +2,4 @@ import seMarkdown from './index.vue'
 export {
   seMarkdown
 }
-export * from './fun'
+export * from '@/api/tyfw/doc'

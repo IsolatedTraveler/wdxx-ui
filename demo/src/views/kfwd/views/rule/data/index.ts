@@ -3,7 +3,7 @@ import annotation from "./annotation";
 import tool from "./tool";
 
 export default [
+  ...tool,
   ...naming_convention,
-  ...annotation,
-  ...tool
+  ...annotation
 ]
