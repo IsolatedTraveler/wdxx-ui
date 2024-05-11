@@ -5,7 +5,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { getTableCol } from '@/views/gswd/view/publish/fun';
+import { getTableCol } from '@/views/gswd/views/publish/fun';
 import { ref } from 'vue';
 
 defineOptions({

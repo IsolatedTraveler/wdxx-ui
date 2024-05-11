@@ -1,5 +1,5 @@
 <template>
-  <div class="annotation">
+  <div class="tool-type">
     <seMarkdown :data="content"></seMarkdown>
     <seMarkdown data="**基础信息**"></seMarkdown>
     <z-form v-model="formData" flex="row" wrap>
@@ -27,12 +27,12 @@ import { seMarkdown } from "@/components/base";
 import content from './data'
 import useType from './use'
 defineOptions({
-  name: 'v-annotation'
+  name: 'tool-type'
 })
 const { formData, annotationData, annotationName, text } = useType()
 </script>
 <style lang="scss" scoped>
-.annotation {
+.tool-type {
   flex-basis: 0;
   flex-grow: 1;
 }

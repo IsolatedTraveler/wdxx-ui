@@ -17,6 +17,11 @@ export function useCommit() {
     const { type, desc, detail, gn } = formData.value, [code, codeJxz] = getCode(type, gn, desc, detail)
     return [{
       code: [
+        code
+      ].join('\n'),
+      lx: 'bash'
+    }, {
+      code: [
         '# 进行中',
         'git add .',
         'git commit -m ' + codeJxz

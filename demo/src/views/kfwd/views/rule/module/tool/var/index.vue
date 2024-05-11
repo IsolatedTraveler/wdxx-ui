@@ -1,5 +1,5 @@
 <template>
-  <div class="tool-interface">
+  <div class="tool-var">
     <seMarkdown :data="content"></seMarkdown>
   </div>
 </template>
@@ -8,12 +8,12 @@ import { seMarkdown } from "@/components/base";
 import content from './data'
 // import useType from './use'
 defineOptions({
-  name: 'tool-interface'
+  name: 'tool-var'
 })
 // const { formData, annotationData, annotationName, text } = useType()
 </script>
 <style lang="scss" scoped>
-.tool-interface {
+.tool-var {
   flex-basis: 0;
   flex-grow: 1;
 }
