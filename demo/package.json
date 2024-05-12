@@ -17,6 +17,7 @@
     "vue-router": "^4.3.0"
   },
   "dependencies": {
-    "md-editor-v3": "^4.13.5"
+    "md-editor-v3": "^4.13.5",
+    "xlsx": "^0.18.5"
   }
 }

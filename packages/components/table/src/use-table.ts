@@ -24,9 +24,7 @@ export const useTable = (props: TableProps, emit: SetupContext<TableEmits>['emit
     })
   }
   function setStyle() {
-    console.time()
     judgeExePro().then(({ ref, el, keys }) => {
-      console.timeEnd()
       left = el.scrollLeft, top = el.scrollTop
       claerFixed(keys, el, ref)
       return judgeExePro()

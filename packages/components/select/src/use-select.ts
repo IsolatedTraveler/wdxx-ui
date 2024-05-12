@@ -35,7 +35,6 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
   useInputMixins(props, classVal, styleVal, _ref, {})
   function setVal({ data, val, selected }: EventSelectData) {
     valObj.value = val
-    console.log(val)
     if (!props.multi) {
       show.value = false
     }

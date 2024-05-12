@@ -1,5 +1,6 @@
 <template>
-  <component v-if="col.mc" :is="col.type" v-model="data[col.id]" v-model:mc="data[col.mc]" :="col.props" @click="">
+  <slot v-if="col.type=='xh'">{{ index + 1 }}</slot>
+  <component v-else-if="col.mc" :is="col.type" v-model="data[col.id]" v-model:mc="data[col.mc]" :="col.props" @click="">
   </component>
   <component v-else :is="col.type" v-model="data[col.id]" :="col.props" @click=""></component>
 </template>

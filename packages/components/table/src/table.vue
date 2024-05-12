@@ -1,5 +1,5 @@
 <template>
-  <div col :class="_class">
+  <div :class="_class">
     <table ref="_ref" v-show="keys.length">
       <thead>
         <tr v-for="(tr, i) in trs" :key="i">
@@ -16,12 +16,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for=" (item) in data">
+        <tr v-for=" (item, index) in data">
           <td></td>
           <td v-for="td in keys" :style="[td.ceilStyle, td.tdStyle, td._thTdStyle, td._tdStyle]" :class="td._colClass">
             <div :class="td.class">
               <slot v-if="td.type == 'temp'" :name="td.id" :data="item"></slot>
-              <td-ceil v-else-if="td.type" :col="td" :data="item"></td-ceil>
+              <td-ceil v-else-if="td.type" :col="td" :data="item" :index="index"></td-ceil>
               <slot v-else :data="item">{{ item[td.id] }}</slot>
             </div>
           </td>

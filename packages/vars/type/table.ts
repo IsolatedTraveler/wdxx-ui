@@ -1,5 +1,5 @@
 import { ObjAny } from "./base"
-export declare type ThType = 'check' | 'radio' | 'temp' | ''
+export declare type ThType = 'check' | 'radio' | 'temp' | 'xh' | ''
 type ThColFixed = 'left' | 'right' | boolean
 export declare type ThColFixedV = 'left' | 'right'
 export interface SelfThCol {
