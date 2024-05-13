@@ -23,6 +23,10 @@ export const PropsBaseStringN = {
   type: [String, Number],
   default: ''
 }
+export const PropsBaseStrBoolean = {
+  type: [String, Boolean],
+  default: false
+}
 export const PropsBaseStringNR = {
   type: [String, Number],
   required: true,

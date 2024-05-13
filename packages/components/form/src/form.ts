@@ -1,6 +1,7 @@
 import { ExtractPropTypes } from "vue";
 import { propsBuildS, propsFormItemMixins } from "@ui/hooks";
 import { PropsBaseNum, PropsBaseObject, PropsBasePositiveInteger, PropsBaseSize } from "@ui/props";
+import { EventUpdate } from "@ui/vars";
 export const formProps = propsBuildS({
   size: PropsBaseSize,
   tabIndex: PropsBasePositiveInteger,
@@ -10,6 +11,7 @@ export const formProps = propsBuildS({
   ...propsFormItemMixins
 })
 export const formEmits = {
+  [EventUpdate]: (v: any) => true
 }
 export type FormProps = ExtractPropTypes<typeof formProps>
 export type FormEmits = typeof formEmits

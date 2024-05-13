@@ -1,30 +1,40 @@
-import { SetupContext, inject, ref, watch, computed } from "vue";
+import { SetupContext, inject, computed, ref, watch } from "vue";
 import { provideFormId } from "@ui/vars/hooks";
-import { EventUpdate } from "@ui/vars";
 import { InputEmits, InputProps, SelectProps } from "@ui/components";
+import { EventUpdate } from "@ui/vars";
 export const useInjectInput = (props: InputProps | SelectProps, emit: SetupContext<InputEmits>['emit']) => {
-  const { value = { value: {} }, prop } = inject(provideFormId, {}),
-    val = ref<any>(''),
-    v = computed(() => {
-      return value.value[props.name] || ''
+  const { value, prop, setVal } = inject(provideFormId, {})
+    // 获取从父元素继承的值
+    , inheritedValue = computed(() => {
+      return value?.[props.name]
     })
-  watch(() => ({ v: props.modelValue || props.value, v1: v.value }), ({ v, v1 }) => {
-    val.value = v || v1 || props.def
-  }, { immediate: true })
-  watch(() => ({ v: val.value, key: props.name }), ({ v, key }) => {
-    emit(EventUpdate, v)
-    if (key || key === 0) {
-      value.value[key] = v
+    , val = computed(() => props.modelValue || props.value || inheritedValue.value)
+    , currentVal = ref(props.def || val.value)
+  // 继承值发生改变触发修改组件的值
+  watch(() => val.value, (v) => {
+    currentVal.value = v
+  })
+  // 监听组件key值改变，通过key值将组件值写入父元素
+  watch(() => props.name, (v) => {
+    if (props.name) {
+      setVal?.(v, currentVal.value)
     }
   }, { immediate: true })
+  // 监听组件值改变，修改
+  watch(() => currentVal.value, (v) => {
+    if (props.name) {
+      setVal?.(props.name, currentVal.value)
+    }
+    emit(EventUpdate, JSON.parse(JSON.stringify(v || '')))
+  }, { immediate: true })
   return {
-    val,
-    prop:computed(()=> {
+    val: currentVal,
+    prop: computed(() => {
       const v = prop?.value
       return {
         disabled: props.disabled === undefined ? v?.disabled : props.disabled,
         readonly: props.readonly === undefined ? v?.readonly : props.readonly,
-        tabIndex:0
+        tabIndex: 0
       }
     })
   }

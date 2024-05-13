@@ -4,3 +4,6 @@ export type { CwglZddbLx } from "../../use.arr";
 export type CwglZddbMbs = {
   [key in CwglZddbLx]: CwglTablCol[];
 };
+export type CwglZddbSheets = {
+  [key in CwglZddbLx]: string[];
+};

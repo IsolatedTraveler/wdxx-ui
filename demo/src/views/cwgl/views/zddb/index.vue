@@ -13,11 +13,11 @@
     <h1>过滤条件</h1>
     <z-form v-model="glData" flex="row" wrap :label-size="6">
       <z-form-item v-for="it in cols" :label="it.title" basis="25%">
-        <z-select v-if="glArr[it.id]" :data="glArr[it.id]" :name="it.id"></z-select>
+        <z-select v-if="glArr[it.id]" :data="glArr[it.id]" :name="it.id" multi></z-select>
         <z-input v-else :name="it.id"></z-input>
       </z-form-item>
     </z-form>
-    <z-table v-if="cols.length" :cols="cols" :data="data"></z-table>
+    <z-table ref="_table" v-if="cols.length" :cols="cols" :data="data"></z-table>
   </z-flex>
 </template>
 <script lang="ts" setup>
@@ -26,7 +26,7 @@ import { mb, glArr } from './use.arr';
 defineOptions({
   name: 'cwgl-zddb'
 })
-const { _ref, formData,glData, excelImport,excelExport, cols, data } = seUse()
+const { _ref, formData, glData, excelImport, excelExport, cols, data, _table } = seUse()
 defineExpose({
   _ref
 })
@@ -34,10 +34,12 @@ defineExpose({
 <style lang="scss" scoped>
 .cwgl-zddb {
   width: 100%;
-  .z-form{
+
+  .z-form {
     width: 100%;
   }
-  .z-table{
+
+  .z-table {
     flex-grow: 1;
     flex-basis: 0;
     width: 100%;

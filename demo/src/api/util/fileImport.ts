@@ -9,7 +9,7 @@ fileElem.onchange = function ({ target }: Event) {
   const files = (target as HTMLInputElement).files;
   if (files && files.length) {
     const reader = new FileReader();
-    reader.onload = function({ target }: ProgressEvent<FileReader>) {
+    reader.onload = function ({ target }: ProgressEvent<FileReader>) {
       fileResolve(target?.result as ArrayBuffer)
     };
     reader.onerror = (error) => {

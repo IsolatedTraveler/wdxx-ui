@@ -28,13 +28,13 @@ function formatTreeData(
   root: string | number = '') {
   var tData: Array<ObjAny> = [], obj: ObjAny = {}
   data.filter(it => {
-    var idVal = it[id] || ''
+    var idVal = it[id]
     obj[idVal] = it
     it[child] = it[child] || []
     if (idVal === root) {
       tData.push(it)
     } else {
-      var pIdVal = it[pId] || '', pItem = obj[pIdVal]
+      var pIdVal = it[pId], pItem = obj[pIdVal]
       if (pItem) {
         pItem[child].push(it)
       } else {
@@ -42,7 +42,7 @@ function formatTreeData(
       }
     }
   }).forEach(it => {
-    var pIdVal = it[pId] || '', pItem = obj[pIdVal]
+    var pIdVal = it[pId], pItem = obj[pIdVal]
     if (pItem) {
       pItem[child].push(it)
     } else {

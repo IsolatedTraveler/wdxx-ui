@@ -1,17 +1,18 @@
 import { PropsBaseSizeV } from "../props"
-import { ComputedRef, InjectionKey, Ref } from "vue";
+import { ComputedRef, InjectionKey } from "vue";
 
 export interface ProvideFormProp {
-  disabled: boolean | undefined
-  readonly: boolean | undefined
-  size?: PropsBaseSizeV | undefined
-  tabIndex?: number | undefined
+  disabled?: boolean
+  readonly?: boolean
+  size?: PropsBaseSizeV
+  tabIndex?: number
 }
 export interface ProvideForm {
   prop?: ComputedRef<ProvideFormProp>
   labelSize?: ComputedRef<string | number | undefined>
-  value?: Ref<any>
-  submit?: (() => void) | undefined
-  clear?: (() => void) | undefined
+  setVal?: (key: string, v: any) => void
+  value?: any
+  submit?: (() => void)
+  clear?: (() => void)
 }
 export const provideFormId: InjectionKey<ProvideForm> = Symbol('form')

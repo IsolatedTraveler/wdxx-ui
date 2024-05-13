@@ -18,7 +18,7 @@ export const useSelect = (props: SelectProps, emit: SetupContext<SelectEmits>['e
     , { _class, _style, classVal, styleVal } = useCssInit(props, 'select', { cssClass: ['size'], classAdd: ['multi'] })
     // 通用值处理方案
     , { val, prop } = useInjectInput(props, emit)
-    , valObj = ref<Array<any>>([])
+    , valObj = ref<any[]>([])
     , showVal = computed(() => {
       const obj: any = valObj.value
       if (obj) {

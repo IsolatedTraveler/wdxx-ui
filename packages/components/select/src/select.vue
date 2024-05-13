@@ -6,7 +6,9 @@
     <input ref="_input" v-show="inputShow" autocomplete="off" :="prop" :placeholder="$props.placeholder"
       @blur="show = false" @click.stop="showPop" :value="showVal">
     <z-pop ref="_pop" :show="show" @hide="show = false" @mousedown.prevent="">
-      <component :is="com" :data="data" v-model="val" @selected="setVal" :alias="{ id: valId, mc: showId }"></component>
+      <component :is="com" :multi="multi" :data="data" v-model="val" @selected="setVal"
+        :alias="{ id: valId, mc: showId }">
+      </component>
     </z-pop>
   </div>
 </template>

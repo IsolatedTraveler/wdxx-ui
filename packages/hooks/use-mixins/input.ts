@@ -1,11 +1,11 @@
-import { PropsBaseAny, PropsBaseString, PropsBaseStringN, PropsInputName } from "@ui/props";
+import { PropsBaseAny, PropsBaseString, PropsBaseStringN } from "@ui/props";
 import { propsReadonlyMixins, useReadonlyMixins } from './readonly'
 import { propsFlexMixins, useFlexMixins } from './flex'
 import { useCssName } from "../use-css";
 import { Ref } from "vue";
 import { ObjStr } from "@ui/vars";
 export const propsFormItemMixins = {
-  name: PropsInputName,
+  name: PropsBaseString,
   value: PropsBaseAny,
   modelValue: PropsBaseAny,
   ...propsReadonlyMixins,
