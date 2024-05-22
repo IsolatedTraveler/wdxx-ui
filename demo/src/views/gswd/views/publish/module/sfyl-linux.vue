@@ -1,5 +1,6 @@
 <template>
   <div class="sfyl-linux">
+    <z-code v-for="(it, i) in code" :key="i" :data="it.code" :type="it.lx"></z-code>
   </div>
 </template>
 <script lang="ts" setup>
@@ -8,7 +9,7 @@ defineOptions({
 })
 const code = [
   {
-    lx: 'bash', cdoe: [
+    lx: 'bash', code: [
       '# 防火墙打开特定端口',
       'firewall-cmd --permanent --add-port=8080/tcp',
       'firewall-cmd --reload'

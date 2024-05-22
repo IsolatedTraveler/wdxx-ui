@@ -3,5 +3,6 @@ export default {
     { id: 'his_ty_third', mc: '第三方插件', path: true }
     , { id: 'his_ty_login', mc: '登录校验', path: true }
     , { id: 'his_ty_xtcs', mc: '系统参数', path: true }
+    , { id: 'his_ty_dzfp', mc: '电子发票', path: true }
   ]
 }
