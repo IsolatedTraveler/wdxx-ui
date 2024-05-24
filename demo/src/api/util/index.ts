@@ -1,3 +1,4 @@
+export * from './date'
 export * from './fileImport'
 export * from './lowercaseFirst'
 export * from './uppercaseFirst'

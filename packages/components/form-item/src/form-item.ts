@@ -1,8 +1,9 @@
 import { ExtractPropTypes } from "vue";
-import { PropsBaseBoolean, PropsBaseNum, PropsBaseStringN } from "@ui/props";
+import { PropsBaseBoolean, PropsBaseNum, PropsBaseSize, PropsBaseStringN } from "@ui/props";
 import { propsBuildS, propsFormItemMixins } from "@ui/hooks";
 import { EventUpdate } from "@ui/vars";
 export const formItemProps = propsBuildS({
+  size: PropsBaseSize,
   labelSize: PropsBaseNum,
   label: PropsBaseStringN,
   isArr: PropsBaseBoolean,

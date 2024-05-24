@@ -6,5 +6,7 @@
 
   input {
     flex-grow: 1;
+    padding: map-get($size, pd, 'md');
+    box-sizing: border-box;
   }
 }

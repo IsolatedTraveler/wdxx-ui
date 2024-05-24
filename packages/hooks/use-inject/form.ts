@@ -51,7 +51,7 @@ export const useInjectForm = (props: FormProps, emit: SetupContext<FormEmits>['e
       return {
         disabled: props.disabled || disabled,
         readonly: props.readonly || readonly,
-        size,
+        size: size || props.size,
         tabIndex: (tabIndex || 0) * 100 + ((props.tabIndex as number) || 0),
       }
     }),

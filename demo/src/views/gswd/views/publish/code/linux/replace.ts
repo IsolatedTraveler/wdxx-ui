@@ -1,5 +1,5 @@
 function dealStr(str: string) {
-  return (str || "").replace(/\//g, '\\/')
+  return (str || "").replace(/\\/g, '\\\\').replace(/\//g, '\\/')
 }
 export function fileContentRepalce(file: string, reg: string, rep: string) {
   return `sed -i 's/${dealStr(reg)}/${dealStr(rep)}/g' ${file}`

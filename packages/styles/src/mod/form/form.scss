@@ -1,20 +1,11 @@
 @use 'sass:map';
 @use '../../vars/index.scss' as *;
-$form-def--style: (
-  line-height:2em
-);
 $form-def--class: (
 );
 $form-def--attr: (
 );
-$form-def-input--style: (
-  height: 2em
-);
-$form--childEl: (
-  input:(style: $form-def-input--style)
-);
 $form--class: (
-  def: (style: $form-def--style, child: (class: $form-def--class, attr: $form-def--attr))
+  def: (child: (class: $form-def--class, attr: $form-def--attr))
 );
 $form--attr: (
 );
@@ -24,5 +15,4 @@ $style: (
   class:$form--class,
   attr:$form--attr,
   style:$form--style,
-  childEl:$form--childEl
 );

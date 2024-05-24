@@ -9,7 +9,8 @@ export function useJtphisSb() {
       dbPwd: 'healthcloud',
       fwlj: 'http://192.168.0.242:7080/jtphis/',
       bjip: '192.168.0.242',
-      redis: '192.168.0.242'
+      redis: '192.168.0.242',
+      staticFile: '/home/jt-mis/static-resource/htmldata/'
     }), code = computed(() => {
       var obj = formData.value
       return [
@@ -24,6 +25,7 @@ export function useJtphisSb() {
               , { reg: '192.168.0.242', rep: obj.redis }
             ])
             , linux.fileContentRepalce(fileSite + 'config.txt', '192.168.0.242', obj.bjip)
+            , linux.fileContentRepalce(fileSite + 'parameterConfig.properties', 'f\\:/softwear/apache-tomcat-7.0.64/webapps/htmldata/', obj.staticFile)
           ].join('\n')
         }, {
           lx: 'bash',
