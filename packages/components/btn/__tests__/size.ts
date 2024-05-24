@@ -2,7 +2,7 @@ import { it, describe } from 'vitest'
 import { propsBaseSize } from '@ui/vars';
 import { comBaseClass } from './base';
 export const defSlot = '按钮'
-const title = 'z-btn size'
+const title = 'z-btn 大小测试'
 
 export const size = function () {
   describe(title, () => {

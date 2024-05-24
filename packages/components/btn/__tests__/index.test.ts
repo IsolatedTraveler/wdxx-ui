@@ -5,11 +5,9 @@ import { shape } from './shape';
 import { radius } from './radius';
 import { size } from './size';
 describe('z-btn', () => {
-  describe('z-btn test', () => {
-    it('z-btn test class', () => comBaseClass())
-    it('z-btn test overflow', () => comBaseStyle({}, 'overflow: hidden;'))
-    it('z-btn test flex-basis', () => comBaseStyle({}, 'flex-basis: auto;'))
-    it('z-btn test flex-grow', () => comBaseStyle({}, 'flex-grow: 0;'))
+  describe('z-btn 基础测试', () => {
+    it('z-btn 测试默认类样式', () => comBaseClass())
+    it('z-btn 测试默认行内样式', () => comBaseStyle())
   })
   state()
   shape()

@@ -2,7 +2,7 @@ import { it, describe } from 'vitest'
 import { propsBaseRadius } from '@ui/vars';
 import { comBaseClass, comBaseStyle } from './base';
 export const defSlot = '按钮'
-const title = 'z-btn radius'
+const title = 'z-btn 变角类样式测试'
 
 export const radius = function () {
   describe(title, () => {
