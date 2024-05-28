@@ -9,10 +9,11 @@ export interface ProvideFormProp {
 }
 export interface ProvideForm {
   prop?: ComputedRef<ProvideFormProp>
-  labelSize?: ComputedRef<string | number | undefined>
-  setVal?: (key: string, v: any) => void
+  setVal?: (key: string, v?: any) => void
   value?: any
+  pValue?: any,
   submit?: (() => void)
   clear?: (() => void)
+  change?: ((ly: string) => void)
 }
 export const provideFormId: InjectionKey<ProvideForm> = Symbol('form')

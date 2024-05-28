@@ -3,30 +3,23 @@ import { provideFormId } from "@ui/vars/hooks";
 import { InputEmits, InputProps, SelectProps } from "@ui/components";
 import { EventUpdate } from "@ui/vars";
 export const useInjectInput = (props: InputProps | SelectProps, emit: SetupContext<InputEmits>['emit']) => {
-  const { value, prop, setVal } = inject(provideFormId, {})
-    // 获取从父元素继承的值
-    , inheritedValue = computed(() => {
-      return value?.[props.name]
-    })
-    , val = computed(() => props.modelValue || props.value || inheritedValue.value)
+  const { value, prop, setVal, pValue, change } = inject(provideFormId, {})
+    , val = computed(() => props.modelValue || props.value || value[props.name] === undefined ? pValue[props.name] : value[props.name])
     , currentVal = ref(props.def || val.value)
   // 继承值发生改变触发修改组件的值
   watch(() => val.value, (v) => {
     currentVal.value = v
   })
   // 监听组件key值改变，通过key值将组件值写入父元素
-  watch(() => props.name, (v) => {
-    if (props.name) {
-      setVal?.(v, currentVal.value)
+  watch(() => ({ key: props.name, v: currentVal.value }), ({ key, v }, o) => {
+    if (key && setVal) {
+      setVal(key, v)
     }
-  }, { immediate: true })
-  // 监听组件值改变，修改
-  watch(() => currentVal.value, (v) => {
-    if (props.name) {
-      setVal?.(props.name, currentVal.value)
+    if (v !== o?.v) {
+      change?.(props.name)
+      emit(EventUpdate, JSON.parse(JSON.stringify(v || '')))
     }
-    emit(EventUpdate, JSON.parse(JSON.stringify(v || '')))
-  }, { immediate: true })
+  }, { immediate: true, deep: true })
   return {
     val: currentVal,
     prop: computed(() => {

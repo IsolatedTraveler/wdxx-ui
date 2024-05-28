@@ -7,14 +7,17 @@
       <z-form-item label="描述：" basis="25%">
         <z-input name="ms"></z-input>
       </z-form-item>
+      <z-form-item label="发版地区：" basis="25%">
+        <z-select name="fbdq" :data="fbdq" :multi="true"></z-select>
+      </z-form-item>
       <z-btn state="primary" left="1em" @click="init">初始化</z-btn>
     </z-form>
     <z-code :data="code" type="bash"></z-code>
   </div>
 </template>
 <script lang="ts" setup>
+import { fbdq } from '../../data';
 import useBBgx from './use'
-import { fbdq } from "../../data";
 defineOptions({
   name: 'publish-bbgx-init'
 })

@@ -5,7 +5,8 @@ import { computed, ref } from "vue"
 export default function () {
   const formData = ref({
     bbh: `v1.0.${format(new Date(), 'yyyyMMdd')}.01`,
-    ms: ''
+    ms: '',
+    fbdq: []
   })
   // 版本信息数据
   const code = computed(() => {
@@ -18,7 +19,15 @@ export default function () {
   })
   function init() {
     const obj = formData.value
-    magicPost('242/BB01/m-bbxx', obj)
+    magicPost('/242/magic/BB01/m-bbxx', obj).then((e) => {
+      if (e.code === 1) {
+
+      } else {
+        throw e.message
+      }
+    }).catch((e) => {
+      alert(e.message)
+    })
   }
   return { code, formData, init }
 }
