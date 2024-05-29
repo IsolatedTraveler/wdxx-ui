@@ -8,7 +8,6 @@ export const PropsBaseBoolean = {
 }
 export const PropsBaseString = {
   type: String,
-  default: ''
 }
 export const PropsBaseNum = {
   type: Number,

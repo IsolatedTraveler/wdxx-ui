@@ -7,5 +7,5 @@ export const treeItemProps = propsBuildS({
   childIndex: PropsBaseNumR,
   pid: PropsBaseArrayStringN,
   isExpand: PropsBaseBoolean
-})
+}, {}, {data: true})
 export type TreeItemProps = ExtractPropTypes<typeof treeItemProps>

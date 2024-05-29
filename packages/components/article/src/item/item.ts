@@ -10,7 +10,7 @@ export const articleItemProps = propsBuildS({
   disabled: PropsBaseBoolean,
   next: PropsBaseAny,
   height: PropsBaseNum
-})
+},{},{data:true})
 export const articleItemEmits = {
   [EventUpdateIndex]: (v: number) => true
 }
