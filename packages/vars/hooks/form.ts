@@ -6,6 +6,7 @@ export interface ProvideFormProp {
   readonly?: boolean
   size?: PropsBaseSizeV
   tabIndex?: number
+  labelSize?: number
 }
 export interface ProvideForm {
   prop?: ComputedRef<ProvideFormProp>

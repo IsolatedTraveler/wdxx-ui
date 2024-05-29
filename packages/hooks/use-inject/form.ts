@@ -57,12 +57,13 @@ export const useInjectForm = (props: FormProps, emit: SetupContext<FormEmits>['e
     value: watchCurrentVal,
     prop: computed(() => {
       const val = prop?.value || ({} as any)
-      const { disabled, readonly, size, tabIndex } = val
+      const { disabled, readonly, size, tabIndex, labelSize } = val
       return {
-        disabled: props.disabled || disabled,
-        readonly: props.readonly || readonly,
-        size: size || props.size,
+        disabled: props.disabled === undefined ? disabled : props.disabled,
+        readonly: props.readonly === undefined ? readonly : props.readonly,
+        size: props.size === undefined ? size : props.size,
         tabIndex: (tabIndex || 0) * 100 + ((props.tabIndex as number) || 0),
+        labelSize: props.labelSize === undefined ? labelSize : props.labelSize
       }
     })
   }

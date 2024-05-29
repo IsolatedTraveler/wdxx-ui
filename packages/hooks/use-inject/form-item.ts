@@ -57,7 +57,17 @@ export const useInjectFormItem = (props: FormItemProps, emit: SetupContext<FormI
     setVal: setVal1,
     value: watchCurrentVal,
     pValue: value,
-    prop,
+    prop:computed(() => {
+      const val = prop?.value || ({} as any)
+      const { disabled, readonly, size, tabIndex, labelSize } = val
+      return {
+        disabled: props.disabled === undefined ? disabled : props.disabled,
+        readonly: props.readonly === undefined ? readonly : props.readonly,
+        size: props.size === undefined ? size : props.size,
+        tabIndex,
+        labelSize: props.labelSize === undefined ? labelSize : props.labelSize
+      }
+    }),
     change: chageEvent
   }
 }

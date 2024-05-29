@@ -34,7 +34,7 @@ function dscq(lx: string) {
     }, {
       lx: 'bash',
       code: [
-        `0 3 * * * /etc/systemd/system/clear.log.sh`
+        `0 12 * * * /etc/systemd/system/clear.log.sh`
       ].join('\n')
     }
   ]

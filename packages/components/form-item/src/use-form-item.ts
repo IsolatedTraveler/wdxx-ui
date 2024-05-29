@@ -5,11 +5,11 @@ export const useFormItem = (props: FormItemProps, emit: SetupContext<FormItemEmi
   const _ref = ref<HTMLButtonElement>()
   const { _class, _style, classVal, styleVal, judgeObjClassName } = useCssInit(props, 'form-item')
   useFlexMixins(props, classVal, styleVal, _ref, judgeObjClassName)
-  const { labelSize } = useProvideFormItem(props, emit)
+  const { prop } = useProvideFormItem(props, emit)
   return {
     _ref,
     _class,
     _style,
-    labelSize
+    prop
   }
 }
