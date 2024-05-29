@@ -2,7 +2,7 @@ import { ref } from "vue"
 import { dealSqlData, getPrody, getTableCol } from "../fun"
 
 export function usePrody() {
-  const formData = ref({ bb: '', where: `mkbh='080901' and ywdm = 1` }), code = ref(['']), talbe = 'prody', primary = ['MKBH', 'YWDM']
+  const formData = ref({ fwq: '242', bb: '', where: `mkbh='080901' and ywdm = 1` }), code = ref(['']), talbe = 'prody', primary = ['MKBH', 'YWDM']
   function getCode() {
     var obj = formData.value, arr = obj.bb.split('.'), bb = '', tj = obj.where
     if (tj) {
@@ -10,8 +10,8 @@ export function usePrody() {
         bb = arr[2].substring(2) + arr[3]
       }
       Promise.all([
-        getTableCol(talbe),
-        getPrody(tj)
+        getTableCol(talbe, obj.fwq),
+        getPrody(tj, obj.fwq)
       ]).then(([col, { data, ccgc }]) => {
         col = col.filter(({ col }) => col != 'URL' && col != 'ROW_ID')
         data.forEach((it: any) => {

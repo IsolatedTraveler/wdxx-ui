@@ -1,6 +1,9 @@
 <template>
   <div class="jtphis">
     <z-form flex="row" wrap v-model="formData">
+      <z-form-item label="服务器：" basis="25%">
+        <z-select name="fwq" :data="fwq"></z-select>
+      </z-form-item>
       <z-form-item label="版本：" basis="25%">
         <z-input name="bb"></z-input>
       </z-form-item>
@@ -13,6 +16,7 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { fwq } from '../data';
 import { usePrody } from '../moduleTs';
 defineOptions({
   name: 'prody'

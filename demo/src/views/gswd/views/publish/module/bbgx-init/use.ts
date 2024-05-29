@@ -20,12 +20,14 @@ export default function () {
   function init() {
     const obj = formData.value
     magicPost('/242/magic/BB01/m-bbxx', obj).then((e) => {
-      if (e.code === 1) {
+      console.log(/违反唯一约束条件.*HEALTHCLOUD.T_BBXX_BBH/.test(e.message))
+      if (e.code === 1 || /违反唯一约束条件.*HEALTHCLOUD.T_BBXX_BBH/.test(e.message)) {
 
       } else {
         throw e.message
       }
     }).catch((e) => {
+      console.log(e.message)
       alert(e.message)
     })
   }

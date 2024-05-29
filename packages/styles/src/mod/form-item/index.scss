@@ -1,8 +1,11 @@
 @use 'sass:map';
-@use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
-@use './form-item.scss' as *;
 
-@include createSingleClass(form-item, '', '') {
-  @include async($style, form-item, '');
+.z-form-item {
+  align-items: center;
+  margin-bottom: 0.05rem;
+
+  >label {
+    margin-left: .5em;
+  }
 }

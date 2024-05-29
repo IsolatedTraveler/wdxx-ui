@@ -1,8 +1,10 @@
 @use 'sass:map';
-@use '../../mixins/index.scss' as *;
 @use '../../vars/index.scss' as *;
-@use './form.scss' as *;
 
-@include createSingleClass(form, '', '') {
-  @include async($style, form, '');
+.z-form {
+
+  >.z-btn,
+  >.z-btn-group {
+    margin-bottom: 0.05rem;
+  }
 }

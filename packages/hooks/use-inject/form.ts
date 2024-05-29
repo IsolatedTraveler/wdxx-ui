@@ -45,7 +45,7 @@ export const useInjectForm = (props: FormProps, emit: SetupContext<FormEmits>['e
     Object.keys(v || {}).forEach(key => {
       setCurrentVal(key, v[key])
     })
-  }, { immediate: true })
+  }, { immediate: true, deep: true })
   // 监听组件值改变，修改
   watch(() => watchCurrentVal, (v) => {
   }, { deep: true })

@@ -32,10 +32,7 @@ export interface AjaxReturn {
 }
 function dealRes({ status = 200, data, config: { checkLogin: judge = false } = {} } = {} as DealRes): Promise<AjaxReturn> {
   if (status == 200) {
-    if (data.code == 1) {
-      return Promise.resolve(data)
-    }
-    return Promise.reject({ code: -1, message: data.message || data.msg })
+    return Promise.resolve(data)
   } else {
     if (!judge) {
       // 校验是否登录系统，并处理数据

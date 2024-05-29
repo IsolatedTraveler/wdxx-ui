@@ -3,10 +3,10 @@
 
 .z-input--box {
   border: 1px solid map.get($color, border, 2);
+  padding: map-get($size, pd, 'md');
+  box-sizing: border-box;
 
   input {
     flex-grow: 1;
-    padding: map-get($size, pd, 'md');
-    box-sizing: border-box;
   }
 }
