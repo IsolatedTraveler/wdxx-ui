@@ -17,7 +17,7 @@ export default function () {
       getMarkDownCode([
         'git checkout blank',
         `git checkout -b ${bbh}`,
-        `robocopy "D:\\bat\\config\\v1.0.20231212.01" "E:\\publish\\${bbh}" /E`
+        `cp -r "D:\\bat\\config\\v1.0.20231212.01" "E:\\publish\\${bbh}"`
       ].join('\n'), 'bash'),
       getMarkDownTitle('版本修改分支创建', 1),
       getMarkDownCode([

@@ -16,6 +16,9 @@
       <z-form-item label="描述：" basis="50%">
         <z-input name="desc"></z-input>
       </z-form-item>
+      <z-form-item label="发版地区：" basis="25%">
+        <z-select name="fbdq" :data="fbdq"></z-select>
+      </z-form-item>
       <z-form-item label="详细描述：" basis="75%">
         <z-input name="detail"></z-input>
       </z-form-item>
@@ -27,15 +30,13 @@
 import useBBgx from './use'
 import { publishProps } from './publish';
 import { Lx } from '@/views/kfwd/views/git/module/commit/use.arr'
-import { useCommit } from '@/views/kfwd/views/git/module/commit/use'
 import { seMarkdown } from '@/components/base';
+import { fbdq } from "../../../data"
 const props = defineProps(publishProps)
 defineOptions({
   name: 'bbgx-publish'
 })
-const { formData, code } = useCommit()
-  , { data, cols, publish, del, content } = useBBgx(props, code)
-formData.value.gn = props.ms || ''
+const { data, cols, publish, del, content, formData } = useBBgx(props)
 </script>
 <style lang="scss" scoped>
 .bbgx-publish {

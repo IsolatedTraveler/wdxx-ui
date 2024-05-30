@@ -5,14 +5,23 @@ import { EventUpdate } from "@ui/vars";
 // 自身存在值，使用自身存在的值，并将自身存在的值反写到父级form表单
 // 自身不存在值，从父元素继承值
 export const useInjectFormItem = (props: FormItemProps, emit: SetupContext<FormItemEmits>['emit']) => {
+  var keys: string[] = []
   const  // 当前form组件的值
-    watchCurrentVal = reactive<any>({})
-    , setCurrentVal = (key: string, v?: any) => {
+    watchCurrentValBak = reactive<any>({})
+    , watchCurrentVal = reactive<any>({})
+    , setWatchCurrentVal = (obj: any, key: string, v?: any, judge?: boolean) => {
       if (v === undefined) {
-        delete watchCurrentVal[key]
+        judge && (keys = keys.filter(k => k !== key))
+        delete obj[key]
       } else {
-        watchCurrentVal[key] = v
+        judge && keys.push(key)
+        obj[key] = v
       }
+    }
+    , setCurrentVal = (key: string, v?: any) => {
+      console.log(key, v)
+      setWatchCurrentVal(watchCurrentValBak, key, v, true)
+      if (props.name !== undefined) setWatchCurrentVal(watchCurrentVal, key, v)
     }, {
       submit = () => { },
       clear = () => { },
@@ -29,19 +38,28 @@ export const useInjectFormItem = (props: FormItemProps, emit: SetupContext<FormI
       }
     }, chageEvent = (ly: string) => {
       change?.(ly)
-      emit(EventUpdate, JSON.parse(JSON.stringify(watchCurrentVal)))
+      emit(EventUpdate, JSON.parse(JSON.stringify(watchCurrentValBak)))
     }
   // 监听props.name 改变  将值添加到父Form表单中
   watch(() => props.name, (key, o) => {
+    // 判断是否存在待写入的父组件
     if (setVal) {
-      o && setVal(o)
-      if (key) {
-        setVal(key, watchCurrentVal)
-        if (!o) {
-          Object.keys(watchCurrentVal || {}).forEach(key => {
-            setVal(key)
-          })
-        }
+      // 当前值是否写入
+      if (key !== undefined) {
+        // 将值写入父组件
+        setVal(key, watchCurrentValBak)
+        keys.forEach(key => {
+          setWatchCurrentVal(watchCurrentVal, key, watchCurrentValBak[key])
+        })
+      } else {
+        keys.forEach(key => {
+          setWatchCurrentVal(watchCurrentVal, key)
+        })
+        // 移除watchCurrentVal中的值
+      }
+      // 存在历史写入值，移除历史写入值
+      if (o !== undefined) {
+        setVal(o)
       }
     }
   }, { immediate: true })
@@ -57,7 +75,7 @@ export const useInjectFormItem = (props: FormItemProps, emit: SetupContext<FormI
     setVal: setVal1,
     value: watchCurrentVal,
     pValue: value,
-    prop:computed(() => {
+    prop: computed(() => {
       const val = prop?.value || ({} as any)
       const { disabled, readonly, size, tabIndex, labelSize } = val
       return {

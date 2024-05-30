@@ -1,12 +1,13 @@
 import { magicPost } from "@/api"
-import { ComputedRef, computed, ref } from "vue"
+import { computed, ref } from "vue"
 import { bbFbCols, bbZt } from '../bb.data'
 import { PublishProps } from "./publish"
 import { fbdqObj } from "../../../data"
 import { getMarkDownCode, getMarkDownTitle } from "@/components/base"
-export default function (props: PublishProps, code: ComputedRef<{ code: string, lx: string }[]>) {
+import { useCommit } from "@/views/kfwd/views/git/module/commit/use"
+export default function (props: PublishProps) {
   // 版本信息数据
-  const data = ref<any>([]),
+  const { formData, code } = useCommit(), data = ref<any>([]),
     content = computed(() => {
       const { bbh } = props, judge = data.value.filter((it: any) => it.zt != -1 && it.zt != 9).length
       return [
@@ -41,7 +42,9 @@ export default function (props: PublishProps, code: ComputedRef<{ code: string, 
   // 检索版本记录
   function search() {
     magicPost('/242/magic/BB01/s-bbfbjl', { id: props.id }).then(({ data: { list } }) => {
-      data.value = (list || []).map((it: any) => {
+      list = list || []
+      formData.value.fbdq = list[0]?.fbdq
+      data.value = list.map((it: any) => {
         it.zt_mc = bbZt[it.zt || 0]
         it.bbh = props.bbh
         it.fbdq_mc = fbdqObj[it.fbdq]?.mc
@@ -60,6 +63,7 @@ export default function (props: PublishProps, code: ComputedRef<{ code: string, 
       search()
     })
   }
+  formData.value.gn = props.ms || ''
   return {
     data
     , search
@@ -67,5 +71,6 @@ export default function (props: PublishProps, code: ComputedRef<{ code: string, 
     , publish
     , del
     , content
+    , formData
   }
 }
