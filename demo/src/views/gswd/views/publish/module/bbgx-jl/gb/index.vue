@@ -8,10 +8,10 @@ import { provide } from 'vue';
 const props = defineProps(gbProps)
   , coms = import.meta.glob('./**/index.vue')
   , menu: any = [
-    getMenuItem('html', '前端代码发布')
-    , getMenuItem('sqldy', 'sqldy发布')
+    getMenuItem('sqldy', 'sqldy发布')
     , getMenuItem('prody', 'prody发布')
     , getMenuItem('table', 'table修改')
+    , getMenuItem('html', '前端代码')
     , getMenuItem('end', '合并备份')
   ]
 provide('gswdPublishBbgxJlGb', props)

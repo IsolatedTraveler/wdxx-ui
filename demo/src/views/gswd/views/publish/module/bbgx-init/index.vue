@@ -12,10 +12,11 @@
       </z-form-item>
       <z-btn state="primary" left="1em" @click="init">初始化</z-btn>
     </z-form>
-    <z-code :data="code" type="bash"></z-code>
+    <seMarkdown class="annotation" :data="code"></seMarkdown>
   </div>
 </template>
 <script lang="ts" setup>
+import { seMarkdown } from "@/components/base";
 import { fbdq } from '../../data';
 import useBBgx from './use'
 defineOptions({

@@ -1,5 +1,6 @@
 import { magicPost } from "@/api"
 import { format } from "@/api/util"
+import { getMarkDownCode, getMarkDownTitle } from "@/components/base"
 import { computed, ref } from "vue"
 
 export default function () {
@@ -12,9 +13,17 @@ export default function () {
   const code = computed(() => {
     const { bbh } = formData.value
     return [
-      'git checkout blank',
-      `git checkout -b ${bbh}`,
-      `robocopy "D:\\bat\\config\\v1.0.20231212.01" "E:\\publish\\${bbh}" /E`
+      getMarkDownTitle('发版信息创建', 1),
+      getMarkDownCode([
+        'git checkout blank',
+        `git checkout -b ${bbh}`,
+        `robocopy "D:\\bat\\config\\v1.0.20231212.01" "E:\\publish\\${bbh}" /E`
+      ].join('\n'), 'bash'),
+      getMarkDownTitle('版本修改分支创建', 1),
+      getMarkDownCode([
+        'git checkout main',
+        `git checkout -b ${bbh}`
+      ].join('\n'), 'bash')
     ].join('\n')
   })
   function init() {

@@ -1,11 +1,42 @@
 import { magicPost } from "@/api"
-import { ref } from "vue"
+import { ComputedRef, computed, ref } from "vue"
 import { bbFbCols, bbZt } from '../bb.data'
 import { PublishProps } from "./publish"
 import { fbdqObj } from "../../../data"
-export default function (props: PublishProps) {
+import { getMarkDownCode, getMarkDownTitle } from "@/components/base"
+export default function (props: PublishProps, code: ComputedRef<{ code: string, lx: string }[]>) {
   // 版本信息数据
-  const data = ref([])
+  const data = ref<any>([]),
+    content = computed(() => {
+      const { bbh } = props, judge = data.value.filter((it: any) => it.zt != -1 && it.zt != 9).length
+      return [
+        judge ? [
+          getMarkDownTitle('前端代码', 1),
+          '前端修改代码标准化提交，方便后续版本信息维护。',
+          getMarkDownTitle('节点提交', 2),
+          getMarkDownCode([
+            'git checkout ' + bbh,
+            code.value[2].code,
+            'git push origin ' + bbh
+          ].join('\n'), 'bash'),
+          getMarkDownTitle('归版（发版时合并至主程序）', 2),
+          getMarkDownCode([
+            'git checkout main',
+            'git merge ' + bbh
+          ].join('\n'), 'bash')
+        ].join('\n') : [
+          getMarkDownTitle('终版（完全发版时合并至主程序）', 2),
+          getMarkDownCode([
+            'git checkout main',
+            'git merge ' + bbh,
+            'git branch -d ' + bbh,
+            'git push --delete origin ' + bbh
+          ].join('\n'), 'bash')
+        ].join('\n'),
+        getMarkDownTitle('备注', 2),
+        '发布前先备份历史数据'
+      ].join('\n')
+    })
   // 查询条件
   // 检索版本记录
   function search() {
@@ -20,13 +51,13 @@ export default function (props: PublishProps) {
   }
   search()
   function publish(data: any) {
-    magicPost('/242/magic//BB01/m-bbfbdq', { id: data.id, fbdq: data.fbdq, zt: 9 }).then((res) => {
-
+    magicPost('/242/magic//BB01/m-bbfbdq', { id: data.id, fbdq: data.fbdq, zt: 9 }).then(() => {
+      search()
     })
   }
   function del(data: any) {
-    magicPost('/242/magic//BB01/m-bbfbdq', { id: data.id, fbdq: data.fbdq, zt: -1 }).then((res) => {
-
+    magicPost('/242/magic//BB01/m-bbfbdq', { id: data.id, fbdq: data.fbdq, zt: -1 }).then(() => {
+      search()
     })
   }
   return {
@@ -35,5 +66,6 @@ export default function (props: PublishProps) {
     , cols: [...bbFbCols, { title: '操作', type: 'temp', id: '_cz' }]
     , publish
     , del
+    , content
   }
 }

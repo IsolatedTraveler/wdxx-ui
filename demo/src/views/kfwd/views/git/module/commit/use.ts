@@ -13,7 +13,7 @@ function getCode(type: string, gn: string, desc: string, detail: string) {
   ].map(it => `"${it}"`)
 }
 export function useCommit() {
-  const formData = ref({ type: '', desc: '', detail: '', gn: '' }), code = computed(() => {
+  const formData = ref({ type: '', desc: '', detail: '', gn: '', fbdq: '' }), code = computed(() => {
     const { type, desc, detail, gn } = formData.value, [code, codeJxz] = getCode(type, gn, desc, detail)
     return [{
       code: [
