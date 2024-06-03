@@ -19,7 +19,6 @@ export const useInjectFormItem = (props: FormItemProps, emit: SetupContext<FormI
       }
     }
     , setCurrentVal = (key: string, v?: any) => {
-      console.log(key, v)
       setWatchCurrentVal(watchCurrentValBak, key, v, true)
       if (props.name !== undefined) setWatchCurrentVal(watchCurrentVal, key, v)
     }, {
@@ -32,6 +31,7 @@ export const useInjectFormItem = (props: FormItemProps, emit: SetupContext<FormI
     } = inject(provideFormId, {})
     , val = computed(() => props.modelValue || props.value || (props.name && value ? value[props.name] : {}))
     , setVal1 = (key: string, v?: any) => {
+      console.log(key, v)
       setCurrentVal(key, v)
       if (!props.name && setVal) {
         setVal(key, v)

@@ -16,12 +16,27 @@ export const useInjectInput = (props: InputProps | SelectProps, emit: SetupConte
   watch(() => val.value, (v) => {
     currentVal.value = v
   })
-  // 监听组件key值改变，通过key值将组件值写入父元素
-  watch(() => ({ key: props.name, v: currentVal.value }), ({ key, v }, o) => {
-    if (key && setVal) {
-      setVal(key, v)
+  watch(() => props.name, (key, o) => {
+    // 通过key值将组件值写入父元素
+    if (setVal) {
+      // key存在且值发生变化
+      if (key !== undefined) {
+        setVal(key, currentVal.value)
+      }
+      // 历史key存在，移除历史数据
+      if (o !== undefined) {
+        setVal(o)
+      }
     }
-    if (v !== o?.v) {
+  })
+  // 监听组件key值改变，通过key值将组件值写入父元素
+  watch(() => currentVal.value, (v, o) => {
+    const vS = JSON.stringify(v), oS = JSON.stringify(o), judge = vS !== oS
+    // 通过key值将组件值写入父元素
+    if (setVal && props.name !== undefined && judge) {
+      setVal(props.name, v)
+    }
+    if (judge) {
       props.name && change?.(props.name)
       emit(EventUpdate, JSON.parse(JSON.stringify(v || '')))
     }

@@ -55,7 +55,7 @@
     "z-uis": "workspace:*"
   },
   "scripts": {
-    "dev": "pnpm run -C example dev",
+    "dev": "pnpm run -C demo dev",
     "watch": "pnpm run -C packages/styles watch",
     "css": "pnpm run -C packages/styles build",
     "demo": "pnpm run -C demo dev",

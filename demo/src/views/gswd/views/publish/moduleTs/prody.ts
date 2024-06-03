@@ -7,7 +7,7 @@ export function usePrody() {
     var obj = formData.value, arr = obj.bb.split('.'), bb = '', tj = obj.where
     if (tj) {
       if (arr[2]) {
-        bb = arr[2].substring(2) + arr[3]
+        bb = talbe + '_' + arr[2].substring(2) + arr[3]
       }
       Promise.all([
         getTableCol(talbe, obj.fwq),
@@ -17,9 +17,9 @@ export function usePrody() {
         data.forEach((it: any) => {
           it.SQL = (it.SQL || '').trim()
         })
-        const { i, d } = dealSqlData(data, col, talbe, tj, primary)
+        const { i, b, d } = dealSqlData(data, col, talbe, tj, primary, bb)
         code.value = [
-          ['-- 新增存储过程调用方案', d, i, 'commit;'].filter(it => it).join('\n'),
+          ['-- 新增存储过程调用方案', b, d, i, 'commit;'].filter(it => it).join('\n'),
           ccgc
         ]
       })
