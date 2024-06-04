@@ -7,10 +7,15 @@ export const bbCols = [// 版本信息表
     '-1': '移除',
     0: '待归版',
     1: '待发版',
+    8: '部分发版',
     9: '已发版'
   }
   , bbFbCols = [
     { id: 'bbh', title: '版本号' }
     , { id: 'fbdq_mc', title: '发版地区' }
+    , { id: 'server_ip', title: '服务ip' }
+    , { id: 'url_ip', title: '访问ip' }
+    , { id: 'database_ip', title: '数据服务ip' }
+    , { id: 'database_url_ip', title: '数据库ip' }
     , { id: 'zt_mc', title: '状态' }
   ]

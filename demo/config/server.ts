@@ -9,6 +9,11 @@ export const server: ServerOptions = {
       rewrite: (path) => path.replace(/^\/jtmis\/242/, ''),
       changeOrigin: true
     },
+    '/jtmis/235': {
+      target: "http://192.168.0.235:8080/jtmis/",
+      rewrite: (path) => path.replace(/^\/jtmis\/235/, ''),
+      changeOrigin: true
+    },
     '/jtmis/smq': {
       target: "http://smq.frp.cdjtwx.com:81/jtphis/",
       rewrite: (path) => path.replace(/^\/jtmis\/smq/, ''),

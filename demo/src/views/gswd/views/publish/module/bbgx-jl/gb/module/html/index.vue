@@ -35,8 +35,8 @@ const props: any = inject('gswdPublishBbgxJlGb')
       getMarkDownTitle('前端代码', 1),
       '前端修改代码标准化提交，方便后续版本信息维护。',
       getMarkDownTitle('节点提交', 2),
+      getMarkDownCode('git checkout ' + bbh, 'bash'),
       getMarkDownCode([
-        'git checkout ' + bbh,
         code.value[2].code,
         'git push origin ' + bbh
       ].join('\n'), 'bash'),

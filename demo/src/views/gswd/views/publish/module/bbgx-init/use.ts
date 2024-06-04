@@ -15,6 +15,7 @@ export default function () {
     return [
       getMarkDownTitle('发版信息创建', 1),
       getMarkDownCode([
+        'cd /e/publish/',
         'git checkout blank',
         `git checkout -b ${bbh}`,
         `cp -r "D:\\bat\\config\\v1.0.20231212.01" "E:\\publish\\${bbh}"`

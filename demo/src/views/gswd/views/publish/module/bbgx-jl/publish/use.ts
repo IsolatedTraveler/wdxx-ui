@@ -15,8 +15,8 @@ export default function (props: PublishProps) {
           getMarkDownTitle('前端代码', 1),
           '前端修改代码标准化提交，方便后续版本信息维护。',
           getMarkDownTitle('节点提交', 2),
+          getMarkDownCode('git checkout ' + bbh, 'bash'),
           getMarkDownCode([
-            'git checkout ' + bbh,
             code.value[2].code,
             'git push origin ' + bbh
           ].join('\n'), 'bash'),
@@ -31,7 +31,7 @@ export default function (props: PublishProps) {
             'git checkout main',
             'git merge ' + bbh,
             'git branch -d ' + bbh,
-            'git push --delete origin ' + bbh
+            'git push origin -d ' + bbh
           ].join('\n'), 'bash')
         ].join('\n'),
         getMarkDownTitle('备注', 2),
@@ -45,9 +45,14 @@ export default function (props: PublishProps) {
       list = list || []
       formData.value.fbdq = list[0]?.fbdq
       data.value = list.map((it: any) => {
+        const fwObj = fbdqObj[it.fbdq]
         it.zt_mc = bbZt[it.zt || 0]
         it.bbh = props.bbh
-        it.fbdq_mc = fbdqObj[it.fbdq]?.mc
+        it.fbdq_mc = fwObj?.mc
+        it.server_ip = fwObj?.server_ip
+        it.database_ip = fwObj?.database_ip
+        it.database_url_ip = fwObj?.database_url_ip
+        it.url_ip = fwObj?.url_ip
         return it
       })
     })
