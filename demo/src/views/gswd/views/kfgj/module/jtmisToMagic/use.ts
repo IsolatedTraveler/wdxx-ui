@@ -6,18 +6,17 @@ const ly = [
 const zysx = [
   [],
   [
-    'jthisJsObject.jthis.varget先处理(去掉JSON.parse)，后替换',
-    'jthisJsObject.jthis.varpost先处理(去掉JSON.stringify)，后替换',
-    'jthisJsObject.jthis.dicget先处理(去掉JSON.stringify)，后替换',
-    'commonHttppost方法需要在末尾添加.data.list需要注意考虑实际情况',
-    'dicget方法改为Promise模式',
-    'possessMkqx方法改为Promise模式',
-    'getCommonDic方法改为Promise模式',
-    'getXzqhmc方法改为Promise模式',
-    'convertKeysToLowerCase去掉该方法，注意是否影响逻辑',
-    'initTreedata方法第三个参数需删除',
-    'openMsgBox方法改为Promise模式',
-    'openDialog方法改为Promise模式，第五个参数为button(如：["确定","取消"])，打开的子页面隐藏原有的按钮，并添加id="layerBtn" .btn参考ypmlgl_edit.html'
+    ' setVar 去掉(JSON.parse/JSON.stringify)',
+    ' dicget 方法改为Promise模式 去掉 JSON.stringify',
+    ' commonHttppost 方法需替换为 ajaxPost 改为Promise模式  取 data.list 值',
+    ' possessMkqx 方法改为Promise模式',
+    ' getCommonDic 方法改为Promise模式',
+    ' getXzqhmc 方法改为Promise模式',
+    ' convertKeysToLowerCase 去掉该方法，注意是否影响逻辑',
+    ' initTreedata 方法第三个参数需删除',
+    ' openMsgBox 方法改为Promise模式',
+    ' loadDataGrigPageData 方法改为Promise模式',
+    ' openDialog 方法改为Promise模式，第四个参数为button(如：["确定","取消"])，打开的子页面隐藏原有的按钮，并添加id="layerBtn" .btn参考ypmlgl_edit.html'
   ]
 ]
 const alertFa = [
@@ -29,7 +28,7 @@ const alertFa = [
   , ['jtUtil.initBaseBar', 'jtUtil.initBaseBar']
   , ['jtUtil.commonHttppost', 'jtUtil.commonQueryHttppost']
   , ['jtUtil.commonHttppost', 'jtUtil.commonCommitHttppost']
-  , ['jtUtil.asyncQueryPost', 'jtUtil.commonQueryAsyncHttppost_callback']
+  , ['jtUtil.ajaxPost', 'jtUtil.commonQueryAsyncHttppost_callback']
   , ['jtUtil.getCommonDic', 'jtUtil.getCommonDic']
   , ['jtUtil.filterDicData', 'jtUtil.filterDicData']
   , ['jtUtil.filterComboboxData', 'jtUtil.filterComboboxData']

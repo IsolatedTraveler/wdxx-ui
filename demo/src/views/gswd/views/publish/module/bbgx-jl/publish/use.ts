@@ -10,6 +10,7 @@ export default function (props: PublishProps) {
   const { formData, code } = useCommit(), data = ref<any>([]),
     content = computed(() => {
       const { bbh } = props, judge = data.value.filter((it: any) => it.zt != -1 && it.zt != 9).length
+        , { fbdq } = formData.value, fwObj = fbdqObj[fbdq]
       return [
         judge ? [
           getMarkDownTitle('前端代码', 1),
@@ -22,7 +23,7 @@ export default function (props: PublishProps) {
           ].join('\n'), 'bash'),
           getMarkDownTitle('归版（发版时合并至主程序）', 2),
           getMarkDownCode([
-            'git checkout main',
+            'git checkout ' + fwObj.qh,
             'git merge ' + bbh
           ].join('\n'), 'bash')
         ].join('\n') : [

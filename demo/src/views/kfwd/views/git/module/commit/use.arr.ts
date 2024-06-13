@@ -1,5 +1,6 @@
 export const Lx = [
   { id: 'feat', mc: '新特性' }
+  , { id: 'back', mc: '备份' }
   , { id: 'fix', mc: '修复' }
   , { id: 'docs', mc: '文档更新' }
   , { id: 'chore', mc: '构建/工程相关' }
