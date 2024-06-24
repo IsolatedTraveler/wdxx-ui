@@ -6,8 +6,7 @@ interface GetLocationParam {
   lx?: 'http' | 'magic'
   root?: string
 }
-var locationName = 'wdphis'
-function getLocation(name: string = '', dz: string, { root = locationName, lx = 'http' } = {} as GetLocationParam) {
+function getLocation(name: string = '', dz: string, { root = '', lx = 'http' } = {} as GetLocationParam) {
   if (dz) {
     if (name) {
       name = `${name}/`
@@ -41,14 +40,16 @@ function http() {
 }
 export function userNginx() {
   const formData = ref({
-    jbjk: 'http://127.0.0.1:7890/jtphis/',
+    jbjk: 'http://127.0.0.1:7890',
     fbd: '',
     magic: 'http://127.0.0.1:7901/mgapi/',
     urpt: 'http://127.0.0.1:7801/ureport/',
     minioWeb: 'http://127.0.0.1:9001/browser/',
-    minio: 'http://127.0.0.1:9000/'
+    minio: 'http://127.0.0.1:9000/',
+    root: 'jtphis',
+    wxzf: ''
   }), code = computed(() => {
-    const { jbjk, fbd, magic, urpt, minioWeb, minio } = formData.value
+    const { jbjk, fbd, magic, urpt, minioWeb, minio, root, wxzf } = formData.value
     return [{
       lx: 'bash',
       code: [
@@ -107,14 +108,14 @@ export function userNginx() {
         "        add_header 'Access-Control-Allow-Origin' \"$http_origin\" always;",
         "      }",
         "    }",
-        getLocation('', jbjk),
-        getLocation('wxzf', fbd ? `http://wx.cdjtwx.com/${fbd}api/rest/` : ''),
-        getLocation('magic', magic, { lx: 'magic' }),
-        getLocation('urpt', urpt),
-        getLocation('minio-web', minioWeb),
-        getLocation('minio', minio),
-        locationName != 'jtphis' ? getLocation('', `http://127.0.0.1:8080/${locationName}/`, { root: 'jtphis' }) : '',
-        locationName != 'jtmis' ? getLocation('', `http://127.0.0.1:8080/${locationName}/`, { root: 'jtmis' }) : '',
+        getLocation('', `${jbjk.replace(/\/$/g, '')}/${root.replace(/^\//g, '').replace(/\/$/g, '')}/`, { root }),
+        getLocation('wxzf', wxzf ? wxzf : fbd ? `http://wx.cdjtwx.com/${fbd}api/rest/` : '', { root }),
+        getLocation('magic', magic, { lx: 'magic', root }),
+        getLocation('ureport', urpt, { root: '' }),
+        getLocation('minio-web', minioWeb, { root }),
+        getLocation('minio', minio, { root }),
+        root != 'jtmis' && root != 'jtphis' ? getLocation('', `http://127.0.0.1:8080/${root}/`, { root: 'jtphis' }) : '',
+        root != 'jtmis' ? getLocation('', `http://127.0.0.1:8080/${root}/`, { root: 'jtmis' }) : '',
         "    error_page   500 502 503 504  /50x.html;",
         "    location = /50x.html {",
         "      root   html;",

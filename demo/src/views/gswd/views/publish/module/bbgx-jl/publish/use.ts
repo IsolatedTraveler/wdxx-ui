@@ -29,7 +29,7 @@ export default function (props: PublishProps) {
         ].join('\n') : [
           getMarkDownTitle('终版（完全发版时合并至主程序）', 2),
           getMarkDownCode([
-            'git checkout main',
+            'git checkout ' + fwObj.qh,
             'git merge ' + bbh,
             'git branch -d ' + bbh,
             'git push origin -d ' + bbh

@@ -7,6 +7,9 @@
       <z-form-item label="旧版接口：" basis="25%">
         <z-input name="jbjk"></z-input>
       </z-form-item>
+      <z-form-item label="接口名：" basis="25%">
+        <z-input name="root"></z-input>
+      </z-form-item>
       <z-form-item label="magic" basis="25%">
         <z-input name="magic"></z-input>
       </z-form-item>
@@ -19,18 +22,26 @@
       <z-form-item label="minio接口" basis="25%">
         <z-input name="minio"></z-input>
       </z-form-item>
+      <z-form-item label="微信接口" basis="25%">
+        <z-input name="wxzf"></z-input>
+      </z-form-item>
     </z-form>
-    <z-code v-for="(it, i) in code" :key="i" :data="it.code" :type="it.lx"></z-code>
+    <z-code
+      v-for="(it, i) in code"
+      :key="i"
+      :data="it.code"
+      :type="it.lx"
+    ></z-code>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { userNginx } from '../moduleTs';
-import { fbdq } from "../data"
+import { userNginx } from "../moduleTs";
+import { fbdq } from "../data";
 defineOptions({
-  name: 'publish-nginx'
-})
-const { code, formData } = userNginx()
+  name: "publish-nginx",
+});
+const { code, formData } = userNginx();
 </script>
 
 <style lang="scss">
