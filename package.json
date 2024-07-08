@@ -1,5 +1,5 @@
 {
-  "name": "@ui/components",
+  "name": "wdxx-ui",
   "version": "1.0.0",
   "description": "All view components are included here",
   "type": "module",

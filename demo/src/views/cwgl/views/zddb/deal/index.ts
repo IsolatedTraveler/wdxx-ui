@@ -2,16 +2,16 @@ import * as obj from "./mb_data";
 import * as fun from "./fun";
 import { CwglZddbLx } from "./type";
 export const colsObj = obj
-function dealData(data: any, drlx: CwglZddbLx, dclx: CwglZddbLx) {
+function dealData(data: any, drlx: CwglZddbLx, dclx: CwglZddbLx, ly: string) {
   const dcObj = obj[dclx], fun1 = (fun as any)[dclx]
   for (let { id } of dcObj) {
     if (fun1 && fun1[id]) {
-      data[id] = fun1[id](data, drlx)
+      data[id] = fun1[id](data, drlx, ly)
     }
   }
   return data
 }
-export function deal(data: string[][], drlx: CwglZddbLx, dclx: CwglZddbLx) {
+export function deal(data: string[][], drlx: CwglZddbLx, dclx: CwglZddbLx, ly: string) {
   const lyObj = obj[drlx], arr: any[] = []
   for (let it of data) {
     const v: any = {}
@@ -19,7 +19,7 @@ export function deal(data: string[][], drlx: CwglZddbLx, dclx: CwglZddbLx) {
       v[id] = title == it[index] ? '' : it[index]
     }
     if ((fun as any)[drlx].filter(v)) {
-      arr.push(dealData(v, drlx, dclx))
+      arr.push(dealData(v, drlx, dclx, ly))
     }
   }
   return arr
