@@ -7,6 +7,6 @@ export const wsq: FbdqObj = {
   server_ip: '100.122.0.127',
   database_ip: '100.122.0.160',
   database_url_ip: '10.33.77.146',
-  server_url: [url_ip, '172.31.0.60'],
+  server_url: [url_ip + ':7080/cloudapi', '172.31.0.60:7080/cloudapi'],
   id: 'wsq'
 }

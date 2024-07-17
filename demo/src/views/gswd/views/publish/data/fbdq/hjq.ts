@@ -7,7 +7,7 @@ export const hjq: FbdqObj = {
   server_ip: '100.122.6.26',
   database_ip: '100.122.0.9',
   database_url_ip: '10.33.86.80',
-  server_url: [url_ip, '172.31.0.93'],
+  server_url: [url_ip + ':8080/jtmis', '172.31.0.93:8080/jtmis'],
   id: 'hjq'
 }
 

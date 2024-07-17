@@ -1,8 +1,9 @@
 import ty from "./ty";
-
-export default {
-  id: 'his', mc: 'his', child: [
-    { id: 'his-sb', mc: '首版', path: true },
-    ty
-  ]
-}
+import { getMenuItem } from "@/views/kfwd/views/rule/data/getMenuItem"
+import { xtm } from "../var"
+import { xtm as ml } from './var'
+export default [
+  getMenuItem(ml, 'his', '', xtm)
+  , getMenuItem(ml, '首版', 'sb')
+  , ...ty
+]

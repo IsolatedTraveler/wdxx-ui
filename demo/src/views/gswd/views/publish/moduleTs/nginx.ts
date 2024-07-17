@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue';
 import { clearRz, vim } from '../code/linux/vim';
 import { zqd } from '../fun';
+import { getMarkDownCode } from '@/components/base';
 interface GetLocationParam {
   lx?: 'http' | 'magic'
   root?: string
@@ -49,35 +50,25 @@ export function userNginx() {
     root: 'jtphis',
     wxzf: ''
   }), code = computed(() => {
-    const { jbjk, fbd, magic, urpt, minioWeb, minio, root, wxzf } = formData.value
-    return [{
-      lx: 'bash',
-      code: [
-        'yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel pcre-devel',
-        'cd /usr/local/',
-        'mkdir nginx/',
-        'cd nginx'
-      ].join('\n')
-    }, {
-      lx: 'bash',
-      code: [
-        '# 拷贝nginx-1.22.1.tar.gz到当前目录',
-        'tar -xvf nginx-1.22.1.tar.gz',
-        'cd nginx-1.22.1',
-        './configure --with-http_stub_status_module --with-http_ssl_module',
-        'make',
-        'make install',
-        'cd /usr/local/nginx',
-        'rm -rf ./nginx-1.22.1.tar.gz',
-        'rm -rf ./nginx-1.22.1',
-        '# 防火墙打开特定端口',
-        'firewall-cmd --permanent --add-port=8080/tcp',
-        'firewall-cmd --reload',
-        'firewall-cmd --permanent --query-port=8080/tcp'
-      ].join('\n')
-    }, {
-      lx: 'bash',
-      code: vim([
+    const { jbjk, fbd, magic, urpt, minioWeb, minio, root, wxzf } = formData.value, zdqd = zqd('nginx', '').map(it => it.code)
+    return [getMarkDownCode([
+      '# 拷贝nginx-1.22.1.tar.gz到当前目录',
+      'yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel pcre-devel',
+      'cd /usr/local/',
+      'mkdir nginx/',
+      'cd nginx', 'tar -xvf nginx-1.22.1.tar.gz',
+      'cd nginx-1.22.1',
+      './configure --with-http_stub_status_module --with-http_ssl_module',
+      'make',
+      'make install',
+      'cd /usr/local/nginx',
+      'rm -rf ./nginx-1.22.1.tar.gz',
+      'rm -rf ./nginx-1.22.1',
+      '# 防火墙打开特定端口',
+      'firewall-cmd --permanent --add-port=8080/tcp',
+      'firewall-cmd --reload',
+      'firewall-cmd --permanent --query-port=8080/tcp',
+      vim([
         "#user  nobody",
         "worker_processes  2;",
         "#error_log  logs/error.log;",
@@ -126,18 +117,21 @@ export function userNginx() {
         "    }",
         "  }",
         "}"
-      ].filter(it => it).join('\n'), '/usr/local/nginx/conf/nginx.conf')
-    }, {
-      lx: 'bash',
-      code: [
-        `# 日志清理`,
-        clearRz([
-          'cd /usr/local/nginx/logs/'
-          , 'true > access.log'
-          , 'true > error.log'
-        ].join('\n'))
-      ].join('\n')
-    }, ...zqd('nginx', '')
+      ].filter(it => it).join('\n'), '/usr/local/nginx/conf/nginx.conf'),
+      `# 日志清理`,
+      clearRz([
+        'cd /usr/local/nginx/logs/'
+        , 'true > access.log'
+        , 'true > error.log'
+      ].join('\n')),
+      zdqd[0],
+      zdqd[1]
+    ].join('\n'), 'bash'),
+      ' 定时重启',
+    getMarkDownCode([
+      zdqd[2]
+    ].join('\n'), 'bash'),
+    getMarkDownCode([zdqd[3], zdqd[4]].join('\n'), 'bash')
     ]
   })
   return { formData, code }

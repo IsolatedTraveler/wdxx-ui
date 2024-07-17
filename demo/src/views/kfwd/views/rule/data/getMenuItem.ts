@@ -6,9 +6,9 @@ function dealMl(wjm: string, i = 0) {
     return it
   }).join('')
 }
-export function getMenuItem(ml: string, mc: string, gn?: string) {
-  const pid = dealMl(ml)
-  var wzml = './module/' + ml, id = pid
+export function getMenuItem(ml: string, mc: string, gn?: string, pid?: string) {
+  var wzml = './module/' + ml, id = dealMl(ml)
+  pid = pid || (gn ? id : '')
   if (gn) {
     id += dealMl(gn, -1)
     wzml += '/' + gn
@@ -18,6 +18,6 @@ export function getMenuItem(ml: string, mc: string, gn?: string) {
     src: wzml + '/index.vue',
     mc,
     path: true,
-    pid: gn ? pid : null
+    pid
   }
 }

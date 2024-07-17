@@ -1,5 +1,7 @@
-export default {
-  id: 'fzzx', mc: '辅助执行', child: [
-    { id: 'fzzx-gx', mc: '共享文件', path: true }
-  ]
-}
+import { getMenuItem } from "@/views/kfwd/views/rule/data/getMenuItem"
+import { xtm } from "./var"
+const ml = 'fzzx'
+export default [
+  getMenuItem(ml, '辅助执行', '', xtm)
+  , getMenuItem(ml, '共享文件', 'gx')
+]

@@ -1,9 +1,11 @@
+import { getMenuItem } from "@/views/kfwd/views/rule/data/getMenuItem"
 
-export default {
-  id: 'bbgx', mc: '版本更新', child: [
-    { id: 'bbgx-init', mc: '初始化', path: true }
-    , { id: 'bbgx-jl', mc: '版本记录', path: true }
-    , { id: 'bbgx-bg', mc: '版本修改', path: true }
-    , { id: 'bbgx-gb', mc: '归版', path: true }
-  ]
-}
+
+const ml = 'bbgx'
+export default [
+  getMenuItem(ml, '版本更新')
+  , getMenuItem(ml, '初始化', 'init')
+  , getMenuItem(ml, '版本记录', 'jl')
+  , getMenuItem(ml, '版本修改', 'bg')
+  , getMenuItem(ml, '归版', 'gb')
+]

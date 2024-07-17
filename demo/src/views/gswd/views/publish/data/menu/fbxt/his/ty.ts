@@ -1,8 +1,10 @@
-export default {
-  id: 'his_ty', mc: '通用', child: [
-    { id: 'his_ty_third', mc: '第三方插件', path: true }
-    , { id: 'his_ty_login', mc: '登录校验', path: true }
-    , { id: 'his_ty_xtcs', mc: '系统参数', path: true }
-    , { id: 'his_ty_dzfp', mc: '电子发票', path: true }
-  ]
-}
+import { getMenuItem } from "@/views/kfwd/views/rule/data/getMenuItem"
+import { xtm } from "./var"
+const ml = 'ty'
+export default [
+  getMenuItem(ml, '通用', '', xtm)
+  , getMenuItem(ml, '第三方插件', 'third')
+  , getMenuItem(ml, '登录校验', 'login')
+  , getMenuItem(ml, '系统参数', 'xtcs')
+  , getMenuItem(ml, '电子发票', 'dzfp')
+]

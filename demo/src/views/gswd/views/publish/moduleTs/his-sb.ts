@@ -1,27 +1,25 @@
 import { computed, ref } from "vue";
 import { linux } from "../code";
-import { fbdq } from "../data";
+import { fbdq, fbxt, fbxtObj, fbdqObj, FbxtId, InstitutionCode } from "../data";
 export function useHisSb() {
-  const fileSite = '/home/jt-mis/static-resource/app/public/data/config.json'
-    , fileSite1 = '/home/jt-mis/static-resource/app/webs/common/printUrl.json'
-    , fileSite2 = '/home/jt-mis/static-resource/app/webs/common/serviceUrl.json'
-    , fileSite3 = '/home/jt-mis/static-resource/wxhtgl/public/data/serviceUrl.json'
-    , formData = ref({
-      old: 'http://10.33.77.29:7080/cloudapi',
-      fbdq: 'kbs',
-      title: '通川区朝阳社区卫生服务中心',
-      nw: 'http://10.33.77.29:7080/cloudapi'
-    }), code = computed(() => {
-      var obj = formData.value, old = obj.old, nw = obj.nw
-      return [{
-        lx: 'bash',
-        code: [
-          linux.fileContentRepalce(fileSite, old, nw)
-          , linux.fileContentRepalce(fileSite1, old, nw)
-          , linux.fileContentRepalce(fileSite2, old, nw)
-          , linux.fileContentRepalce(fileSite3, old, nw)
-        ].join('\n')
-      }]
-    })
-  return { code, formData, fbdq }
+  const formData = ref({
+    bbly: 'wsq',
+    fbdq: 'kbs',
+    fbxt: 'app'
+  }), code = computed(() => {
+    const { bbly, fbdq, fbxt } = formData.value
+      , { addr } = fbxtObj[fbxt as FbxtId]
+      , { server_url } = fbdqObj[bbly as InstitutionCode]
+      , { server_url: fbxx_server } = fbdqObj[fbdq as InstitutionCode]
+    return [{
+      lx: 'bash',
+      code: addr.map(it => {
+        return server_url.map((old, i) => {
+          var n = fbxx_server[i]
+          return linux.fileContentRepalce(it, old, n)
+        }).join('\n')
+      }).join('\n')
+    }]
+  })
+  return { code, formData, fbdq, fbxt }
 }
