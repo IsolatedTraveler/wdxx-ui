@@ -1,4 +1,2 @@
-export * from './fbdq'
-export * from './fbxt'
-export * from './fwq'
 export * from './menu'
+export * from '@view/gswd/data'

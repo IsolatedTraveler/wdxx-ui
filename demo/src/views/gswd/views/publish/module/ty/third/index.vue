@@ -1,6 +1,13 @@
 <template>
   <div class="his-ty-third">
+    <seMarkdown :data="title"></seMarkdown>
     <z-form flex="row" wrap v-model="formData">
+      <z-form-item label="信息来源：" basis="25%">
+        <z-select name="xxly" :data="fbdq"></z-select>
+      </z-form-item>
+      <z-form-item label="发版地区：" basis="25%">
+        <z-select name="fbdq" :data="fbdq"></z-select>
+      </z-form-item>
       <z-form-item label="功能：" basis="25%">
         <z-select
           name="gnid"
@@ -26,7 +33,10 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { hisTyThird } from "../../../moduleTs";
+import { fbdq } from "@view/gswd/views/publish/data";
+import { seMarkdown } from "@/components/base";
+import { hisTyThird } from "./his-ty-third";
+import { title } from "./data";
 defineOptions({
   name: "his-ty-third",
 });

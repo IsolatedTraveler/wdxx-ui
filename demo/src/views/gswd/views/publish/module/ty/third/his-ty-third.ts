@@ -1,9 +1,9 @@
 import { ref, watch } from "vue"
-import { getCodes, dealSqlData, getTableCol } from "../fun"
+import { getCodes, dealSqlData, getTableCol } from "@view/gswd/views/publish/fun"
 import { ObjAny } from "@ui/vars"
 
 export function hisTyThird() {
-  const code = ref(''), formData = ref({ gnid: '', jkid: '', jgid: '70' }), gnml = ref<Array<ObjAny>>([])
+  const code = ref(''), formData = ref({ gnid: '', jkid: '', jgid: '70', xxly: '', fbdq: '' }), gnml = ref<Array<ObjAny>>([])
     , jkMl = ref<Array<ObjAny>>([])
   // 获取功能选项
   getCodes('1=1', 't_jk_gn').then(res => {

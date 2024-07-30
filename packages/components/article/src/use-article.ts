@@ -4,8 +4,8 @@ import { ArticleEmits, ArticleProps } from "./article"
 export const useArticle = (props: ArticleProps, _emit: SetupContext<ArticleEmits>['emit']) => {
   // 已加载几个子组件
   var loadIndex = 0
-  // 总共有多少子组件
-  , dataLen = 0
+    // 总共有多少子组件
+    , dataLen = 0
   const _ref = ref<HTMLDivElement>(), _content = ref<HTMLDivElement>(),
     itemRefs = ref<any[]>([])
     , { _class, classVal, styleVal } = useCssInit(props, 'article', { cssClass: [], classAdd: [] })
@@ -62,10 +62,10 @@ export const useArticle = (props: ArticleProps, _emit: SetupContext<ArticleEmits
       refs[i].scroll()
       delayScroll(false)
     },
-    loadNext =(end:number) => {
+    loadNext = (end: number) => {
       const arr: Promise<void>[] = [], refs = itemRefs.value
       end += props.loadNum
-      while(loadIndex < end && loadIndex < dataLen) {
+      while (loadIndex < end && loadIndex < dataLen) {
         if (refs[loadIndex])
           arr.push(refs[loadIndex].show())
         loadIndex++
@@ -73,15 +73,24 @@ export const useArticle = (props: ArticleProps, _emit: SetupContext<ArticleEmits
       return Promise.all(arr).then(() => refs)
     }
   useFlexMixins({ flex: 'row' }, classVal, styleVal, _ref)
-    onMounted(() => {
-      if (_ref.value) {
-        height.value = _ref.value.clientHeight / 4
+  onMounted(() => {
+    if (_ref.value) {
+      height.value = _ref.value.clientHeight / 4
+    }
+    watch(() => props.defVal, (v) => {
+      if (v) {
+        props.data.forEach((it, i) => {
+          if (it.id == v) {
+            selected({ ...it, _i: i })
+          }
+        })
       }
-      loadNext(0)
-    })
-    watch(()=>index.value,(v,o)=> {
-      val.value = props.data[v].id
-    })
+    }, { immediate: true })
+    loadNext(0)
+  })
+  watch(() => index.value, (v, o) => {
+    val.value = props.data[v].id
+  })
   return {
     _ref,
     _class,
