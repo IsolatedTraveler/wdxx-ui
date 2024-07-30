@@ -1,0 +1,1 @@
+export type DealType = 'CLOB' | 'DATE' 

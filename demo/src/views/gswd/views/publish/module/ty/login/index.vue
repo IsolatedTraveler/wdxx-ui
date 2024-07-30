@@ -1,5 +1,6 @@
 <template>
   <div class="his_ty_login">
+    <seMarkdown :data="title"></seMarkdown>
     <z-form v-model="formData" flex="row" wrap :labelSize="6">
       <z-form-item label="重试次数" basis="25%">
         <z-input name="cwsx"></z-input>
@@ -19,7 +20,8 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref } from "vue";
-
+import { seMarkdown } from "@/components/base";
+import { title } from "./data";
 defineOptions({
   name: "his_ty_login",
 });

@@ -82,6 +82,7 @@ export const useArticle = (props: ArticleProps, _emit: SetupContext<ArticleEmits
         props.data.forEach((it, i) => {
           if (it.id == v) {
             selected({ ...it, _i: i })
+            val.value = it.id
           }
         })
       }

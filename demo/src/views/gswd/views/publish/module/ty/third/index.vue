@@ -35,8 +35,8 @@
 <script lang="ts" setup>
 import { fbdq } from "@view/gswd/views/publish/data";
 import { seMarkdown } from "@/components/base";
-import { hisTyThird } from "./his-ty-third";
 import { title } from "./data";
+import { hisTyThird } from "./his-ty-third";
 defineOptions({
   name: "his-ty-third",
 });

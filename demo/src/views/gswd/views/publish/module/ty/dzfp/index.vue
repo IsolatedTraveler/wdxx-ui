@@ -1,5 +1,6 @@
 <template>
   <div class="jtphis_dzfp">
+    <seMarkdown :data="title"></seMarkdown>
     <z-form flex="row" wrap v-model="formData" :label-size="6">
       <z-form-item label="服务器：" basis="25%">
         <z-select name="fwq" :data="fwq"></z-select>
@@ -27,7 +28,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { fwq } from "../../../data";
+import { fwq } from "@view/gswd/views/publish/data";
+import { seMarkdown } from "@/components/base";
+import { title } from "./data";
 import { useHisTyDzfp } from "../../../moduleTs";
 defineOptions({
   name: "jtphis-dzfp",

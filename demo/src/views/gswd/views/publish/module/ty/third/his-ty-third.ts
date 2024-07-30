@@ -3,12 +3,18 @@ import { getCodes, dealSqlData, getTableCol } from "@view/gswd/views/publish/fun
 import { ObjAny } from "@ui/vars"
 
 export function hisTyThird() {
-  const code = ref(''), formData = ref({ gnid: '', jkid: '', jgid: '70', xxly: '', fbdq: '' }), gnml = ref<Array<ObjAny>>([])
+  const code = ref(''), formData = ref({ gnid: '', jkid: '', jgid: '70', xxly: '', fbdq: '' })
+    , gnml = ref<Array<ObjAny>>([])
     , jkMl = ref<Array<ObjAny>>([])
   // 获取功能选项
-  getCodes('1=1', 't_jk_gn').then(res => {
-    gnml.value = res
-  })
+  watch(() => formData.value.xxly, v => {
+    if (v) {
+      getCodes('1=1', 't_jk_gn', v).then(res => {
+        gnml.value = res
+      })
+    } else
+      gnml.value = []
+  }, { immediate: true })
   // 获取功能对应接口选项
   watch(() => formData.value.gnid, (v) => {
     if (v) {
