@@ -38,6 +38,9 @@
       "@api/*": [
         "src/api/*"
       ],
+      "@api": [
+        "src/api"
+      ],
       "@store/*": [
         "src/store/*"
       ],

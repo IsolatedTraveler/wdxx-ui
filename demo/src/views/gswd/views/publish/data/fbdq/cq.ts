@@ -7,7 +7,7 @@ export const cq: FbdqObj = {
   server_ip: '100.122.0.118',
   database_ip: '100.122.0.123',
   database_url_ip: '10.33.77.144',
-  server_url: [url_ip + ':8080/jtmis', '10.124.3.162:8080/jtmis'],
+  server_url: [url_ip + ':8080/jtmis'],
   id: 'cq'
 }
 export const cqOld: FbdqObj = {

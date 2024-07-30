@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia';
 import App from './App.vue'
 import { router, loadXtxx } from "./router";
-import * as api from './api'
+import * as api from '@api'
 import * as util from '@assets/index'
 import zUi from 'z-uis/index.ts'
 import '@ui/styles/dist/index.css'
@@ -16,3 +16,4 @@ loadXtxx('base').then(() => {
   app.use(router as any)
   app.mount(document.body)
 })
+window.parent.postMessage({ from: 'child', message: 'Hello from child page!' }, location.href);

@@ -1,5 +1,6 @@
 export * from './bx'
 export * from './cq'
+export * from './cs242'
 export * from './dsq'
 export * from './dz'
 export * from './etkq'
