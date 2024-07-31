@@ -18,20 +18,20 @@
 </template>
 <script lang="ts" setup>
 import { getMarkDownCode, seMarkdown } from "@/components/base";
-import content from './data'
+import content from "./data";
 import { usePrody } from "@/views/gswd/views/publish/moduleTs";
 import { fwq } from "@/views/gswd/views/publish/data";
 import { computed, inject } from "vue";
-const props: any = inject('gswdPublishBbgxJlGb')
+const props: any = {};
 defineOptions({
-  name: 'v-prody'
-})
-const { code, formData, getCode } = usePrody()
-  , codeV = computed(() => {
-    return code.value.map(it => getMarkDownCode(it, 'sql'))
-  })
-formData.value.bb = props.bbh
-formData.value.where = '1=1'
+  name: "v-prody",
+});
+const { code, formData, getCode } = usePrody(),
+  codeV = computed(() => {
+    return code.value.map((it) => getMarkDownCode(it, "sql"));
+  });
+formData.value.bb = props.bbh;
+formData.value.where = "1=1";
 </script>
 <style lang="scss" scoped>
 .prody {

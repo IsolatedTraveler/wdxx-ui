@@ -34,7 +34,7 @@ import { fbdqObj, fbdq } from "@/views/gswd/views/publish/data";
 defineOptions({
   name: "v-html",
 });
-const props: any = inject("gswdPublishBbgxJlGb"),
+const props: any = {},
   { formData, code } = useCommit(),
   content = computed(() => {
     const { bbh } = props,

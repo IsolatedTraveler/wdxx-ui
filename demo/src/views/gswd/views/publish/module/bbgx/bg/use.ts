@@ -1,8 +1,8 @@
 import { magicPost } from "@/api"
 import { computed, ref } from "vue"
-import { bbFbCols, bbZt } from '../bb.data'
+import { bbFbCols, bbZt } from '../jl/bb.data'
 import { PublishProps } from "./publish"
-import { fbdqObj } from "../../../data"
+import { fbdqObj } from "@view/gswd/views/publish/data";
 import { getMarkDownCode, getMarkDownTitle } from "@/components/base"
 import { useCommit } from "@/views/kfwd/views/git/module/commit/use"
 export default function (props: PublishProps) {

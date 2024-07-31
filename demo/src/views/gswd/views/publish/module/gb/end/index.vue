@@ -34,7 +34,7 @@ import { magicPost } from "@/api";
 defineOptions({
   name: "v-end",
 });
-const props: any = inject("gswdPublishBbgxJlGb"),
+const props: any = {},
   { formData, code } = useCommit(),
   content = computed(() => {
     const { bbh } = props,

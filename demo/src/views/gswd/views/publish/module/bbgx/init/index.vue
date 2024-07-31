@@ -1,5 +1,6 @@
 <template>
   <div class="publish-bbgx-init z-col">
+    <seMarkdown class="annotation" :data="title"></seMarkdown>
     <z-form flex="row" wrap v-model="formData">
       <z-form-item label="版本号：" basis="25%">
         <z-input name="bbh"></z-input>
@@ -17,19 +18,20 @@
 </template>
 <script lang="ts" setup>
 import { seMarkdown } from "@/components/base";
-import { fbdq } from '../../data';
-import useBBgx from './use'
+import { fbdq } from "@view/gswd/views/publish/data";
+import { title } from "./data";
+import useBBgx from "./use";
 defineOptions({
-  name: 'publish-bbgx-init'
-})
-const { code, formData, init } = useBBgx()
+  name: "publish-bbgx-init",
+});
+const { code, formData, init } = useBBgx();
 </script>
 <style lang="scss" scoped>
 .publish-bbgx-init {
   flex-basis: 0;
   flex-grow: 1;
   width: 100%;
-  padding: .5em;
+  padding: 0.5em;
 
   .z-form {
     width: 100%;

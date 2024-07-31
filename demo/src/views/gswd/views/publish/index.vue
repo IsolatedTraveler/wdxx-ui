@@ -1,5 +1,5 @@
 <template>
-  <z-article :data="menu" :coms="com" def-val="tyThird"></z-article>
+  <z-article :data="menu" :coms="com" def-val="bbgxInit"></z-article>
 </template>
 
 <script lang="ts" setup>

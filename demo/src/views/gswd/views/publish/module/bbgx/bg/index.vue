@@ -27,26 +27,26 @@
   </z-flex>
 </template>
 <script lang="ts" setup>
-import useBBgx from './use'
-import { publishProps } from './publish';
-import { Lx } from '@/views/kfwd/views/git/module/commit/use.arr'
-import { seMarkdown } from '@/components/base';
-import { fbdq } from "../../../data"
-const props = defineProps(publishProps)
+import useBBgx from "./use";
+import { publishProps } from "./publish";
+import { Lx } from "@/views/kfwd/views/git/module/commit/use.arr";
+import { seMarkdown } from "@/components/base";
+import { fbdq } from "@view/gswd/views/publish/data";
+const props = defineProps(publishProps);
 defineOptions({
-  name: 'bbgx-publish'
-})
-const { data, cols, publish, del, content, formData } = useBBgx(props)
+  name: "bbgx-publish",
+});
+const { data, cols, publish, del, content, formData } = useBBgx(props);
 </script>
 <style lang="scss" scoped>
 .bbgx-publish {
-  margin-top: .5em;
+  margin-top: 0.5em;
   flex-basis: 0;
   flex-grow: 1;
   width: 100%;
 
   .z-form {
-    margin-top: .5em;
+    margin-top: 0.5em;
     width: 100%;
   }
 }

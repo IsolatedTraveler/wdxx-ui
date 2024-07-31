@@ -1,11 +1,10 @@
 import { getMenuItem } from "@/views/kfwd/views/rule/data/getMenuItem"
-
-
-const ml = 'bbgx'
+import { xtm } from "./var"
+import gb from "./gb"
 export default [
-  getMenuItem(ml, '版本更新')
-  , getMenuItem(ml, '初始化', 'init')
-  , getMenuItem(ml, '版本记录', 'jl')
-  , getMenuItem(ml, '版本修改', 'bg')
-  , getMenuItem(ml, '归版', 'gb')
+  getMenuItem(xtm, '版本更新')
+  , getMenuItem(xtm, '初始化', 'init')
+  , getMenuItem(xtm, '版本记录', 'jl')
+  , getMenuItem(xtm, '版本修改', 'bg')
+  , ...gb
 ]
