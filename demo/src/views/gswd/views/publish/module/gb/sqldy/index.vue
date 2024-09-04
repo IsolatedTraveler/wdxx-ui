@@ -17,25 +17,26 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { getMarkDownCode, seMarkdown } from "@/components/base";
-import content from "./data";
-import { useSqldy } from "@/views/gswd/views/publish/moduleTs";
-import { fwq } from "@/views/gswd/views/publish/data";
-import { computed, inject } from "vue";
+import {getMarkDownCode, seMarkdown} from '@/components/base';
+import content from './data';
+import {useSqldy} from '@/views/gswd/views/publish/moduleTs';
+import {fwq} from '@/views/gswd/views/publish/data';
+import {computed} from 'vue';
 const props: any = {};
 defineOptions({
-  name: "v-sqldy",
+  name: 'v-sqldy'
 });
-const { code, formData, getCode } = useSqldy("sqldy"),
+const {code, formData, getCode} = useSqldy('sqldy'),
   codeV = computed(() => {
-    return getMarkDownCode(code.value, "sql");
+    return getMarkDownCode(code.value, 'sql');
   });
 formData.value.bb = props.bbh;
-formData.value.where = "1=1";
+formData.value.where = '1=1';
 </script>
 <style lang="scss" scoped>
 .sqldy {
   flex-basis: 0;
   flex-grow: 1;
+  overflow: hidden;
 }
 </style>

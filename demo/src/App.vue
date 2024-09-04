@@ -11,21 +11,23 @@ export default {
     return {
       date: new Date(),
       jgmc: ''
-    }
+    };
   },
   computed: {
     load() {
-      return false
+      return false;
     }
   }
-}
+};
 </script>
 <style lang="scss">
 #app {
   width: 100%;
   height: 100%;
-
-  >.router {
+  .md-editor {
+    width: 100%;
+  }
+  > .router {
     width: 100%;
     height: 100%;
   }

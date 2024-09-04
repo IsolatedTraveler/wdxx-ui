@@ -2,6 +2,8 @@
 @use '../../vars/index.scss' as *;
 
 .z-article {
+  overflow: auto;
+
   >.z-tree {
     min-width: 2rem;
   }
@@ -16,6 +18,8 @@
 
     .z-article-item {
       min-height: 20px;
+      max-width: 100%;
+      overflow: auto;
     }
   }
 }
