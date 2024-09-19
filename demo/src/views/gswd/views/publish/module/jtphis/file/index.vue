@@ -1,5 +1,6 @@
 <template>
   <div class="jtphis-file">
+    <seMarkdown class="fbxt" :data="content"></seMarkdown>
     <z-form flex="row" wrap v-model="formData">
       <z-form-item label="历史地址：" basis="25%">
         <z-input name="lsdz"></z-input>
@@ -18,6 +19,8 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref } from "vue";
+import {seMarkdown} from '@/components/base';
+import content from './data';
 
 defineOptions({
   name: "jtphis-file",

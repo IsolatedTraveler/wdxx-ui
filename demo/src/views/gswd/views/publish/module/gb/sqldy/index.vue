@@ -22,7 +22,7 @@ import content from './data';
 import {useSqldy} from '@/views/gswd/views/publish/moduleTs';
 import {fwq} from '@/views/gswd/views/publish/data';
 import {computed} from 'vue';
-const props: any = {};
+import {useGswdStore} from '@/store';
 defineOptions({
   name: 'v-sqldy'
 });
@@ -30,7 +30,7 @@ const {code, formData, getCode} = useSqldy('sqldy'),
   codeV = computed(() => {
     return getMarkDownCode(code.value, 'sql');
   });
-formData.value.bb = props.bbh;
+formData.value.bb = useGswdStore().getBb;
 formData.value.where = '1=1';
 </script>
 <style lang="scss" scoped>
