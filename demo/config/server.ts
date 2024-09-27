@@ -10,7 +10,7 @@ export const server: ServerOptions = {
       changeOrigin: true,
       bypass: (req, res) => {
         const url = req.url || '';
-        res.setHeader('X-Proxy-Target', 'http://192.168.0.242:8080/jtmis/' + url.replace(/^\/jtmis\/242/, ''));
+        res.setHeader('X-Proxy-Target', 'http://192.168.0.242:8080/jtmis' + url.replace(/^\/jtmis\/242/, ''));
       }
     },
     '/jtmis/cs242': {
@@ -19,7 +19,7 @@ export const server: ServerOptions = {
       changeOrigin: true,
       bypass: (req, res) => {
         const url = req.url || '';
-        res.setHeader('X-Proxy-Target', 'http://192.168.0.242:8080/jtmis/' + url.replace(/^\/jtmis\/cs242/, ''));
+        res.setHeader('X-Proxy-Target', 'http://192.168.0.242:8080/jtmis' + url.replace(/^\/jtmis\/cs242/, ''));
       }
     },
     '/jtmis/235': {
@@ -28,7 +28,7 @@ export const server: ServerOptions = {
       changeOrigin: true,
       bypass: (req, res) => {
         const url = req.url || '';
-        res.setHeader('X-Proxy-Target', 'http://192.168.0.235:8080/jtmis/' + url.replace(/^\/jtmis\/235/, ''));
+        res.setHeader('X-Proxy-Target', 'http://192.168.0.235:8080/jtmis' + url.replace(/^\/jtmis\/235/, ''));
       }
     },
     '/jtmis/smq': {
@@ -37,7 +37,16 @@ export const server: ServerOptions = {
       changeOrigin: true,
       bypass: (req, res) => {
         const url = req.url || '';
-        res.setHeader('X-Proxy-Target', 'http://smq.frp.cdjtwx.com:81/jtphis/' + url.replace(/^\/jtmis\/smq/, ''));
+        res.setHeader('X-Proxy-Target', 'http://smq.frp.cdjtwx.com:81/jtphis' + url.replace(/^\/jtmis\/smq/, ''));
+      }
+    },
+    '/jtmis/wsq': {
+      target: 'http://10.33.77.29:7080/jtmis/',
+      rewrite: path => path.replace(/^\/jtmis\/wsq/, ''),
+      changeOrigin: true,
+      bypass: (req, res) => {
+        const url = req.url || '';
+        res.setHeader('X-Proxy-Target', 'http://10.33.77.29:7080/jtmis' + url.replace(/^\/jtmis\/wsq/, ''));
       }
     },
     '/jtmis': {
@@ -46,7 +55,7 @@ export const server: ServerOptions = {
       changeOrigin: true,
       bypass: (req, res) => {
         const url = req.url || '';
-        res.setHeader('X-Proxy-Target', 'http://loc.frp.cdjtwx.com:81/233-7080/jtphis/' + url.replace(/^\/jtmis/, ''));
+        res.setHeader('X-Proxy-Target', 'http://loc.frp.cdjtwx.com:81/233-7080/jtphis' + url.replace(/^\/jtmis/, ''));
       }
     },
     '/mis-server': {
@@ -55,7 +64,7 @@ export const server: ServerOptions = {
       rewrite: path => path.replace(/^\/mis-server/, ''),
       bypass: (req, res) => {
         const url = req.url || '';
-        res.setHeader('X-Proxy-Target', 'ttp://his.frp.cdjtwx.com/jtphis/mis-server/' + url.replace(/^\/mis-server/, ''));
+        res.setHeader('X-Proxy-Target', 'ttp://his.frp.cdjtwx.com/jtphis/mis-server' + url.replace(/^\/mis-server/, ''));
       }
     }
   }

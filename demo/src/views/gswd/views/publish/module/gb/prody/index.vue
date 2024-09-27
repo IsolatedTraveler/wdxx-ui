@@ -21,7 +21,7 @@ import { getMarkDownCode, seMarkdown } from "@/components/base";
 import content from "./data";
 import { usePrody } from "@/views/gswd/views/publish/moduleTs";
 import { fwq } from "@/views/gswd/views/publish/data";
-import { computed, inject } from "vue";
+import { computed } from "vue";
 const props: any = {};
 defineOptions({
   name: "v-prody",
