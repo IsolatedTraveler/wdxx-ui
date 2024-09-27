@@ -10,7 +10,7 @@
       </router-view>
       <iframe class="content" :src="item.path" frameborder="0" v-else-if="item.lx === 'iframe'"></iframe>
       <div class="content" v-else>
-        暂未添加该类型的解决方案${item.lx}
+        暂未添加该类型的解决方案{{item.lx}}
       </div>
     </z-flex>
   </div>
